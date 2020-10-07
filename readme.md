@@ -26,21 +26,19 @@
 
 ## 기술 스택 (Technique Used)
 ### Server(back-end)
- - [nodejs](https://nodejs.org/ko/)
- - [express](https://expressjs.com/ko/)
+ - Go + [Gin](https://github.com/gin-gonic/gin)
  - [MariaDB](https://mariadb.com/)
  
 ### front-end
- -  [vue.js](https://kr.vuejs.org/v2/guide/index.html)
- -  [Material-UI](https://material-ui.com/)
+ -  [Vue.js](https://kr.vuejs.org/v2/guide/index.html) + [Vuex](https://github.com/vuejs/vuex)
+ -  [Vuetify](https://vuetifyjs.com/en/)
 
 ---
 
 ## 설치 안내 (Installation Process)
 ```bash
 $ git clone https://github.com/osamhack2020/WEB_SAMarket_SAMarket.git
-$ yarn or npm install
-$ yarn start or npm run start
+$ TBA
 ```
 
 ## 프로젝트 사용법 (Getting Started)
@@ -51,9 +49,9 @@ $ yarn start or npm run start
 ---
  
 ## 팀 정보 (Team Information)
-- 고현수 Ko Hyunsu (@gmail.com), Github Id: KoHyunsu
-- 장태준 Jang Taejun (jtjun@gmail.com), Github Id: jtjun
-- 조우림 Cho Woolim (2680v4@gmail.com), Github Id: jkl5616
+- 고현수 Hyunsu Ko (@gmail.com), Github Id: KoHyunsu
+- 장태준 Taejun Jang (jtjun@gmail.com), Github Id: jtjun
+- 조우림 Woolim Cho (2680v4@gmail.com), Github Id: jkl5616
 
 ## 저작권 및 사용권 정보 (Copyleft / End User License)
  * [MIT](license.md)
