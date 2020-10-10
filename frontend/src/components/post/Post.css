@@ -19,3 +19,7 @@
     margin-top: 15px;
     text-align: center;
 }
+
+.postHead {
+    width: 340px; height: 380px;
+}
