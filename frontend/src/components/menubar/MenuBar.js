@@ -7,7 +7,8 @@ class MenuBar extends Component {
         clicked: 0,
     }
 
-    getStyle = (idx) => {
+    getBtnStyle = (idx) => {
+        /* 각 버튼 별로 스타일을 불러옴 */
         const img = {
             0: 'home', 1: 'shop', 2: 'post', 3: 'adv'
         }[idx] + (this.state.clicked === idx ?'Click': '')
@@ -22,13 +23,20 @@ class MenuBar extends Component {
         });
     }
 
+    switchPage = (idx) => {
+        return () => {
+            /* idx 에 해당하는 버튼을 눌렀을 때, 동작을 여기에 작성 */
+            this.setState({clicked: idx});
+        };
+    }
+
     render() {
         return (
             <div className='menuBar'>
-                <button style={this.getStyle(0)}/>
-                <button style={this.getStyle(1)}/>
-                <button style={this.getStyle(2)}/>
-                <button style={this.getStyle(3)}/>
+                {[0,1,2,3].map((idx) =>
+                    <button /* 하단 4개의 버튼을 순서대로 생성 */
+                        style={this.getBtnStyle(idx)}
+                        onClick={this.switchPage(idx)}/>)}
                 <button className='writeBtn'/>
             </div>
         );
