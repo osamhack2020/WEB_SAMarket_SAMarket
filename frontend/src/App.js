@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import Header from './components/head/Header';
 import PostInfoList from './components/post/PostInfoList';
+import MenuBar from './components/menubar/MenuBar';
 import defaultState from './data/posts.json';
 import './App.css'
 
@@ -52,11 +54,15 @@ class App extends Component {
     );
     return (
       <div className='App'>
+        <Header
+          onChange={this.handleChange}
+        />
         <PostInfoList
           posts={filteredList}
           onRemove={this.handleRemove}
           onUpdate={this.handleUpdate}
         />
+        <MenuBar />
       </div>
     );
   }
