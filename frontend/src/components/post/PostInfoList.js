@@ -18,7 +18,7 @@ class PostInfoList extends Component {
         const list = posts.map(
             post => (
             <PostInfo
-                key={post.id} info={post}
+                key={post.post_id} info={post}
                 onRemove={onRemove}
                 onUpdate={onUpdate}
                 onSearch={onSearch}
