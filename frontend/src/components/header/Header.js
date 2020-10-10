@@ -5,7 +5,7 @@ import './Header.css';
 
 
 const Header = (props) => {
-    const { onChange } = props; 
+    const { onSearch } = props; 
     const [pageY, setPageY] = useState(0);
     const documentRef = useRef(document);
 
@@ -22,7 +22,7 @@ const Header = (props) => {
     return (
         <div className={pageY <= 200? 'head': 'crouch'}>
             <Profile/>
-            <SearchBar onChange={onChange} />
+            <SearchBar onSearch={onSearch} />
         </div>
     )
 }
