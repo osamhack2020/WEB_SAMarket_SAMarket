@@ -13,6 +13,7 @@ class MenuBar extends Component {
             0: 'home', 1: 'shop', 2: 'post', 3: 'adv'
         }[idx] + (this.state.clicked === idx ?'Click': '')
         return ({
+            outline: '0',
             position: 'absolute',
             top: '20px', left: String(20 + 15*idx) + '%',
             border: '0px solid',
