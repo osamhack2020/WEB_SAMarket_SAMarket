@@ -26,7 +26,7 @@ class SearchBar extends Component {
             <form className='search' onSubmit={this.handleSearch}>
                 <input
                     className='searchBar'
-                    placeholder=' 태그 입력'
+                    placeholder=' 태그 검색'
                     value={this.state.keyword}
                     onChange={this.handleChange}
                     name='keyword'/>

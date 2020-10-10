@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react'
-import SearchBar from './SearchBar';
-import Profile from '../profile/Profile';
-import './Header.css';
+import UserInfo from '../../data/user/profile.json';
+import './Profile.css';
 
 
-const Header = (props) => {
-    const { onChange } = props; 
+const Profile = () => {
+    const { name, id, loc, org } = UserInfo;
     const [pageY, setPageY] = useState(0);
     const documentRef = useRef(document);
 
@@ -20,11 +19,16 @@ const Header = (props) => {
     }, [pageY]);
 
     return (
-        <div className={pageY <= 200? 'head': 'crouch'}>
-            <Profile/>
-            <SearchBar onChange={onChange} />
+        <div className='profile'>
+            <div className='profileImg'/>
+            <div className='name'>
+                {name} {id}
+            </div>
+            <div className={pageY<=170 ?'belong' : 'belongOnly'}>
+                {loc} {org}
+            </div>
         </div>
     )
 }
 
-export default Header
+export default Profile

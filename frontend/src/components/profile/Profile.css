@@ -1,0 +1,31 @@
+.profile {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.profileImg {
+    display: inline-block;
+    background: transparent;
+    border: 0px solid;
+    border-radius: 40px;
+    background-image: url(../../data/user/profile.png);
+    width: 80px; height: 80px;
+    background-size: 80px 80px;
+}
+
+.name {
+    font-weight: bold;
+    margin-top: 10px;
+    height: 20px;
+}
+
+.belong {
+    margin-top: 10px;
+}
+
+.belongOnly {
+    position: fixed;
+    top: 10px;
+    width: 100%;
+    text-align: center;
+}
