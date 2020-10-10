@@ -6,8 +6,7 @@
 .profileImg {
     display: inline-block;
     background: transparent;
-    border: 0px solid;
-    border-radius: 40px;
+    border: 0; border-radius: 40px;
     background-image: url(../../data/user/profile.png);
     width: 80px; height: 80px;
     background-size: 80px 80px;
@@ -20,7 +19,7 @@
 }
 
 .belong {
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 .belongOnly {
@@ -28,4 +27,23 @@
     top: 10px;
     width: 100%;
     text-align: center;
+}
+
+.loc, .org {
+    outline: 0; border: 0;
+    color: #FDFEFF;
+    font-size: 15px;
+
+    height: 25px;
+    border-radius: 12.5px;
+    padding: 2px 15px 2px 15px;
+    margin: 0 2px 0 2px;
+}
+
+.loc {
+    background-color: #1A8ABA;
+}
+
+.org {
+    background-color: #059ACB;
 }

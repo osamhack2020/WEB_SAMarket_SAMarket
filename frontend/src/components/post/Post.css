@@ -1,6 +1,5 @@
 .info {
-    border: 0px solid;
-    border-radius: 20px;
+    border: 0; border-radius: 20px;
     background: #FDFEFF;
     width: 340px; height: 380px;
     padding: 0px;

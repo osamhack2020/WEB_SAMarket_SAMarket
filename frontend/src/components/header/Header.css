@@ -22,8 +22,7 @@
 
 .search {
     background: #F0F3F6;
-    border: 0px solid;
-    border-radius: 12.5px;
+    border: 0; border-radius: 12.5px;
     width: 350px; height: 25px;
 
     position: absolute;
@@ -33,22 +32,20 @@
 }
 
 .searchBar {
-    outline: 0;
+    outline: 0; border: 0;
     position: absolute;
     top: -1.5px;
     left: 6px;
     background: transparent;
-    border: 0px solid;
     width: 88%; height: 25px;
 }
 
 .magnifier {
-    outline: 0;
+    outline: 0; border: 0;
     position: absolute;
     top: 3px;
     right: 6px;
     background: transparent;
-    border: 0px solid;
     background-image: url(../../imgs/icons/search.png);
     width: 20px; height: 20px;
     background-size: 20px 20px;

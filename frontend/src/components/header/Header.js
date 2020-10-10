@@ -5,22 +5,21 @@ import './Header.css';
 
 
 const Header = ({ onSearch }) => {
-    /* hook 을 맨 위로 쓸 것 */
+    /* hook 을 맨 위로 쓸 것, 단 정의 순서 고려 */
     const [pageY, setPageY] = useState(0);
     const documentRef = useRef(document);
+    const handleScroll = () => {
+        const { pageYOffset } = window;
+        setPageY(pageYOffset);
+    }
     useEffect(() => {
         documentRef.current.addEventListener('scroll', handleScroll);
         return () => documentRef.current.removeEventListener('scroll', handleScroll);
     }, [pageY]);
 
-    const handleScroll = () => {
-        const { pageYOffset } = window;
-        setPageY(pageYOffset);
-    }
-
     return (
         <div className={pageY <= 200? 'head': 'crouch'}>
-            <Profile/>
+            <Profile onSearch={onSearch} />
             <SearchBar onSearch={onSearch} />
         </div>
     )

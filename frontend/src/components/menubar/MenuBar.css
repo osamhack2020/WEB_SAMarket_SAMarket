@@ -7,8 +7,7 @@
 }
 
 .writeBtn {
-    outline: 0;
-    border: 0 solid;
+    outline: 0; border: 0;
     border-radius: 25px;
     background: #1A8ABA;
     background-image: url('../../imgs/icons/write.png');
