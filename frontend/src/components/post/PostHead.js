@@ -15,7 +15,7 @@ class PostHead extends Component {
             2: type === 'sell'? 'buy' :'deny'}[idx]
 
         return ({
-            outline: '0', border: '0px solid',
+            border: 0, outline: 0, cursor: 'pointer',
             background: 'rgba(0,0,0,0)',
             position: 'absolute',
             left: String(225 + 35*idx) + 'px', top: '20px',

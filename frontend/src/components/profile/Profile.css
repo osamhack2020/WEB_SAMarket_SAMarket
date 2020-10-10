@@ -10,6 +10,7 @@
     background-image: url(../../data/user/profile.png);
     width: 80px; height: 80px;
     background-size: 80px 80px;
+    cursor: pointer;
 }
 
 .name {
@@ -30,7 +31,7 @@
 }
 
 .loc, .org {
-    outline: 0; border: 0;
+    border: 0; outline: 0; cursor: pointer;
     color: #FDFEFF;
     font-size: 15px;
 

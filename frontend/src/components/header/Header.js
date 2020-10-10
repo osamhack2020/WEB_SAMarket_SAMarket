@@ -5,7 +5,7 @@ import './Header.css';
 
 
 const Header = ({ onSearch }) => {
-    /* hook 을 맨 위로 쓸 것, 단 정의 순서 고려 */
+    /* hook 을 맨 위로 쓸 것, with 정의 순서 고려 */
     const [pageY, setPageY] = useState(0);
     const documentRef = useRef(document);
     const handleScroll = () => {

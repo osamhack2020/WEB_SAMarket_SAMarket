@@ -8,16 +8,17 @@ const Content = (props) => {
         position: 'absolute',
         top: '60px', left: '20px',
         width: '300px', height: '300px',
-        border: '0px solid',
+        border: 0, outline: 0,
         borderRadius: '20px',
         background: clr.back || '#8990A0',
         boxShadow: '0 0 15px 0 rgba(80,80,80,30%)'
     }
 
     const titleStyle = {
+        position: 'relative',
         textAlign: 'center', fontWeight: 'bold',
         color: clr.font, fontSize: '30px',
-        marginTop: '100px'
+        marginTop: '25px',
     }
 
     const subStyle = {
@@ -26,19 +27,23 @@ const Content = (props) => {
         marginTop: '5px'
     }
 
+    const switchPostPage = () => {
+        /* Post 상세 페이지로 전환 */
+    }
+
     return (
-            <div style={contentStyle}>
+            <button style={contentStyle} onClick={switchPostPage}>
                 <div style={titleStyle}>{title}</div>
                 <div style={subStyle}>
                     {sub+(props.type === 'sell' ?' 원' :'')}
                 </div>
                 <div className='tags'>
-                    {tags.map(tag => 
+                    {tags.slice(0, 5).map(tag => 
                         <Tag
                             clr={clr} text={tag}
                             onSearch={props.onSearch}/>)}
                 </div>
-            </div>
+            </button>
     );
 }
 

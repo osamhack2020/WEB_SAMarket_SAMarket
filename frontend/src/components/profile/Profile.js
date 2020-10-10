@@ -21,9 +21,13 @@ const Profile = ({ onSearch }) => {
         return () => onSearch({keyword:{0:"", 1:org}[idx]})
     }
 
+    const switchProfilePage = () => {
+        /* 현재 사용자 Profile 화면으로 전환 */
+    }
+
     return (
         <div className='profile'>
-            <div className='profileImg'/>
+            <button className='profileImg' onClick={switchProfilePage}/>
             <div className='name'>
                 {name} @{id}
             </div>
