@@ -1,0 +1,16 @@
+.info {
+    border: 0px solid;
+    border-radius: 20px;
+    background: #FDFEFF;
+    width: 340px; height: 380px;
+    padding: 0px;
+    margin: 25px auto;
+    position: relative;
+}
+
+.rmbtn {
+    /*background-image: '';*/
+    position: absolute;
+    top: 20px; left: 280px;
+    background: #505560;
+}
