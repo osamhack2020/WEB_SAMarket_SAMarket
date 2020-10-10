@@ -15,7 +15,7 @@ class MenuBar extends Component {
         return ({
             outline: '0',
             position: 'absolute',
-            top: '20px', left: String(20 + 15*idx) + '%',
+            top: '20px', left: String(10 + 17*idx) + '%',
             border: '0px solid',
             background: 'rgba(0,0,0,0)',
             backgroundImage: "url(" + require('../../imgs/icons/' +img+ '.png') + ")",

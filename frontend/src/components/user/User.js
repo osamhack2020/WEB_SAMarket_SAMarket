@@ -13,6 +13,7 @@ const User = (props) => {
         profileImg = require('../../imgs/icons/user.png')
     }
     const userImg = {
+        outline: '0',
         border: '0px solid', borderRadius: '17.5px',
         background: '#F0F3F6',
         position: 'absolute',
@@ -22,9 +23,15 @@ const User = (props) => {
         backgroundSize: '35px 35px',
     }
 
+    const switchProfile = () => {
+        /* user profile page 로 이동 */
+    }
+
     return (
         <div className='user'>
-            <div style={userImg}/>
+            <button
+                style={userImg}
+                onClick={switchProfile}/>
             <div className='userName'>@{id}</div>
         </div>
     )
