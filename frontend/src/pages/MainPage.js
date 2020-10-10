@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Header from '../components/head/Header';
+import Header from '../components/Header/Header';
 import PostInfoList from '../components/post/PostInfoList';
 import MenuBar from '../components/menubar/MenuBar';
 import defaultState from '../data/posts.json';
