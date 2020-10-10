@@ -39,6 +39,27 @@
                 },
                 "content": "PX 음식 꿀조합 알려드립니다."
             }
+        },
+        {
+            "post_id": 2,
+            "author": {
+                "id": "KoHyunsu",
+                "name": "고현수"
+            },
+            "type": "post",
+            "contents":{
+                "title": "당직 컨텐츠",
+                "sub": "시간과 정신의 방",
+                "tags": [
+                    "당직", "킬링타임", "시간"
+                ],
+                "clr":{
+                    "font": "#FFFFFF",
+                    "back": "#505560",
+                    "tag": "#202326"
+                },
+                "content": "당직 때 할 만한 컨텐츠"
+            }
         }
     ]
 }

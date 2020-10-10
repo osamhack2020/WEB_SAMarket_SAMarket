@@ -5,13 +5,27 @@ import './User.css';
 
 const User = (props) => {
     const { name, id } = props.userInfo;
+    let profileImg;
+    try { // 사용자 이미지가 있는지 확인
+        profileImg = require('../../imgs/users/' +id+ '.png')
+    } //  없으면 기본 이미지로
+    catch {
+        profileImg = require('../../imgs/icons/user.png')
+    }
+    const userImg = {
+        border: '0px solid', borderRadius: '17.5px',
+        background: '#F0F3F6',
+        position: 'absolute',
+        left: '20px', top: '15px',
+        width: '35px', height: '35px',
+        backgroundImage: "url(" + profileImg + ")",
+        backgroundSize: '35px 35px',
+    }
 
     return (
         <div className='user'>
-            <div className='userImg'/>
-            <div className='name'>
-                {name} @{id}
-            </div>
+            <div style={userImg}/>
+            <div className='userName'>@{id}</div>
         </div>
     )
 }

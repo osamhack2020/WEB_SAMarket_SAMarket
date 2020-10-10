@@ -15,7 +15,8 @@ const Tag = (props) => {
         width: String(40 + 15*text.length) + 'px',
 
         margin: '5px 5px 5px 5px',
-        paddingBottom: '3px'
+        paddingBottom: '3px',
+        boxShadow: '0 0 20px 0 rgba(80,80,80,30%)'
     }
     const tagClick = () => {
         onSearch({keyword:text})
