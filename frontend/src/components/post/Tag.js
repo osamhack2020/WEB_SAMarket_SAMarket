@@ -10,23 +10,16 @@ const Tag = props => {
   const tagStyle = {
     color: color.font,
     background: color.tag,
-    border: 0,
-    outline: 0,
-    cursor: "pointer",
-    height: "25px",
-    borderRadius: "12.5px",
-    width: String(40 + 15 * text.length) + "px",
-
-    margin: "5px 5px 5px 5px",
-    paddingBottom: "3px",
-    boxShadow: "0 0 20px 0 rgba(80,80,80,30%)"
   };
   const tagClick = () => {
     onSearch({ keyword: text });
   };
 
   return (
-    <button style={tagStyle} onClick={tagClick}>
+    <button
+      className='tag'
+      style={tagStyle}
+      onClick={tagClick}>
       # {text}
     </button>
   );
