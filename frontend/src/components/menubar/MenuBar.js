@@ -22,11 +22,7 @@ class MenuBar extends Component {
         /* 각 버튼 별로 스타일을 불러옴 */
         const img = this.imgs[idx] + (this.state.clicked === idx ?'Click': '')
         return ({
-            border: 0, outline: 0, cursor: 'pointer',
-            position: 'absolute',
-            top: '15px', left: String(10 + 17*idx) + '%',
-            background: "url(" + this.svgs[img] + ") no-repeat",
-            width: '40px', height: '40px',
+            background: "url(" + this.svgs[img] + ") no-repeat center",
         });
     }
 
@@ -41,7 +37,7 @@ class MenuBar extends Component {
         return (
             <div className='menuBar'>
                 {[0,1,2,3].map((idx) =>
-                    <button /* 하단 4개의 버튼을 순서대로 생성 */
+                    <button className='barBtn'/* 하단 4개의 버튼을 순서대로 생성 */
                         style={this.getBtnStyle(idx)}
                         onClick={this.switchPage(idx)}/>)}
                 <button className='writeBtn'/>

@@ -3,6 +3,6 @@
     font-weight: bold;
     border: 0; outline: 0; cursor: pointer;
     background: rgba(0,0,0,0);
-    position: absolute;
-    left: 60px; top: 22px;
+    position: relative;
+    left: 60px; top: 20px;
 }

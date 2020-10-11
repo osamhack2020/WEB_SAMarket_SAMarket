@@ -7,11 +7,6 @@ class PostHead extends Component {
     state = {
         liked: Profile.likes.indexOf(this.props.post_id) >= 0
     }
-
-    imgs = {
-        0: 'share',
-        1: this.state.liked? 'liked' :'like',
-        2: this.props.type === 'sell'? 'buy' :'deny'}
     getSvgs = () => {
         let svgs = {}
         let imgSrcs = ['share', 'like', 'liked' , 'buy', 'deny']
@@ -22,7 +17,10 @@ class PostHead extends Component {
     svgs = this.getSvgs()
 
     getBtn = (idx) => {
-        const img = this.imgs[idx]
+        const img = {
+            0: 'share',
+            1: this.state.liked? 'liked' :'like',
+            2: this.props.type === 'sell'? 'buy' :'deny'}[idx]
         return ({
             border: 0, outline: 0, cursor: 'pointer',
             position: 'absolute',
