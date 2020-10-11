@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="44.811" height="43" viewBox="0 0 44.811 43">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #202326;
+      }
+
+      .cls-2 {
+        fill: none;
+      }
+
+      .cls-3 {
+        filter: url(#합치기_72);
+      }
+    </style>
+    <filter id="합치기_72" x="0" y="0" width="44.811" height="43" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#707070" flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="그룹_202" data-name="그룹 202" transform="translate(-541 -62.177)">
+    <g class="cls-3" transform="matrix(1, 0, 0, 1, 541, 62.18)">
+      <path id="합치기_72-2" data-name="합치기 72" class="cls-1" d="M1687.372-22H1674l1.93-15.4h5.475v2.288a2,2,0,0,0-.549,1.383,1.952,1.952,0,0,0,1.92,1.977,1.952,1.952,0,0,0,1.921-1.977,2,2,0,0,0-.549-1.382V-37.4h6.516v2.289a2,2,0,0,0-.548,1.382,1.952,1.952,0,0,0,1.92,1.977,1.952,1.952,0,0,0,1.921-1.977,2,2,0,0,0-.549-1.383V-37.4h5.475l1.93,15.4Zm3.292-11.727a1.417,1.417,0,0,1,.549-1.131v-6.494a3.986,3.986,0,0,0-1.126-2.794,3.765,3.765,0,0,0-2.68-1.16,3.765,3.765,0,0,0-2.681,1.16,3.986,3.986,0,0,0-1.126,2.794v6.494a1.416,1.416,0,0,1,.549,1.131,1.394,1.394,0,0,1-1.372,1.412,1.394,1.394,0,0,1-1.372-1.412,1.418,1.418,0,0,1,.549-1.13v-6.495A5.578,5.578,0,0,1,1687.371-47h.07a5.578,5.578,0,0,1,5.417,5.648v6.495a1.417,1.417,0,0,1,.549,1.13,1.394,1.394,0,0,1-1.372,1.412A1.394,1.394,0,0,1,1690.663-33.727Z" transform="translate(-1665 56)"/>
+    </g>
+    <rect id="사각형_302" data-name="사각형 302" class="cls-2" width="30" height="30" transform="translate(548.5 69)"/>
+  </g>
+</svg>

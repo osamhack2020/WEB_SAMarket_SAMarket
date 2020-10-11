@@ -8,20 +8,28 @@ class PostHead extends Component {
         liked: Profile.likes.indexOf(this.props.post_id) >= 0
     }
 
-    getBtn = (idx, type) => {
-        const img = {
-            0: 'share',
-            1: this.state.liked? 'liked' :'like',
-            2: type === 'sell'? 'buy' :'deny'}[idx]
+    imgs = {
+        0: 'share',
+        1: this.state.liked? 'liked' :'like',
+        2: this.props.type === 'sell'? 'buy' :'deny'}
+    getSvgs = () => {
+        let svgs = {}
+        let imgSrcs = ['share', 'like', 'liked' , 'buy', 'deny']
+        for (let idx in imgSrcs){
+            svgs[imgSrcs[idx]] = require('../../imgs/icons/' +imgSrcs[idx]+ '.svg')
+        } return svgs
+    }
+    svgs = this.getSvgs()
 
+    getBtn = (idx) => {
+        const img = this.imgs[idx]
         return ({
             border: 0, outline: 0, cursor: 'pointer',
-            background: 'rgba(0,0,0,0)',
             position: 'absolute',
-            left: String(225 + 35*idx) + 'px', top: '20px',
-            width: '25px', height: '25px',
-            backgroundImage: "url(" + require('../../imgs/icons/' +img+ '.png') + ")",
+            top: '20px', left: String(225 + 35*idx) + 'px',
+            background: "url(" + this.svgs[img] + ")",
             backgroundSize: '25px 25px',
+            width: '25px', height: '25px',
         });
     }
 
@@ -36,12 +44,12 @@ class PostHead extends Component {
     }
 
     render() {
-        const { author, type } = this.props;
+        const { author } = this.props;
         return (
             <div className='postHead'>
                 {[0,1,2].map((idx) =>
                     <button /* 3개의 버튼을 순서대로 생성 */
-                        style={this.getBtn(idx, type)}
+                        style={this.getBtn(idx)}
                         onClick={this.btnAction(idx)}
                         />)}
                 <User userInfo={author} />

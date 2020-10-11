@@ -7,19 +7,26 @@ class MenuBar extends Component {
         clicked: 0,
     }
 
+    imgs = {0: 'home', 1: 'shop', 2: 'post', 3: 'adv'}
+    getSvgs = () => {
+        let svgs = {}
+        for (let idx in this.imgs){
+            let img = this.imgs[idx]
+            svgs[img] = require('../../imgs/icons/' +img+ '.svg')
+            svgs[img+'Click'] = require('../../imgs/icons/' +img+ 'Click.svg')
+        } return svgs
+    }
+    svgs = this.getSvgs()
+
     getBtnStyle = (idx) => {
         /* 각 버튼 별로 스타일을 불러옴 */
-        const img = {
-            0: 'home', 1: 'shop', 2: 'post', 3: 'adv'
-        }[idx] + (this.state.clicked === idx ?'Click': '')
+        const img = this.imgs[idx] + (this.state.clicked === idx ?'Click': '')
         return ({
             border: 0, outline: 0, cursor: 'pointer',
             position: 'absolute',
-            top: '20px', left: String(10 + 17*idx) + '%',
-            background: 'rgba(0,0,0,0)',
-            backgroundImage: "url(" + require('../../imgs/icons/' +img+ '.png') + ")",
-            backgroundSize: '30px 30px',
-            width: '30px', height: '30px',
+            top: '15px', left: String(10 + 17*idx) + '%',
+            background: "url(" + this.svgs[img] + ") no-repeat",
+            width: '40px', height: '40px',
         });
     }
 

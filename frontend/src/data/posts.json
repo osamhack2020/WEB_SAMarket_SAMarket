@@ -25,6 +25,27 @@
         {
             "post_id": 1,
             "author": {
+                "id": "jtjun",
+                "name": "장태준"
+            },
+            "type": "adv",
+            "contents":{
+                "title": "강군마켓 화이팅!",
+                "sub": "잘해봅시다!",
+                "tags": [
+                    "강군마켓", "응원", "화이팅"
+                ],
+                "clr":{
+                    "font": "#1A8ABA",
+                    "back": "#05B0EA",
+                    "tag": "#059ACB"
+                },
+                "content": "강군마켓 잘 할 수 있다!"
+            }
+        },
+        {
+            "post_id": 2,
+            "author": {
                 "id": "woolim98",
                 "name": "조우림"
             },
@@ -41,7 +62,7 @@
             }
         },
         {
-            "post_id": 2,
+            "post_id": 3,
             "author": {
                 "id": "KoHyunsu",
                 "name": "고현수"

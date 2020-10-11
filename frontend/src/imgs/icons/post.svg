@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="43" height="43" viewBox="0 0 43 43">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #8990a0;
+      }
+
+      .cls-2 {
+        fill: none;
+      }
+
+      .cls-3 {
+        filter: url(#합치기_74);
+      }
+    </style>
+    <filter id="합치기_74" x="0" y="0" width="43" height="43" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#707070" flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="그룹_203" data-name="그룹 203" transform="translate(-611 -62.177)">
+    <g class="cls-3" transform="matrix(1, 0, 0, 1, 611, 62.18)">
+      <path id="합치기_74-2" data-name="합치기 74" class="cls-1" d="M1679-22a5.006,5.006,0,0,1-5-5V-42a5.005,5.005,0,0,1,5-5h15a5.005,5.005,0,0,1,5,5v15a5.006,5.006,0,0,1-5,5Zm-2.5-17.5v10a5.005,5.005,0,0,0,5,5h10a5.005,5.005,0,0,0,5-5v-10a5.005,5.005,0,0,0-5-5h-10A5.005,5.005,0,0,0,1676.5-39.5Zm5.25,13.75a4,4,0,0,1-4-4v-9.5a4,4,0,0,1,4-4h9.5a4,4,0,0,1,4,4v9.5a4,4,0,0,1-4,4Z" transform="translate(-1665 56)"/>
+    </g>
+    <rect id="사각형_303" data-name="사각형 303" class="cls-2" width="30" height="30" transform="translate(617.5 69)"/>
+  </g>
+</svg>
