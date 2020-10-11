@@ -13,25 +13,25 @@
   outline: 0;
   cursor: pointer;
   border-radius: 25px;
-  background: #1A8ABA;
+  background: #1a8aba;
 
   position: absolute;
   top: -20px;
   right: 10%;
   width: 50px;
   height: 50px;
-  box-shadow: 0px 5px 20px 0px rgba(80,80,80,10%);
+  box-shadow: 0px 5px 20px 0px rgba(80, 80, 80, 10%);
 }
 
-.writeBtn::before{
-  content:"";
-  position:absolute;
+.writeBtn::before {
+  content: "";
+  position: absolute;
   top: 9px;
   left: 8px;
-  background:url(../../imgs/icons/write.svg) no-repeat;
+  background: url(../../imgs/icons/write.svg) no-repeat;
   width: 50px;
   height: 50px;
-  background-size: 32px 32px;
+  background-size: 64%;
 }
 
 .barBtn {

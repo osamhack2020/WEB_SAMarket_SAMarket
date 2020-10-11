@@ -11,7 +11,7 @@
   background-image: url(../../data/user/profile.png);
   width: 80px;
   height: 80px;
-  background-size: 80px 80px;
+  background-size: 100%;
   cursor: pointer;
 }
 
