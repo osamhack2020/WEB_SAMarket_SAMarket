@@ -1,3 +1,8 @@
+* {
+  font-family: -apple-system, 'NotoSans KR';
+  color: #202326;
+}
+
 body {
   color: #202326;
   background: #F0F3F6;

@@ -22,7 +22,7 @@ const Profile = () => {
         <div className='profile'>
             <div className='profileImg'/>
             <div className='name'>
-                {name} {id}
+                {name} @{id}
             </div>
             <div className={pageY<=170 ?'belong' : 'belongOnly'}>
                 {loc} {org}

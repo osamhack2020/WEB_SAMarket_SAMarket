@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import Header from './components/head/Header';
-import PostInfoList from './components/post/PostInfoList';
-import MenuBar from './components/menubar/MenuBar';
-import defaultState from './data/posts.json';
-import './App.css'
+import Header from '../components/header/Header';
+import PostInfoList from '../components/post/PostInfoList';
+import MenuBar from '../components/menubar/MenuBar';
+import defaultState from '../data/posts.json';
+import './Pages.css'
 
 
-class App extends Component {
+class MainPage extends Component {
   id = 2
   state = defaultState
 
@@ -53,7 +53,7 @@ class App extends Component {
       post => post.title.indexOf(keyword) !== -1
     );
     return (
-      <div className='App'>
+      <div className='MainPage'>
         <Header
           onChange={this.handleChange}
         />
@@ -68,4 +68,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default MainPage;
