@@ -1,39 +1,33 @@
-import React, { Component } from 'react';
-import './Header.css'
+/* 게시글을 검색할 수 있는 Component
+게시글의 제목에 있는 음절 or Tag 를 검색할 수 있음
+ */
+import React, { useState } from "react";
+import "./Header.css";
 
+export default function SearchBar({ onSearch }) {
+  // class 에서 state 로 관리하던 것을 value, setter 로 얻어옴
+  const [keyword, setKeyword] = useState("");
 
-class SearchBar extends Component {
-    state = {
-        keyword: '',
-    }
+  const handleSearch = e => {
+    e.preventDefault(); // 리로딩 방지
+    onSearch({ keyword: keyword });
+    setKeyword("");
+    //TODO: 검색 결과에 검색어 tag 형식으로 띠우기
+  };
 
-    handleSearch = (e) => {
-        e.preventDefault(); // 리로딩 방지
-        this.props.onChange(this.state)
-        this.setState({
-            keyword: '',
-        })
-    }
+  const handleChange = e => {
+    setKeyword(e.target.value);
+  };
 
-    handleChange = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
-    }
-
-    render() {
-        return (
-            <form className='search' onSubmit={this.handleSearch}>
-                <input
-                    className='searchBar'
-                    placeholder=' 태그 검색'
-                    value={this.state.keyword}
-                    onChange={this.handleChange}
-                    name='keyword'/>
-                <button className='magnifier' type='submit'/>
-            </form>
-        );
-    }
+  return (
+    <form className="search" onSubmit={handleSearch}>
+      <input
+        className="searchBar"
+        placeholder="검색어 입력"
+        value={keyword}
+        onChange={handleChange}
+      />
+      <button className="magnifier" type="submit" />
+    </form>
+  );
 }
-
-export default SearchBar;

@@ -1,21 +1,18 @@
+/* Header 의 최상단에 나타나는 Component
+Home, Likes, Chats 로 화면을 이동함
+*/
+import { Link } from "react-router-dom";
 import React from "react";
 import "./Header.css";
 
-const TopLinks = () => {
-  const switchPage = (idx) => {
-    /* Page 전환: Home, Likes, Chats 순서로 */
-    return {};
-  };
-
+export default function TopLinks() {
   return (
     <div className="topLinks">
-      <button onClick={switchPage(0)} className="home">
+      <Link exact to="/" className="home">
         강군마켓
-      </button>
-      <button onClick={switchPage(1)} className="likes" />
-      <button onClick={switchPage(2)} className="chats" />
+      </Link>
+      <Link to="/likes" className="likes" />
+      <Link to="/chats" className="chats" />
     </div>
   );
-};
-
-export default TopLinks;
+}
