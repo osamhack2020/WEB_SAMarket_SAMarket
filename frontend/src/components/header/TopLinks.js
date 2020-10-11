@@ -2,7 +2,7 @@ import React from "react";
 import "./Header.css";
 
 const TopLinks = () => {
-  const switchPage = idx => {
+  const switchPage = (idx) => {
     /* Page 전환: Home, Likes, Chats 순서로 */
     return {};
   };

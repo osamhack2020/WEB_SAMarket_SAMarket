@@ -1,23 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./index.css";
-import MainPage from "./pages/MainPage";
-import ChattingPage from "./pages/ChattingPage";
+import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <Switch>
-        <Route path="/chat">
-          <ChattingPage />
-        </Route>
-        <Route path="/">
-          <MainPage />
-        </Route>
-      </Switch>
-    </Router>
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );
