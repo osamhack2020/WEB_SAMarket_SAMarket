@@ -75,15 +75,16 @@
     background: rgba(0,0,0,0);
     border: 0; outline: 0; cursor: pointer;
     width: 25px; height: 25px;
-    background-size: 25px 25px;
 }
 
 .likes {
     right: 50px;
     background:url(../../imgs/icons/likes.png);
+    background-size: 25px 25px;
 }
 
 .chats {
     right: 20px;
     background:url(../../imgs/icons/chats.png);
+    background-size: 25px 25px;
 }
