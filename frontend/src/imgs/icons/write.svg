@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="68" height="68" viewBox="0 0 68 68">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        filter: url(#합치기_83);
+      }
+
+      .cls-4 {
+        filter: url(#타원_16);
+      }
+    </style>
+    <filter id="타원_16" x="0" y="0" width="68" height="68" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="합치기_83" x="11.224" y="12.376" width="44.545" height="45.187" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-2"/>
+      <feFlood flood-color="#707070" flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="그룹_201" data-name="그룹 201" transform="translate(-293 -711)">
+    <g id="그룹_26" data-name="그룹 26" transform="translate(0 -10)">
+      <g class="cls-4" transform="matrix(1, 0, 0, 1, 293, 721)">
+        <circle id="타원_16-2" data-name="타원 16" class="cls-1" cx="25" cy="25" r="25" transform="translate(9 6)"/>
+      </g>
+    </g>
+    <g class="cls-3" transform="matrix(1, 0, 0, 1, 293, 711)">
+      <path id="합치기_83-2" data-name="합치기 83" class="cls-2" d="M1674.273-15v-2.488h5.455V-15ZM1674-18.2V-38.111h6V-18.2Zm6-20.622h-6l2.091-5.7h1.818l2.091,5.7h0Zm-2.236-6.1h-1.526L1677-47l.763,2.081h0Z" transform="matrix(-0.72, -0.69, 0.69, -0.72, 1261.36, 1174.61)"/>
+    </g>
+  </g>
+</svg>

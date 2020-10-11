@@ -10,7 +10,7 @@ const User = ({ userInfo }) => {
         profileImg = require('../../imgs/users/' +id+ '.png')
     } //  없으면 기본 이미지로
     catch {
-        profileImg = require('../../imgs/icons/user.png')
+        profileImg = require('../../imgs/icons/user.svg')
     }
     const userImg = {
         border: 0, outline: 0, cursor: 'pointer',

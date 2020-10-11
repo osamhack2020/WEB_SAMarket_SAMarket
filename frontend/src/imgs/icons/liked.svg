@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #ff5353;
+      }
+    </style>
+  </defs>
+  <g id="그룹_204" data-name="그룹 204" transform="translate(-553 -102)">
+    <rect id="사각형_314" data-name="사각형 314" class="cls-1" width="25" height="25" transform="translate(553 102)"/>
+    <path id="합치기_118" data-name="합치기 118" class="cls-2" d="M1531.994,18l0,0v0c-.208-.151-5.922-4.307-8.617-7.781-2.476-3.192-2.4-5.806-2.364-6.288,0-.043,0-.086,0-.129a5.72,5.72,0,0,1,10.944-2.406l.038-.008H1532l.032.007A5.72,5.72,0,0,1,1542.974,3.8c0,.026,0,.051,0,.077.031.3.23,3-2.359,6.341-2.695,3.474-8.409,7.631-8.617,7.781v0Z" transform="translate(-966.5 107)"/>
+  </g>
+</svg>
