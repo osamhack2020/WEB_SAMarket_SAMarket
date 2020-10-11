@@ -1,25 +1,65 @@
 {
+    "keyword": "",
     "posts": [
         {
-            "id": 0,
-            "title": "게리슨모",
-            "price": 3000
+            "post_id": 0,
+            "author": {
+                "id": "shj0914",
+                "name": "서형진"
+            },
+            "type": "sell",
+            "contents":{
+                "title": "게리슨모",
+                "sub": "3000",
+                "tags": [
+                    "공군", "모자", "53호", "급매", "A급"
+                ],
+                "clr":{
+                    "font": "#FFFFFF",
+                    "back": "#24489A",
+                    "tag": "#0F265D"
+                },
+                "content": "게리슨모 팝니다~"
+            }
         },
         {
-            "id": 1,
-            "title": "베레모",
-            "price": "2500"
+            "post_id": 1,
+            "author": {
+                "id": "woolim98",
+                "name": "조우림"
+            },
+            "type": "post",
+            "contents":{
+                "title": "PX 꿀조합",
+                "sub": "진짜 개 맛있음",
+                "tags": [
+                    "PX", "꿀조합", "음식", "꿀팁"
+                ],
+                "clr":{
+                },
+                "content": "PX 음식 꿀조합 알려드립니다."
+            }
         },
         {
-            "id": 2,
-            "title": "육군모",
-            "price": "2000"
-        },
-        {
-            "id": 3,
-            "title": "공군모",
-            "price": "4500"
+            "post_id": 2,
+            "author": {
+                "id": "KoHyunsu",
+                "name": "고현수"
+            },
+            "type": "post",
+            "contents":{
+                "title": "당직 컨텐츠",
+                "sub": "시간과 정신의 방",
+                "tags": [
+                    "당직", "킬링타임", "시간"
+                ],
+                "clr":{
+                    "font": "#FFFFFF",
+                    "back": "#505560",
+                    "tag": "#202326"
+                },
+                "content": "당직 때 할 만한 컨텐츠"
+            }
         }
-    ],
-    "keyword": ""
+    ]
 }

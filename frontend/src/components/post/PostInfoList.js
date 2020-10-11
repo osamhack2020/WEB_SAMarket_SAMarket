@@ -14,13 +14,14 @@ class PostInfoList extends Component {
     }
 
     render() {
-        const { posts, onRemove, onUpdate } = this.props;
+        const { posts, onRemove, onUpdate, onSearch } = this.props;
         const list = posts.map(
             post => (
             <PostInfo
-                key={post.id} info={post}
+                key={post.post_id} info={post}
                 onRemove={onRemove}
                 onUpdate={onUpdate}
+                onSearch={onSearch}
             />)
         );
 

@@ -30,8 +30,7 @@
  - [MariaDB](https://mariadb.com/)
  
 ### front-end
- -  [Vue.js](https://kr.vuejs.org/v2/guide/index.html) + [Vuex](https://github.com/vuejs/vuex)
- -  [Vuetify](https://vuetifyjs.com/en/)
+ -  [React.js](https://ko.reactjs.org/)
 
 ---
 
@@ -49,7 +48,7 @@ $ TBA
 ---
  
 ## 팀 정보 (Team Information)
-- 고현수 Hyunsu Ko (@gmail.com), Github Id: KoHyunsu
+- 고현수 Hyunsu Ko (sce06147@naver.com), Github Id: KoHyunsu
 - 장태준 Taejun Jang (jtjun@gmail.com), Github Id: jtjun
 - 조우림 Woolim Cho (2680v4@gmail.com), Github Id: jkl5616
 

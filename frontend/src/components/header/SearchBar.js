@@ -9,7 +9,7 @@ class SearchBar extends Component {
 
     handleSearch = (e) => {
         e.preventDefault(); // 리로딩 방지
-        this.props.onChange(this.state)
+        this.props.onSearch(this.state)
         this.setState({
             keyword: '',
         })
