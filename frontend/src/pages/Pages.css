@@ -9,8 +9,8 @@
 .headBack {
   background: #fdfeff;
   width: 100%;
-  height: 500px;
-  position: fixed;
-  top: -490px;
+  height: 50%;
+  position: absolute;
+  top: -50%;
   z-index: 0;
 }
