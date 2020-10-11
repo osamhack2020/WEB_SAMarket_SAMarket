@@ -13,10 +13,9 @@ class MenuBar extends Component {
             0: 'home', 1: 'shop', 2: 'post', 3: 'adv'
         }[idx] + (this.state.clicked === idx ?'Click': '')
         return ({
-            outline: '0',
+            border: 0, outline: 0, cursor: 'pointer',
             position: 'absolute',
             top: '20px', left: String(10 + 17*idx) + '%',
-            border: '0px solid',
             background: 'rgba(0,0,0,0)',
             backgroundImage: "url(" + require('../../imgs/icons/' +img+ '.png') + ")",
             backgroundSize: '30px 30px',

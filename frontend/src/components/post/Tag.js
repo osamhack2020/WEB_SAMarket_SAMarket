@@ -10,7 +10,7 @@ const Tag = (props) => {
 
     const tagStyle = {
         color: color.font, background: color.tag,
-        border: '0px solid', outline: 0,
+        border: 0, outline: 0, cursor: 'pointer',
         height: '25px', borderRadius: '12.5px',
         width: String(40 + 15*text.length) + 'px',
 
@@ -29,4 +29,4 @@ const Tag = (props) => {
     )
 }
 
-export default Tag
+export default Tag;

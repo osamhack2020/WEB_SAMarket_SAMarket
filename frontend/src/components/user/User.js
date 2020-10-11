@@ -3,8 +3,8 @@ import React from 'react'
 import './User.css';
 
 
-const User = (props) => {
-    const { name, id } = props.userInfo;
+const User = ({ userInfo }) => {
+    const { name, id } = userInfo;
     let profileImg;
     try { // 사용자 이미지가 있는지 확인
         profileImg = require('../../imgs/users/' +id+ '.png')
@@ -13,8 +13,8 @@ const User = (props) => {
         profileImg = require('../../imgs/icons/user.png')
     }
     const userImg = {
-        outline: '0',
-        border: '0px solid', borderRadius: '17.5px',
+        border: 0, outline: 0, cursor: 'pointer',
+        borderRadius: '17.5px',
         background: '#F0F3F6',
         position: 'absolute',
         left: '20px', top: '15px',
@@ -23,18 +23,21 @@ const User = (props) => {
         backgroundSize: '35px 35px',
     }
 
-    const switchProfile = () => {
+    const switchUserPage = () => {
         /* user profile page 로 이동 */
     }
 
     return (
-        <div className='user'>
+        <div>
             <button
                 style={userImg}
-                onClick={switchProfile}/>
-            <div className='userName'>@{id}</div>
+                onClick={switchUserPage}/>
+            <button
+                className='userName'
+                onClick={switchUserPage}
+            >@{id}</button>
         </div>
     )
 }
 
-export default User
+export default User;
