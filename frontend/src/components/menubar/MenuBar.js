@@ -18,8 +18,8 @@ class MenuBar extends Component {
   };
   svgs = this.getSvgs();
 
-  getBtnStyle = idx => {
-    /* 각 버튼 별로 스타일을 불러옴 */
+  getBtnImg = idx => {
+    /* 각 버튼 별로 이미지를 불러옴 */
     const img = this.imgs[idx] + (this.state.clicked === idx ? "Click" : "");
     return {
       background: "url(" + this.svgs[img] + ") no-repeat center"
@@ -39,7 +39,7 @@ class MenuBar extends Component {
         {[0, 1, 2, 3].map(idx => (
           <button
             className="barBtn" /* 하단 4개의 버튼을 순서대로 생성 */
-            style={this.getBtnStyle(idx)}
+            style={this.getBtnImg(idx)}
             onClick={this.switchPage(idx)}
           />
         ))}

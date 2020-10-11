@@ -26,12 +26,12 @@
 .writeBtn::before{
   content:"";
   position:absolute;
-  top: -12px;
-  left: -7px;
-  background:url(../../imgs/icons/write.svg);
+  top: 9px;
+  left: 8px;
+  background:url(../../imgs/icons/write.svg) no-repeat;
   width: 50px;
   height: 50px;
-  background-size: 65px 65px;
+  background-size: 32px 32px;
 }
 
 .barBtn {
