@@ -1,7 +1,7 @@
 
-# 강군마켓
+# 강군마켓 [http://samarket.kr/](http://samarket.kr/)
 
-![Logo](docs/imgs/logo.png)
+[![Logo](docs/imgs/logo.png)](https://samarket.kr)
 
 ### 강한 군인들만의 영내 중고거래 커뮤니티 
 
