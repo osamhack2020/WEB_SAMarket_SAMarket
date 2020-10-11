@@ -57,7 +57,6 @@ class MainPage extends Component {
 
     return (
       <div className="MainPage">
-        <div className="headBack" />
         <Header onSearch={this.handleSearch} />
         <PostInfoList
           posts={filteredList}

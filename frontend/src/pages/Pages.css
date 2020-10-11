@@ -5,12 +5,3 @@
   color: #202326;
   background: #f0f3f6;
 }
-
-.headBack {
-  background: #fdfeff;
-  width: 100%;
-  height: 50%;
-  position: absolute;
-  top: -50%;
-  z-index: 0;
-}
