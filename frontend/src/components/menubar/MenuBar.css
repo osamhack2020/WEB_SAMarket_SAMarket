@@ -37,7 +37,7 @@
 .barBtn {
   border: 0;
   outline: 0;
-  cursor: "pointer";
+  cursor: pointer;
   width: 20%;
   height: 100%;
   margin-top: -5px;

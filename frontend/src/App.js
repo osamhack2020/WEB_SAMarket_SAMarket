@@ -7,6 +7,7 @@ import MainPage from "./pages/MainPage";
 import SignInPage from "./pages/SignInPage";
 import LikesPage from "./pages/LikesPage";
 import ChatsPage from "./pages/ChatsPage";
+import WritePage from "./pages/WritePage";
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
       <Route path="/signin" component={SignInPage} />
       <Route path="/likes" component={LikesPage} />
       <Route path="/chats" component={ChatsPage} />
+      <Route path="/write" component={WritePage} />
     </BrowserRouter>
   );
 }
