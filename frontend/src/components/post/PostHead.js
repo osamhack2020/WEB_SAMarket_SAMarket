@@ -28,7 +28,10 @@ class PostHead extends Component {
     btnAction = (idx) => {
         /* 순서대로 공유, 좋아요, 구매/관심없음 */
         return () => {
-            if(idx === 1) this.setState({liked: !this.state.liked})
+            if(idx === 1) {
+                /* TODO: Backend 에 알려서, likes 바꿔야 함 */
+                this.setState({liked: !this.state.liked})
+            }
         };
     }
 
@@ -47,4 +50,4 @@ class PostHead extends Component {
     }
 }
 
-export default PostHead
+export default PostHead;

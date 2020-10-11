@@ -17,4 +17,4 @@ const PostInfo = ({ info, onSearch }) => {
     );
 }
 
-export default PostInfo
+export default PostInfo;

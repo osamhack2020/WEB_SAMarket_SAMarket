@@ -39,4 +39,4 @@ const Profile = ({ onSearch }) => {
     )
 }
 
-export default Profile
+export default Profile;

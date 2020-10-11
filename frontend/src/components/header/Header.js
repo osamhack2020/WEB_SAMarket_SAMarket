@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
-import SearchBar from './SearchBar';
+import TopLinks from './TopLinks';
 import Profile from '../profile/Profile';
+import SearchBar from './SearchBar';
 import './Header.css';
 
 
@@ -21,8 +22,9 @@ const Header = ({ onSearch }) => {
         <div className={pageY <= 200? 'head': 'crouch'}>
             <Profile onSearch={onSearch} />
             <SearchBar onSearch={onSearch} />
+            <TopLinks />
         </div>
     )
 }
 
-export default Header
+export default Header;

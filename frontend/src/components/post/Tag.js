@@ -29,4 +29,4 @@ const Tag = (props) => {
     )
 }
 
-export default Tag
+export default Tag;

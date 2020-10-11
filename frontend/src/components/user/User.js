@@ -40,4 +40,4 @@ const User = ({ userInfo }) => {
     )
 }
 
-export default User
+export default User;

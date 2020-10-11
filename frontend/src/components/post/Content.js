@@ -2,8 +2,8 @@ import React from 'react';
 import Tag from './Tag';
 import './Post.css';
 
-const Content = (props) => {
-    const { title, sub, tags, clr } = props.contents;
+const Content = ({ contents, type, onSearch }) => {
+    const { title, sub, tags, clr } = contents;
     const contentStyle = {
         position: 'absolute',
         top: '60px', left: '20px',
@@ -35,16 +35,16 @@ const Content = (props) => {
             <button style={contentStyle} onClick={switchPostPage}>
                 <div style={titleStyle}>{title}</div>
                 <div style={subStyle}>
-                    {sub+(props.type === 'sell' ?' 원' :'')}
+                    {sub+(type === 'sell' ?' 원' :'')}
                 </div>
                 <div className='tags'>
                     {tags.slice(0, 5).map(tag => 
                         <Tag
                             clr={clr} text={tag}
-                            onSearch={props.onSearch}/>)}
+                            onSearch={onSearch}/>)}
                 </div>
             </button>
     );
 }
 
-export default Content
+export default Content;

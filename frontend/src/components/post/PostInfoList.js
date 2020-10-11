@@ -33,4 +33,4 @@ class PostInfoList extends Component {
     }
 }
 
-export default PostInfoList
+export default PostInfoList;
