@@ -1,10 +1,18 @@
-.info {
+.info, .adv  {
+    position: relative;
     border: 0; border-radius: 20px;
     background: #FDFEFF;
-    width: 340px; height: 380px;
     padding: 0px;
     margin: 25px auto;
-    position: relative;
+    box-shadow: 0px 0px 15px 0px rgba(80,80,80,10%);
+}
+
+.adv {
+    width: 340px; height: 190px;
+}
+
+.info {
+    width: 340px; height: 380px;
 }
 
 .rmbtn {
