@@ -1,3 +1,16 @@
+.userImg {
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  border-radius: 17.5px;
+  background: #f0f3f6;
+  position: absolute;
+  left: 20px;
+  top: 15px;
+  width: 35px;
+  height: 35px;
+}
+
 .userName {
   font-size: 14px;
   font-weight: bold;

@@ -1,3 +1,4 @@
+/* 현재 Login 한 사용자의 Profile 을 보여주는 Component */
 import React from "react";
 import Croucher from "../base/Croucher";
 import UserInfo from "../../data/user/profile.json";
