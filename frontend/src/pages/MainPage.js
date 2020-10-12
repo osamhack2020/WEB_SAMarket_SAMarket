@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Header from "../components/header/Header";
-import PostInfoList from "../components/post/PostInfoList";
+import PostList from "../components/post/PostList";
 import MenuBar from "../components/menubar/MenuBar";
 import defaultState from "../data/posts.json";
 import "./Pages.css";
@@ -58,7 +58,7 @@ class MainPage extends Component {
     return (
       <div className="MainPage">
         <Header onSearch={this.handleSearch} />
-        <PostInfoList
+        <PostList
           posts={filteredList}
           onRemove={this.handleRemove}
           onUpdate={this.handleUpdate}

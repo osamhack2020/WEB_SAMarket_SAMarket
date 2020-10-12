@@ -1,8 +1,9 @@
+/* 게시글 내부의 정보를 요약해서 보여주는 Component */
 import React from "react";
 import Tag from "./Tag";
 import "./Post.css";
 
-const Content = ({ contents, type, onSearch }) => {
+export default function Content({ contents, type, onSearch }) {
   const { title, sub, tags, clr } = contents;
   const contentStyle = {
     position: "absolute",
@@ -49,6 +50,4 @@ const Content = ({ contents, type, onSearch }) => {
       </div>
     </button>
   );
-};
-
-export default Content;
+}

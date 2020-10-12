@@ -50,3 +50,14 @@
   width: 340px;
   height: 380px;
 }
+
+.postHeadBtn {
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  background-size: 25px 25px;
+  width: 25px;
+  height: 25px;
+}

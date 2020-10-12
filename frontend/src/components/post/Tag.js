@@ -1,28 +1,22 @@
-/* 현재 사용하고 있는 유저가 아닌 다른 유저 */
+/* 게시글 내부에 붙은 Tag 르 보여주는 Component */
 import React from "react";
 import "./Post.css";
 
-const Tag = props => {
-  const { clr, text, onSearch } = props;
+export default function Tag({ clr, text, onSearch }) {
   // 기본 값을 할당하는 과정
   const color = { font: "#FDFEFF", tag: "#505560", ...clr };
 
   const tagStyle = {
     color: color.font,
-    background: color.tag,
+    background: color.tag
   };
   const tagClick = () => {
     onSearch({ keyword: text });
   };
 
   return (
-    <button
-      className='tag'
-      style={tagStyle}
-      onClick={tagClick}>
+    <button className="tag" style={tagStyle} onClick={tagClick}>
       # {text}
     </button>
   );
-};
-
-export default Tag;
+}

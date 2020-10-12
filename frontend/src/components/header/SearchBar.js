@@ -11,12 +11,7 @@ export default function SearchBar({ onSearch }) {
   const handleSearch = e => {
     e.preventDefault(); // 리로딩 방지
     onSearch({ keyword: keyword });
-    setKeyword("");
     //TODO: 검색 결과에 검색어 tag 형식으로 띠우기
-  };
-
-  const handleChange = e => {
-    setKeyword(e.target.value);
   };
 
   return (
@@ -25,7 +20,7 @@ export default function SearchBar({ onSearch }) {
         className="searchBar"
         placeholder="검색어 입력"
         value={keyword}
-        onChange={handleChange}
+        onChange={e => setKeyword(e.target.value)}
       />
       <button className="magnifier" type="submit" />
     </form>

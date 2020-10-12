@@ -1,3 +1,4 @@
+/* 광고 게시글 Component */
 import React from "react";
 import PostHead from "./PostHead";
 import "./Post.css";
