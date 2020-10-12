@@ -61,3 +61,29 @@
   width: 25px;
   height: 25px;
 }
+
+.content {
+  position: absolute;
+  top: 60px;
+  left: 20px;
+  width: 300px;
+  height: 300px;
+  border: 0;
+  outline: 0;
+  box-shadow: 0 0 15px 0 rgba(80, 80, 80, 30%);
+  text-decoration: none;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 20px;
+}
+
+.contentTitle {
+  position: relative;
+  font-size: 30px;
+  margin-top: 30%;
+}
+
+.contentSub {
+  font-size: 25px;
+  margin-top: 5px;
+}

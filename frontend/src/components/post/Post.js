@@ -10,7 +10,12 @@ export default function Post({ info, onSearch }) {
   if (type === "adv") return <Advertise info={info} />;
   return (
     <div className="info">
-      <Content type={type} contents={contents} onSearch={onSearch} />
+      <Content
+        post_id={post_id}
+        info={info}
+        contents={contents}
+        onSearch={onSearch}
+      />
       <PostHead post_id={post_id} type={type} author={author} />
     </div>
   );
