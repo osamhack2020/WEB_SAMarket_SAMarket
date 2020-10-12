@@ -8,7 +8,9 @@ import (
 
 func InitUserRouter(rg *gin.RouterGroup) {
 	router := rg.Group("/user")
-	router.GET("/test", getUser)
+	{
+		router.GET("/test", getUser)
+	}
 }
 
 // @Summary 테스트 API

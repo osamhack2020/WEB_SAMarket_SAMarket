@@ -2,4 +2,7 @@ module config
 
 go 1.15
 
-require gorm.io/gorm v1.20.2
+require (
+	gopkg.in/yaml.v2 v2.3.0
+	gorm.io/gorm v1.20.2
+)

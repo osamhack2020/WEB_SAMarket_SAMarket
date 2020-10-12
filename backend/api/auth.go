@@ -5,5 +5,4 @@ import (
 )
 
 func InitAuthRouter(rg *gin.RouterGroup) {
-	//router := rg.Group("/auth")
 }

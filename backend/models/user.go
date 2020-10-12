@@ -10,8 +10,13 @@ type User struct {
 	Corps  uint   `json:"corps"`
 }
 
-func GetUser() *User {
-	var user User
-	db.First(&user)
+type UserResponse struct {
+	Id   uint   `json:"id"`
+	Name string `json:"name"`
+}
+
+func GetUser() *UserResponse {
+	var user UserResponse
+	db.Model(&User{}).First(&user)
 	return &user
 }
