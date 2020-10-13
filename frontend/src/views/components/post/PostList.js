@@ -7,7 +7,7 @@ export default function PostList({ posts, onSearch }) {
     () =>
       // shouldComponentUpdate 을 Hook 으로
       posts.map(post => (
-        <Post key={post.post_id} info={post} onSearch={onSearch} />
+        <Post key={post.postId} info={post} onSearch={onSearch} />
       )),
     [posts] // posts 에 변화가 있는 경우에만 재 렌더링
   );

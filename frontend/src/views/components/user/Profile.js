@@ -2,19 +2,22 @@
 import React from "react";
 import "./User.css";
 
-export default function User({ userInfo }) {
+export default function Profile({ userInfo, size }) {
   const { id } = userInfo;
   let profileImg;
   try {
     // 사용자 이미지가 있는지 확인
-    profileImg = require("../../imgs/users/" + id + ".png");
+    profileImg = require("../../../imgs/users/" + id + ".png");
   } catch {
     //  없으면 기본 이미지로
-    profileImg = require("../../imgs/icons/user.svg");
+    profileImg = require("../../../imgs/icons/user.svg");
   }
   const userImg = {
     backgroundImage: "url(" + profileImg + ")",
-    backgroundSize: "35px 35px"
+    backgroundSize: `${size}px ${size}px`,
+    borderRadius: `${size/2}px`,
+    width: `${size}px`,
+    height: `${size}px`,
   };
 
   const switchUserPage = () => {
@@ -22,11 +25,6 @@ export default function User({ userInfo }) {
   };
 
   return (
-    <div>
-      <button className="userImg" style={userImg} onClick={switchUserPage} />
-      <button className="userName" onClick={switchUserPage}>
-        @{id}
-      </button>
-    </div>
+    <button className="userImg" style={userImg} onClick={switchUserPage} />
   );
 }

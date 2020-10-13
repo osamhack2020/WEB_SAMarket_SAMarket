@@ -4,14 +4,14 @@
 import React from "react";
 import Croucher from "../base/Croucher";
 import TopLinks from "./TopLinks";
-import Profile from "../profile/Profile";
+import Me from "../me/Me";
 import SearchBar from "./SearchBar";
 import "./Header.css";
 
 export default function Header({ onSearch }) {
   return (
     <Croucher norm={200} stretch="head" crouched="crouch">
-      <Profile onSearch={onSearch} />
+      <Me onSearch={onSearch} />
       <SearchBar onSearch={onSearch} />
       <TopLinks />
     </Croucher>

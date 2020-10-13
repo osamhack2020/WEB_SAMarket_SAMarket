@@ -2,13 +2,8 @@
   border: 0;
   outline: 0;
   cursor: pointer;
-  border-radius: 17.5px;
   background: #f0f3f6;
-  position: absolute;
-  left: 20px;
-  top: 15px;
-  width: 35px;
-  height: 35px;
+  position: relative;
 }
 
 .userName {
@@ -16,9 +11,7 @@
   font-weight: bold;
   border: 0;
   outline: 0;
-  cursor: pointer;
   background: rgba(0, 0, 0, 0);
   position: relative;
-  left: 55px;
-  top: 20px;
+  top: -10px;
 }

@@ -13,8 +13,8 @@ const svgs = (() => {
   let svgs = {};
   for (let idx in imgs) {
     let img = imgs[idx];
-    svgs[img] = require("../../imgs/icons/" + img + ".svg");
-    svgs[img + "Click"] = require("../../imgs/icons/" + img + "Click.svg");
+    svgs[img] = require("../../../imgs/icons/" + img + ".svg");
+    svgs[img + "Click"] = require("../../../imgs/icons/" + img + "Click.svg");
   }
   return svgs;
 })();

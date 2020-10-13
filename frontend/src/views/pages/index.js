@@ -2,14 +2,15 @@
 사용자 로그인 여부 등을 파악하고, 주소에 따라 화면을 전환함
 */
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
-import MainPage from "./pages/MainPage";
-import SignInPage from "./pages/SignInPage";
-import LikesPage from "./pages/LikesPage";
-import ChatsPage from "./pages/ChatsPage";
-import WritePage from "./pages/WritePage";
+import { BrowserRouter, Route, Redirect } from "react-router-dom";
+import MainPage from "./MainPage";
+import SignInPage from "./SignInPage";
+import LikesPage from "./LikesPage";
+import ChatsPage from "./ChatsPage";
+import WritePage from "./WritePage";
+import PostPage from "./PostPage";
 
-export default function App() {
+export default function Pages() {
   return (
     <BrowserRouter>
       <Route exact path="/" component={MainPage} />
@@ -17,6 +18,8 @@ export default function App() {
       <Route path="/likes" component={LikesPage} />
       <Route path="/chats" component={ChatsPage} />
       <Route path="/write" component={WritePage} />
+      <Route path="/posts" component={PostPage} />
+      <Redirect path="*" to="/" />
     </BrowserRouter>
   );
 }

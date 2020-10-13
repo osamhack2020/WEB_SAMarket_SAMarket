@@ -47,7 +47,7 @@
   position: absolute;
   top: 3px;
   right: 10px;
-  background: url(../../imgs/icons/search.svg);
+  background: url(../../../imgs/icons/search.svg);
   width: 20px;
   height: 20px;
   background-size: 100%;
@@ -74,11 +74,9 @@
 .home::before {
   content: "";
   position: absolute;
-  top: 3px;
-  right: 6px;
-  background: transparent;
-  border: 0px solid;
-  background-image: url(../../imgs/icons/search.svg);
+  top: 0px;
+  left: 0px;
+  background: url(../../../imgs/logoShadow256.png);
   width: 20px;
   height: 20px;
   background-size: 100%;
@@ -97,12 +95,12 @@
 
 .likes {
   right: 60px;
-  background: url(../../imgs/icons/likes.svg) no-repeat;
+  background: url(../../../imgs/icons/likes.svg) no-repeat;
   background-size: 100%;
 }
 
 .chats {
   right: 20px;
-  background: url(../../imgs/icons/chats.svg) no-repeat;
+  background: url(../../../imgs/icons/chats.svg) no-repeat;
   background-size: 100%;
 }

@@ -2,7 +2,7 @@
   "keyword": "",
   "posts": [
     {
-      "post_id": 0,
+      "postId": 0,
       "author": {
         "id": "shj0914",
         "name": "서형진"
@@ -21,7 +21,7 @@
       }
     },
     {
-      "post_id": 1,
+      "postId": 1,
       "author": {
         "id": "jtjun",
         "name": "장태준"
@@ -40,7 +40,7 @@
       }
     },
     {
-      "post_id": 2,
+      "postId": 2,
       "author": {
         "id": "woolim98",
         "name": "조우림"
@@ -55,7 +55,7 @@
       }
     },
     {
-      "post_id": 3,
+      "postId": 3,
       "author": {
         "id": "KoHyunsu",
         "name": "고현수"
@@ -74,7 +74,7 @@
       }
     },
     {
-      "post_id": 4,
+      "postId": 4,
       "author": {
         "id": "myeongbo2417",
         "name": "심명보"

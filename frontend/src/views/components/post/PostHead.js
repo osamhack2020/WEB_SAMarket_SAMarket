@@ -3,7 +3,7 @@
  게시글을 쓴 유저의 정보를 요약해서 보여줌
 */
 import React, { useState } from "react";
-import Profile from "../../data/user/profile.json";
+import Profile from "../../../data/me.json";
 import User from "../user/User";
 import "./Post.css";
 
@@ -11,13 +11,13 @@ const svgs = (() => {
   let svgs = {};
   let imgSrcs = ["share", "like", "liked", "buy", "deny"];
   for (let idx in imgSrcs) {
-    svgs[imgSrcs[idx]] = require("../../imgs/icons/" + imgSrcs[idx] + ".svg");
+    svgs[imgSrcs[idx]] = require("../../../imgs/icons/" + imgSrcs[idx] + ".svg");
   }
   return svgs;
 })();
 
-export default function PostHead({ post_id, type, author }) {
-  const [liked, setLiked] = useState(Profile.likes.indexOf(post_id) >= 0);
+export default function PostHead({ postId, type, author }) {
+  const [liked, setLiked] = useState(Profile.likes.indexOf(postId) >= 0);
 
   const getBtn = idx => {
     const img = {
@@ -26,7 +26,8 @@ export default function PostHead({ post_id, type, author }) {
       2: type === "sell" ? "buy" : "deny"
     }[idx];
     return {
-      left: 225 + 35 * idx,
+      marginRight: "5%",
+      right: 73 - 35 * idx,
       background: "url(" + svgs[img] + ")"
     };
   };
@@ -43,6 +44,7 @@ export default function PostHead({ post_id, type, author }) {
 
   return (
     <div className="postHead">
+      <User userInfo={author} />
       {[0, 1, 2].map(idx => (
         <button /* 3개의 버튼을 순서대로 생성 */
           className="postHeadBtn"
@@ -50,7 +52,6 @@ export default function PostHead({ post_id, type, author }) {
           onClick={btnAction(idx)}
         />
       ))}
-      <User userInfo={author} />
     </div>
   );
 }

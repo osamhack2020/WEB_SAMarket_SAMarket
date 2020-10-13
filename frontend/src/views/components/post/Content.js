@@ -5,9 +5,10 @@ import styled from "styled-components";
 import Tag from "./Tag";
 import "./Post.css";
 
-export default function Content({ post_id, contents, type, onSearch }) {
+export default function Content({ info, onSearch }) {
+  const { postId, contents, type } = info;
   const { title, sub, tags, clr } = contents;
-  const Content = styled(Link)`
+  const ContentLink = styled(Link)`
     background: ${clr.back || "#8990A0"};
   `;
   const Title = styled.div`
@@ -18,7 +19,7 @@ export default function Content({ post_id, contents, type, onSearch }) {
   `;
 
   return (
-    <Content to={`/posts/${post_id}`} className="content">
+    <ContentLink to={`/posts/${postId}`} className="content">
       <Title className="contentTitle">{title}</Title>
       <Sub className="contentSub">{sub + (type === "sell" ? " 원" : "")}</Sub>
       <div className="tags">
@@ -26,6 +27,6 @@ export default function Content({ post_id, contents, type, onSearch }) {
           <Tag clr={clr} text={tag} onSearch={onSearch} />
         ))}
       </div>
-    </Content>
+    </ContentLink>
   );
 }
