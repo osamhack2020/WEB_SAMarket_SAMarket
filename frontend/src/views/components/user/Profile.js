@@ -1,5 +1,6 @@
 /* 현재 사용하고 있는 유저가 아닌 다른 유저 */
 import React from "react";
+import { Link } from "react-router-dom";
 import "./User.css";
 
 export default function Profile({ userInfo, size }) {
@@ -15,16 +16,14 @@ export default function Profile({ userInfo, size }) {
   const userImg = {
     backgroundImage: "url(" + profileImg + ")",
     backgroundSize: `${size}px ${size}px`,
-    borderRadius: `${size/2}px`,
+    borderRadius: "50%",
     width: `${size}px`,
-    height: `${size}px`,
-  };
-
-  const switchUserPage = () => {
-    /* user profile page 로 이동 */
+    height: `${size}px`
   };
 
   return (
-    <button className="userImg" style={userImg} onClick={switchUserPage} />
+    <Link to={`/profile/${id}`} className="userImg">
+      <div style={userImg} />
+    </Link>
   );
 }

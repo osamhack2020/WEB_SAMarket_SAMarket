@@ -11,6 +11,7 @@ export default function Tag({ clr, text, onSearch }) {
     background: color.tag
   };
   const tagClick = () => {
+    console.log("fuck");
     onSearch({ keyword: text });
   };
 

@@ -9,6 +9,7 @@ import LikesPage from "./LikesPage";
 import ChatsPage from "./ChatsPage";
 import WritePage from "./WritePage";
 import PostPage from "./PostPage";
+import ProfilePage from "./ProfilePage";
 
 export default function Pages() {
   return (
@@ -19,6 +20,7 @@ export default function Pages() {
       <Route path="/chats" component={ChatsPage} />
       <Route path="/write" component={WritePage} />
       <Route path="/posts" component={PostPage} />
+      <Route path="/profile" component={ProfilePage} />
       <Redirect path="*" to="/" />
     </BrowserRouter>
   );

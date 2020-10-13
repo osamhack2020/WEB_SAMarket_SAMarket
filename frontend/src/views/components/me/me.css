@@ -3,18 +3,6 @@
   text-align: center;
 }
 
-.profileImg {
-  display: inline-block;
-  background: transparent;
-  border: 0;
-  border-radius: 40px;
-  background: black;
-  width: 80px;
-  height: 80px;
-  background-size: 100%;
-  cursor: pointer;
-}
-
 .name {
   font-weight: bold;
   margin-top: 10px;

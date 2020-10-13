@@ -1,8 +1,10 @@
 .userImg {
+  display: inline-block;
   border: 0;
   outline: 0;
   cursor: pointer;
   background: #f0f3f6;
+  border-radius: 50%;
   position: relative;
 }
 
@@ -13,5 +15,7 @@
   outline: 0;
   background: rgba(0, 0, 0, 0);
   position: relative;
-  top: -10px;
+  top: -13px;
+  left: 5px;
+  text-decoration: none;
 }
