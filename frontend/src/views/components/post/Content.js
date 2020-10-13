@@ -2,7 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Tag from "./Tag";
+import TagList from "../tag/TagList";
 import "./Post.css";
 
 export default function Content({ info, onSearch }) {
@@ -22,11 +22,7 @@ export default function Content({ info, onSearch }) {
     <ContentLink to={`/posts/${postId}`} className="content">
       <Title className="contentTitle">{title}</Title>
       <Sub className="contentSub">{sub + (type === "sell" ? " 원" : "")}</Sub>
-      <div className="tags">
-        {tags.slice(0, 5).map(tag => (
-          <Tag clr={clr} text={tag} onSearch={onSearch} />
-        ))}
-      </div>
+      <TagList clr={clr} texts={tags.slice(0, 5)} onSearch={onSearch} />
     </ContentLink>
   );
 }

@@ -1,6 +1,6 @@
-/* 게시글 내부에 붙은 Tag 르 보여주는 Component */
+/* 검색 가능한 Tag 를 보여주는 Component */
 import React from "react";
-import "./Post.css";
+import "./Tag.css";
 
 export default function Tag({ clr, text, onSearch }) {
   // 기본 값을 할당하는 과정
