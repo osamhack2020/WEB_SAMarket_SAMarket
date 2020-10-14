@@ -18,7 +18,7 @@ export const increaseNextPage = () => ({ type: INCREASE_NEXT_PAGE });
 
 const INITIAL_STATE = { nextPage: 0 };
 const reducer = createReducer(INITIAL_STATE, {
-  [INCREASE_NEXT_PAGE]: (state, action) => (state.nextPage += 1)
+  [INCREASE_NEXT_PAGE]: (state, _) => (state.nextPage += 1)
 });
 const reducers = [reducer, samroadReducer];
 export default mergeReducers(reducers);

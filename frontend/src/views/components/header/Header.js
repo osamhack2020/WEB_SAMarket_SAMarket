@@ -8,11 +8,11 @@ import Me from "../me/Me";
 import SearchBar from "./SearchBar";
 import "./Header.css";
 
-export default function Header({ onSearch }) {
+export default function Header() {
   return (
     <Croucher norm={200} stretch="head" crouched="crouch">
-      <Me onSearch={onSearch} />
-      <SearchBar onSearch={onSearch} />
+      <Me />
+      <SearchBar />
       <TopLinks />
     </Croucher>
   );

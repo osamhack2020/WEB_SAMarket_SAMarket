@@ -3,11 +3,11 @@ import React from "react";
 import Tag from "./Tag";
 import "./Tag.css";
 
-export default function TagList({ clr, texts, onSearch }) {
+export default function TagList({ clr, texts }) {
   return (
     <div className="tags">
       {texts.map(text => (
-        <Tag clr={clr} text={text} onSearch={onSearch} />
+        <Tag clr={clr} text={text} />
       ))}
     </div>
   );

@@ -24,14 +24,11 @@ function PostInfo({ match }) {
   // postId 로 post 정보를 렌더링 함
   const info = samroads[match.params.postId];
   const { postId, author, type } = info;
-  const onSearch = data => {
-    return <MainPage searchWord={data.keyword} />;
-  };
 
   return (
     <div className="HeadBack">
       <PostHead postId={postId} type={type} author={author} />
-      <Content info={info} onSearch={onSearch} />
+      <Content info={info} />
     </div>
   );
 }
