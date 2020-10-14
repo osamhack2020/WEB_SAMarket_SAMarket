@@ -8,7 +8,7 @@ import "./Post.css";
 export default function Content({ info }) {
   const { postId, contents, type } = info;
   const { title, sub, tags, clr } = contents;
-  const ContentLink = styled(Link)`
+  const ContentBack = styled.div`
     background: ${clr.back || "#8990A0"};
   `;
   const Title = styled.div`
@@ -19,10 +19,11 @@ export default function Content({ info }) {
   `;
 
   return (
-    <ContentLink to={`/posts/${postId}`} className="content">
+    <ContentBack className="content">
+      <Link to={`/posts/${postId}`} className="contentLink" />
       <Title className="contentTitle">{title}</Title>
       <Sub className="contentSub">{sub + (type === "sell" ? " 원" : "")}</Sub>
       <TagList clr={clr} texts={tags.slice(0, 5)} />
-    </ContentLink>
+    </ContentBack>
   );
 }

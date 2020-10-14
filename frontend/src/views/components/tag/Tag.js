@@ -2,6 +2,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { changeKeyword } from "../../../modules/search/state";
+import { Link } from "react-router-dom";
 import "./Tag.css";
 
 export default function Tag({ clr, text }) {
@@ -12,14 +13,19 @@ export default function Tag({ clr, text }) {
 
   // 기본 값을 할당
   const color = { font: "#FDFEFF", tag: "#505560", ...clr };
-  const tagStyle = {
-    color: color.font,
+  const tagBtn = {
     background: color.tag
+  };
+  const tagLink = {
+    color: color.font,
+    textDecoration: "none"
   };
 
   return (
-    <button className="tag" style={tagStyle} onClick={tagClick}>
-      # {text}
+    <button style={tagBtn} className="tag" onClick={tagClick}>
+      <Link style={tagLink} to="/">
+        # {text}
+      </Link>
     </button>
   );
 }
