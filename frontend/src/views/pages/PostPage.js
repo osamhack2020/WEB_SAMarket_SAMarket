@@ -4,25 +4,17 @@ postId를 기준으로 post 를 보여줌
 postId가 없는 경우, 메인화면으로
 */
 import React from "react";
-import { Route } from "react-router-dom";
 import { samroads } from "../../data/samroads.json";
+import NotFoundPage from "./NotFoundPage";
 import PostHead from "../components/post/PostHead";
 import Content from "../components/post/Content";
-import MainPage from "./MainPage";
 import "./Pages.css";
 
 export default function PostPage({ match }) {
-  // Routing 만 할 뿐 실제 렌더링은 하지 않음
-  return (
-    <div>
-      <Route path={`${match.url}/:postId`} component={PostInfo} />
-    </div>
-  );
-}
-
-function PostInfo({ match }) {
-  // postId 로 post 정보를 렌더링 함
   const info = samroads[match.params.postId];
+  if (!info) {
+    return <NotFoundPage />;
+  }
   const { postId, author, type } = info;
 
   return (
