@@ -1,12 +1,13 @@
 /* Container Component 로 redux 를 이용 */
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getNextSAMroad } from "../common/fakeServer";
 import { addSAMroad } from "./state";
+import InfiniteScroll from "../../views/components/base/InfiniteScroll";
 import SAMroadList from "./SAMroadList";
 
 export default function SAMroad() {
-  const [hitBottom, setHitBottom] = useState(true);
+  // 강군로드는 무한 스크롤 가능
   const samroads = useSelector(state => state.samroad.samroads);
   const dispatch = useDispatch();
   function onAdd() {
@@ -14,30 +15,9 @@ export default function SAMroad() {
     dispatch(addSAMroad(samroad));
   }
 
-  useEffect(() => {
-    setHitBottom(false);
-    onAdd();
-  }, [hitBottom]);
-
-  const onScroll = () => {
-    if (
-      window.scrollY + document.documentElement.clientHeight >=
-      document.documentElement.scrollHeight
-    ) {
-      onAdd();
-      setHitBottom(true);
-    }
-  };
-  useEffect(() => {
-    window.addEventListener("scroll", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-    };
-  }, []);
-
   return (
-    <div>
+    <InfiniteScroll onAdd={onAdd}>
       <SAMroadList samroads={samroads} />
-    </div>
+    </InfiniteScroll>
   );
 }

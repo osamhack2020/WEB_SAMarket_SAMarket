@@ -1,6 +1,7 @@
 .post,
 .adv {
   position: relative;
+  left: -4.3%;
   border: 0;
   border-radius: 20px;
   background: #fdfeff;
