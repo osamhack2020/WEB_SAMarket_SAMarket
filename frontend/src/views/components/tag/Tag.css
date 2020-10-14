@@ -1,6 +1,8 @@
 .tags {
+  position: relative;
   margin-top: 15px;
   text-align: center;
+  z-index: 2;
 }
 
 .tag {
