@@ -5,7 +5,7 @@ postId가 없는 경우, 메인화면으로
 */
 import React from "react";
 import { Route } from "react-router-dom";
-import { posts } from "../../data/posts.json";
+import { samroads } from "../../data/samroads.json";
 import PostHead from "../components/post/PostHead";
 import Content from "../components/post/Content";
 import MainPage from "./MainPage";
@@ -22,7 +22,7 @@ export default function PostPage({ match }) {
 
 function PostInfo({ match }) {
   // postId 로 post 정보를 렌더링 함
-  const info = posts[match.params.postId];
+  const info = samroads[match.params.postId];
   const { postId, author, type } = info;
   const onSearch = data => {
     return <MainPage searchWord={data.keyword} />;
