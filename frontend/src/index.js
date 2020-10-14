@@ -5,7 +5,7 @@ import * as serviceWorker from "./serviceWorker";
 // Redux 영역
 import { createStore } from "redux";
 import { Provider } from "react-redux";
-import rootReducer from "./store/modules";
+import rootReducer from "./modules";
 // 실제 Component 영역
 import "./index.css";
 import Pages from "./views/pages/index";

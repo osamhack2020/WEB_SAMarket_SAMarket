@@ -15,7 +15,7 @@ const initialState = {
 };
 
 // reducer 정의
-export default function search(state = initialState, action) {
+export default function searchReducer(state = initialState, action) {
   switch (action.type) {
     case CHANGE_KEYWORD:
       return {
