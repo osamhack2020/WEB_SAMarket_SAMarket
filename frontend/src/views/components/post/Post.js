@@ -5,12 +5,12 @@ import PostHead from "./PostHead";
 import Content from "./Content";
 import "./Post.css";
 
-export default function Post({ info, onSearch }) {
-  const { postId, author, type, contents } = info;
+export default function Post({ info }) {
+  const { postId, author, type } = info;
   if (type === "adv") return <Advertise info={info} />;
   return (
     <div className="post">
-      <Content info={info} onSearch={onSearch} />
+      <Content info={info} />
       <PostHead postId={postId} type={type} author={author} />
     </div>
   );

@@ -8,6 +8,7 @@ import SAMroadList from "./SAMroadList";
 
 export default function SAMroad() {
   // 강군로드는 무한 스크롤 가능
+  // state.{reducer 등록 이름}.{사용하고자 하는 attribute}
   const samroads = useSelector(state => state.samroad.samroads);
   const dispatch = useDispatch();
   function onAdd() {

@@ -5,7 +5,7 @@ import styled from "styled-components";
 import TagList from "../tag/TagList";
 import "./Post.css";
 
-export default function Content({ info, onSearch }) {
+export default function Content({ info }) {
   const { postId, contents, type } = info;
   const { title, sub, tags, clr } = contents;
   const ContentLink = styled(Link)`
@@ -22,7 +22,7 @@ export default function Content({ info, onSearch }) {
     <ContentLink to={`/posts/${postId}`} className="content">
       <Title className="contentTitle">{title}</Title>
       <Sub className="contentSub">{sub + (type === "sell" ? " 원" : "")}</Sub>
-      <TagList clr={clr} texts={tags.slice(0, 5)} onSearch={onSearch} />
+      <TagList clr={clr} texts={tags.slice(0, 5)} />
     </ContentLink>
   );
 }
