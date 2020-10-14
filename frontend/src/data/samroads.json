@@ -9,7 +9,7 @@
       "type": "sell",
       "contents": {
         "title": "게리슨모",
-        "sub": "3000",
+        "sub": 3000,
         "tags": ["공군", "모자", "53호", "급매", "A급"],
         "clr": {
           "font": "#FFFFFF",

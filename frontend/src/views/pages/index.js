@@ -21,7 +21,7 @@ export default function Pages() {
       <Route path="/write" component={WritePage} />
       <Route path="/posts" component={PostPage} />
       <Route path="/profile" component={ProfilePage} />
-      <Redirect path="*" to="/" />
+      <Route render={() => <div>없는 페이지 입니다.</div>} />
     </BrowserRouter>
   );
 }
