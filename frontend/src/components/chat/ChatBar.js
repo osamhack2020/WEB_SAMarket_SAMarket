@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
 import io from "socket.io-client";
 import Input from "./Input";
 import MessageList from "./MessageList";
 import "./Chat.css";
+=======
+import React, { useEffect, useState } from 'react';
+import Input from './Input'
+import MessageList from './MessageList'
+import io from 'socket.io-client';
+import './Chat.css';
+>>>>>>> feat: 채팅 페이지에 Input 컴포넌트 적용
 
 let socket;
 
@@ -64,15 +72,21 @@ const ChatBar = location => {
     }
   };
 
-  return (
-    <div className="chatOuterContainer">
-      <div className="chatInnerContainer">
-        <div className="chatScreen">
-          <div className="chatScreenPaper"></div>
+    return (
+        <div className="chatOuterContainer">
+            <div className="chatInnerContainer">
+                <div className="chatScreen">
+                    <div className="chatScreenPaper">
+                        <Input
+                            message={message}
+                            setMessage={setMessage}
+                            sendMessage={sendMessage}
+                        />
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 /*
 class ChatBar extends Component {
