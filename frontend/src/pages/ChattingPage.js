@@ -6,7 +6,7 @@ import PostInfo from '../components/post/PostInfo';
 const ChattingPage = (props) => {
     return (
         <div className="ChattingPage">
-            <ChatHeader user="" />
+            <ChatHeader /* 더미 데이터 "서형진" */ user="서형진" />
             <PostInfo />
             <ChatBar />
         </div>

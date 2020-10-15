@@ -18,8 +18,10 @@ const ChatBar = (location) => {
     // const ENDPOINT = config.blabla 백 작업 후 추가예정.
 
     useEffect(() => {
+        // 더미 데이터
+        const { name, room } = { name:'고현수', room:'서형진' };
         // query-string middleware의 사용
-        const { name, room } = queryString.parse(location.search);
+        // const { name, room } = queryString.parse(location.search);
         setName(name);
         setRoom(room);
 
