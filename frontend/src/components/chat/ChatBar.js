@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import io from 'socket.io-client';
+import Input from './Input'
+import MessageList from './MessageList'
 import './Chat.css';
 
 let socket;
@@ -7,6 +9,10 @@ let socket;
 const ChatBar = (location) => {
     const [name, setName] = useState("");
     const [room, setRoom] = useState("");
+    const [message, setMessage] = useState("");
+    const [messages, setMessages] = useState([]);
+
+    const [users, setUsers] = useState("");
 
     const ENDPOINT = "nanofiber.org:8080/ws";
     // const ENDPOINT = config.blabla 백 작업 후 추가예정.
@@ -35,6 +41,15 @@ const ChatBar = (location) => {
      }, [ENDPOINT, location.search]);
     // 한번만 부른다 
     // 불필요한 사이드 이펙트를 줄인다.
+
+    useEffect(() => {
+        // 서버에서 message 이벤트가 올 경우에 대해서 `on`
+
+        // 메세지 수신
+        socket.on("message", (message) => {
+            setMessages([...messages, message]);
+        });
+    }, [messages]);
 
     return (
         <div className="chatOuterContainer">
