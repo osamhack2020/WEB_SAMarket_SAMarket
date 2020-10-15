@@ -17,7 +17,7 @@ export default function SAMroad() {
   }
 
   return (
-    <InfiniteScroll onAdd={onAdd}>
+    <InfiniteScroll onAdd={onAdd} offSet={5}>
       <SAMroadList samroads={samroads} />
     </InfiniteScroll>
   );
