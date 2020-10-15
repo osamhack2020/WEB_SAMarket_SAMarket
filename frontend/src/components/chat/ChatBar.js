@@ -69,6 +69,7 @@ const ChatBar = (location) => {
             <div className="chatInnerContainer">
                 <div className="chatScreen">
                     <div className="chatScreenPaper">
+                        <MessageList messages={messages} name={name} />
                         <Input
                             message={message}
                             setMessage={setMessage}
