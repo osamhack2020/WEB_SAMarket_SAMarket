@@ -56,6 +56,14 @@ const ChatBar = (location) => {
         });
     }, [messages]);
 
+    // 메세지 송신
+    const sendMessage = (e) => {
+        e.preventDefault();
+        if (message) {
+            socket.emit("sendMessage", message, setMessage(""));
+        }
+    };
+
     return (
         <div className="chatOuterContainer">
             <div className="chatInnerContainer">
