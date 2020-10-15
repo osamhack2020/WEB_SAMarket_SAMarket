@@ -3,6 +3,8 @@ package api
 import (
 	"time"
 
+	"sam/config"
+
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 )
@@ -38,7 +40,7 @@ func testgen(c *gin.Context) {
 		},
 	}
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claim)
-	tokenString, _ := token.SignedString([]byte("123123123"))
+	tokenString, _ := token.SignedString(config.Settings.Key.JWTBytes)
 	c.SetCookie("token", tokenString, 1800, "", "", false, false)
 	c.JSON(200, gin.H{
 		"token": tokenString,

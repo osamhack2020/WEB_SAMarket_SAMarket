@@ -3,6 +3,8 @@ package middleware
 import (
 	"net/http"
 
+	"sam/config"
+
 	jwt "github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 )
@@ -22,7 +24,7 @@ func TokenAuth(c *gin.Context) {
 	claim := &Claim{}
 	token := cookie.Value
 	_, err = jwt.ParseWithClaims(token, claim, func(token *jwt.Token) (interface{}, error) {
-		return []byte("123123123"), nil
+		return config.Settings.Key.JWTBytes, nil
 	})
 
 	if err != nil {

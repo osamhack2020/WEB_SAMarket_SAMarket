@@ -15,7 +15,7 @@ require (
 	github.com/go-redis/redis/v8 v8.3.1
 	github.com/go-sql-driver/mysql v1.5.0
 	github.com/golang/protobuf v1.4.2 // indirect
-	github.com/gorilla/websocket v1.4.2 // indirect
+	github.com/gorilla/websocket v1.4.2
 	github.com/json-iterator/go v1.1.10 // indirect
 	github.com/mailru/easyjson v0.7.6 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
@@ -40,6 +40,7 @@ require (
 	sam/docs v0.0.0
 	sam/middleware v0.0.0
 	sam/models v0.0.0
+	sam/ws v0.0.0
 )
 
 replace (
@@ -48,4 +49,5 @@ replace (
 	sam/docs v0.0.0 => ./docs
 	sam/middleware v0.0.0 => ./middleware
 	sam/models v0.0.0 => ./models
+	sam/ws v0.0.0 => ./ws
 )

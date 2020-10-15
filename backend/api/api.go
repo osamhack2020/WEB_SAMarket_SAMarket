@@ -11,5 +11,6 @@ func SetupAPI(r *gin.Engine) {
 		InitAuthRouter(v1)
 		InitUnitRouter(v1)
 		InitPostRouter(v1)
+		InitErrorRouter(v1)
 	}
 }
