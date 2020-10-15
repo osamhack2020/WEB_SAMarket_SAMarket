@@ -5,6 +5,9 @@ import (
 	"os"
 	"time"
 
+	"crypto/sha512"
+	"io/ioutil"
+
 	"gopkg.in/yaml.v2"
 )
 
@@ -28,6 +31,18 @@ type Config struct {
 		Password string `yaml:"password"`
 		Database string `yaml:"database"`
 	} `yaml:"db"`
+
+	Redis struct {
+		Host string `yaml:"host"`
+		Port string `yaml:"port"`
+	}
+
+	Key struct {
+		JWT        string `yaml:"jwt"`
+		Crypt      string `yaml:"crypt"`
+		JWTBytes   []byte
+		CryptBytes []byte
+	}
 }
 
 var Settings *Config
@@ -43,6 +58,18 @@ func Init() {
 	if err != nil {
 		fmt.Print(err)
 	}
+
+	boardName, err := ioutil.ReadFile("/sys/class/dmi/id/board_name")
+	productUUID, err := ioutil.ReadFile("/sys/class/dmi/id/product_uuid")
+	if len(Settings.Key.JWT) == 0 {
+		Settings.Key.JWT = string(boardName) + string(productUUID) + "SAMARKET"
+	}
+	hasher := sha512.New()
+	hasher.Write([]byte(Settings.Key.JWT))
+	Settings.Key.JWTBytes = hasher.Sum(nil)
+	hasher = sha512.New()
+	hasher.Write([]byte(Settings.Key.Crypt))
+	Settings.Key.CryptBytes = hasher.Sum(nil)
 }
 
 func LoadConfig(path string) (*Config, error) {

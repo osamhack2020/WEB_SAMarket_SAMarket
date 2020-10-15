@@ -6,7 +6,10 @@ import (
 
 func SetupAPI(r *gin.Engine) {
 	v1 := r.Group("/api/")
-	InitPost(v1)
-	InitUserRouter(v1)
-	InitAuthRouter(v1)
+	{
+		InitUserRouter(v1)
+		InitAuthRouter(v1)
+		InitUnitRouter(v1)
+		InitPostRouter(v1)
+	}
 }

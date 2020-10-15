@@ -1,6 +1,7 @@
 package api
 
 import (
+	"sam/middleware"
 	"sam/models"
 
 	"github.com/gin-gonic/gin"
@@ -9,15 +10,19 @@ import (
 func InitUserRouter(rg *gin.RouterGroup) {
 	router := rg.Group("/user")
 	{
+		router.Use(middleware.TokenAuth)
 		router.GET("/test", getUser)
 	}
 }
 
-// @Summary 테스트 API
-// @Description 테스트 APIAPI
+// getUser godoc
+// @Security ApiKeyAuth
+// @Summary 해당 유저 프로파일 조회
+// @Description
 // @name getUser
 // @Accept  json
 // @Produce  json
+// @Header 200 {string} Token "qwerty"
 // @Router /user/test [get]
 // @Success 200 {object} models.User
 func getUser(c *gin.Context) {

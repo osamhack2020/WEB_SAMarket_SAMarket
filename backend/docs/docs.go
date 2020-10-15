@@ -19,21 +19,109 @@ var doc = `{
         "description": "{{.Description}}",
         "title": "{{.Title}}",
         "contact": {},
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        },
         "version": "{{.Version}}"
     },
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/user/test": {
-            "get": {
-                "description": "테스트 APIAPI",
+        "/auth/login": {
+            "post": {
+                "description": "로그인",
                 "consumes": [
                     "application/json"
                 ],
                 "produces": [
                     "application/json"
                 ],
-                "summary": "테스트 API",
+                "summary": "로그인",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/logout": {
+            "get": {
+                "description": "로그아웃",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "로그아웃",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/testgen": {
+            "get": {
+                "description": "토큰발급",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "토큰 발급 받기 (Debug API)",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    }
+                }
+            }
+        },
+        "/unit/list": {
+            "get": {
+                "description": "부대 리스트 가져오기 (mil 육군 = 1, 해군 = 2, 공군 = 3, 해병 = 4, 국직 = 5)",
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "부대 리스트 가져오기",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Unit"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/test": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "해당 유저 프로파일 조회",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -46,12 +134,23 @@ var doc = `{
         }
     },
     "definitions": {
+        "models.Unit": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "mil": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
         "models.User": {
             "type": "object",
             "properties": {
-                "corps": {
-                    "type": "integer"
-                },
                 "id": {
                     "type": "integer"
                 },
@@ -63,6 +162,12 @@ var doc = `{
                 },
                 "phone": {
                     "type": "string"
+                },
+                "unit": {
+                    "$ref": "#/definitions/models.Unit"
+                },
+                "unitId": {
+                    "type": "integer"
                 },
                 "userId": {
                     "type": "string"
@@ -83,11 +188,11 @@ type swaggerInfo struct {
 
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = swaggerInfo{
-	Version:     "",
+	Version:     "1.0",
 	Host:        "",
-	BasePath:    "",
+	BasePath:    "/api/",
 	Schemes:     []string{},
-	Title:       "",
+	Title:       "SA Market",
 	Description: "",
 }
 

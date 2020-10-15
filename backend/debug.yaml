@@ -1,6 +1,7 @@
+# This is a sample config.
 server:
   host: 127.0.0.1
-  port: 8081
+  port: 8080
   mode: debug
   timeout:
     server: 30
@@ -8,6 +9,13 @@ server:
     write: 10
     idle: 5
 
+redis:
+  host: 127.0.0.1
+  port: 6379
+
+key:
+  crypt: testata23
+  
 db:
   host: 127.0.0.1
   port: 3306

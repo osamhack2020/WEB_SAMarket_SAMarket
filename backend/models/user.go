@@ -1,18 +1,18 @@
 package models
 
-// TODO: Hide secure information
 type User struct {
-	Id     uint   `json:"id"`
-	UserId string `json:"userId"`
-	Name   string `json:"name"`
-	Phone  string `json:"phone"`
-	Mil    uint   `json:"mil"`
-	Corps  uint   `json:"corps"`
+	Id     uint
+	UserId string
+	Name   string
+	Phone  string
+	Mil    uint
+	UnitId uint
+	Unit   Unit
 }
 
 type UserResponse struct {
-	Id   uint   `json:"id"`
-	Name string `json:"name"`
+	Id   uint
+	Name string
 }
 
 func GetUser() *UserResponse {
