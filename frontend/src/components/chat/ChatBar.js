@@ -49,6 +49,11 @@ const ChatBar = location => {
     socket.on("message", message => {
       setMessages([...messages, message]);
     });
+
+    // room에 유저 추가/삭제
+    socket.on("roomData", ({ users }) => {
+      setUsers(users);
+    });
   }, [messages]);
 
   return (
