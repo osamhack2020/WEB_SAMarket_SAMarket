@@ -1,10 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import './index.css';
-import MainPage from './pages/MainPage';
-import ChattingPage from './pages/ChattingPage';
-import * as serviceWorker from './serviceWorker';
+import "./index.css";
+import MainPage from "./pages/MainPage";
+import ChattingPage from "./pages/ChattingPage";
+import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -19,7 +19,7 @@ ReactDOM.render(
       </Switch>
     </Router>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change
