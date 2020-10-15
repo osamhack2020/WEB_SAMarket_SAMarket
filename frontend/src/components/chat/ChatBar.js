@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import io from 'socket.io-client';
 import Input from './Input'
 import MessageList from './MessageList'
+import io from 'socket.io-client';
 import './Chat.css';
 
 let socket;
@@ -69,6 +69,11 @@ const ChatBar = (location) => {
             <div className="chatInnerContainer">
                 <div className="chatScreen">
                     <div className="chatScreenPaper">
+                        <Input
+                            message={message}
+                            setMessage={setMessage}
+                            sendMessage={sendMessage}
+                        />
                     </div>
                 </div>
             </div>
