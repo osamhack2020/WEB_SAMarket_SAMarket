@@ -6,7 +6,7 @@ import "./Chat.css";
 
 let socket;
 
-const ChatBar = location => {
+export default function ChatBar(location) {
   const [name, setName] = useState("");
   const [room, setRoom] = useState("");
   const [message, setMessage] = useState("");
@@ -82,14 +82,4 @@ const ChatBar = location => {
       </div>
     </div>
   );
-};
-/*
-class ChatBar extends Component {
-    render() {
-        return (
-            <div className='ChatBar'/>
-        );
-    }
 }
-*/
-export default ChatBar;
