@@ -6,6 +6,7 @@ import (
 	"sam/api"
 	"sam/config"
 	"sam/docs"
+	"sam/middleware"
 	"sam/models"
 	"sam/ws"
 
@@ -40,6 +41,10 @@ func main() {
 
 	gin.SetMode(config.Settings.Server.Mode)
 	r := gin.Default()
+	// Debug only
+	if config.Settings.Server.Mode == "debug" {
+		r.Use(middleware.EnableCORS)
+	}
 	api.SetupAPI(r)
 	ws.SetupTest(r)
 	r.Use(static.Serve("/", static.LocalFile("./web", true)))
