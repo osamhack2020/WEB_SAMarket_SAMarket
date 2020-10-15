@@ -22,7 +22,7 @@
 
 .search {
   background: #f0f3f6;
-  border: 0;
+  border: 0px solid;
   border-radius: 12.5px;
   width: 350px;
   height: 25px;
@@ -34,77 +34,23 @@
 }
 
 .searchBar {
-  border: 0;
-  outline: 0;
-  position: relative;
+  position: absolute;
   top: -1.5px;
   left: 6px;
-  padding-left: 10px;
   background: transparent;
+  border: 0px solid;
   width: 88%;
   height: 25px;
 }
 
 .magnifier {
-  border: 0;
-  outline: 0;
-  cursor: pointer;
-  position: relative;
-  top: 3px;
-  right: -2px;
-  background: url(../../imgs/icons/search.svg);
-  width: 20px;
-  height: 20px;
-  background-size: 20px 20px;
-}
-
-.topLinks {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-}
-
-.home {
-  position: relative;
-  padding-left: 22px;
-  background: rgba(0, 0, 0, 0);
-  border: 0;
-  outline: 0;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: bold;
-}
-
-.home::before {
-  content: "";
   position: absolute;
-  top: 0px;
-  left: 0px;
-  background: url(../../imgs/logoShadow256.png);
+  top: 3px;
+  right: 6px;
+  background: transparent;
+  border: 0px solid;
+  background-image: url(../../imgs/icons/search.svg);
   width: 20px;
   height: 20px;
   background-size: 20px 20px;
-}
-
-.likes,
-.chats {
-  position: fixed;
-  background: rgba(0, 0, 0, 0);
-  border: 0;
-  outline: 0;
-  cursor: pointer;
-  width: 25px;
-  height: 25px;
-}
-
-.likes {
-  right: 60px;
-  background: url(../../imgs/icons/likes.svg) no-repeat;
-  background-size: 25px 25px;
-}
-
-.chats {
-  right: 20px;
-  background: url(../../imgs/icons/chats.svg) no-repeat;
-  background-size: 25px 25px;
 }

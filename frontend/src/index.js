@@ -1,14 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import MainPage from './pages/MainPage';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "./index.css";
+import MainPage from "./pages/MainPage";
+import ChattingPage from "./pages/ChattingPage";
+import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   <React.StrictMode>
-    <MainPage />
+    <Router>
+      <Switch>
+        <Route path="/chat">
+          <ChattingPage />
+        </Route>
+        <Route path="/">
+          <MainPage />
+        </Route>
+      </Switch>
+    </Router>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change
