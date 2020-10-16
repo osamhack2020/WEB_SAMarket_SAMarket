@@ -15,10 +15,20 @@ function MakeDataGenerator(items) {
 
 export const getNextSAMroad = MakeDataGenerator(samroads);
 
-export function signIn({ userId, password }) {
+export function signInReq({ userId, password }) {
   const user = users[userId];
   if (user && user.pw === password) {
     return user;
   }
-  throw new Error("Sign In failed");
+  throw new Error("Sign In Failed");
+}
+
+export function signUpReq({ userId, userInfo }) {
+  if (!(userId in users)) {
+    const fs = require("fs");
+    users[userId] = userInfo;
+    fs.writeFileSync("../../../data/users.json", users);
+    return userInfo;
+  }
+  throw new Error("Sign Up Failed");
 }
