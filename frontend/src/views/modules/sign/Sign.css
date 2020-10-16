@@ -21,3 +21,15 @@
   background: #1d9acb;
   box-shadow: 0px 0px 20px 0px rgba(80, 80, 80, 20%);
 }
+
+.signQues {
+  font-size: 13px;
+  width: 290px;
+  text-align: right;
+  margin-top: 5px;
+}
+
+.signFindLink {
+  color: #22b0ea;
+  text-decoration: none;
+}

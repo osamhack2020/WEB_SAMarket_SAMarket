@@ -3,6 +3,7 @@
 */
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import InDevPage from "./InDevPage";
 import MainPage from "./MainPage";
 import SignPage from "./SignPage";
 import LikesPage from "./LikesPage";
@@ -18,6 +19,7 @@ export default function Pages() {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={MainPage} />
+        <Route path="/sign/findAccount" component={InDevPage} />
         <Route path="/sign" component={SignPage} />
         <Route path="/likes" component={LikesPage} />
         <Route path="/chat" component={ChattingPage} />
