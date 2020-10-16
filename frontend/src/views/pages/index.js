@@ -3,8 +3,8 @@
 */
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import InDevPage from "./InDevPage";
 import MainPage from "./MainPage";
+import { InDevPage, NotFoundPage } from "./tempPages/index";
 import { SignInPage, SignUpPage } from "./signPages/index";
 import LikesPage from "./LikesPage";
 import ChattingPage from "./ChattingPage";
@@ -12,7 +12,6 @@ import ChatsPage from "./ChatsPage";
 import WritePage from "./WritePage";
 import PostPage from "./PostPage";
 import ProfilePage from "./ProfilePage";
-import NotFoundPage from "./NotFoundPage";
 
 export default function Pages() {
   return (
