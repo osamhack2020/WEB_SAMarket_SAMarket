@@ -1,16 +1,7 @@
-.aboutUs,
-.aboutUsBottom {
+.aboutUs {
   color: #8990a0;
   padding: 50px 0 20px 0;
   height: 100px;
   font-size: 11px;
   font-weight: bold;
-}
-
-.aboutUsBottom {
-  position: fixed;
-  left: 0;
-  bottom: 20px;
-  width: 100%;
-  text-align: center;
 }
