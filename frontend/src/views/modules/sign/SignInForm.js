@@ -10,8 +10,8 @@ export default function SignInForm() {
   const dipatch = useDispatch();
 
   const handleSignIn = e => {
-    e.preventDefault(); // 리로딩 방지
     dipatch(signIn(userId, password));
+    window.location.reload(); // 리로딩
   };
 
   return (

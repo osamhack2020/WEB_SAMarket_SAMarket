@@ -5,7 +5,7 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import InDevPage from "./InDevPage";
 import MainPage from "./MainPage";
-import SignPage from "./SignPage";
+import { SignInPage, SignUpPage } from "./signPages/index";
 import LikesPage from "./LikesPage";
 import ChattingPage from "./ChattingPage";
 import ChatsPage from "./ChatsPage";
@@ -20,7 +20,9 @@ export default function Pages() {
       <Switch>
         <Route exact path="/" component={MainPage} />
         <Route path="/sign/findAccount" component={InDevPage} />
-        <Route path="/sign" component={SignPage} />
+        <Route path="/sign" component={SignInPage} />
+        <Route path="/signup" component={SignUpPage} />
+        <Route path="/aboutus/:what" component={InDevPage} />
         <Route path="/likes" component={LikesPage} />
         <Route path="/chat" component={ChattingPage} />
         <Route path="/chats" component={ChatsPage} />
