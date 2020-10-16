@@ -1,24 +1,24 @@
+/* React Project 에서 가장 처음 호출되는 영역 */
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import "./index.css";
-import MainPage from "./pages/MainPage";
-import ChattingPage from "./pages/ChattingPage";
 import * as serviceWorker from "./serviceWorker";
+// Redux 영역
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import rootReducer from "./views/modules";
+// 실제 Component 영역
+import "./index.css";
+import Pages from "./views/pages/index";
+
+const devTools = // redux 개발자 도구: chrome 확장 Redux Devtools 설치
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+// react 에서 '하나의 Application 에는 하나의 Store.'
+const store = createStore(rootReducer, devTools);
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Router>
-      <Switch>
-        <Route path="/chat">
-          <ChattingPage />
-        </Route>
-        <Route path="/">
-          <MainPage />
-        </Route>
-      </Switch>
-    </Router>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <Pages />
+  </Provider>,
   document.getElementById("root")
 );
 

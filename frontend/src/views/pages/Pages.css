@@ -1,0 +1,17 @@
+.MainPage {
+  font-family: "NotoSans KR";
+  padding-top: 280px;
+  padding-bottom: 70px;
+  color: #202326;
+  background: #f0f3f6;
+}
+
+.HeadBack {
+  z-index: 9999;
+  position: fixed;
+  top: 0;
+  background: #fdfeff;
+  width: 97%;
+  height: 65px;
+  padding-left: 3%;
+}

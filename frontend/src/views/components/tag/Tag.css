@@ -1,0 +1,18 @@
+.tags {
+  position: relative;
+  margin-top: 15px;
+  text-align: center;
+  z-index: 2;
+}
+
+.tag {
+  font-size: 15px;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  height: 25px;
+  border-radius: 12.5px;
+  padding: 0px 15px 2px 15px;
+  margin: 5px 5px 5px 5px;
+  box-shadow: 0 0 20px 0 rgba(80, 80, 80, 30%);
+}
