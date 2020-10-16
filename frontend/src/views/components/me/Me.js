@@ -3,7 +3,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import Profile from "../user/Profile";
 import Croucher from "../base/Croucher";
-import { changeKeyword } from "../../../modules/search/state";
+import { changeKeyword } from "../../modules/search/state";
 import userInfo from "../../../data/me.json";
 import "./me.css";
 

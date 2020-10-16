@@ -3,7 +3,7 @@
  */
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { changeKeyword } from "../../../modules/search/state";
+import { changeKeyword } from "../../modules/search/state";
 import "./Header.css";
 
 export default function SearchBar() {
