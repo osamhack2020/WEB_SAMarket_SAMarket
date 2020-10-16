@@ -7,7 +7,8 @@ import SignUpForm from "views/modules/sign/SignUpForm";
 
 export default function SignUpPage() {
   return (
-    <div className="signBack">
+    <div className="signPage">
+      <div className="signBack" />
       <BackBtn />
       <Link to="/sign" className="toSignIn">
         입구로 돌아가기
@@ -16,7 +17,7 @@ export default function SignUpPage() {
       <h1 className="signTitle">강군마켓</h1>
       <h2 className="sginSub">강한군인들의 중고거래 커뮤니티</h2>
       <SignUpForm />
-      <AboutUs />
+      <AboutUs heightNorm={1000} />
     </div>
   );
 }
