@@ -14,7 +14,8 @@ export default function SignInPage() {
     `;
 
     return (
-      <div className="signBack">
+      <div className="signPage">
+        <div className="signBack" />
         <div className="signLogo" />
         <h1 className="signTitle">강군마켓</h1>
         <h2 className="sginSub">강한군인들의 중고거래 커뮤니티</h2>

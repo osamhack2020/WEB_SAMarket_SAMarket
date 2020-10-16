@@ -7,7 +7,7 @@ import "./AboutUs.css";
 
 export default function AboutUs({ heightNorm }) {
   const getClsName = () =>
-    window.innerHeight <= (heightNorm ? heightNorm : 650)
+    window.innerHeight <= (heightNorm ? heightNorm : 700)
       ? "aboutUs"
       : "aboutUsBottom";
   const [clsName, setClsName] = useState(getClsName());
