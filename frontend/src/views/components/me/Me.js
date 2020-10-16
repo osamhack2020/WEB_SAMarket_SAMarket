@@ -3,8 +3,8 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Profile from "../user/Profile";
 import Croucher from "../base/Croucher";
-import { changeKeyword } from "../../modules/search/state";
-import { users } from "../../../data/users.json";
+import { changeKeyword } from "views/modules/search/state";
+import { users } from "data/users.json";
 import "./me.css";
 
 export default function Me() {

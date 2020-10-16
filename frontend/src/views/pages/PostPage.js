@@ -4,7 +4,7 @@ postId를 기준으로 post 를 보여줌
 postId가 없는 경우, 메인화면으로
 */
 import React from "react";
-import { samroads } from "../../data/samroads.json";
+import { samroads } from "data/samroads.json";
 import NotFoundPage from "./tempPages/NotFoundPage";
 import PostHead from "../components/post/PostHead";
 import Content from "../components/post/Content";

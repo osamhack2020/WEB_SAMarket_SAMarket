@@ -3,8 +3,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
 import styled from "styled-components";
-import SignInForm from "../../modules/sign/SignInForm";
-import AboutUs from "../../components/aboutUs/AboutUs";
+import SignInForm from "views/modules/sign/SignInForm";
+import AboutUs from "views/components/aboutUs/AboutUs";
 
 export default function SignInPage() {
   if (!useSelector(state => state.sign.authToken)) {

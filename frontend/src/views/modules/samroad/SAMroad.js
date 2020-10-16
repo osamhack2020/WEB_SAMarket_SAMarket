@@ -3,7 +3,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getNextSAMroad } from "../common/fakeServer";
 import { addSAMroad } from "./state";
-import InfiniteScroll from "../../components/base/InfiniteScroll";
+import InfiniteScroll from "views/components/base/InfiniteScroll";
 import SAMroadList from "./SAMroadList";
 
 export default function SAMroad() {
