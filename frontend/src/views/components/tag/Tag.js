@@ -1,7 +1,7 @@
 /* 검색 가능한 Tag 를 보여주는 Component */
 import React from "react";
 import { useDispatch } from "react-redux";
-import { changeKeyword } from "../../../modules/search/state";
+import { changeKeyword } from "../../modules/search/state";
 import { Link } from "react-router-dom";
 import "./Tag.css";
 
