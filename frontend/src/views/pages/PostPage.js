@@ -1,11 +1,11 @@
 /* 게시물의 상세 정보를 볼 수 있는 페이지
-samarket.kr/posts/${postId 로
+samarket.kr/posts/${postId} 로
 postId를 기준으로 post 를 보여줌
 postId가 없는 경우, 메인화면으로
 */
 import React from "react";
 import { samroads } from "../../data/samroads.json";
-import NotFoundPage from "./NotFoundPage";
+import NotFoundPage from "./tempPages/NotFoundPage";
 import PostHead from "../components/post/PostHead";
 import Content from "../components/post/Content";
 import BackBtn from "../components/header/BackBtn";
