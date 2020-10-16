@@ -13,8 +13,8 @@
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
-    "socket.io": "^3.0.0-rc2",
     "redux": "^4.0.5",
+    "socket.io": "^3.0.0-rc2",
     "styled-components": "^5.2.0"
   },
   "scripts": {

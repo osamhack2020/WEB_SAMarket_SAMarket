@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import MainPage from "./MainPage";
 import SignInPage from "./SignInPage";
 import LikesPage from "./LikesPage";
+import ChattingPage from "./ChattingPage";
 import ChatsPage from "./ChatsPage";
 import WritePage from "./WritePage";
 import PostPage from "./PostPage";
@@ -19,6 +20,7 @@ export default function Pages() {
         <Route exact path="/" component={MainPage} />
         <Route path="/signin" component={SignInPage} />
         <Route path="/likes" component={LikesPage} />
+        <Route path="/chat" component={ChattingPage} />
         <Route path="/chats" component={ChatsPage} />
         <Route path="/write" component={WritePage} />
         <Route path="/posts/:postId" component={PostPage} />
