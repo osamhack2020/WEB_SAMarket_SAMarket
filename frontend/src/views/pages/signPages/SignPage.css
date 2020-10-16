@@ -2,9 +2,11 @@
   width: 340px;
   height: 100vh;
   text-align: center;
-  position: relative;
+  position: absolute;
+  top: 0;
   left: -170px;
   margin-left: 50%;
+  overflow-x: hidden;
 }
 
 .signBack {

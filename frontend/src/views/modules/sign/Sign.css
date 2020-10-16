@@ -11,19 +11,6 @@
   z-index: 2;
 }
 
-.signInputDate:berfore {
-  width: 100%;
-  display: none;
-  appearance: none;
-}
-
-.signInputDate::-webkit-inner-spin-button {
-  display: none;
-}
-.signInputDate::-webkit-calendar-picker-indicator {
-  background: transparent;
-}
-
 .signBtn {
   color: #fdfeff;
   font-weight: bold;
