@@ -24,7 +24,7 @@ export default function Pages() {
         <Route path="/chats" component={ChatsPage} />
         <Route path="/write" component={WritePage} />
         <Route path="/posts/:postId" component={PostPage} />
-        <Route path="/profile" component={ProfilePage} />
+        <Route path="/profile/:userId" component={ProfilePage} />
         <Route component={NotFoundPage} />
       </Switch>
     </BrowserRouter>

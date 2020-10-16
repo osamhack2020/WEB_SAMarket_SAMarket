@@ -2,6 +2,7 @@
  API 를 정의함
 */
 import { samroads } from "../../../data/samroads.json";
+import { users } from "../../../data/users.json";
 
 function MakeDataGenerator(items) {
   let itemIdx = 0;
@@ -13,3 +14,11 @@ function MakeDataGenerator(items) {
 }
 
 export const getNextSAMroad = MakeDataGenerator(samroads);
+
+export function signIn({ userId, password }) {
+  const user = users[userId];
+  if (user && user.pw === password) {
+    return user;
+  }
+  throw new Error("Sign In failed");
+}
