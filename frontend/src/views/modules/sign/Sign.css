@@ -14,6 +14,7 @@
   font-size: 15px;
   border: 0;
   outline: 0;
+  cursor: pointer;
   width: 250px;
   height: 30px;
   margin-top: 20px;
@@ -32,4 +33,5 @@
 .signFindLink {
   color: #22b0ea;
   text-decoration: none;
+  cursor: pointer;
 }
