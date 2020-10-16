@@ -25,13 +25,8 @@ export function signInReq({ userId, password }) {
 
 export function signUpReq({ userId, userInfo }) {
   if (!(userId in users)) {
-    const fs = require("fs");
-    users[userId] = userInfo;
-    console.log(userInfo);
-    console.log(users);
-    fs.writeFile("data/users.json", { 1: "23" }, "utf8", err => {
-      console.error(err);
-    });
+    users[userId] = userInfo; // 이걸 body에 실어서 보냄
+    // post request 처리 결과를 받아서 return
     return userInfo;
   }
   throw new Error("Sign Up Failed");
