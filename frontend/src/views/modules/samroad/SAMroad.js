@@ -11,7 +11,8 @@ export default function SAMroad() {
   // state.{reducer 등록 이름}.{사용하고자 하는 attribute}
   const samroads = useSelector(state => state.samroad.samroads);
   const dispatch = useDispatch();
-  function onAdd() {
+  function onAdd(e) {
+    if (e) e.preventDefault(); // 리로딩 방지
     const samroad = getNextSAMroad();
     dispatch(addSAMroad(samroad));
   }

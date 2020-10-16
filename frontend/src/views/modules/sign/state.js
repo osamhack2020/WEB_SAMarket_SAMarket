@@ -20,7 +20,10 @@ export const signUp = (userId, userInfo) => {
 
 // reducer
 export default createReducer(
-  { userId: null, authToken: null }, // initialState
+  {
+    userId: localStorage.getItem("userId"),
+    authToken: localStorage.getItem("authToken")
+  }, // initialState
   {
     [SIGN_IN]: (state, action) => {
       if (!state.userId) {
@@ -31,6 +34,8 @@ export default createReducer(
           });
           state.userId = action.userId;
           state.authToken = user;
+          localStorage.setItem("userId", state.userId);
+          localStorage.setItem("authToken", state.authToken);
         } catch {
           alert("Sign In Failed");
         }
@@ -40,6 +45,8 @@ export default createReducer(
       if (state.authToken) {
         state.userId = null;
         state.authToken = null;
+        localStorage.removeItem("userId");
+        localStorage.removeItem("authToken");
       }
     },
     [SIGN_UP]: (state, action) => {

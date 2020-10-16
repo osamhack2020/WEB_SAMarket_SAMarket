@@ -15,3 +15,36 @@
   height: 65px;
   padding-left: 3%;
 }
+
+.signBack {
+  background: #fdfeff;
+  width: 340px;
+  height: 100vh;
+  text-align: center;
+  position: relative;
+  left: 50%;
+  margin-left: -170px;
+  box-shadow: 0px 0px 20px 0px rgba(80, 80, 80, 10%);
+}
+
+.signLogo {
+  display: inline-block;
+  background: url(../../imgs/logoShadow512.png);
+  width: 130px;
+  height: 130px;
+  background-size: 100%;
+  margin-top: 20%;
+}
+
+.signTitle {
+  margin: 0 0 0 0;
+  font-size: 25px;
+  color: #202326;
+}
+
+.sginSub {
+  margin: 5px 0 20px 0;
+  font-size: 16px;
+  font-weight: normal;
+  color: #505560;
+}
