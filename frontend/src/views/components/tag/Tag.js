@@ -1,9 +1,12 @@
 /* 검색 가능한 Tag 를 보여주는 Component */
 import React from "react";
 import { useDispatch } from "react-redux";
-import { changeKeyword } from "../../modules/search/state";
+import { changeKeyword } from "views/modules/search/state";
 import { Link } from "react-router-dom";
 import "./Tag.css";
+
+const DEFAULT_FONT_CLR = "#FDFEFF";
+const DEFAULT_TAG_CLR = "#505560";
 
 export default function Tag({ clr, text }) {
   const dispatch = useDispatch();
@@ -12,7 +15,7 @@ export default function Tag({ clr, text }) {
   };
 
   // 기본 값을 할당
-  const color = { font: "#FDFEFF", tag: "#505560", ...clr };
+  const color = { font: DEFAULT_FONT_CLR, tag: DEFAULT_TAG_CLR, ...clr };
   const tagBtn = {
     background: color.tag
   };
