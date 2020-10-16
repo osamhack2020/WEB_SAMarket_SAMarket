@@ -18,7 +18,7 @@ export default function Pages() {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={MainPage} />
-        <Route path="/signin" component={SignPage} />
+        <Route path="/sign" component={SignPage} />
         <Route path="/likes" component={LikesPage} />
         <Route path="/chat" component={ChattingPage} />
         <Route path="/chats" component={ChatsPage} />
