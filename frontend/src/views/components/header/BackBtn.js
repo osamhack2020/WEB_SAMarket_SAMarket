@@ -2,7 +2,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import styled from "styled-components";
-import backSvg from "../../../imgs/icons/back.svg";
+import backSvg from "imgs/icons/back.svg";
 
 const BackBtn = ({ history, size, loc }) => {
   const BackBtn = styled.button`

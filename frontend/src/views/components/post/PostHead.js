@@ -5,16 +5,14 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import User from "../user/User";
-import { users } from "../../../data/users.json";
+import { users } from "data/users.json";
 import "./Post.css";
 
 const svgs = (() => {
   let svgs = {};
   let imgSrcs = ["share", "like", "liked", "buy", "deny"];
   for (let idx in imgSrcs) {
-    svgs[imgSrcs[idx]] = require("../../../imgs/icons/" +
-      imgSrcs[idx] +
-      ".svg");
+    svgs[imgSrcs[idx]] = require("imgs/icons/" + imgSrcs[idx] + ".svg");
   }
   return svgs;
 })();

@@ -6,7 +6,7 @@ postId가 없는 경우, 메인화면으로
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { users } from "../../data/users.json";
+import { users } from "data/users.json";
 import { signOut } from "../modules/sign/state";
 import "./Pages.css";
 
