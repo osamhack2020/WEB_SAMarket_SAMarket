@@ -5,9 +5,11 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import "./AboutUs.css";
 
-export default function AboutUs() {
+export default function AboutUs({ heightNorm }) {
   const getClsName = () =>
-    window.innerHeight <= 650 ? "aboutUs" : "aboutUsBottom";
+    window.innerHeight <= (heightNorm ? heightNorm : 650)
+      ? "aboutUs"
+      : "aboutUsBottom";
   const [clsName, setClsName] = useState(getClsName());
   useEffect(() => {
     window.addEventListener("resize", () => setClsName(getClsName()));
