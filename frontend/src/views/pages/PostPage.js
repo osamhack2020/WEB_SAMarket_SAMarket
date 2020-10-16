@@ -8,6 +8,7 @@ import { samroads } from "../../data/samroads.json";
 import NotFoundPage from "./NotFoundPage";
 import PostHead from "../components/post/PostHead";
 import Content from "../components/post/Content";
+import BackBtn from "../components/header/BackBtn";
 import "./Pages.css";
 
 export default function PostPage({ match }) {
@@ -19,6 +20,7 @@ export default function PostPage({ match }) {
 
   return (
     <div className="HeadBack">
+      <BackBtn size={[25, 25]} loc={[20, 10]} />
       <PostHead postId={postId} type={type} author={author} />
       <Content info={info} />
     </div>
