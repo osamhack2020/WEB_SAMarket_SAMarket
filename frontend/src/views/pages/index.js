@@ -4,7 +4,7 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import MainPage from "./MainPage";
-import SignInPage from "./SignInPage";
+import SignPage from "./SignPage";
 import LikesPage from "./LikesPage";
 import ChattingPage from "./ChattingPage";
 import ChatsPage from "./ChatsPage";
@@ -18,7 +18,7 @@ export default function Pages() {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={MainPage} />
-        <Route path="/signin" component={SignInPage} />
+        <Route path="/signin" component={SignPage} />
         <Route path="/likes" component={LikesPage} />
         <Route path="/chat" component={ChattingPage} />
         <Route path="/chats" component={ChatsPage} />
