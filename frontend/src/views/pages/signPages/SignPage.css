@@ -1,18 +1,19 @@
-.signPage {
+.signPage,
+.signBack {
+  top: 0;
+  left: 50%;
+  margin-left: -170px;
   width: 340px;
-  height: 100vh;
+}
+
+.signPage {
   text-align: center;
   position: absolute;
-  top: 0;
-  left: -170px;
-  margin-left: 50%;
   overflow-x: hidden;
 }
 
 .signBack {
   position: fixed;
-  top: 0;
-  width: 340px;
   height: 100%;
   background: #fdfeff;
   z-index: -1;
