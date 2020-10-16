@@ -6,10 +6,10 @@ import styled from "styled-components";
 import "./AboutUs.css";
 
 export default function AboutUs({ heightNorm }) {
-  const getClsName = () =>
-    window.innerHeight <= (heightNorm ? heightNorm : 700)
-      ? "aboutUs"
-      : "aboutUsBottom";
+  const getClsName = () => {
+    if (heightNorm && window.innerHeight > heightNorm) return "aboutUsBottom";
+    return "aboutUs";
+  };
   const [clsName, setClsName] = useState(getClsName());
   useEffect(() => {
     window.addEventListener("resize", () => setClsName(getClsName()));
