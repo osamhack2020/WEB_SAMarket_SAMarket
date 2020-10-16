@@ -1,0 +1,43 @@
+.menuBar {
+  position: fixed;
+  bottom: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 70px;
+  background: #fdfeff;
+  box-shadow: 0px -5px 20px 0px rgba(80, 80, 80, 10%);
+}
+
+.writeBtn {
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  border-radius: 50%;
+  background: #1a8aba;
+
+  position: absolute;
+  top: -20px;
+  right: 8%;
+  width: 50px;
+  height: 50px;
+  box-shadow: 0px 5px 20px 0px rgba(80, 80, 80, 10%);
+}
+
+.writeBtn::before {
+  content: "";
+  position: absolute;
+  top: 9px;
+  left: 8px;
+  background: url(../../../imgs/icons/write.svg) no-repeat;
+  width: 50px;
+  height: 50px;
+  background-size: 64%;
+}
+
+.barBtn {
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  width: 20%;
+  height: 60px;
+}

@@ -1,0 +1,43 @@
+.profile {
+  margin-top: 60px;
+  text-align: center;
+}
+
+.name {
+  font-weight: bold;
+  margin-top: 10px;
+  height: 20px;
+}
+
+.belong {
+  margin-top: 15px;
+}
+
+.belongOnly {
+  position: fixed;
+  top: 10px;
+  width: 100%;
+  text-align: center;
+}
+
+.loc,
+.org {
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  color: #fdfeff;
+  font-size: 15px;
+
+  height: 25px;
+  border-radius: 12.5px;
+  padding: 2px 15px 2px 15px;
+  margin: 0 2px 0 2px;
+}
+
+.loc {
+  background-color: #1a8aba;
+}
+
+.org {
+  background-color: #059acb;
+}
