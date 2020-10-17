@@ -14,6 +14,8 @@ function MakeDataGenerator(items) {
 }
 
 export const getNextSAMroad = MakeDataGenerator(samroads);
+export const getPostById = postId =>
+  samroads.filter(samroad => samroad.postId === postId)[0];
 
 export function signInReq(userId, password) {
   const user = users[userId];

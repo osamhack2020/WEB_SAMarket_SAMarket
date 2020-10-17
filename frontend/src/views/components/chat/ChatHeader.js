@@ -4,10 +4,11 @@ import "./Chat.css";
 import BackBtn from "../header/BackBtn";
 
 export default function ChatHeader({ chatRoomId }) {
-  // chatTitle 을 얻어오는 logic 필요
+  // chatRoomTitle 을 얻어오는 logic 필요
+  const chatRoomTitle = chatRoomId;
   return (
     <div className="chatHead">
-      <div className="chatTtitle">{chatRoomId}</div>
+      <div className="chatTtitle">{chatRoomTitle}</div>
       <BackBtn />
     </div>
   );

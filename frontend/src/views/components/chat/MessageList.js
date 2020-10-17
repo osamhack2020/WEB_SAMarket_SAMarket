@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import Message from "./Message";
 import "./Chat.css";
 
-export default function MessageList({ messages, name }) {
+export default function MessageList({ messages }) {
   const userInfo = useSelector(state => state.sign.userInfo);
   return (
     <div className="MessagList">
@@ -22,7 +22,7 @@ export default function MessageList({ messages, name }) {
       />
       {messages.map((message, i) => (
         <div key={i}>
-          <Message message={message} name={name} />
+          <Message message={message} />
         </div>
       ))}
     </div>
