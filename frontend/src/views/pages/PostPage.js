@@ -20,7 +20,7 @@ export default function PostPage({ match }) {
 
   return (
     <div className="HeadBack">
-      <BackBtn size={[25, 25]} loc={[20, 10]} />
+      <BackBtn />
       <PostHead postId={postId} type={type} author={author} />
       <Content info={info} />
     </div>

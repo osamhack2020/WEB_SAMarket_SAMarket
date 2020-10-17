@@ -14,7 +14,7 @@ const BackBtn = ({ history, size, loc }) => {
     outline: 0;
     cursor: pointer;
     position: absolute;
-    top: ${loc ? loc[0] : 15}px;
+    top: ${loc ? loc[0] : 22}px;
     left: ${loc ? loc[1] : 10}px;
   `;
   return <BackBtn onClick={e => history.goBack()} />;
