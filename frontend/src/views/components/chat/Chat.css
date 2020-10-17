@@ -4,6 +4,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  padding-bottom: 90px;
 }
 
 .chatPost {
@@ -77,7 +78,6 @@
 .messageContainer {
   display: flex;
   padding-left: 3%;
-  padding-bottom: 90px;
 }
 
 .myMessage {
