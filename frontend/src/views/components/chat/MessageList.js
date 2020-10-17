@@ -10,6 +10,10 @@ export default function MessageList({ messages, name }) {
         message={{ text: "안녕하세요!", user: "서형진" }}
         name={"고현수"}
       />
+      <Message
+        message={{ text: "안녕하세요~", user: "고현수" }}
+        name={"고현수"}
+      />
       {messages.map((message, i) => (
         <div key={i}>
           <Message message={message} name={name} />

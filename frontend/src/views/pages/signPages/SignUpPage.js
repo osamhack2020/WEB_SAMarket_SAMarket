@@ -10,7 +10,7 @@ export default function SignUpPage() {
     <div>
       <div className="signBack" />
       <div className="signPage">
-        <BackBtn />
+        <BackBtn loc={[15, 10]} />
         <Link to="/sign" className="toSignIn">
           입구로 돌아가기
         </Link>
