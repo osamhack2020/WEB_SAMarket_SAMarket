@@ -5,7 +5,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import User from "../user/User";
-import { users } from "data/users.json";
 import "./Post.css";
 
 const svgs = (() => {
@@ -18,7 +17,7 @@ const svgs = (() => {
 })();
 
 export default function PostHead({ postId, type, author }) {
-  const userInfo = users[useSelector(state => state.sign.userId)];
+  const userInfo = useSelector(state => state.sign.userInfo);
   const [liked, setLiked] = useState(userInfo.likes.indexOf(postId) >= 0);
 
   const getBtn = idx => {

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import Input from "./Input";
+import ChatInput from "./ChatInput";
 import MessageList from "./MessageList";
 import io from "socket.io-client";
 import "./Chat.css";
 
 let socket;
 
-export default function ChatBar(location) {
+export default function ChatBar({ search, chatId }) {
   const [name, setName] = useState("");
   const [room, setRoom] = useState("");
   const [message, setMessage] = useState("");
@@ -21,14 +21,13 @@ export default function ChatBar(location) {
     // 더미 데이터
     const { name, room } = { name: "고현수", room: "서형진" };
     // query-string middleware의 사용
-    // const { name, room } = queryString.parse(location.search);
+    // const { name, room } = queryString.parse(search);
     setName(name);
     setRoom(room);
 
     socket = io(ENDPOINT); // 소켓 연결
 
     socket.emit("join", { name, room }, error => {
-      // console.log("error");
       // 에러 처리
       if (error) {
         alert(error);
@@ -37,16 +36,13 @@ export default function ChatBar(location) {
 
     // return () => {
     //   socket.emit("disconnect");
-
     //   socket.off();
     // };
-  }, [ENDPOINT, location.search]);
-  // 한번만 부른다
-  // 불필요한 사이드 이펙트를 줄인다.
+  }, [ENDPOINT, search]);
+  // 한번만 부른다. 불필요한 사이드 이펙트를 줄인다.
 
   useEffect(() => {
     // 서버에서 message 이벤트가 올 경우에 대해서 `on`
-
     // 메세지 수신
     socket.on("message", message => {
       setMessages([...messages, message]);
@@ -72,7 +68,7 @@ export default function ChatBar(location) {
         <div className="chatScreen">
           <div className="chatScreenPaper">
             <MessageList messages={messages} name={name} />
-            <Input
+            <ChatInput
               message={message}
               setMessage={setMessage}
               sendMessage={sendMessage}

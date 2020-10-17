@@ -11,7 +11,6 @@ import { signOut } from "../modules/sign/state";
 import "./Pages.css";
 
 export default function ProfilePage({ match }) {
-  // Routing 만 할 뿐 실제 렌더링은 하지 않음
   const userId = useSelector(state => state.sign.userId);
   const user = users[match.params.userId];
   const dispatch = useDispatch();
