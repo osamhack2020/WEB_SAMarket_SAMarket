@@ -20,6 +20,9 @@ type Hub struct {
 	unregister chan *Client
 }
 
+// 유저 id대 hub 저장
+var hubMap map[int]Hub
+
 func newHub() *Hub {
 	return &Hub{
 		broadcast:  make(chan []byte),

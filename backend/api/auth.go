@@ -1,62 +1,52 @@
 package api
 
 import (
-	"time"
+	"fmt"
 
+	"net/http"
 	"sam/config"
+	"sam/middleware"
+	"sam/models"
 
-	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 )
-
-type Claim struct {
-	Id uint
-	jwt.StandardClaims
-}
 
 func InitAuthRouter(rg *gin.RouterGroup) {
 	router := rg.Group("/auth")
 	{
 		router.POST("/login", login)
 		router.GET("/logout", logout)
-		router.GET("/testgen", testgen)
+		router.POST("/register", register)
+		if config.Settings.Server.Mode == "debug" {
+			router.Use(middleware.TokenAuth)
+			router.GET("/checkSession", checkSession)
+		}
 	}
-}
-
-// testgen godoc
-// @Summary 토큰 발급 받기 (Debug API)
-// @Description 토큰발급
-// @name testgen
-// @Accept  json
-// @Produce  json
-// @Router /auth/testgen [get]
-// @Success 200 {object} models.User
-func testgen(c *gin.Context) {
-	expiration := time.Now().Add(120 * time.Hour)
-	claim := &Claim{
-		Id: 1,
-		StandardClaims: jwt.StandardClaims{
-			ExpiresAt: expiration.Unix(),
-		},
-	}
-	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claim)
-	tokenString, _ := token.SignedString(config.Settings.Key.JWTBytes)
-	c.SetCookie("token", tokenString, 1800, "", "", false, false)
-	c.JSON(200, gin.H{
-		"token": tokenString,
-	})
 }
 
 // login godoc
 // @Summary 로그인
-// @Description 로그인
+// @Description 로그인, 비밀번호는 sha256 + salt("samarket")
+// @ID login
 // @name Login
 // @Accept  json
 // @Produce  json
+// @Param payload body LoginRequest true "로그인 정보"
 // @Router /auth/login [post]
 // @Success 200 {object} models.User
 func login(c *gin.Context) {
-
+	var rq *LoginRequest
+	err := c.ShouldBindJSON(&rq)
+	if err != nil {
+		fmt.Println(err)
+	}
+	user := models.GetUserByIDAndPW(rq.LoginId, rq.Password)
+	if user == nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "error"})
+	} else {
+		middleware.GenerateToken(user, c)
+		c.JSON(http.StatusOK, gin.H{"login ok": "login ok"})
+	}
 }
 
 // logout godoc
@@ -68,10 +58,41 @@ func login(c *gin.Context) {
 // @Router /auth/logout [get]
 // @Success 200 {object} models.User
 func logout(c *gin.Context) {
-
+	//토큰 쿠키 expire
+	c.SetCookie("token", "", 0, "", "", false, false)
+	c.JSON(http.StatusOK, gin.H{"logout ok": "logout ok"})
 }
 
-// 가입하기 (비번, 아디, 군번 등)
+// register godoc
+// @Summary 회원가입
+// @Description 회원가입, 비밀번호는 sha256 + salt("samarket")
+// @Description id, unit 제외하고 보낼것
+// @ID register
+// @name register
+// @Accept  json
+// @Produce  json
+// @Param json body models.User true "회원가입 정보"
+// @Router /auth/register [post]
+// @Success 200 {object} models.User
 func register(c *gin.Context) {
+	var user models.User
+	err := c.ShouldBindJSON(&user)
+	if err != nil {
+		fmt.Println(err)
+	}
+	models.AddUser(user)
+}
 
+// checkSession godoc
+// @Summary 세션 체크
+// @Description 세션 체크
+// @Router /auth/checkSession [get]
+// @Sucess 200 {object} string
+func checkSession(c *gin.Context) {
+	val, _ := c.Get("user")
+	if user, ok := val.(models.User); ok {
+		fmt.Println(ok)
+		fmt.Println("uid: ", user.Id)
+	}
+	c.Status(200)
 }

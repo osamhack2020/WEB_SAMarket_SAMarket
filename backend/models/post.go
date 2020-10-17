@@ -11,6 +11,8 @@ type Post struct {
 	PostType  int
 	Price     int
 	Bgcolor   int
+	UnitId    int
+	Unit      Unit
 	CreatedAt time.Time
 	UpdatedAt time.Time
 }

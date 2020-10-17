@@ -11,21 +11,21 @@ func InitUserRouter(rg *gin.RouterGroup) {
 	router := rg.Group("/user")
 	{
 		router.Use(middleware.TokenAuth)
-		router.GET("/test", getUser)
+		router.GET("/profile/:id", getProfile)
 	}
 }
 
-// getUser godoc
+// getProfile godoc
 // @Security ApiKeyAuth
 // @Summary 해당 유저 프로파일 조회
 // @Description
 // @name getUser
 // @Accept  json
 // @Produce  json
-// @Header 200 {string} Token "qwerty"
-// @Router /user/test [get]
+// @Param id path string true "유저 id"
+// @Router /user/profile/{id} [get]
 // @Success 200 {object} models.User
-func getUser(c *gin.Context) {
-	var user = models.GetUser()
+func getProfile(c *gin.Context) {
+	user := models.GetUserProfile(c.Param("id"))
 	c.JSON(200, user)
 }

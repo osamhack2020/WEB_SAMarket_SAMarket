@@ -6,7 +6,9 @@ import (
 
 func InitPostRouter(rg *gin.RouterGroup) {
 	router := rg.Group("/post")
-	router.GET("/post", test)
+	{
+		router.GET("/post", test)
+	}
 }
 
 func test(c *gin.Context) {
@@ -19,3 +21,7 @@ func test(c *gin.Context) {
 // 판매글 채팅방 열기 API
 
 // 해당 부대 내 게시글 조회하기 API (order by date, pagination limit = 15)
+
+func AddPost(c *gin.Context) {
+
+}
