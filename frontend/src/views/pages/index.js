@@ -23,7 +23,7 @@ export default function Pages() {
         <Route path="/signup" component={SignUpPage} />
         <Route path="/aboutus/:what" component={InDevPage} />
         <Route path="/likes" component={LikesPage} />
-        <Route path="/chat/:chatId" component={ChattingPage} />
+        <Route path="/chat/:chatRoomId" component={ChattingPage} />
         <Route path="/chats" component={ChatsPage} />
         <Route path="/write" component={WritePage} />
         <Route path="/posts/:postId" component={PostPage} />

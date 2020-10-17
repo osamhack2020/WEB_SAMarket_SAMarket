@@ -1,28 +1,20 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import Profile from "../user/Profile";
 import "./Chat.css";
 
-// Material-ui
-import Paper from "@material-ui/core/Paper";
-
-export default function Message({ message: { text, user }, name }) {
-  let isSentByCurrentUser = false;
-  const trimmedName = name.trim().toLowerCase();
-  if (user === trimmedName) {
-    isSentByCurrentUser = true;
-  }
-  return isSentByCurrentUser ? (
-    <div className="messageContainer end">
-      <Paper className="messageBox backgroundBlue">
-        <p className="messageText blue">{text}</p>
-      </Paper>
-      <p className="sentMessage pl-10">{trimmedName}</p>
-    </div>
-  ) : (
-    <div className="messageContainer start">
-      <p className="sentMessage pr-10">{user}</p>
-      <Paper className="messageBox backgroundLight">
-        <p className="messageText black">{text}</p>
-      </Paper>
+export default function Message({ message: { text, sender } }) {
+  const userInfo = useSelector(state => state.sign.userInfo);
+  const isMyMsg = userInfo.id === sender.id;
+  return (
+    <div className={`messageContainer ${isMyMsg ? "myMessage" : "~myMessage"}`}>
+      {!isMyMsg && ( // 자기 메시지의 경우 프로필을 표시하지 않음
+        <div>
+          <Profile userInfo={sender} size={30} />
+          <p className="senderName">{sender.name}</p>
+        </div>
+      )}
+      <div className={`messageBox ${isMyMsg ? "byMe" : "~byMe"}`}>{text}</div>
     </div>
   );
 }
