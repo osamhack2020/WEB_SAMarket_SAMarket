@@ -10,8 +10,8 @@ export default function Post({ info }) {
   if (type === "adv") return <Advertise info={info} />;
   return (
     <div className="post">
-      <Content info={info} />
       <PostHead postId={postId} type={type} author={author} />
+      <Content info={info} />
     </div>
   );
 }

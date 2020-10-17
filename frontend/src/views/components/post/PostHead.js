@@ -3,7 +3,7 @@
  게시글을 쓴 유저의 정보를 요약해서 보여줌
 */
 import React, { useState } from "react";
-import Profile from "../../../data/me.json";
+import { useSelector } from "react-redux";
 import User from "../user/User";
 import "./Post.css";
 
@@ -11,13 +11,14 @@ const svgs = (() => {
   let svgs = {};
   let imgSrcs = ["share", "like", "liked", "buy", "deny"];
   for (let idx in imgSrcs) {
-    svgs[imgSrcs[idx]] = require("../../../imgs/icons/" + imgSrcs[idx] + ".svg");
+    svgs[imgSrcs[idx]] = require("imgs/icons/" + imgSrcs[idx] + ".svg");
   }
   return svgs;
 })();
 
 export default function PostHead({ postId, type, author }) {
-  const [liked, setLiked] = useState(Profile.likes.indexOf(postId) >= 0);
+  const userInfo = useSelector(state => state.sign.userInfo);
+  const [liked, setLiked] = useState(userInfo.likes.indexOf(postId) >= 0);
 
   const getBtn = idx => {
     const img = {

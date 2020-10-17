@@ -1,17 +1,26 @@
 import React, { useEffect, useState } from "react";
-import Input from "./Input";
+import { useSelector } from "react-redux";
+import { getPostById } from "views/modules/common/fakeServer";
+import Post from "../post/Post";
 import MessageList from "./MessageList";
+import ChatInput from "./ChatInput";
 import io from "socket.io-client";
 import "./Chat.css";
 
 let socket;
 
-export default function ChatBar(location) {
-  const [name, setName] = useState("");
+export default function ChatRoom({ search, chatRoomId }) {
+  // name 은 redux 에서 로그인된 계정 정보를 직접 가져오는 방식으로 수정
+  const userInfo = useSelector(state => state.sign.userInfo);
+  // room을 사용하지 않고 있음 chatRoomId 로 room 정보를 가져오는 로직 필요할 듯
   const [room, setRoom] = useState("");
+  // 가져온 룸 정보에서 postId 를 가져옴
+  const postId = true ? 0 : undefined;
+
+  // chatting 에 사용
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
-
+  // users 도 사용하지 않고 있음
   const [users, setUsers] = useState("");
 
   const ENDPOINT = "nanofiber.org:8080/ws";
@@ -19,16 +28,13 @@ export default function ChatBar(location) {
 
   useEffect(() => {
     // 더미 데이터
-    const { name, room } = { name: "고현수", room: "서형진" };
+    const { id, room } = { id: userInfo.id, room: chatRoomId };
     // query-string middleware의 사용
-    // const { name, room } = queryString.parse(location.search);
-    setName(name);
+    // const { id, room } = queryString.parse(search);
     setRoom(room);
 
     socket = io(ENDPOINT); // 소켓 연결
-
-    socket.emit("join", { name, room }, error => {
-      // console.log("error");
+    socket.emit("join", { id, room }, error => {
       // 에러 처리
       if (error) {
         alert(error);
@@ -37,16 +43,13 @@ export default function ChatBar(location) {
 
     // return () => {
     //   socket.emit("disconnect");
-
     //   socket.off();
     // };
-  }, [ENDPOINT, location.search]);
-  // 한번만 부른다
-  // 불필요한 사이드 이펙트를 줄인다.
+  }, [ENDPOINT, search]);
+  // 한번만 부른다. 불필요한 사이드 이펙트를 줄인다.
 
   useEffect(() => {
     // 서버에서 message 이벤트가 올 경우에 대해서 `on`
-
     // 메세지 수신
     socket.on("message", message => {
       setMessages([...messages, message]);
@@ -67,19 +70,20 @@ export default function ChatBar(location) {
   };
 
   return (
-    <div className="chatOuterContainer">
-      <div className="chatInnerContainer">
-        <div className="chatScreen">
-          <div className="chatScreenPaper">
-            <MessageList messages={messages} name={name} />
-            <Input
-              message={message}
-              setMessage={setMessage}
-              sendMessage={sendMessage}
-            />
+    <div className="chatRoom">
+      {
+        postId !== undefined && (
+          <div className="chatPost">
+            <Post info={getPostById(postId)} />
           </div>
-        </div>
-      </div>
+        ) /* posting 을 통해서 생성된 채팅방 */
+      }
+      <MessageList messages={messages} />
+      <ChatInput
+        message={message}
+        setMessage={setMessage}
+        sendMessage={sendMessage}
+      />
     </div>
   );
 }

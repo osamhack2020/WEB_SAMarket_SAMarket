@@ -1,23 +1,15 @@
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 import Button from "@material-ui/core/Button";
 import "./Chat.css";
+import BackBtn from "../header/BackBtn";
 
-export default function ChatHeader({ user }) {
+export default function ChatHeader({ chatRoomId }) {
+  // chatRoomTitle 을 얻어오는 logic 필요
+  const chatRoomTitle = chatRoomId;
   return (
     <div className="chatHead">
-      <div className="userTitle">
-        <h3 className="userInfo">{user}</h3>
-      </div>
-      <div className="buttonBox">
-        <Button
-          // variant="contained"
-          variant="raised"
-          href="../"
-          color="inherit"
-        >
-          close
-        </Button>
-      </div>
+      <div className="chatTtitle">{chatRoomTitle}</div>
+      <BackBtn />
     </div>
   );
 }

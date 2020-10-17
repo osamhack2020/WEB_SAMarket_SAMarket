@@ -8,10 +8,10 @@ export default function Profile({ userInfo, size }) {
   let profileImg;
   try {
     // 사용자 이미지가 있는지 확인
-    profileImg = require("../../../imgs/users/" + id + ".png");
+    profileImg = require(`imgs/users/${id}.png`);
   } catch {
     //  없으면 기본 이미지로
-    profileImg = require("../../../imgs/icons/user.svg");
+    profileImg = require("imgs/icons/user.svg");
   }
   const userImg = {
     backgroundImage: "url(" + profileImg + ")",
@@ -21,8 +21,13 @@ export default function Profile({ userInfo, size }) {
     height: `${size}px`
   };
 
+  const userImgBack = {
+    width: `${size}px`,
+    height: `${size}px`
+  };
+
   return (
-    <Link to={`/profile/${id}`} className="userImg">
+    <Link to={`/profile/${id}`} style={userImgBack} className="userImg">
       <div style={userImg} />
     </Link>
   );
