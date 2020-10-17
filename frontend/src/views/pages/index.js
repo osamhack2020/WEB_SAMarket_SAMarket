@@ -6,11 +6,9 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import MainPage from "./MainPage";
 import { InDevPage, NotFoundPage } from "./tempPages/index";
 import { SignInPage, SignUpPage } from "./signPages/index";
+import { PostPage, WritePage } from "./postPages/index";
+import { ChatsPage, ChattingPage } from "./chatPages/index";
 import LikesPage from "./LikesPage";
-import ChattingPage from "./ChattingPage";
-import ChatsPage from "./ChatsPage";
-import WritePage from "./WritePage";
-import PostPage from "./PostPage";
 import ProfilePage from "./ProfilePage";
 
 export default function Pages() {
