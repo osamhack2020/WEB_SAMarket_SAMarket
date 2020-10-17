@@ -15,9 +15,10 @@ function MakeDataGenerator(items) {
 
 export const getNextSAMroad = MakeDataGenerator(samroads);
 
-export function signInReq({ userId, password }) {
+export function signInReq(userId, password) {
   const user = users[userId];
   if (user && user.pw === password) {
+    console.log(user);
     return user;
   }
   throw new Error("Sign In Failed");
