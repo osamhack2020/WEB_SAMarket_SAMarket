@@ -13,13 +13,18 @@
 .postingInfo {
   text-align: center;
   width: 100%;
-  height: 300px;
 }
 
 .postingBack {
   display: inline-block;
   padding-top: 100px;
-  width: 80%;
-  height: 100vh;
+  width: 350px;
+  padding-bottom: 80px;
+  border-radius: 20px;
   background: #fdfeff;
+}
+
+.postingContent {
+  margin-top: 40px;
+  line-height: 30px;
 }
