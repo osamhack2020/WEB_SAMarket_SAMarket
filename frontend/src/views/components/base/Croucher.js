@@ -5,9 +5,10 @@ import React, { useState, useEffect } from "react";
 
 export default function Croucher({ children, norm, stretch, crouched }) {
   /* hook 을 맨 위로 쓸 것, with 정의 순서 고려 */
-  const [pageY, setPageY] = useState(0);
+  const [pageY, setPageY] = useState(sessionStorage.getItem("pageY") || 0);
   const handleScroll = () => {
     const { pageYOffset } = window;
+    sessionStorage.setItem("pageY", pageYOffset);
     setPageY(pageYOffset);
   };
   useEffect(() => {
@@ -15,5 +16,5 @@ export default function Croucher({ children, norm, stretch, crouched }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [pageY]);
 
-  return <div className={pageY <= norm ? stretch : crouched}>{children}</div>;
+  return <div className={pageY >= norm ? crouched : stretch}>{children}</div>;
 }

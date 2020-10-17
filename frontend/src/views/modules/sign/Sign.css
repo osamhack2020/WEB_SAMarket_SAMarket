@@ -1,0 +1,46 @@
+.signInput,
+.signInputDate {
+  box-sizing: border-box;
+  border: 0;
+  border-radius: 12.5px;
+  margin-top: 10px;
+  width: 250px;
+  height: 30px;
+  background: #f0f3f6;
+  padding: 0 10px 0 10px;
+  z-index: 2;
+}
+
+.signBtn {
+  color: #fdfeff;
+  font-weight: bold;
+  font-size: 15px;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  width: 250px;
+  height: 30px;
+  margin-top: 20px;
+  border-radius: 15px;
+  background: #1d9acb;
+  box-shadow: 0px 0px 20px 0px rgba(80, 80, 80, 20%);
+}
+
+.signQues {
+  font-size: 13px;
+  width: 290px;
+  text-align: right;
+  margin-top: 5px;
+}
+
+.signFindLink {
+  color: #22b0ea;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.warnMsg {
+  color: #ff5353;
+  margin-top: 10px;
+  font-size: 12px;
+}

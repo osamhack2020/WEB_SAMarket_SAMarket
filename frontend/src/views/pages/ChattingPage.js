@@ -1,12 +1,21 @@
 import React from "react";
-import ChatBar from "../components/chat/ChatBar";
-import ChatHeader from "../components/chat/ChatHeader";
+import { useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
+import ChatHeader from "views/components/chat/ChatHeader";
+import ChatRoom from "views/components/chat/ChatRoom";
 
-export default function ChattingPage(props) {
-  return (
-    <div className="ChattingPage">
-      <ChatHeader /* 더미 데이터 "서형진" */ user="서형진" />
-      <ChatBar />
-    </div>
-  );
+export default function ChattingPage({ match }) {
+  const chatRoomId = match.params.chatRoomId;
+  if (useSelector(state => state.sign.authToken)) {
+    return (
+      <div>
+        {/* 더미데이터 서형진 
+          => chatRoomId 를 암호화 해서 url로 채팅방 1:1 매칭
+         + 해당 채팅방에 들어올 수 있는지 auth 체크 할 것 (backend) */}
+        <ChatHeader chatRoomId={chatRoomId} />
+        <ChatRoom chatRoomId={chatRoomId} />
+      </div>
+    );
+  }
+  return <Redirect to="/" />;
 }

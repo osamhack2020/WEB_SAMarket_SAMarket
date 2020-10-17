@@ -1,0 +1,76 @@
+.signPage,
+.signBack {
+  top: 0;
+  left: 50%;
+  margin-left: -170px;
+  width: 340px;
+}
+
+.signPage {
+  text-align: center;
+  position: absolute;
+  overflow-x: hidden;
+}
+
+.signBack {
+  position: fixed;
+  height: 100%;
+  background: #fdfeff;
+  z-index: -1;
+  box-shadow: 0px 0px 20px 0px rgba(80, 80, 80, 10%);
+}
+
+.signLogo {
+  display: inline-block;
+  background: url(../../../imgs/logoShadow512.png);
+  width: 130px;
+  height: 130px;
+  background-size: 100%;
+  margin-top: 20%;
+}
+
+.signTitle {
+  margin: 0 0 0 0;
+  font-size: 25px;
+  color: #202326;
+}
+
+.sginSub {
+  margin: 5px 0 20px 0;
+  font-size: 16px;
+  font-weight: normal;
+  color: #505560;
+}
+
+.signSpliter {
+  position: relative;
+  left: 50%;
+  margin: 40px 0 0 -140px;
+  width: 280px;
+  height: 5px;
+  background: #f0f3f6;
+}
+
+.signUpBtn {
+  color: #1d9acb;
+  font-weight: bold;
+  font-size: 15px;
+  border: 1px solid #1d9acb;
+  outline: 0;
+  cursor: pointer;
+  margin: 15px;
+  border-radius: 15px;
+  width: 250px;
+  height: 30px;
+  text-decoration: none;
+  background: rgba(0, 0, 0, 0);
+}
+
+.toSignIn {
+  text-decoration: none;
+  position: absolute;
+  top: 16px;
+  left: 30px;
+  font-size: 13px;
+  cursor: pointer;
+}
