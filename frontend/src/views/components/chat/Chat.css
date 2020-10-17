@@ -6,6 +6,12 @@
   flex-direction: column;
 }
 
+.chatPost {
+  box-sizing: border-box;
+  width: 100%;
+  margin: -30px 0 20px 0;
+}
+
 .chatHead {
   position: fixed;
   top: 0px;
@@ -92,6 +98,7 @@
   border-radius: 10px;
   padding: 10px 15px 10px 15px;
   background-color: #fdfeff;
+  font-size: 14px;
 }
 
 .byMe {
