@@ -6,12 +6,11 @@ import "./Chat.css";
 
 let socket;
 
-export default function ChatBar({ search, chatId }) {
+export default function ChatRoom({ search, chatRoomId }) {
   const [name, setName] = useState("");
   const [room, setRoom] = useState("");
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
-
   const [users, setUsers] = useState("");
 
   const ENDPOINT = "nanofiber.org:8080/ws";
@@ -19,7 +18,7 @@ export default function ChatBar({ search, chatId }) {
 
   useEffect(() => {
     // 더미 데이터
-    const { name, room } = { name: "고현수", room: "서형진" };
+    const { name, room } = { name: "고현수", room: chatRoomId };
     // query-string middleware의 사용
     // const { name, room } = queryString.parse(search);
     setName(name);
@@ -63,19 +62,13 @@ export default function ChatBar({ search, chatId }) {
   };
 
   return (
-    <div className="chatOuterContainer">
-      <div className="chatInnerContainer">
-        <div className="chatScreen">
-          <div className="chatScreenPaper">
-            <MessageList messages={messages} name={name} />
-            <ChatInput
-              message={message}
-              setMessage={setMessage}
-              sendMessage={sendMessage}
-            />
-          </div>
-        </div>
-      </div>
+    <div className="chatRoom">
+      <MessageList messages={messages} name={name} />
+      <ChatInput
+        message={message}
+        setMessage={setMessage}
+        sendMessage={sendMessage}
+      />
     </div>
   );
 }

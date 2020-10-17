@@ -1,18 +1,24 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import Message from "./Message";
 import "./Chat.css";
 
 export default function MessageList({ messages, name }) {
+  const userInfo = useSelector(state => state.sign.userInfo);
   return (
     <div className="MessagList">
       {/* 더미 데이터 */}
       <Message
-        message={{ text: "안녕하세요!", user: "서형진" }}
-        name={"고현수"}
+        message={{
+          text: "안녕하세요!",
+          sender: { name: "서형진", id: "shj0914" }
+        }}
       />
       <Message
-        message={{ text: "안녕하세요~", user: "고현수" }}
-        name={"고현수"}
+        message={{
+          text: "안녕하세요~",
+          sender: userInfo
+        }}
       />
       {messages.map((message, i) => (
         <div key={i}>
