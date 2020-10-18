@@ -34,6 +34,7 @@ func testSocket(c *gin.Context) {
 }
 
 // accept godoc
+// @Security ApiKeyAuth
 // @Summary 웹소켓 등록
 // @Description Swagger에서 하지말고 Websocket 등록해서 테스트
 // @ID  accpetWS
