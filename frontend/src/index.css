@@ -17,6 +17,12 @@ code {
     monospace;
 }
 
+.backdropBlur {
+  background: rgba(253, 254, 255, 90%) !important;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
 ::-webkit-scrollbar {
   width: 0px;
 }
