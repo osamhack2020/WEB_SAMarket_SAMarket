@@ -58,13 +58,12 @@ export default createReducer(
           userId: action.userId,
           userInfo: action.userInfo
         });
-        /* 등록 성공시 자동 로그인?
+        // 등록 성공시 자동 로그인
         state.userId = action.userId;
         state.userInfo = user;
         state.authToken = "veryComplicateTokenString";
         localStorage.setItem("userId", state.userId);
         localStorage.setItem("authToken", state.authToken);
-        */
         alert("등록 성공!");
       } catch {
         alert("Sign Up Failed");

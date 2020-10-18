@@ -6,7 +6,7 @@ import "./Chat.css";
 export default function ChatInput({ message, setMessage, sendMessage }) {
   const userInfo = useSelector(state => state.sign.userInfo);
   return (
-    <div className="chatInputContainer">
+    <div className="chatInputContainer backdropBlur">
       <div className="chatInputInnerContainer">
         <Profile userInfo={userInfo} size={35} />
         <input

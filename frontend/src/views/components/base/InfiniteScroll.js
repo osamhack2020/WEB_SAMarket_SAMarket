@@ -16,7 +16,6 @@ export default function InfiniteScroll({ onAdd, offSet = 1, children }) {
       window.scrollY + document.documentElement.clientHeight >=
       document.documentElement.scrollHeight
     ) {
-      for (let _ = 0; _ < offSet; _++) onAdd();
       setHitBottom(true);
     }
   };
