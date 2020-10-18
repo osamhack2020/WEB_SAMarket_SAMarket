@@ -21,7 +21,7 @@ export default function PostPage({ match }) {
 
   return (
     <Fragment>
-      <div className="postHeadBack">
+      <div className="postHeadBack backdropBlur">
         <BackBtn />
         <PostHead postId={postId} type={type} author={author} />
       </div>
