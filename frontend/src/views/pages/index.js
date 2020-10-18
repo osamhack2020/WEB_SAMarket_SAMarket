@@ -12,6 +12,7 @@ import WritePage from "./WritePage";
 import PostPage from "./PostPage";
 import ProfilePage from "./ProfilePage";
 import NotFoundPage from "./NotFoundPage";
+import View from "../modules/api/example";
 
 export default function Pages() {
   return (
@@ -25,6 +26,7 @@ export default function Pages() {
         <Route path="/write" component={WritePage} />
         <Route path="/posts/:postId" component={PostPage} />
         <Route path="/profile" component={ProfilePage} />
+        <Route path="/view" component={View} />
         <Route component={NotFoundPage} />
       </Switch>
     </BrowserRouter>
