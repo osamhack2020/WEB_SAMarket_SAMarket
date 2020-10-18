@@ -17,6 +17,8 @@ export const getNextSAMroad = MakeDataGenerator(samroads);
 export const getPostById = postId =>
   samroads.filter(samroad => samroad.postId === parseInt(postId))[0];
 
+export const getChatList = () => {};
+
 export function signInReq(userId, password) {
   const user = users[userId];
   if (user && user.pw === password) {
