@@ -12,6 +12,7 @@ export default function Croucher({ children, norm, stretch, crouched }) {
     setPageY(pageYOffset);
   };
   useEffect(() => {
+    window.scrollTo(0, pageY); // scroll 위치 복구
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [pageY]);
