@@ -2,9 +2,11 @@
 import { combineReducers } from "redux";
 import samroadReducer from "./samroad/state";
 import searchReducer from "./search/state";
+import apiReducer from "./api/state";
 
 export default combineReducers({
   // 다른 reducer 정의 시, 여기에 추가
   samroad: samroadReducer,
-  search: searchReducer
+  search: searchReducer,
+  api: apiReducer
 });
