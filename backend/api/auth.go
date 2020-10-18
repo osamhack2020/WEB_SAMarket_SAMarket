@@ -33,19 +33,20 @@ func InitAuthRouter(rg *gin.RouterGroup) {
 // @Produce  json
 // @Param payload body LoginRequest true "로그인 정보"
 // @Router /auth/login [post]
-// @Success 200 {object} models.User
+// @Success 200 {object} LoginResult
 func login(c *gin.Context) {
 	var rq *LoginRequest
 	err := c.ShouldBindJSON(&rq)
 	if err != nil {
 		fmt.Println(err)
 	}
-	user := models.GetUserByIDAndPW(rq.LoginId, rq.Password)
+	user := models.UserStore.GetUserByIDAndPW(rq.LoginID, rq.Password)
+	result := &LoginResult{*user, models.ChatStore.GetUnreadedCount(user.ID)}
 	if user == nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "error"})
 	} else {
 		middleware.GenerateToken(user, c)
-		c.JSON(http.StatusOK, gin.H{"login ok": "login ok"})
+		c.JSON(http.StatusOK, result)
 	}
 }
 
@@ -80,10 +81,11 @@ func register(c *gin.Context) {
 	if err != nil {
 		fmt.Println(err)
 	}
-	models.AddUser(user)
+	models.UserStore.AddUser(user)
 }
 
 // checkSession godoc
+// @Security ApiKeyAuth
 // @Summary 세션 체크
 // @Description 세션 체크
 // @Router /auth/checkSession [get]
@@ -92,7 +94,7 @@ func checkSession(c *gin.Context) {
 	val, _ := c.Get("user")
 	if user, ok := val.(models.User); ok {
 		fmt.Println(ok)
-		fmt.Println("uid: ", user.Id)
+		fmt.Println("uid: ", user.ID)
 	}
 	c.Status(200)
 }

@@ -14,4 +14,5 @@ replace (
 	sam/config v0.0.0 => ./../config
 	sam/middleware v0.0.0 => ./../middleware
 	sam/models v0.0.0 => ./../models
+	sam/store v0.0.0 => ./../store
 )

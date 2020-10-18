@@ -7,21 +7,44 @@ import (
 func InitPostRouter(rg *gin.RouterGroup) {
 	router := rg.Group("/post")
 	{
-		router.GET("/post", test)
+		router.POST("/add", addPost)
+		router.GET("/list", getPostList)
+		router.GET("/view/:id", getPost)
 	}
 }
 
-func test(c *gin.Context) {
-	c.JSON(200, gin.H{
-		"message": "hello",
-	})
+// getPost godoc
+// @Security ApiKeyAuth
+// @Description 게시글 조회하기
+// @Summary 게시글 조회하기
+// @name getPost
+// @Produce  json
+// @Router /post/view/{id} [get]
+// @Success 200 {object} []models.Post
+func getPost(c *gin.Context) {
+
 }
 
-// 해당 유저가 쓴 글 조회 API
-// 판매글 채팅방 열기 API
+// getPostList godoc
+// @Security ApiKeyAuth
+// @Description 부대 게시글 목록 가져오기
+// @Summary 부대 게시글 목록 가져오기
+// @name getPostList
+// @Produce  json
+// @Router /post/list [get]
+// @Success 200 {object} []models.Post
+func getPostList(c *gin.Context) {
 
-// 해당 부대 내 게시글 조회하기 API (order by date, pagination limit = 15)
+}
 
-func AddPost(c *gin.Context) {
+// addPost godoc
+// @Security ApiKeyAuth
+// @Description 게시글 올리기
+// @Summary 게시글 올리기
+// @name addPost
+// @Produce  json
+// @Router /post/add [post]
+// @Success 200 {object} []models.Post
+func addPost(c *gin.Context) {
 
 }

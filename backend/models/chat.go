@@ -6,20 +6,31 @@ import (
 
 // 1:1 채팅
 type ChatRoom struct {
-	Id           uint `json:"id"`
-	Seller       User `json:"seller"`
-	SellerId     uint
-	Buyer        User `json:"buyer"`
-	BuyerId      uint
+	ID           uint      `json:"id"`
 	ModifiedDate time.Time `json:"modified_date"`
 }
 
 type ChatLog struct {
-	Id           uint `json:"id"`
-	Sender       User
-	SenderId     uint
-	content      string
+	ID           uint
 	ChatRoom     ChatRoom
-	ChatRoomId   uint
+	ChatRoomID   uint
+	Sender       User
+	SenderID     string
+	Readed       bool
 	ModifiedDate time.Time `json:"modified_date"`
+}
+
+var ChatStore IChatStore
+
+type IChatStore struct {
+}
+
+func (store IChatStore) AddChatLog(log ChatLog) {
+
+}
+
+func (store IChatStore) GetUnreadedCount(userID string) int64 {
+	var count int64
+	db.Model(&ChatLog{}).Where("receiver_id = ? and readed = false", userID).Count(&count)
+	return count
 }

@@ -12,13 +12,13 @@ import (
 )
 
 type Claim struct {
-	LoginId  string
+	LoginID  string
 	Password string
 	jwt.StandardClaims
 }
 
 func EnableCORS(c *gin.Context) {
-	c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+	c.Writer.Header().Set("Access-Control-Allow-Origin", "http://localhost:3000 http://samarket.kr")
 	c.Writer.Header().Set("Access-Control-Allow-Credentials", "true")
 	c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With, Set-Cookie")
 	c.Writer.Header().Set("Access-Control-Allow-Methods", "POST, OPTIONS, GET, PUT")
@@ -28,7 +28,7 @@ func EnableCORS(c *gin.Context) {
 func GenerateToken(user *models.User, c *gin.Context) {
 	expiration := time.Now().Add(120 * time.Hour)
 	claim := &Claim{
-		LoginId:  user.LoginId,
+		LoginID:  user.LoginID,
 		Password: user.Password,
 		StandardClaims: jwt.StandardClaims{
 			ExpiresAt: expiration.Unix(),
@@ -50,7 +50,7 @@ func TokenAuth(c *gin.Context) {
 	_, err = jwt.ParseWithClaims(token, claim, func(token *jwt.Token) (interface{}, error) {
 		return config.Settings.Key.JWTBytes, nil
 	})
-	user := models.GetUserByIDAndPW(claim.LoginId, claim.Password)
+	user := models.UserStore.GetUserByIDAndPW(claim.LoginID, claim.Password)
 	if user != nil {
 		c.Set("user", *user)
 	}

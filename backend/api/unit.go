@@ -1,6 +1,7 @@
 package api
 
 import (
+	"net/http"
 	"sam/models"
 
 	"github.com/gin-gonic/gin"
@@ -21,5 +22,5 @@ func InitUnitRouter(rg *gin.RouterGroup) {
 // @Router /unit/list [get]
 // @Success 200 {object} []models.Unit
 func getUnitList(c *gin.Context) {
-	c.JSON(200, models.GetUnitList())
+	c.JSON(http.StatusOK, models.UnitStore.GetUnitList())
 }

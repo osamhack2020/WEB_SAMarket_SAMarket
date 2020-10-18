@@ -9,11 +9,11 @@ import (
 
 type User struct {
 	// 유저 PRI KEY
-	Id string `gorm:"primary_key"`
+	ID string `gorm:"primary_key;size:36"`
 	// 유저 로그인 아이디
-	LoginId string `gorm:"unique"`
+	LoginID string `gorm:"unique"`
 	// 비밀번호
-	Password string
+	Password string `json:"-"`
 	// 이름
 	Name string
 	// 전화번호
@@ -23,11 +23,20 @@ type User struct {
 	// 군 종류
 	Mil uint
 	// 부대 id
-	UnitId uint
+	UnitID uint
 	Unit   Unit
 }
 
-func GetUserByIDAndPW(id string, pw string) *User {
+type IUserStore struct{}
+
+var UserStore IUserStore
+
+func (u *User) BeforeCreate(tx *gorm.DB) (err error) {
+	u.ID = uuid.NewV4().String()
+	return
+}
+
+func (store IUserStore) GetUserByIDAndPW(id string, pw string) *User {
 	var user User
 	err := db.Where("login_id = ? AND password = ?", id, pw).First(&user).Error
 	if err != nil {
@@ -37,41 +46,19 @@ func GetUserByIDAndPW(id string, pw string) *User {
 	return &user
 }
 
-func AddUser(user User) {
-	err := db.Select("LoginId", "Password", "Name", "Phone", "Mil", "UnitId").Create(&user).Error
+func (store IUserStore) AddUser(user User) {
+	err := db.Select("LoginID", "Password", "Name", "Phone", "Mil", "UnitID").Create(&user).Error
 	if err != nil {
 		fmt.Println(err)
 	}
 }
 
-type UserProfile struct {
-	// Pri
-	Id string
-	// 이름
-	Name string
-	// 군 종류
-	Mil uint
-	// 부대
-	UnitId uint
-	Unit   Unit
-	// 프로필 사진
-	ProfileURL string
-}
-
-func (u *User) BeforeCreate(tx *gorm.DB) (err error) {
-	u.Id = uuid.NewV4().String()
-	return
-}
-
-func GetUser(id string) *User {
+func (store IUserStore) GetUser(id string) *User {
 	var user User
 	db.Where("id = ?", id).Preload("Unit").Find(&user)
 	return &user
 }
 
-func GetUserProfile(id string) *UserProfile {
-	var userProfile UserProfile
-	db.Model(&User{}).Where("id = ?", id).Find(&userProfile)
-	db.Where("id = ?", userProfile.UnitId).Find(&userProfile.Unit)
-	return &userProfile
+func (store IUserStore) GetFriendList(user User) {
+	db.Model(&UserRelation{}).Where("first_id = ? or second_id = ?", user.ID, user.ID)
 }

@@ -1,6 +1,16 @@
 package models
 
 type Image struct {
-	Id  uint
-	url string
+	ID     uint
+	UserID string
+	User   User
+	url    string
+}
+
+type IImageStore struct{}
+
+var ImageStore IImageStore
+
+func (store IImageStore) addImage() {
+
 }

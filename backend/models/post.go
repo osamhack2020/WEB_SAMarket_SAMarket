@@ -3,16 +3,24 @@ package models
 import "time"
 
 type Post struct {
-	Id        uint
-	AuthorId  uint
+	ID        uint
+	AuthorID  uint `json:"-"`
 	Author    User
 	Tags      string
 	Title     string
-	PostType  int
+	PostType  string
 	Price     int
 	Bgcolor   int
-	UnitId    int
-	Unit      Unit
+	UnitID    int  `json:"-"`
+	Unit      Unit `json:"-"`
 	CreatedAt time.Time
 	UpdatedAt time.Time
+}
+
+type IPostStore struct{}
+
+var PostStore IPostStore
+
+func (store IPostStore) GetPostList(mil uint) {
+
 }
