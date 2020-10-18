@@ -4,5 +4,11 @@
 import React from "react";
 
 export default function ChatsPage() {
-  return <div>채팅 목록</div>;
+  return (
+    <div>
+      <div className="chatsListHead" />
+      <div className="chatsList" />
+      채팅 목록
+    </div>
+  );
 }
