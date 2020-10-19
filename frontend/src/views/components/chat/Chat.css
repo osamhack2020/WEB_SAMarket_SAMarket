@@ -64,12 +64,10 @@
   height: 30px;
 }
 
-.inputButton {
+.inputBtn {
   position: relative;
   left: -30px;
   top: 7px;
-  border: 0;
-  outline: 0;
   width: 20px;
   height: 20px;
   background: url(../../../imgs/icons/chat.svg) no-repeat;
@@ -106,4 +104,22 @@
 
 .byMe {
   background-color: #05b0ea;
+  margin-bottom: 7px;
+}
+
+.relayMsg {
+  position: relative;
+  margin: 7px 0 0 35px;
+  top: -26px;
+}
+
+.unreadChat {
+  display: inline-block;
+  color: #fdfeff;
+  background: #ff5353;
+  font-size: 12px;
+  height: 16px;
+  border-radius: 8px;
+  padding: 0 6px 0 6px;
+  margin-right: 5px;
 }

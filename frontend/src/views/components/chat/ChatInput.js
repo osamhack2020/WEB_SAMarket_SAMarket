@@ -18,7 +18,7 @@ export default function ChatInput({ message, setMessage, sendMessage }) {
         />
         <button
           variant="contained"
-          className="inputButton"
+          className="btn inputBtn"
           onClick={e => sendMessage(e)}
         />
       </div>

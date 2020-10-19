@@ -22,11 +22,11 @@ export const signUp = (userId, userInfo) => {
 // reducer
 export default createReducer(
   {
-    userId: localStorage.getItem("userId"),
-    userInfo: localStorage.getItem("userId")
-      ? users[localStorage.getItem("userId")]
+    userId: sessionStorage.getItem("userId"),
+    userInfo: sessionStorage.getItem("userId")
+      ? users[sessionStorage.getItem("userId")]
       : null,
-    authToken: localStorage.getItem("authToken") // 제대로 된 토큰으로 교체할 것
+    authToken: sessionStorage.getItem("authToken") // 제대로 된 토큰으로 교체할 것
   }, // initialState
   {
     [SIGN_IN]: (state, action) => {
@@ -36,8 +36,8 @@ export default createReducer(
           state.userId = action.userId;
           state.userInfo = user;
           state.authToken = "veryComplicateTokenString";
-          localStorage.setItem("userId", state.userId);
-          localStorage.setItem("authToken", state.authToken);
+          sessionStorage.setItem("userId", state.userId);
+          sessionStorage.setItem("authToken", state.authToken);
         } catch {
           alert("Sign In Failed");
         }
@@ -48,8 +48,8 @@ export default createReducer(
         state.userId = null;
         state.userInfo = null;
         state.authToken = null;
-        localStorage.removeItem("userId");
-        localStorage.removeItem("authToken");
+        sessionStorage.removeItem("userId");
+        sessionStorage.removeItem("authToken");
       }
     },
     [SIGN_UP]: (state, action) => {
@@ -62,8 +62,8 @@ export default createReducer(
         state.userId = action.userId;
         state.userInfo = user;
         state.authToken = "veryComplicateTokenString";
-        localStorage.setItem("userId", state.userId);
-        localStorage.setItem("authToken", state.authToken);
+        sessionStorage.setItem("userId", state.userId);
+        sessionStorage.setItem("authToken", state.authToken);
         alert("등록 성공!");
       } catch {
         alert("Sign Up Failed");

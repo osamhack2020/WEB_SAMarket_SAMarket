@@ -22,9 +22,6 @@
 
 .loc,
 .org {
-  border: 0;
-  outline: 0;
-  cursor: pointer;
   color: #fdfeff;
   font-size: 15px;
 

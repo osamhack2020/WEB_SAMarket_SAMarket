@@ -9,9 +9,6 @@
 }
 
 .writeBtn {
-  border: 0;
-  outline: 0;
-  cursor: pointer;
   border-radius: 50%;
   background: #1a8aba;
 
@@ -35,9 +32,6 @@
 }
 
 .barBtn {
-  border: 0;
-  outline: 0;
-  cursor: pointer;
   width: 20%;
   height: 60px;
 }
