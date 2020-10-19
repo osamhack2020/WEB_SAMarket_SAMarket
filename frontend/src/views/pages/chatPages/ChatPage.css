@@ -1,7 +1,8 @@
 .chatsListHead {
   box-sizing: border-box;
   text-align: center;
-  padding-top: 30px;
+  padding: 32px;
+  margin: 0;
   position: fixed;
   top: -20px;
   width: 100%;
@@ -15,14 +16,45 @@
 }
 
 .chatList {
-  padding-top: 100px;
+  padding-top: 80px;
+  text-align: center;
 }
 
 .chatWriteBtn {
   position: fixed;
-  right: 25px;
-  width: 20px;
-  height: 20px;
+  right: 20px;
+  width: 23px;
+  height: 23px;
   background: url("../../../imgs/icons/chat.svg") no-repeat;
   background-size: 100%;
+}
+
+.chatInfo {
+  box-sizing: border-box;
+  display: inline-block;
+  position: relative;
+  width: 90%;
+  height: 65px;
+  background: #fdfeff;
+  border-radius: 15px;
+  margin-top: 10px;
+  padding: 15px 0 0 65px;
+  font-size: 14.5px;
+  text-align: left;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.chatThumbnail {
+  position: absolute;
+  top: 12px;
+  left: 15px;
+}
+
+.lastChat {
+  position: relative;
+  top: -9px;
+  color: #8990a0;
+  font-size: 13px;
+  font-weight: normal;
 }
