@@ -61,6 +61,7 @@ function ChatInfo({ info, myId }) {
       <p className="lastChat">{`${lastMsg.text.slice(0, 16)}${
         lastMsg.text.length > 16 ? ".." : ""
       }`}</p>
+      <LastChatTime time={lastMsg.time} />
       {unreadChat > 0 && (
         <div className="unreadMsg">
           <UnreadChat unreadChat={unreadChat} />
@@ -85,4 +86,34 @@ function ChatThumbnail({ users }) {
       ))}
     </div>
   );
+}
+
+function LastChatTime({ time }) {
+  const today = new Date();
+  const [year, month, date] = [
+    today.getFullYear(),
+    today.getMonth() + 1,
+    today.getDate()
+  ];
+  const is_today = `${year}-${month}-${date}` === time.split(" ")[0];
+
+  return (
+    <div className="lastTime">
+      {is_today ? getTime(today, time.split(" ")[1]) : time.split(" ")[0]}
+    </div>
+  );
+}
+
+function getTime(today, time) {
+  const [hour, minute, _] = [
+    today.getHours(),
+    today.getMinutes(),
+    today.getSeconds()
+  ];
+  const [h, m, s] = time.split(":").map(t => parseInt(t));
+  if (hour === h) {
+    if (minute === m) return "방금";
+    return `${minute - m}분 전`;
+  } else if (hour - h < 6) return `${hour - h}시간 전`;
+  return time;
 }
