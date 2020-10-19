@@ -18,8 +18,9 @@ export const getNextSAMroad = MakeDataGenerator(samroads);
 export const getPostById = postId =>
   samroads.filter(samroad => samroad.postId === parseInt(postId))[0];
 
+const getNextPostId = () => samroads.length; // identical 한 걸 주는 logic 필요
 export const getInitialPostInfo = userInfo => ({
-  postId: "",
+  postId: getNextPostId(),
   author: { id: userInfo.id, name: userInfo.name },
   type: "",
   contents: {
@@ -31,19 +32,10 @@ export const getInitialPostInfo = userInfo => ({
   }
 });
 export function getPostInfoUpdater(info, setInfo) {
-  return ({
-    postId,
-    type,
-    title,
-    sub,
-    tags,
-    clrFont,
-    clrBack,
-    clrTag,
-    content
-  }) => {
+  return ({ type, title, sub, tags, clrFont, clrBack, clrTag, content }) => {
     setInfo({
-      postId: postId !== undefined ? postId : info.postId,
+      postId: info.postId,
+      author: info.author,
       type: type !== undefined ? type : info.type,
       contents: {
         title: title !== undefined ? title : info.contents.title,
