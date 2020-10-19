@@ -80,7 +80,7 @@ function PostingReplies() {
   useEffect(() => {
     window.addEventListener("resize", calculateNorm);
     return () => window.removeEventListener("resize", calculateNorm);
-  }, [norm]);
+  }, []);
 
   return (
     <div>

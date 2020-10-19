@@ -106,4 +106,12 @@
 
 .byMe {
   background-color: #05b0ea;
+  margin-bottom: 7px;
+}
+
+.relayMsg {
+  position: relative;
+  margin-top: 7px;
+  top: -26px;
+  left: 35px;
 }

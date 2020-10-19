@@ -3,6 +3,7 @@
 */
 import { samroads } from "data/samroads.json";
 import { users } from "data/users.json";
+import { chats } from "data/chats.json";
 
 function MakeDataGenerator(items) {
   let itemIdx = 0;
@@ -17,7 +18,13 @@ export const getNextSAMroad = MakeDataGenerator(samroads);
 export const getPostById = postId =>
   samroads.filter(samroad => samroad.postId === parseInt(postId))[0];
 
-export const getChatList = () => {};
+export const getChatList = () => chats;
+export const getChatRoom = chatRoomId => {
+  for (let idx in chats) {
+    if (chats[idx].chatRoomId === chatRoomId) return chats[chatRoomId];
+  }
+  return {};
+};
 
 export function signInReq(userId, password) {
   const user = users[userId];

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { getPostById } from "views/modules/common/fakeServer";
+import { Redirect } from "react-router-dom";
 import Post from "../post/Post";
 import MessageList from "./MessageList";
 import ChatInput from "./ChatInput";
@@ -9,19 +10,18 @@ import "./Chat.css";
 
 let socket;
 
-export default function ChatRoom({ search, chatRoomId }) {
+export default function ChatRoom({ search, chatRoomId, roomInfo }) {
+  const { postId, members, msgs } = roomInfo;
   // name 은 redux 에서 로그인된 계정 정보를 직접 가져오는 방식으로 수정
   const userInfo = useSelector(state => state.sign.userInfo);
-  // room을 사용하지 않고 있음 chatRoomId 로 room 정보를 가져오는 로직 필요할 듯
+  // room을 사용하지 않고 있음
   const [room, setRoom] = useState("");
-  // 가져온 룸 정보에서 postId 를 가져옴
-  const postId = true ? 0 : undefined;
 
   // chatting 에 사용
   const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState(msgs ? msgs : []);
   // users 도 사용하지 않고 있음
-  const [users, setUsers] = useState("");
+  const [users, setUsers] = useState(members ? members : []);
 
   const ENDPOINT = "nanofiber.org:8080/ws";
   // const ENDPOINT = config.blabla 백 작업 후 추가예정.
@@ -69,7 +69,7 @@ export default function ChatRoom({ search, chatRoomId }) {
     }
   };
 
-  return (
+  return users ? (
     <div className="chatRoom">
       {
         postId !== undefined && (
@@ -85,5 +85,7 @@ export default function ChatRoom({ search, chatRoomId }) {
         sendMessage={sendMessage}
       />
     </div>
+  ) : (
+    <Redirect to="NotFound" />
   );
 }
