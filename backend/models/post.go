@@ -30,6 +30,6 @@ func (store IPostStore) AddPost(post Post) {
 
 func (store IPostStore) GetPostList(unitID int) []Post {
 	var posts []Post
-	db.Where("unit_id = ?", unitID).Preload("Author").Find(&posts)
+	db.Order("created_at desc").Where("unit_id = ?", unitID).Preload("Author").Find(&posts)
 	return posts
 }

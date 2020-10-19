@@ -5,4 +5,6 @@ type PostUserRelation struct {
 	Post   Post
 	UserID string `gorm:"primaryKey;autoIncrement:false"`
 	PostID int    `gorm:"primaryKey;autoIncrement:false"`
+	// block = 0, favor = 1
+	Type int
 }

@@ -12,8 +12,11 @@ func InitUserRouter(rg *gin.RouterGroup) {
 	{
 		router.Use(middleware.TokenAuth)
 		router.GET("/profile/:id", getProfile)
-		router.POST("/rel/:id", addRelation)
-		router.GET("/rel/:id", getRelation)
+		router.GET("/rel/request/:userid", addRequest)
+		router.GET("/rel/accept/:reqid", acceptRequest)
+		router.GET("/rel/deny/:reqid", denyRequest)
+		router.GET("/rel/reqlist", getRequestList)
+		router.GET("/rel/list/:id", getRelation)
 	}
 }
 
@@ -32,17 +35,54 @@ func getProfile(c *gin.Context) {
 	c.JSON(200, user)
 }
 
-// addRelation godoc
 // @Security ApiKeyAuth
-// @Summary 친구 등록
+// @Summary 친구 요청하기
 // @Description
-// @name addRelation
+// @name addRequest
 // @Accept  json
 // @Produce  json
 // @Param id path string true "유저 id"
-// @Router /user/rel/{id} [post]
+// @Router /user/rel/request/{userid} [post]
 // @Success 200 {object} models.User
-func addRelation(c *gin.Context) {
+func addRequest(c *gin.Context) {
+
+}
+
+// @Security ApiKeyAuth
+// @Summary 친구 요청 받기
+// @Description
+// @name acceptRequest
+// @Accept  json
+// @Produce  json
+// @Param id path string true "유저 id"
+// @Router /user/rel/accept/{reqid} [get]
+// @Success 200 {object} models.User
+func acceptRequest(c *gin.Context) {
+
+}
+
+// @Security ApiKeyAuth
+// @Summary 친구 요청 거절하기
+// @Description
+// @name denyRequest
+// @Accept  json
+// @Produce  json
+// @Param id path string true "유저 id"
+// @Router /user/rel/deny/{reqid} [get]
+// @Success 200 {object} models.User
+func denyRequest(c *gin.Context) {
+
+}
+
+// @Security ApiKeyAuth
+// @Summary 친구 요청 목록 가져오기
+// @Description
+// @name getRequestList
+// @Accept  json
+// @Produce  json
+// @Router /user/rel/reqlist [get]
+// @Success 200 {object} models.User
+func getRequestList(c *gin.Context) {
 
 }
 

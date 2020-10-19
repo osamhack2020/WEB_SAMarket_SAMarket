@@ -13,20 +13,11 @@ func InitPostRouter(rg *gin.RouterGroup) {
 		router.Use(middleware.TokenAuth)
 		router.POST("/add", addPost)
 		router.GET("/list", getPostList)
-		router.GET("/view/:id", getPost)
+		//router.GET("/view/:id", getPost)
+		router.GET("/toggle/favorite/:id", toggleFavorite)
+		router.GET("/toggle/ban/:id", toggleBan)
+		router.GET("/favorites", getFavorites)
 	}
-}
-
-// getPost godoc
-// @Security ApiKeyAuth
-// @Description 게시글 조회하기
-// @Summary 게시글 조회하기
-// @name getPost
-// @Produce  json
-// @Router /post/view/{id} [get]
-// @Success 200 {object} []models.Post
-func getPost(c *gin.Context) {
-
 }
 
 // getPostList godoc
@@ -62,4 +53,37 @@ func addPost(c *gin.Context) {
 		post.UnitID = user.UnitID
 	}
 	models.PostStore.AddPost(*post)
+}
+
+// @Security ApiKeyAuth
+// @Description 즐겨찾기 여부 토글
+// @Summary 즐겨찾기 여부 토글
+// @name getPost
+// @Produce  json
+// @Router /toggle/favorite/{id} [get]
+// @Success 200 {object} []models.Post
+func toggleFavorite(c *gin.Context) {
+
+}
+
+// @Security ApiKeyAuth
+// @Description 안보이게 하기 여부 토글
+// @Summary 안보이게 하기 여부 토글
+// @name getPost
+// @Produce  json
+// @Router /toggle/favorite/{id} [get]
+// @Success 200 {object} []models.Post
+func toggleBan(c *gin.Context) {
+
+}
+
+// @Security ApiKeyAuth
+// @Description 즐겨찾기 누른 게시글 리스트
+// @Summary 즐겨찾기 누른 게시글 리스트
+// @name getPost
+// @Produce  json
+// @Router /toggle/favorite/{id} [get]
+// @Success 200 {object} []models.Post
+func getFavorites(c *gin.Context) {
+
 }

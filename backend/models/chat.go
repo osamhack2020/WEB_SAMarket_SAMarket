@@ -4,20 +4,23 @@ import (
 	"time"
 )
 
-// 1:1 채팅
 type ChatRoom struct {
-	ID           int      `json:"id"`
-	ModifiedDate time.Time `json:"modified_date"`
+	ID        int
+	Post      Post
+	PostID    int
+	Title     string
+	CreatedAt time.Time
+	Users     []User `gorm:"many2many:user_chatrooms;"`
 }
 
-type ChatLog struct {
-	ID           int
-	ChatRoom     ChatRoom
-	ChatRoomID   int
-	Sender       User
-	SenderID     string
-	Readed       bool
-	ModifiedDate time.Time `json:"modified_date"`
+type ChatMsg struct {
+	ID         int
+	ChatRoom   ChatRoom
+	ChatRoomID int
+	Sender     User
+	SenderID   string
+	Content    string
+	CreatedAt  time.Time
 }
 
 var ChatStore IChatStore
@@ -25,12 +28,18 @@ var ChatStore IChatStore
 type IChatStore struct {
 }
 
-func (store IChatStore) AddChatLog(log ChatLog) {
+func (store IChatStore) AddChatMsg(msg ChatMsg) {
+	db.Create(&msg)
+}
 
+func (store IChatStore) GetChatMsgList(chatRoomID int) []ChatMsg {
+	var msgs []ChatMsg
+	db.Where("chat_room_id = ?", chatRoomID).Find(&msgs)
+	return msgs
 }
 
 func (store IChatStore) GetUnreadCount(userID string) int64 {
 	var count int64
-	db.Model(&ChatLog{}).Where("receiver_id = ? and readed = false", userID).Count(&count)
+	db.Model(&ChatMsg{}).Where("receiver_id = ? and readed = false", userID).Count(&count)
 	return count
 }
