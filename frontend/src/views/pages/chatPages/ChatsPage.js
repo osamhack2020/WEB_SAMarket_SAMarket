@@ -71,12 +71,17 @@ function ChatInfo({ info, myId }) {
 }
 
 function ChatThumbnail({ users }) {
-  const size = 40 - 15 * (users.length - 1);
+  // 채팅방의 썸네일, 참여자 중 나를 제외한 최대 3명을 보여줌
+  const size = users.length > 1 ? 25 : 40;
 
   return (
     <div className="chatThumbnail">
       {users.map((user, idx) => (
-        <Profile userInfo={user} size={size} loc={[15 * idx, -10 * idx]} />
+        <Profile
+          userInfo={user}
+          size={size}
+          loc={idx ? [20 - 5 * (users.length - idx), 33 - 43 * idx] : [0, 0]}
+        />
       ))}
     </div>
   );
