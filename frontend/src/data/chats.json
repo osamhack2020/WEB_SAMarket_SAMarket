@@ -1,5 +1,5 @@
 {
-  "unreadChat": 10,
+  "unreadChat": 1,
   "chats": [
     {
       "chatRoomId": "0",
@@ -9,6 +9,7 @@
         { "id": "shj0914", "name": "서형진" },
         { "id": "jtjun", "name": "장태준" }
       ],
+      "unreadChat": 1,
       "msgs": [
         {
           "time": "2020-10-10 12:30:20",
@@ -29,6 +30,11 @@
           "time": "2020-10-10 12:34:02",
           "sender": { "id": "jtjun", "name": "장태준" },
           "text": "거래 장소는 서문면회소로 변경하고 싶습니다!"
+        },
+        {
+          "time": "2020-10-10 12:35:21",
+          "sender": { "id": "shj0914", "name": "서형진" },
+          "text": "알겠습니다. 그럼 오늘 일과 끝나고 보죠."
         }
       ]
     },
@@ -38,8 +44,10 @@
       "chatTitle": "강군마켓",
       "members": [
         { "id": "woolim98", "name": "조우림" },
+        { "id": "KoHyunsu", "name": "고현수" },
         { "id": "jtjun", "name": "장태준" }
       ],
+      "unreadChat": 0,
       "msgs": [
         {
           "time": "2020-10-11 12:30:20",
@@ -65,6 +73,11 @@
           "time": "2020-10-11 12:33:21",
           "sender": { "id": "woolim98", "name": "조우림" },
           "text": "할 수 있지?"
+        },
+        {
+          "time": "2020-10-11 12:33:40",
+          "sender": { "id": "KoHyunsu", "name": "고현수" },
+          "text": "옙!"
         },
         {
           "time": "2020-10-11 12:33:40",

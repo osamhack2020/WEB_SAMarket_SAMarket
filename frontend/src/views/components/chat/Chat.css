@@ -112,3 +112,14 @@
   margin: 7px 0 0 35px;
   top: -26px;
 }
+
+.unreadChat {
+  display: inline-block;
+  color: #fdfeff;
+  background: #ff5353;
+  font-size: 12px;
+  height: 16px;
+  border-radius: 8px;
+  padding: 0 6px 0 6px;
+  margin-right: 5px;
+}

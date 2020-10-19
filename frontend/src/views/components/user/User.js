@@ -5,6 +5,7 @@ import Profile from "./Profile";
 import "./User.css";
 
 export default function User({ userInfo, loc }) {
+  // loc: {top, left}
   const user = {
     position: "relative",
     top: loc ? loc[0] : 15,

@@ -5,6 +5,7 @@ import styled from "styled-components";
 import backSvg from "imgs/icons/back.svg";
 
 const BackBtn = ({ history, size, loc }) => {
+  // loc: {top, left}
   const BackBtn = styled.button`
     width: ${size ? size[0] : 20}px;
     height: ${size ? size[0] : 20}px;

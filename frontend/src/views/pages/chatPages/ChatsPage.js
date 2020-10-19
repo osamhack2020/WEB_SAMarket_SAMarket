@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { getChatList } from "views/modules/common/fakeServer";
 import BackBtn from "views/components/header/BackBtn";
 import SearchBar from "views/components/header/SearchBar";
+import UnreadChat from "views/components/chat/UnreadChat";
 import "./ChatPage.css";
 import Profile from "views/components/user/Profile";
 
@@ -49,19 +50,34 @@ function ChatsHeader({ setKeyword }) {
 
 function ChatInfo({ info, myId }) {
   // 채팅 정보를 보여주는 component
-  const { chatTitle, chatRoomId, members, msgs } = info;
+  const { chatTitle, chatRoomId, members, unreadChat, msgs } = info;
   const users = members.filter(member => member.id !== myId);
   const lastMsg = msgs[msgs.length - 1];
 
   return (
     <Link to={`/chat/${chatRoomId}`} className="chatInfo">
-      <div className="chatThumbnail">
-        <Profile userInfo={users[0]} size={40} />
-      </div>
+      <ChatThumbnail users={users.slice(0, 3)} />
       {chatTitle}
       <p className="lastChat">{`${lastMsg.text.slice(0, 16)}${
         lastMsg.text.length > 16 ? ".." : ""
       }`}</p>
+      {unreadChat > 0 && (
+        <div className="unreadMsg">
+          <UnreadChat unreadChat={unreadChat} />
+        </div>
+      )}
     </Link>
+  );
+}
+
+function ChatThumbnail({ users }) {
+  const size = 40 - 15 * (users.length - 1);
+
+  return (
+    <div className="chatThumbnail">
+      {users.map((user, idx) => (
+        <Profile userInfo={user} size={size} loc={[15 * idx, -10 * idx]} />
+      ))}
+    </div>
   );
 }
