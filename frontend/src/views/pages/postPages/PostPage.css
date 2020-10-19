@@ -37,3 +37,41 @@
   height: 300px;
   background: white;
 }
+
+/* WritePage  */
+.postSubmitBtn {
+  color: #fdfeff;
+  font-weight: bold;
+  font-size: 15px;
+  position: relative;
+  top: 30px;
+  width: 250px;
+  height: 30px;
+  border-radius: 15px;
+  background: #1d9acb;
+  box-shadow: 0px 0px 20px 0px rgba(80, 80, 80, 20%);
+}
+
+.writeHead {
+  position: fixed;
+  top: 22px;
+  left: 0;
+  text-align: center;
+  width: 100%;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.emptyTitle {
+  color: #e6e8ea;
+}
+
+.postInput {
+  box-sizing: border-box;
+  border: 0;
+  border-radius: 12.5px;
+  width: 250px;
+  height: 30px;
+  background: #f0f3f6;
+  padding: 0 10px 0 10px;
+}

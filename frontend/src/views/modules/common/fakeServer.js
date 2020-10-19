@@ -18,6 +18,19 @@ export const getNextSAMroad = MakeDataGenerator(samroads);
 export const getPostById = postId =>
   samroads.filter(samroad => samroad.postId === parseInt(postId))[0];
 
+export const getInitialPostInfo = userInfo => ({
+  postId: "",
+  author: { id: userInfo.id, name: userInfo.name },
+  type: "",
+  contents: {
+    title: "",
+    sub: "",
+    tags: [],
+    clr: { font: "", back: "", tag: "" },
+    content: ""
+  }
+});
+
 export const getChatList = () => chats;
 export const getChatRoom = chatRoomId => {
   for (let idx in chats) {
@@ -30,7 +43,6 @@ export const getUnreadChat = () => unreadChat;
 export function signInReq(userId, password) {
   const user = users[userId];
   if (user && user.pw === password) {
-    console.log(user);
     return user;
   }
   throw new Error("Sign In Failed");
