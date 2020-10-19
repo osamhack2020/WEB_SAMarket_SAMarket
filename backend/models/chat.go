@@ -6,14 +6,14 @@ import (
 
 // 1:1 채팅
 type ChatRoom struct {
-	ID           uint      `json:"id"`
+	ID           int      `json:"id"`
 	ModifiedDate time.Time `json:"modified_date"`
 }
 
 type ChatLog struct {
-	ID           uint
+	ID           int
 	ChatRoom     ChatRoom
-	ChatRoomID   uint
+	ChatRoomID   int
 	Sender       User
 	SenderID     string
 	Readed       bool
@@ -29,7 +29,7 @@ func (store IChatStore) AddChatLog(log ChatLog) {
 
 }
 
-func (store IChatStore) GetUnreadedCount(userID string) int64 {
+func (store IChatStore) GetUnreadCount(userID string) int64 {
 	var count int64
 	db.Model(&ChatLog{}).Where("receiver_id = ? and readed = false", userID).Count(&count)
 	return count

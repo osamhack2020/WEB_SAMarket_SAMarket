@@ -2,11 +2,12 @@ package models
 
 type Unit struct {
 	// 부대 PRI KEY
-	ID uint `json:"id"`
+	ID int `json:"id"`
 	// 부대 종류 (육 = 0, 해 = 1, 공 = 2, 해병 = 3, 국 = 4)
-	Mil uint `json:"mil"`
+	Mil int `json:"mil"`
 	// 부대 이름
-	Name string `json:"name"`
+	Name    string `json:"name"`
+	LogoURL string
 }
 
 type IUnitStore struct{}

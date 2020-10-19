@@ -19,5 +19,5 @@ func Init() {
 	if err != nil {
 		fmt.Println(err)
 	}
-	db.AutoMigrate(&User{}, &Unit{}, &ChatRoom{}, &ChatLog{}, &Comment{}, &Post{}, &Reply{}, &UserRelation{})
+	db.AutoMigrate(&User{}, &Unit{}, &ChatRoom{}, &ChatLog{}, &Comment{}, &Post{}, &UserRelation{})
 }

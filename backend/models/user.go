@@ -21,9 +21,9 @@ type User struct {
 	// 프로필 사진
 	ProfileURL string
 	// 군 종류
-	Mil uint
+	Mil int
 	// 부대 id
-	UnitID uint
+	UnitID int
 	Unit   Unit
 }
 
@@ -38,7 +38,7 @@ func (u *User) BeforeCreate(tx *gorm.DB) (err error) {
 
 func (store IUserStore) GetUserByIDAndPW(id string, pw string) *User {
 	var user User
-	err := db.Where("login_id = ? AND password = ?", id, pw).First(&user).Error
+	err := db.Where("login_id = ? AND password = ?", id, pw).Preload("Unit").First(&user).Error
 	if err != nil {
 		fmt.Println(err)
 		return nil
@@ -47,7 +47,7 @@ func (store IUserStore) GetUserByIDAndPW(id string, pw string) *User {
 }
 
 func (store IUserStore) AddUser(user User) {
-	err := db.Select("LoginID", "Password", "Name", "Phone", "Mil", "UnitID").Create(&user).Error
+	err := db.Select("ID", "LoginID", "Password", "Name", "Phone", "Mil", "UnitID").Create(&user).Error
 	if err != nil {
 		fmt.Println(err)
 	}

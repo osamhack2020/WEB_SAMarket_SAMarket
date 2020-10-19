@@ -1,7 +1,7 @@
 package models
 
 type Image struct {
-	ID     uint
+	ID     int
 	UserID string
 	User   User
 	url    string

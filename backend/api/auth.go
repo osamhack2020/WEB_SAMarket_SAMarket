@@ -26,7 +26,7 @@ func InitAuthRouter(rg *gin.RouterGroup) {
 
 // login godoc
 // @Summary 로그인
-// @Description 로그인, 비밀번호는 sha256 + salt("samarket")
+// @Description 테스트 아이디: test, 비밀번호: test
 // @ID login
 // @name Login
 // @Accept  json
@@ -41,7 +41,7 @@ func login(c *gin.Context) {
 		fmt.Println(err)
 	}
 	user := models.UserStore.GetUserByIDAndPW(rq.LoginID, rq.Password)
-	result := &LoginResult{*user, models.ChatStore.GetUnreadedCount(user.ID)}
+	result := &LoginResult{*user, models.ChatStore.GetUnreadCount(user.ID)}
 	if user == nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "error"})
 	} else {
