@@ -98,3 +98,22 @@
   background: url(../../../imgs/icons/chats.svg) no-repeat;
   background-size: 100%;
 }
+
+.unreadContainer {
+  position: fixed;
+  top: 3px;
+  right: 0px;
+  width: 40px;
+  text-align: center;
+}
+
+.unreadChat {
+  display: inline-block;
+  color: #fdfeff;
+  background: #ff5353;
+  font-size: 12px;
+  height: 16px;
+  border-radius: 8px;
+  padding: 0 6px 0 6px;
+  margin-right: 5px;
+}

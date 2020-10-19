@@ -3,7 +3,7 @@
 */
 import { samroads } from "data/samroads.json";
 import { users } from "data/users.json";
-import { chats } from "data/chats.json";
+import { chats, unreadChat } from "data/chats.json";
 
 function MakeDataGenerator(items) {
   let itemIdx = 0;
@@ -25,6 +25,7 @@ export const getChatRoom = chatRoomId => {
   }
   return {};
 };
+export const getUnreadChat = () => unreadChat;
 
 export function signInReq(userId, password) {
   const user = users[userId];
