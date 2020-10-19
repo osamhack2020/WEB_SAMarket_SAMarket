@@ -14,6 +14,7 @@ const BackBtn = ({ history, size, loc }) => {
     position: absolute;
     top: ${loc ? loc[0] : 22}px;
     left: ${loc ? loc[1] : 10}px;
+    z-index: 9999;
   `;
   return <BackBtn className="btn" onClick={e => history.goBack()} />;
 };
