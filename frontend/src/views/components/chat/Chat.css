@@ -85,6 +85,16 @@
   padding-right: 3%;
 }
 
+.othersMessage {
+  margin-top: 3px;
+}
+
+.relayMesssage {
+  position: relative;
+  margin: 7px 0 0 35px;
+  top: -26px;
+}
+
 .senderName {
   position: relative;
   left: -3px;
@@ -105,12 +115,6 @@
 .byMe {
   background-color: #05b0ea;
   margin-bottom: 7px;
-}
-
-.relayMsg {
-  position: relative;
-  margin: 7px 0 0 35px;
-  top: -26px;
 }
 
 .unreadChat {
