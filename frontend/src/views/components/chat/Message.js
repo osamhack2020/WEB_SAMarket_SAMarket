@@ -10,7 +10,7 @@ export default function Message({ message: { text, sender }, prev }) {
   return (
     <div
       className={`messageContainer ${
-        isMyMsg ? "myMessage" : isRelay ? "relayMsg" : ""
+        isMyMsg ? "myMessage" : isRelay ? "relayMesssage" : "othersMessage"
       }`}
     >
       {!(isMyMsg || isRelay) && ( // 자기 메시지의 경우 프로필을 표시하지 않음
@@ -19,7 +19,7 @@ export default function Message({ message: { text, sender }, prev }) {
           <p className="senderName">{sender.name}</p>
         </div>
       )}
-      <div className={`messageBox ${isMyMsg ? "byMe" : "~byMe"}`}>{text}</div>
+      <div className={`messageBox ${isMyMsg ? "byMe" : ""}`}>{text}</div>
     </div>
   );
 }
