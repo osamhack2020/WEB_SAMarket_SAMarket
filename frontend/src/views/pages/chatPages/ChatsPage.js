@@ -3,6 +3,9 @@
 */
 import React, { useState } from "react";
 import { getChatList } from "views/modules/common/fakeServer";
+import BackBtn from "views/components/header/BackBtn";
+import SearchBar from "views/components/header/SearchBar";
+import "./ChatPage.css";
 
 export default function ChatsPage() {
   const [chatKeyword, setKeyword] = useState("");
@@ -26,7 +29,14 @@ export default function ChatsPage() {
 
 function ChatsHeader({ setKeyword }) {
   // 채팅 목록 상단에 있는 검색 가능한 헤드
-  return <div className="chatsListHead" />;
+  return (
+    <div className="chatsListHead">
+      <BackBtn loc={[30, 10]} />
+      마음의 편지함
+      <button className="btn chatWriteBtn" />
+      <SearchBar onSearch={keyword => setKeyword(keyword)} />
+    </div>
+  );
 }
 
 function ChatInfo({ info }) {
