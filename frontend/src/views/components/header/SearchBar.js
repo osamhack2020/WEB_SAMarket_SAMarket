@@ -4,7 +4,7 @@
 import React, { useState } from "react";
 import "./Header.css";
 
-export default function SearchBar({ onSearch }) {
+export default function SearchBar({ onSearch, realTime = false }) {
   // class 에서 state 로 관리하던 것을 value, setter 로 얻어옴
   const [keyword, setKeyword] = useState("");
 
@@ -20,7 +20,10 @@ export default function SearchBar({ onSearch }) {
         className="searchBar"
         placeholder="검색어 입력"
         value={keyword}
-        onChange={e => setKeyword(e.target.value)}
+        onChange={e => {
+          setKeyword(e.target.value);
+          if (realTime) onSearch(e.target.value);
+        }}
       />
       <button className="btn magnifier" type="submit" />
     </form>
