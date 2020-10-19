@@ -4,6 +4,7 @@
 run: run-debug
 
 run-debug:
+	@mkdir -p upload
 	@swag init
 	@go run .
 
