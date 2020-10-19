@@ -27,7 +27,7 @@ export default function Profile({ userInfo, size }) {
   };
 
   return (
-    <Link to={`/profile/${id}`} style={userImgBack} className="userImg">
+    <Link to={`/profile/${id}`} style={userImgBack} className="btn userImg">
       <div style={userImg} />
     </Link>
   );

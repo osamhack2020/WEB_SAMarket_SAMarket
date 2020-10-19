@@ -8,11 +8,11 @@ import "./Header.css";
 export default function TopLinks() {
   return (
     <div className="topLinks">
-      <Link exact to="/" className="home">
+      <Link exact to="/" className="btn home">
         강군마켓
       </Link>
-      <Link to="/likes" className="likes" />
-      <Link to="/chats" className="chats" />
+      <Link to="/likes" className="btn likes" />
+      <Link to="/chats" className="btn chats" />
     </div>
   );
 }

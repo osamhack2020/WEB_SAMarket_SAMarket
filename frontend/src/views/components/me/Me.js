@@ -21,10 +21,10 @@ export default function Me() {
         {userInfo.name} @{userInfo.id}{" "}
       </div>
       <Croucher norm={180} stretch="belong" crouched="belongOnly">
-        <button className="loc" onClick={handleSearch(0)}>
+        <button className="btn loc" onClick={handleSearch(0)}>
           {userInfo.loc}
         </button>
-        <button className="org" onClick={handleSearch(1)}>
+        <button className="btn org" onClick={handleSearch(1)}>
           {userInfo.org}
         </button>
       </Croucher>

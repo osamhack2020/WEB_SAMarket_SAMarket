@@ -25,7 +25,7 @@ export default function Tag({ clr, text }) {
   };
 
   return (
-    <button style={tagBtn} className="tag" onClick={tagClick}>
+    <button style={tagBtn} className="btn tag" onClick={tagClick}>
       <Link style={tagLink} to="/">
         # {text}
       </Link>
