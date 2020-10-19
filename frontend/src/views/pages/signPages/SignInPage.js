@@ -6,13 +6,13 @@ import styled from "styled-components";
 import SignInForm from "views/modules/sign/SignInForm";
 import AboutUs from "views/components/aboutUs/AboutUs";
 
+const SignUpEntry = styled.div`
+  font-size: 14px;
+  margin: 30px 0 10px 0;
+`;
+
 export default function SignInPage() {
   if (!useSelector(state => state.sign.authToken)) {
-    const SignUpEntry = styled.div`
-      font-size: 14px;
-      margin: 30px 0 10px 0;
-    `;
-
     return (
       <div>
         <div className="signBack" />
@@ -25,7 +25,7 @@ export default function SignInPage() {
           <SignUpEntry>
             아직 강군마켓의 일원이 아닌가요?
             <Link to="signup">
-              <button className="signUpBtn">강한군인으로 등록하기</button>
+              <button className="btn signUpBtn">강한군인으로 등록하기</button>
             </Link>
           </SignUpEntry>
           <AboutUs heightNorm={700} />

@@ -1,11 +1,9 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import Profile from "../user/Profile";
 import "./Chat.css";
 
-export default function Message({ message: { text, sender }, prev }) {
-  const userInfo = useSelector(state => state.sign.userInfo);
-  const isMyMsg = userInfo.id === sender.id;
+export default function Message({ me, message: { text, sender }, prev }) {
+  const isMyMsg = me.id === sender.id;
   const isRelay = prev ? prev.sender.id === sender.id : false;
   return (
     <div

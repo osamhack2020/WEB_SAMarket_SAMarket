@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import { getPostById } from "views/modules/common/fakeServer";
 import { Redirect } from "react-router-dom";
 import Post from "../post/Post";
@@ -10,11 +9,10 @@ import "./Chat.css";
 
 let socket;
 
-export default function ChatRoom({ search, chatRoomId, roomInfo }) {
+export default function ChatRoom({ search, chatRoomId, roomInfo, me }) {
   const { postId, members, msgs } = roomInfo;
-  // name 은 redux 에서 로그인된 계정 정보를 직접 가져오는 방식으로 수정
-  const userInfo = useSelector(state => state.sign.userInfo);
   // room을 사용하지 않고 있음
+  // name 은 redux 에서 로그인된 계정 정보를 직접 가져오는 방식으로 수정
   const [room, setRoom] = useState("");
 
   // chatting 에 사용
@@ -28,7 +26,7 @@ export default function ChatRoom({ search, chatRoomId, roomInfo }) {
 
   useEffect(() => {
     // 더미 데이터
-    const { id, room } = { id: userInfo.id, room: chatRoomId };
+    const { id, room } = { id: me.id, room: chatRoomId };
     // query-string middleware의 사용
     // const { id, room } = queryString.parse(search);
     setRoom(room);
@@ -78,7 +76,7 @@ export default function ChatRoom({ search, chatRoomId, roomInfo }) {
           </div>
         ) /* posting 을 통해서 생성된 채팅방 */
       }
-      <MessageList messages={messages} />
+      <MessageList me={me} messages={messages} />
       <ChatInput
         message={message}
         setMessage={setMessage}

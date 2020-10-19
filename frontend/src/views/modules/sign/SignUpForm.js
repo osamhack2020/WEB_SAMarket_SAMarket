@@ -4,6 +4,15 @@ import { signUp } from "./state";
 import styled from "styled-components";
 import "./Sign.css";
 
+const InputTitle = styled.div`
+  margin-top: 20px;
+  font-size: 13px;
+  color: #05b0ea;
+  position: relative;
+  left: 55px;
+  text-align: left;
+`;
+
 export default function SignUpForm() {
   const [userId, setId] = useState("");
   const [password, setPw] = useState("");
@@ -19,15 +28,6 @@ export default function SignUpForm() {
     // 비밀번호의 유효성을 여기서 검증
     setPw(e.target.value);
   };
-
-  const InputTitle = styled.div`
-    margin-top: 20px;
-    font-size: 13px;
-    color: #05b0ea;
-    position: relative;
-    left: 55px;
-    text-align: left;
-  `;
 
   return (
     <form onSubmit={handleSignUp}>
