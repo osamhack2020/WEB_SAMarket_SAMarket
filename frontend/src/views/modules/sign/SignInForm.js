@@ -32,7 +32,7 @@ export default function SignInForm() {
           onChange={e => setPw(e.target.value)}
           onKeyPress={e => (e.key === "Enter" ? handleSignIn(e) : null)}
         />
-        <button className="signBtn" type="submit">
+        <button className="btn signBtn" type="submit">
           입장하기
         </button>
       </form>

@@ -27,7 +27,6 @@
   height: 190px;
   line-height: 190px;
   border: 0;
-  outline: 0;
   border-radius: 20px;
   font-weight: bold;
   font-size: 25px;
@@ -40,9 +39,6 @@
 }
 
 .postHeadBtn {
-  border: 0;
-  outline: 0;
-  cursor: pointer;
   position: absolute;
   top: 20px;
   background-size: 25px 25px;

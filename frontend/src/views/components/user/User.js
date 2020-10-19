@@ -14,7 +14,7 @@ export default function User({ userInfo, loc }) {
   return (
     <div style={user}>
       <Profile userInfo={userInfo} size={35} />
-      <Link to={`/profile/${userInfo.id}`} className="userName">
+      <Link to={`/profile/${userInfo.id}`} className="btn userName">
         @{userInfo.id}
       </Link>
     </div>

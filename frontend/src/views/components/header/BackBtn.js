@@ -10,14 +10,11 @@ const BackBtn = ({ history, size, loc }) => {
     height: ${size ? size[0] : 20}px;
     background: url(${backSvg});
     background-size: 100%;
-    border: 0;
-    outline: 0;
-    cursor: pointer;
     position: absolute;
     top: ${loc ? loc[0] : 22}px;
     left: ${loc ? loc[1] : 10}px;
   `;
-  return <BackBtn onClick={e => history.goBack()} />;
+  return <BackBtn className="btn" onClick={e => history.goBack()} />;
 };
 
 export default withRouter(BackBtn);

@@ -64,12 +64,10 @@
   height: 30px;
 }
 
-.inputButton {
+.inputBtn {
   position: relative;
   left: -30px;
   top: 7px;
-  border: 0;
-  outline: 0;
   width: 20px;
   height: 20px;
   background: url(../../../imgs/icons/chat.svg) no-repeat;
@@ -111,7 +109,6 @@
 
 .relayMsg {
   position: relative;
-  margin-top: 7px;
+  margin: 7px 0 0 35px;
   top: -26px;
-  left: 35px;
 }
