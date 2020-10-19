@@ -17,6 +17,12 @@ type WSTestRequest struct {
 	MSG string
 }
 
+type WSEvent struct {
+	ChatRoomID  int
+	ChatMsg     models.ChatMsg
+	UnreadCount int
+}
+
 // testSocket godoc
 // @Summary 웹소켓 메시지 테스트 (디버그 전용)
 // @Description 웹소켓 메시지 테스트
@@ -36,20 +42,18 @@ func testSocket(c *gin.Context) {
 // accept godoc
 // @Security ApiKeyAuth
 // @Summary 웹소켓 등록
-// @Description Swagger에서 하지말고 Websocket 등록해서 테스트
+// @Description Swagger에서 하지말고 Websocket 등록해서 테스트 (Param X, 쿠키로 인증)
+// @Description Example은 WS에서 받는 예제 데이터
 // @ID  accpetWS
 // @name  acceptWS
 // @Accept  json
 // @Produce  json
-// @Param id path string true "유저 UUID"
-// @Router /ws/:id [get]
-// @Success 200 {object} string
+// @Router /ws [get]
+// @Success 200 {object} WSEvent
 func accept(c *gin.Context) {
 	val, _ := c.Get("user")
 	if user, ok := val.(models.User); ok {
-		if user.ID == c.Param("id") {
-			serveWs(user.ID, hub, c.Writer, c.Request)
-		}
+		serveWs(user.ID, hub, c.Writer, c.Request)
 	}
 }
 
@@ -62,6 +66,6 @@ func SetupWebSocket(r *gin.Engine) {
 			rg.POST("/test", testSocket)
 		}
 		rg.Use(middleware.TokenAuth)
-		rg.GET("/:id", accept)
+		rg.GET("", accept)
 	}
 }
