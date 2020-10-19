@@ -2,17 +2,22 @@
 로그인 되어 있지 않은 경우, 로그인 요구
 */
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { getChatList } from "views/modules/common/fakeServer";
 import BackBtn from "views/components/header/BackBtn";
 import SearchBar from "views/components/header/SearchBar";
 import "./ChatPage.css";
+import Profile from "views/components/user/Profile";
 
 export default function ChatsPage() {
   const [chatKeyword, setKeyword] = useState("");
+  const userId = useSelector(state => state.sign.userId);
   const filtered = getChatList().filter(
     chatInfo =>
       chatInfo.chatTitle.indexOf(chatKeyword) !== -1 ||
-      chatInfo.members.indexOf(chatKeyword) !== -1
+      chatInfo.members.filter(member => member.name.indexOf(chatKeyword) !== -1)
+        .length
   ); // 채팅방 제목에 검색어가 있거나, 멤버에 검색어가 있는 경우
 
   return (
@@ -20,7 +25,7 @@ export default function ChatsPage() {
       <ChatsHeader setKeyword={setKeyword} />
       <div className="chatList">
         {filtered.map(chatInfo => (
-          <ChatInfo info={chatInfo} />
+          <ChatInfo info={chatInfo} myId={userId} />
         ))}
       </div>
     </div>
@@ -30,16 +35,30 @@ export default function ChatsPage() {
 function ChatsHeader({ setKeyword }) {
   // 채팅 목록 상단에 있는 검색 가능한 헤드
   return (
-    <div className="chatsListHead">
-      <BackBtn loc={[30, 10]} />
+    <h1 className="chatsListHead">
       마음의 편지함
+      <BackBtn loc={[32, 10]} />
       <button className="btn chatWriteBtn" />
-      <SearchBar onSearch={keyword => setKeyword(keyword)} />
-    </div>
+      <SearchBar onSearch={keyword => setKeyword(keyword)} realTime={true} />
+    </h1>
   );
 }
 
-function ChatInfo({ info }) {
-  // 채팅 목록을 보여주는 component
-  return <div />;
+function ChatInfo({ info, myId }) {
+  // 채팅 정보를 보여주는 component
+  const { chatTitle, chatRoomId, members, msgs } = info;
+  const users = members.filter(member => member.id !== myId);
+  const lastMsg = msgs[msgs.length - 1];
+
+  return (
+    <Link to={`/chat/${chatRoomId}`} className="chatInfo">
+      <div className="chatThumbnail">
+        <Profile userInfo={users[0]} size={40} />
+      </div>
+      {chatTitle}
+      <p className="lastChat">{`${lastMsg.text.slice(0, 16)}${
+        lastMsg.text.length > 16 ? ".." : ""
+      }`}</p>
+    </Link>
+  );
 }
