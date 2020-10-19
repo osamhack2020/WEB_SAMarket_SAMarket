@@ -5,6 +5,7 @@ import Profile from "./Profile";
 import "./User.css";
 
 export default function User({ userInfo, loc }) {
+  // loc: {top, left}
   const user = {
     position: "relative",
     top: loc ? loc[0] : 15,
@@ -14,7 +15,7 @@ export default function User({ userInfo, loc }) {
   return (
     <div style={user}>
       <Profile userInfo={userInfo} size={35} />
-      <Link to={`/profile/${userInfo.id}`} className="userName">
+      <Link to={`/profile/${userInfo.id}`} className="btn userName">
         @{userInfo.id}
       </Link>
     </div>

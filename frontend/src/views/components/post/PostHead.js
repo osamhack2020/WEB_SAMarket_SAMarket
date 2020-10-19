@@ -48,7 +48,7 @@ export default function PostHead({ postId, type, author }) {
       <User userInfo={author} />
       {[0, 1, 2].map(idx => (
         <button /* 3개의 버튼을 순서대로 생성 */
-          className="postHeadBtn"
+          className="btn postHeadBtn"
           style={getBtn(idx)}
           onClick={btnAction(idx)}
         />

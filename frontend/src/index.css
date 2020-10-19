@@ -23,6 +23,12 @@ code {
   backdrop-filter: blur(10px);
 }
 
+.btn {
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
 ::-webkit-scrollbar {
   width: 0px;
 }

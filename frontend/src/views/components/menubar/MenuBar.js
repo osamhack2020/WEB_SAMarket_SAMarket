@@ -40,12 +40,12 @@ export default function MenuBar() {
     <div className="menuBar">
       {[0, 1, 2, 3].map(idx => (
         <button /* 하단 4개의 버튼을 순서대로 생성 */
-          className="barBtn"
+          className="btn barBtn"
           style={getBtnImg(idx)}
           onClick={switchPage(idx)}
         />
       ))}
-      <Link to="/write" className="writeBtn" />
+      <Link to="/write" className="btn writeBtn" />
     </div>
   );
 }

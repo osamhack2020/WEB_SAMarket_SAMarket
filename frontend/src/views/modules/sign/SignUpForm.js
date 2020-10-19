@@ -88,7 +88,7 @@ export default function SignUpForm() {
         aria-required="true"
         onChange={e => setInfo({ discharge: e.target.value, ...userInfo })}
       />
-      <button style={{ marginTop: 40 }} className="signBtn" type="submit">
+      <button style={{ marginTop: 40 }} className="btn signBtn" type="submit">
         등록하기
       </button>
     </form>
