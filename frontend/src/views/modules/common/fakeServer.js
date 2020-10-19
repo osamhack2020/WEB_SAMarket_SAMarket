@@ -30,6 +30,35 @@ export const getInitialPostInfo = userInfo => ({
     content: ""
   }
 });
+export function getPostInfoUpdater(info, setInfo) {
+  return ({
+    postId,
+    type,
+    title,
+    sub,
+    tags,
+    clrFont,
+    clrBack,
+    clrTag,
+    content
+  }) => {
+    setInfo({
+      postId: postId !== undefined ? postId : info.postId,
+      type: type !== undefined ? type : info.type,
+      contents: {
+        title: title !== undefined ? title : info.contents.title,
+        sub: sub !== undefined ? sub : info.contents.sub,
+        tags: tags !== undefined ? tags : info.contents.tags,
+        clr: {
+          font: clrFont !== undefined ? clrFont : info.contents.clr.font,
+          back: clrBack !== undefined ? clrBack : info.contents.clr.back,
+          tag: clrTag !== undefined ? clrTag : info.contents.clr.tag
+        },
+        content: content !== undefined ? content : info.contents.content
+      }
+    });
+  };
+}
 
 export const getChatList = () => chats;
 export const getChatRoom = chatRoomId => {
