@@ -4,6 +4,7 @@ Home, Likes, Chats 로 화면을 이동함
 import React from "react";
 import { Link } from "react-router-dom";
 import { getUnreadChat } from "views/modules/common/fakeServer";
+import UnreadChat from "views/components/chat/UnreadChat";
 import "./Header.css";
 
 export default function TopLinks() {
@@ -17,9 +18,7 @@ export default function TopLinks() {
       <Link to="/chats" className="btn chats">
         {unreadChat && (
           <div className="unreadContainer">
-            <div className="unreadChat">
-              {unreadChat > 99 ? "99+" : unreadChat}
-            </div>
+            <UnreadChat unreadChat={unreadChat} />
           </div>
         )}
       </Link>
