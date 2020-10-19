@@ -105,12 +105,8 @@ function LastChatTime({ time }) {
 }
 
 function getTime(today, time) {
-  const [hour, minute, _] = [
-    today.getHours(),
-    today.getMinutes(),
-    today.getSeconds()
-  ];
-  const [h, m, s] = time.split(":").map(t => parseInt(t));
+  const [hour, minute] = [today.getHours(), today.getMinutes()];
+  const [h, m] = time.split(":").map(t => parseInt(t));
   if (hour === h) {
     if (minute === m) return "방금";
     return `${minute - m}분 전`;

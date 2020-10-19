@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import Message from "./Message";
 import "./Chat.css";
 
 export default function MessageList({ me, messages }) {
-  const [prev, setPrev] = useState("");
-
   return (
     <div className="MessagList">
       {messages.map((message, i) => (
