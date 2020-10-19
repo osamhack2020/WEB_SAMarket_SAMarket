@@ -39,12 +39,12 @@ function ChatsHeader({ setKeyword }) {
     // chatting 시작을 위한 dialog 띄울 것
   };
   return (
-    <h1 className="chatsListHead backdropBlur">
+    <h2 className="chatsListHead backdropBlur">
       마음의 편지함
       <BackBtn loc={[32, 10]} />
       <button className="btn chatWriteBtn" onClick={startChat} />
       <SearchBar onSearch={keyword => setKeyword(keyword)} realTime={true} />
-    </h1>
+    </h2>
   );
 }
 
