@@ -34,11 +34,14 @@ export default function ChatsPage() {
 
 function ChatsHeader({ setKeyword }) {
   // 채팅 목록 상단에 있는 검색 가능한 헤드
+  const startChat = () => {
+    // chatting 시작을 위한 dialog 띄울 것
+  };
   return (
-    <h1 className="chatsListHead">
+    <h1 className="chatsListHead backdropBlur">
       마음의 편지함
       <BackBtn loc={[32, 10]} />
-      <button className="btn chatWriteBtn" />
+      <button className="btn chatWriteBtn" onClick={startChat} />
       <SearchBar onSearch={keyword => setKeyword(keyword)} realTime={true} />
     </h1>
   );
