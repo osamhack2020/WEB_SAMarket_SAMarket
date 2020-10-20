@@ -21,7 +21,7 @@ export default function WriteForm({ info, updateInfo }) {
 
   return (
     <form onSubmit={submitPost}>
-      <InputTitle style={{ marginTop: 35 }}>포스팅 간판</InputTitle>
+      <InputTitle style={{ marginTop: 30 }}>포스팅 간판</InputTitle>
       <TypeSelector info={info} updateInfo={updateInfo} />
       <input
         placeholder={"*포스팅 제목"}
