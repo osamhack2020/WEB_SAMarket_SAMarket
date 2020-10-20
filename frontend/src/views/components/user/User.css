@@ -14,3 +14,45 @@
   left: 5px;
   text-decoration: none;
 }
+
+.profile {
+  margin-top: 60px;
+  text-align: center;
+}
+
+.name {
+  font-weight: bold;
+  margin-top: 10px;
+  height: 20px;
+}
+
+.belong {
+  margin-top: 18.5px;
+}
+
+.belongOnly {
+  position: fixed;
+  top: 13px;
+  width: 100%;
+  text-align: center;
+}
+
+.loc,
+.org {
+  box-sizing: border-box;
+  color: #fdfeff;
+  font-size: 15px;
+  text-decoration: none;
+  height: 25px;
+  border-radius: 12.5px;
+  padding: 3.5px 15px 3.5px 15px;
+  margin: 0 2px 0 2px;
+}
+
+.loc {
+  background-color: #1a8aba;
+}
+
+.org {
+  background-color: #059acb;
+}
