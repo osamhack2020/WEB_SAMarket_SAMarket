@@ -25,7 +25,7 @@ export default function WritePage() {
           {info.contents.title ? info.contents.title : "포스팅 제목"}
         </div>
       </div>
-      <div className="postingInfo">
+      <div className="postingInfo" style={{ marginBottom: 30 }}>
         <div className="postingBack">
           <Content info={info} disable={true} />
           <WriteForm info={info} updateInfo={updateInfo} />
