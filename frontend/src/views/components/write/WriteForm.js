@@ -1,7 +1,7 @@
 /* Write Page 에서 사용하는 입력 폼 */
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import TypeSelector from "./TypeSelector";
+import { TypeSelector, ClrSelector } from "./WriteSelector";
 import TagInput from "./TagInput";
 import "./Write.css";
 
@@ -15,8 +15,12 @@ const InputTitle = styled.div`
 `;
 
 export default function WriteForm({ info, updateInfo }) {
+  const submitPost = () => {
+    // backend 에 요청을 날림
+  };
+
   return (
-    <form>
+    <form onSubmit={submitPost}>
       <InputTitle style={{ marginTop: 35 }}>포스팅 간판</InputTitle>
       <TypeSelector info={info} updateInfo={updateInfo} />
       <input
@@ -41,34 +45,18 @@ export default function WriteForm({ info, updateInfo }) {
       <InputTitle>색상 설정</InputTitle>
       <ClrSelector info={info} updateInfo={updateInfo} />
       <InputTitle>내용</InputTitle>
-      <div>줄 바꿈 가능한 글로 입력가능하도록</div>
-      <button className="btn postSubmitBtn" type="submit" disabled={true}>
+      <textarea
+        className="postTextWrite"
+        placeholder="글 입력"
+        value={info.contents.content}
+        style={{
+          height: 50 + 16 * (info.contents.content.match(/\n/g) || []).length
+        }}
+        onChange={e => updateInfo({ content: e.target.value })}
+      />
+      <button className="btn postSubmitBtn" type="submit" disabled={false}>
         강군로드에 게시하기
       </button>
     </form>
-  );
-}
-
-function ClrSelector({ info, updateInfo }) {
-  const clrs = ["back", "tag", "font"];
-  const selectClr = e => {
-    console.log(e.target.name, e.target.value);
-    updateInfo({ [e.target.name + "Clr"]: e.target.value });
-  };
-  return (
-    <div className="clrSelector">
-      {clrs.map((clr, idx) => (
-        <div className="clrContainer">
-          {["배경", "태그", "글씨"][idx]}
-          <input
-            className="btn clrInput"
-            type="color"
-            value={info.contents.clr[clr]}
-            onChange={selectClr}
-            name={clr}
-          />
-        </div>
-      ))}
-    </div>
   );
 }
