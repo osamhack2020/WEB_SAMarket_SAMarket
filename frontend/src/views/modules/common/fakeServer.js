@@ -28,7 +28,7 @@ export const getInitialPostInfo = userInfo => ({
     sub: undefined,
     tags: [],
     clr: { font: "#202326", back: "#8990A0", tag: "#505560" },
-    content: undefined
+    content: ""
   }
 });
 export function getPostInfoUpdater(info, setInfo) {
