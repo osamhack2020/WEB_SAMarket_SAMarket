@@ -54,6 +54,7 @@ function PostForm({ info, updateInfo }) {
   return (
     <div>
       <InputTitle>포스팅 간판</InputTitle>
+      <PostTypeSelector updateInfo={updateInfo} />
       <input
         placeholder={"포스팅 제목"}
         value={info.contents.title}
@@ -66,13 +67,42 @@ function PostForm({ info, updateInfo }) {
         onChange={e => updateInfo({ sub: e.target.value })}
         className="postInput"
       />
-      <div>포스팅 유형</div>
       <InputTitle># 태그</InputTitle>
       <div>태그를 하나씩 여러 개 입력하도록</div>
       <InputTitle>색상 설정</InputTitle>
       <div>font back tag 3 가지</div>
       <InputTitle>내용</InputTitle>
       <div>줄 바꿈 가능한 글로 입력가능하도록</div>
+    </div>
+  );
+}
+
+function PostTypeSelector({ updateInfo }) {
+  const [curr, setCurr] = useState("post");
+  const selectType = e => {
+    updateInfo({ type: e.target.name });
+    setCurr(e.target.name);
+  };
+  const types = [
+    ["post", "일반"],
+    ["sell", "판매"],
+    ["adv", "광고"]
+  ];
+
+  return (
+    <div className="typeSelector">
+      {types.map((type, idx) => (
+        <button
+          className={`btn typeBtn ${type[0] === curr ? "selectedType" : ""} ${
+            ["leftT", "centerT", "rightT"][idx]
+          }`}
+          onClick={selectType}
+          type="button"
+          name={type[0]}
+        >
+          {type[1]}
+        </button>
+      ))}
     </div>
   );
 }

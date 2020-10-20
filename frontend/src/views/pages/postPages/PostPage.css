@@ -77,3 +77,35 @@
   padding: 0 10px 0 10px;
   text-align: center;
 }
+
+.typeSelector {
+  margin-top: 10px;
+}
+
+.typeBtn {
+  color: #1d9acb;
+  background: #fdfeff;
+  border: 1px solid #1d9acb !important;
+  font-weight: bold;
+  width: 84px;
+  height: 30px;
+}
+
+.selectedType {
+  color: #fdfeff;
+  background: #1d9acb;
+}
+
+.leftT {
+  border-top-left-radius: 12.5px;
+  border-bottom-left-radius: 12.5px;
+}
+
+.centerT {
+  margin: 0 -1px 0 -1px;
+}
+
+.rightT {
+  border-top-right-radius: 12.5px;
+  border-bottom-right-radius: 12.5px;
+}
