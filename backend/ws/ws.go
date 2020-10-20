@@ -23,9 +23,14 @@ type WSEvent struct {
 	UnreadCount int
 }
 
+func PublishMessage(uuid string, msg string) {
+	hub.publish(uuid, msg)
+}
+
 // testSocket godoc
 // @Summary 웹소켓 메시지 테스트 (디버그 전용)
 // @Description 웹소켓 메시지 테스트
+// @Description 해당 UUID 웹소켓에 msg 전송
 // @ID  testSocket
 // @name  testSocket
 // @Accept  json
