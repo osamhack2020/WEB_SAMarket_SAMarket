@@ -32,6 +32,7 @@
 
 .belongOnly {
   position: fixed;
+  margin-top: -18.5px;
   top: 13px;
   width: 100%;
   text-align: center;
