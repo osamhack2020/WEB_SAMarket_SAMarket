@@ -31,6 +31,7 @@ export const getInitialPostInfo = userInfo => ({
     content: ""
   }
 });
+
 export function getPostInfoUpdater(info, setInfo) {
   return ({ type, title, sub, tags, fontClr, backClr, tagClr, content }) => {
     setInfo({
@@ -76,4 +77,9 @@ export function signUpReq({ userId, userInfo }) {
     return userInfo;
   }
   throw new Error("Sign Up Failed");
+}
+
+export function getUserById(id) {
+  if (id in users) return users[id];
+  throw new Error("Wrong User ID");
 }
