@@ -29,6 +29,10 @@ code {
   cursor: pointer;
 }
 
+.WARN {
+  border: 1.5px solid #ff5353 !important;
+}
+
 ::-webkit-scrollbar {
   width: 0px;
 }

@@ -45,7 +45,9 @@ export default function SignUpForm() {
         onChange={checkPwValidate}
       />
       <input
-        className="signInput"
+        className={`signInput ${
+          password_cnf && password !== password_cnf ? "WARN" : ""
+        }`}
         type="password"
         placeholder="비밀번호 확인"
         onChange={e => setPwCnf(e.target.value)}

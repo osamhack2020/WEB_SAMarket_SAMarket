@@ -22,13 +22,13 @@ const getNextPostId = () => samroads.length; // identical 한 걸 주는 logic �
 export const getInitialPostInfo = userInfo => ({
   postId: getNextPostId(),
   author: { id: userInfo.id, name: userInfo.name },
-  type: "",
+  type: undefined,
   contents: {
-    title: "",
-    sub: "",
+    title: undefined,
+    sub: undefined,
     tags: [],
-    clr: { font: "", back: "", tag: "" },
-    content: ""
+    clr: { font: undefined, back: undefined, tag: undefined },
+    content: undefined
   }
 });
 export function getPostInfoUpdater(info, setInfo) {

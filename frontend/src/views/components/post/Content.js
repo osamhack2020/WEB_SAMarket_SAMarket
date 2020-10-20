@@ -5,7 +5,7 @@ import styled from "styled-components";
 import TagList from "../tag/TagList";
 import "./Post.css";
 
-export default function Content({ info }) {
+export default function Content({ info, disable = false }) {
   const { postId, contents, type } = info;
   const { title, sub, tags, clr } = contents;
   const ContentBack = styled.div`
@@ -20,9 +20,11 @@ export default function Content({ info }) {
 
   return (
     <ContentBack className="content">
-      <Link to={`/posts/${postId}`} className="contentLink" />
+      {!disable && <Link to={`/posts/${postId}`} className="contentLink" />}
       <Title className="contentTitle">{title}</Title>
-      <Sub className="contentSub">{sub + (type === "sell" ? " 원" : "")}</Sub>
+      <Sub className="contentSub">
+        {sub ? sub + (type === "sell" ? " 원" : "") : ""}
+      </Sub>
       <TagList clr={clr} texts={tags.slice(0, 5)} />
     </ContentBack>
   );
