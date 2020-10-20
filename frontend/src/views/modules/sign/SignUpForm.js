@@ -21,6 +21,7 @@ export default function SignUpForm() {
   const dipatch = useDispatch();
 
   const handleSignUp = _ => {
+    throw new Error("가입 기능 구현중..");
     dipatch(signUp(userId, { userId, password, ...userInfo }));
   };
 
@@ -36,12 +37,14 @@ export default function SignUpForm() {
         className="signInput"
         type="id"
         placeholder="아이디"
+        required="true"
         onChange={e => setId(e.target.value)}
       />
       <input
         className="signInput"
         type="password"
         placeholder="비밀번호"
+        required="true"
         onChange={checkPwValidate}
       />
       <input
@@ -50,6 +53,7 @@ export default function SignUpForm() {
         }`}
         type="password"
         placeholder="비밀번호 확인"
+        required="true"
         onChange={e => setPwCnf(e.target.value)}
       />
       {password_cnf && password !== password_cnf && (
@@ -60,11 +64,13 @@ export default function SignUpForm() {
       <input
         className="signInput"
         placeholder="사단"
+        required="true"
         onChange={e => setInfo({ loc: e.target.value, ...userInfo })}
       />
       <input
         className="signInput"
         placeholder="부대"
+        required="true"
         onChange={e => setInfo({ org: e.target.value, ...userInfo })}
       />
 
@@ -72,6 +78,7 @@ export default function SignUpForm() {
       <input
         className="signInput"
         placeholder="계급"
+        required="true"
         onChange={e => setInfo({ rank: e.target.value, ...userInfo })}
       />
       <input
