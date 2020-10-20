@@ -23,8 +23,11 @@ type User struct {
 	// 군 종류
 	Mil int
 	// 부대 id
-	UnitID int
-	Unit   Unit
+	UnitID    int
+	Unit      Unit
+	ChatRooms []*ChatRoom `gorm:"many2many:user_chatrooms;" json:"-"`
+	Friends   []*User     `gorm:"many2many:friends;" json:"-"`
+	Favorites []Post      `gorm:"many2many:favorites;" json:"-"`
 }
 
 type IUserStore struct{}
@@ -60,5 +63,5 @@ func (store IUserStore) GetUser(id string) *User {
 }
 
 func (store IUserStore) GetFriendList(user User) {
-	db.Model(&UserRelation{}).Where("first_id = ? or second_id = ?", user.ID, user.ID)
+
 }
