@@ -20,12 +20,13 @@ export default function Content({ info, disable = false }) {
 
   return (
     <ContentBack className="content">
-      {!disable && <Link to={`/posts/${postId}`} className="contentLink" />}
+      <Link to={`/posts/${postId}`} className="contentLink" />
       <Title className="contentTitle">{title}</Title>
       <Sub className="contentSub">
         {sub ? sub + (type === "sell" ? " 원" : "") : ""}
       </Sub>
       <TagList clr={clr} texts={tags.slice(0, 5)} />
+      {disable && <div className="contentDisable" />}
     </ContentBack>
   );
 }

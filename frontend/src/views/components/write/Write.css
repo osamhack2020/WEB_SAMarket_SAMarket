@@ -1,0 +1,71 @@
+.postSubmitBtn {
+  color: #fdfeff;
+  font-weight: bold;
+  font-size: 15px;
+  position: relative;
+  top: 35px;
+  width: 250px;
+  height: 35px;
+  border-radius: 15px;
+  background: #1d9acb;
+  box-shadow: 0px 0px 20px 0px rgba(80, 80, 80, 20%);
+}
+
+.postInput {
+  box-sizing: border-box;
+  border: 0;
+  border-radius: 12.5px;
+  width: 250px;
+  height: 30px;
+  margin-top: 10px;
+  background: #f0f3f6;
+  padding: 0 10px 0 10px;
+  text-align: center;
+}
+
+.typeSelector {
+  margin-top: 10px;
+}
+
+.typeBtn {
+  color: #1d9acb;
+  background: #fdfeff;
+  border: 1px solid #1d9acb;
+  font-weight: bold;
+  width: 84px;
+  height: 30px;
+}
+
+.selectedType {
+  color: #fdfeff;
+  background: #1d9acb;
+}
+
+.leftT {
+  border-top-left-radius: 12.5px;
+  border-bottom-left-radius: 12.5px;
+}
+
+.centerT {
+  margin: 0 -1px 0 -1px;
+}
+
+.rightT {
+  border-top-right-radius: 12.5px;
+  border-bottom-right-radius: 12.5px;
+}
+
+.tagInput {
+  text-align: left;
+  padding: 0 20px 0 15px;
+}
+
+.plusTagBtn {
+  position: absolute;
+  top: 18px;
+  right: 60px;
+  width: 15px;
+  height: 15px;
+  background: url(../../../imgs/icons/plus.svg);
+  background-size: 100%;
+}
