@@ -5,10 +5,12 @@ export default function TagInput({ info, updateInfo }) {
   const [curTag, setCurTag] = useState("");
 
   const pushTag = () => {
-    updateInfo({
-      tags: info.contents.tags.concat(curTag.slice(0, 24).replace(" ", "_"))
-    });
-    setCurTag("");
+    if (curTag.length > 0) {
+      updateInfo({
+        tags: info.contents.tags.concat(curTag.slice(0, 24).replace(" ", "_"))
+      });
+      setCurTag("");
+    }
   };
 
   const popTag = e => {

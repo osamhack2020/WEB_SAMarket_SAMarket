@@ -64,12 +64,12 @@
 
 .plusTagBtn {
   position: absolute;
-  top: 18px;
+  top: 17px;
   right: 60px;
   width: 15px;
   height: 15px;
   background: url(../../../imgs/icons/plus.svg);
-  background-size: 100%;
+  background-size: 15px 15px;
 }
 
 .tagWarn {
