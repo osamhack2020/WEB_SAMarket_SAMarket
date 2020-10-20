@@ -3,7 +3,7 @@
   font-weight: bold;
   font-size: 15px;
   position: relative;
-  top: 35px;
+  top: 40px;
   width: 250px;
   height: 35px;
   border-radius: 15px;
@@ -23,6 +23,7 @@
   text-align: center;
 }
 
+/* Type Selector */
 .typeSelector {
   margin-top: 10px;
 }
@@ -55,6 +56,7 @@
   border-bottom-right-radius: 12.5px;
 }
 
+/* Tag Selector */
 .tagInput {
   text-align: left;
   padding: 0 20px 0 15px;
@@ -120,4 +122,24 @@
   height: 20px;
   background: url(../../../imgs/icons/xBlue.svg) no-repeat;
   background-size: 60%;
+}
+
+/* Color Selector */
+.clrSelector {
+  margin-top: 10px;
+}
+
+.clrContainer {
+  display: inline-block;
+  box-sizing: border-box;
+  text-align: center;
+  margin: 0 2px 0 2px;
+  width: 80px;
+  color: #505560;
+  font-size: 12px;
+}
+
+.clrInput {
+  width: 80px;
+  height: 40px;
 }

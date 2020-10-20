@@ -22,17 +22,17 @@ const getNextPostId = () => samroads.length; // identical 한 걸 주는 logic �
 export const getInitialPostInfo = userInfo => ({
   postId: getNextPostId(),
   author: { id: userInfo.id, name: userInfo.name },
-  type: undefined,
+  type: "post",
   contents: {
     title: undefined,
     sub: undefined,
     tags: [],
-    clr: { font: undefined, back: undefined, tag: undefined },
+    clr: { font: "#202326", back: "#8990A0", tag: "#505560" },
     content: undefined
   }
 });
 export function getPostInfoUpdater(info, setInfo) {
-  return ({ type, title, sub, tags, clrFont, clrBack, clrTag, content }) => {
+  return ({ type, title, sub, tags, fontClr, backClr, tagClr, content }) => {
     setInfo({
       postId: info.postId,
       author: info.author,
@@ -42,9 +42,9 @@ export function getPostInfoUpdater(info, setInfo) {
         sub: sub !== undefined ? sub : info.contents.sub,
         tags: tags !== undefined ? tags : info.contents.tags,
         clr: {
-          font: clrFont !== undefined ? clrFont : info.contents.clr.font,
-          back: clrBack !== undefined ? clrBack : info.contents.clr.back,
-          tag: clrTag !== undefined ? clrTag : info.contents.clr.tag
+          font: fontClr !== undefined ? fontClr : info.contents.clr.font,
+          back: backClr !== undefined ? backClr : info.contents.clr.back,
+          tag: tagClr !== undefined ? tagClr : info.contents.clr.tag
         },
         content: content !== undefined ? content : info.contents.content
       }
