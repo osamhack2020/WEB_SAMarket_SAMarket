@@ -1,7 +1,7 @@
 /* 특정 사용자의 Profile 을 보여주는 Component */
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import Profile from "../user/Profile";
 import Croucher from "../base/Croucher";
 import { changeKeyword } from "views/modules/search/state";
