@@ -3,7 +3,7 @@ samarket.kr/posts/${postId 로
 postId를 기준으로 post 를 보여줌
 postId가 없는 경우, 메인화면으로
 */
-import React, { Fragment } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { getUserById } from "views/modules/common/fakeServer";
@@ -25,7 +25,7 @@ export default function ProfilePage({ match }) {
     <div className="ProfilePage">
       <div className="ProfileBack" />
       <BackBtn />
-      <UserProfile userInfo={user} />
+      <UserProfile userInfo={user} stop={true} />
       {myId === user.id && (
         <div className="myProfile">
           <LieksNChats />
