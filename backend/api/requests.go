@@ -1,5 +1,14 @@
 package api
 
+type RegisterRequest struct {
+	LoginID  string
+	Password string
+	Phone    string
+	UnitID   int
+	Mil      int
+	Name     string
+}
+
 type LoginRequest struct {
 	// 로그인 아이디
 	LoginID string `json:"id"`

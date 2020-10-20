@@ -8,6 +8,7 @@ require (
 	sam/config v0.0.0
 	sam/middleware v0.0.0
 	sam/models v0.0.0
+	sam/ws v0.0.0
 )
 
 replace (
@@ -15,4 +16,5 @@ replace (
 	sam/middleware v0.0.0 => ./../middleware
 	sam/models v0.0.0 => ./../models
 	sam/store v0.0.0 => ./../store
+	sam/ws v0.0.0 => ./../ws
 )

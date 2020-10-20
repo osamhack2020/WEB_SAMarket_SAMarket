@@ -26,7 +26,6 @@ func InitAuthRouter(rg *gin.RouterGroup) {
 
 // login godoc
 // @Summary 로그인
-// @Description 테스트 아이디: test, 비밀번호: test
 // @ID login
 // @name Login
 // @Accept  json
@@ -72,16 +71,18 @@ func logout(c *gin.Context) {
 // @name register
 // @Accept  json
 // @Produce  json
-// @Param json body models.User true "회원가입 정보"
+// @Param json body RegisterRequest true "회원가입 정보"
 // @Router /auth/register [post]
 // @Success 200 {object} models.User
 func register(c *gin.Context) {
-	var user models.User
-	err := c.ShouldBindJSON(&user)
+	var rq RegisterRequest
+	err := c.ShouldBindJSON(&rq)
 	if err != nil {
 		fmt.Println(err)
 	}
+	user := models.User{LoginID: rq.LoginID, Name: rq.Name, Password: rq.Password, Mil: rq.Mil, UnitID: rq.UnitID}
 	models.UserStore.AddUser(user)
+	c.JSON(200, "okay")
 }
 
 // checkSession godoc
@@ -89,12 +90,10 @@ func register(c *gin.Context) {
 // @Summary 세션 체크
 // @Description 세션 체크
 // @Router /auth/checkSession [get]
-// @Sucess 200 {object} string
+// @Success 200 {object} models.User
 func checkSession(c *gin.Context) {
 	val, _ := c.Get("user")
 	if user, ok := val.(models.User); ok {
-		fmt.Println(ok)
-		fmt.Println("uid: ", user.ID)
+		c.JSON(200, user)
 	}
-	c.Status(200)
 }

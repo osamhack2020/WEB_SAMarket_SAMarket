@@ -11,6 +11,10 @@ import (
 
 var db *gorm.DB
 
+func DB() *gorm.DB {
+	return db
+}
+
 func Init() {
 	var err error
 	db, err = gorm.Open(mysql.Open(config.DBURL()), &gorm.Config{
@@ -19,5 +23,5 @@ func Init() {
 	if err != nil {
 		fmt.Println(err)
 	}
-	db.AutoMigrate(&User{}, &Unit{}, &ChatRoom{}, &ChatMsg{}, &Comment{}, &Post{}, &UserRelation{})
+	db.AutoMigrate(&User{}, &Unit{}, &ChatRoom{}, &ChatMsg{}, &Comment{}, &Post{}, &Review{})
 }

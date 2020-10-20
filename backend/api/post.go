@@ -3,6 +3,7 @@ package api
 import (
 	"sam/middleware"
 	"sam/models"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
@@ -31,8 +32,15 @@ func InitPostRouter(rg *gin.RouterGroup) {
 func getPostList(c *gin.Context) {
 	val, _ := c.Get("user")
 	if user, ok := val.(models.User); ok {
-		c.JSON(200, models.PostStore.GetPostList(user.UnitID))
+		// TODO 즐겨찾기 여부 JOIN
+		c.JSON(200, models.PostStore.GetPostListByUnitID(user.UnitID))
 	}
+}
+
+type AddPostRequest struct {
+	Title    string
+	PostType string
+	Tags     string
 }
 
 // addPost godoc
@@ -45,14 +53,14 @@ func getPostList(c *gin.Context) {
 // @Router /post/add [post]
 // @Success 200 {object} []models.Post
 func addPost(c *gin.Context) {
-	var post *models.Post
+	var post models.Post
 	c.ShouldBindJSON(&post)
 	val, _ := c.Get("user")
 	if user, ok := val.(models.User); ok {
 		post.AuthorID = user.ID
 		post.UnitID = user.UnitID
 	}
-	models.PostStore.AddPost(*post)
+	models.PostStore.AddPost(post)
 }
 
 // @Security ApiKeyAuth
@@ -60,10 +68,16 @@ func addPost(c *gin.Context) {
 // @Summary 즐겨찾기 여부 토글
 // @name getPost
 // @Produce  json
-// @Router /toggle/favorite/{id} [get]
+// @Param id path string true "게시글 id"
+// @Router /post/toggle/favorite/{id} [get]
 // @Success 200 {object} []models.Post
 func toggleFavorite(c *gin.Context) {
+	val, _ := c.Get("user")
+	user, _ := val.(models.User)
 
+	param := c.Param("id")
+	postID, _ := strconv.Atoi(param)
+	models.PostStore.AddFavorite(user.ID, postID)
 }
 
 // @Security ApiKeyAuth
@@ -71,7 +85,7 @@ func toggleFavorite(c *gin.Context) {
 // @Summary 안보이게 하기 여부 토글
 // @name getPost
 // @Produce  json
-// @Router /toggle/favorite/{id} [get]
+// @Router /post/toggle/ban/{id} [get]
 // @Success 200 {object} []models.Post
 func toggleBan(c *gin.Context) {
 
@@ -82,8 +96,10 @@ func toggleBan(c *gin.Context) {
 // @Summary 즐겨찾기 누른 게시글 리스트
 // @name getPost
 // @Produce  json
-// @Router /toggle/favorite/{id} [get]
+// @Router /post/favorites [get]
 // @Success 200 {object} []models.Post
 func getFavorites(c *gin.Context) {
-
+	val, _ := c.Get("user")
+	user, _ := val.(models.User)
+	c.JSON(200, models.PostStore.GetFavorites(user))
 }
