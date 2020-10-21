@@ -3,6 +3,7 @@
   top: 0;
   text-align: center;
   width: 100%;
+  z-index: 3;
 }
 
 .myProfile {
@@ -22,6 +23,7 @@
   width: 100%;
   margin-top: 30px;
   margin-bottom: 70px;
+  z-index: 5;
 }
 
 .scouterCircle {
@@ -95,9 +97,23 @@
 /* PostList */
 .postContainer {
   text-align: left;
-  margin: 10px 100px 10px 100px;
+  margin: 10px 50px 10px 150px;
 }
 
 .advPost {
   padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+.emptyPost {
+  display: inline-block;
+  width: 100%;
+}
+
+.wantMore {
+  margin: 420px 10px -20px -310px;
+  text-align: center;
+  font-size: 15px;
+  color: #05b0ea;
+  background: rgba(0, 0, 0, 0);
 }

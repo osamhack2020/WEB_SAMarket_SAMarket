@@ -8,14 +8,17 @@ import "./Post.css";
 export default function Content({ info, disable = false }) {
   const { postId, contents, type } = info;
   const { title, sub, tags, clr } = contents;
+  const color = clr
+    ? clr
+    : { back: "#8990A0", font: "#202326", tag: "#505560" };
   const ContentBack = styled.div`
-    background: ${clr.back || "#8990A0"};
+    background: ${color.back};
   `;
   const Title = styled.div`
-    color: ${clr.font};
+    color: ${color.font};
   `;
   const Sub = styled.div`
-    color: ${clr.font};
+    color: ${color.font};
   `;
 
   return (
@@ -25,7 +28,7 @@ export default function Content({ info, disable = false }) {
       <Sub className="contentSub">
         {sub ? sub + (type === "sell" ? " 원" : "") : ""}
       </Sub>
-      <TagList clr={clr} texts={tags.slice(0, 5)} />
+      <TagList clr={color} texts={tags.slice(0, 5)} />
       {disable && <div className="contentDisable" />}
     </ContentBack>
   );

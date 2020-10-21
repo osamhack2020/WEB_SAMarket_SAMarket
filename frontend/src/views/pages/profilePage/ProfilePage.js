@@ -38,7 +38,7 @@ export default function ProfilePage({ match }) {
   if (225 <= pageY && pageY < 245) {
     window.scrollTo(0, 245); // 강함 측정 중, 스크롤 막음
     document.body.style.overflow = "hidden";
-    setTimeout(() => (document.body.style.overflow = null), 1500);
+    setTimeout(() => (document.body.style.overflow = null), 2000);
   }
 
   if (!user) return <NotFoundPage />;
