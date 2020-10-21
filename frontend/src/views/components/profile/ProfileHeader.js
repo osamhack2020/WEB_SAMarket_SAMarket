@@ -18,16 +18,18 @@ export function ProfileHeader({ user, pageY, myId }) {
 }
 
 export function Scouter({ user, pageY }) {
+  console.log(pageY);
   return (
     <div
-      className={`scouter ${245 <= pageY && pageY <= 345 ? "stopProfile" : ""}`}
+      className={`scouter ${240 <= pageY && pageY <= 340 ? "stopProfile" : ""}`}
     >
-      <div className="scouterCircle" />
       <div className="scouterText">강함 측정기</div>
+      <div className="scouterImg" />
       <div className="strengthBase">{"/1000"}</div>
-      {245 <= pageY && pageY <= 345 && (
+      {240 <= pageY && (
         <div className="fadeinEffect">
-          <div className="scouterImg" />
+          <div className="scouterCircle" />
+          <div className="scouterLine" />
           <div className="strength">{"875"}</div>
         </div>
       )}

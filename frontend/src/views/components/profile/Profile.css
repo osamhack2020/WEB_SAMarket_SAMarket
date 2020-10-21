@@ -28,14 +28,20 @@
 /* Scouter */
 .scouter {
   position: relative;
+  text-align: center;
+  width: 100%;
+  margin-top: 30px;
   margin-bottom: 70px;
 }
 
 .scouterCircle {
   display: inline-block;
-  margin: 50px 0 30px 0;
-  width: 85px;
-  height: 85px;
+  position: absolute;
+  top: -29px;
+  left: 50%;
+  margin: 50px 0 30px -44px;
+  width: 84px;
+  height: 84px;
   border-radius: 50%;
   border: 2px solid #ffcc00;
   z-index: 9999;
@@ -43,10 +49,9 @@
 
 .scouterImg {
   display: inline-block;
-  position: absolute;
-  top: 30px;
-  left: 50%;
-  margin-left: -103px;
+  position: relative;
+  top: 0;
+  left: -3px;
   width: 200px;
   height: 150px;
   background: url(../../../imgs/icons/scouter.svg) no-repeat;
@@ -55,22 +60,50 @@
 
 .scouterText {
   position: absolute;
-  top: 50px;
-  left: -95px;
+  top: 20px;
+  left: 50%;
+  margin-left: -150px;
   color: #ffcc00;
   font-weight: bold;
+}
+
+.scouterLine {
+  position: absolute;
+  top: 80px;
+  right: 50%;
+  width: 40px;
+  height: 20px;
+  margin-right: -65px;
+  background: url(../../../imgs/icons/scouterLine.svg) no-repeat;
+  background-size: 100%;
 }
 
 .strength,
 .strengthBase {
   position: absolute;
-  top: 130px;
+  top: 90px;
+  right: 50%;
   color: #ffcc00;
   font-weight: bold;
   text-align: right;
-  right: -34px;
+  margin-right: -100px;
 }
 
 .strengthBase {
-  right: -80px;
+  margin-right: -150px;
+}
+
+/* Friend List */
+.hScrlTitle {
+  position: absolute;
+  left: 10%;
+}
+
+.Friend {
+  display: inline-block;
+  margin: 30px 10px 0 10px;
+}
+.friendName {
+  margin-top: 5px;
+  height: 900px;
 }

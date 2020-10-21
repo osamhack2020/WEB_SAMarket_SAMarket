@@ -10,10 +10,7 @@
 .stopProfile {
   position: fixed;
   top: 5px;
-  left: 50%;
-  margin-left: -45px;
 }
-
 .goAHead {
   position: absolute;
   top: 345px;

@@ -1,7 +1,6 @@
 import React from "react";
 import Profile from "../user/Profile";
 import HorizontalScroller from "views/components/base/HorizontalScroller";
-import "./FriendList.css";
 
 export default function FriendList({ user }) {
   const scrollX = delta_x =>
@@ -22,7 +21,7 @@ export default function FriendList({ user }) {
 
   return (
     <HorizontalScroller target="friendScroll" delta={50}>
-      <div className="friendsTitle">{user.name}의 전우들</div>
+      <div className="hScrlTitle">{user.name}의 전우들</div>
       {friends.map(friend => (
         <Friend userInfo={friend} />
       ))}
@@ -34,7 +33,7 @@ function Friend({ userInfo }) {
   return (
     <div className="Friend">
       <Profile userInfo={userInfo} size={60} />
-      <div>{userInfo.name}</div>
+      <div className="friendName">{userInfo.name}</div>
     </div>
   );
 }
