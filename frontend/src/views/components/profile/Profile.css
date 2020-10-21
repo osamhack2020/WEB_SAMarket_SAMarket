@@ -100,7 +100,7 @@
   margin: 10px 50px 10px 150px;
 }
 
-.advPost {
+.adVer {
   padding-top: 70px;
   padding-bottom: 70px;
 }
@@ -108,6 +108,7 @@
 .emptyPost {
   display: inline-block;
   width: 100%;
+  margin: 10px 50px 10px 50px;
 }
 
 .wantMore {

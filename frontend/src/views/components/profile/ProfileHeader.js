@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import BackBtn from "views/components/header/BackBtn";
 import { LieksNChats } from "views/components/header/TopLinks";
 import UserProfile from "views/components/user/UserProfile";
