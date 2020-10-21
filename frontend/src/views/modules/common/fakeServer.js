@@ -34,6 +34,19 @@ export const getInitialPostInfo = userInfo => ({
     content: ""
   }
 });
+export const getEmptyPost = (user, title, sub) => {
+  return {
+    postId: -1,
+    author: user,
+    type: "post",
+    contents: {
+      title: title,
+      sub: sub,
+      tags: ["처음", "기다려요"],
+      clr: {}
+    }
+  };
+};
 
 export function getPostInfoUpdater(info, setInfo) {
   return ({ type, title, sub, tags, fontClr, backClr, tagClr, content }) => {

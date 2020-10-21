@@ -1,32 +1,27 @@
 import React, { useState } from "react";
-import { getWhosePosts } from "views/modules/common/fakeServer";
+import { getWhosePosts, getEmptyPost } from "views/modules/common/fakeServer";
 import HorizontalScroller from "../base/HorizontalScroller";
-import Post, { EmptyPost } from "../post/Post";
+import Post from "../post/Post";
 
 export default function PostList({ user }) {
   const posts = getWhosePosts(user.id);
   const [wantMore, setMore] = useState(false);
+
   return (
     <div>
       <HorizontalScroller target="PostList" delta={300} margin={5}>
         <div className="hScrlTitle">{user.name}의 강군로드</div>
-        {posts.slice(0, 5).map(post => {
-          return (
-            <div
-              className={`postContainer ${
-                post.type === "adv" ? "advPost" : ""
-              }`}
-            >
-              <Post info={post} />
-            </div>
-          );
-        })}
+        {posts.slice(0, 5).map(post => (
+          <div
+            className={`postContainer ${post.type === "adv" ? "adVer" : ""}`}
+          >
+            <Post info={post} />
+          </div>
+        ))}
         {posts.length === 0 && (
           <div className="postContainer emptyPost">
-            <EmptyPost
-              user={user}
-              title={"세상에!"}
-              sub={"아직 게시한 글이 없습니다.."}
+            <Post
+              info={getEmptyPost(user, "세상에!", "게시한 글이 없습니다..")}
             />
           </div>
         )}
