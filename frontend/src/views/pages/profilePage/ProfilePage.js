@@ -11,7 +11,9 @@ import { NotFoundPage } from "../tempPages";
 import {
   ProfileHeader,
   Scouter,
-  FriendList
+  FriendList,
+  DealHistory,
+  PostList
 } from "views/components/profile/index";
 
 export default function ProfilePage({ match }) {
@@ -38,7 +40,7 @@ export default function ProfilePage({ match }) {
     <div
       className="ProfilePage"
       style={{
-        marginTop: 245 <= pageY && pageY <= 345 ? pageY : pageY >= 345 ? 100 : 0
+        marginTop: 240 <= pageY && pageY <= 340 ? pageY : pageY >= 340 ? 100 : 0
       }}
     >
       <div className="ProfileBack" />
@@ -52,14 +54,6 @@ export default function ProfilePage({ match }) {
       {myId === user.id && <SignOut />}
     </div>
   );
-}
-
-function DealHistory({ user }) {
-  return <div>거래내역</div>;
-}
-
-function PostList({ user }) {
-  return <div>게시글 목록</div>;
 }
 
 function SignOut() {
