@@ -35,15 +35,15 @@ export default function ProfilePage({ match }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [pageY]);
 
+  if (225 <= pageY && pageY < 245) {
+    window.scrollTo(0, 245); // 강함 측정 중, 스크롤 막음
+    document.body.style.overflow = "hidden";
+    setTimeout(() => (document.body.style.overflow = null), 1500);
+  }
+
   if (!user) return <NotFoundPage />;
   return (
-    <div
-      className="ProfilePage"
-      style={{
-        marginTop:
-          235 <= pageY && pageY <= 335 ? pageY - 30 : pageY >= 335 ? 100 : 0
-      }}
-    >
+    <div className="ProfilePage">
       <div className="ProfileBack" />
       <ProfileHeader user={user} pageY={pageY} myId={myId} />
       <div>
