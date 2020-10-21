@@ -1,0 +1,29 @@
+.ProfileBack {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding-top: 0px;
+  height: 100vh;
+  background: #fdfeff;
+  z-index: -1;
+}
+
+.myProfile {
+  position: fixed;
+  top: 10px;
+}
+
+.signOut {
+  display: inline-block;
+  box-sizing: border-box;
+  text-align: center;
+  padding-top: 5px;
+  margin: 50px 0 20px 0;
+  width: 250px;
+  height: 30px;
+  color: #ff5353;
+  font-weight: bold;
+  font-size: 15px;
+  border-radius: 15px;
+  border: 1px solid #ff5353;
+}
