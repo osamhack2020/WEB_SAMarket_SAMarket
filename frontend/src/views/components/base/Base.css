@@ -1,6 +1,8 @@
 .HScroller {
   position: relative;
   width: 100%;
+  height: fit-content;
+  margin-top: 50px;
   margin-bottom: 30px;
 }
 
@@ -28,4 +30,13 @@
   right: 5%;
   background: url(../../../imgs/icons//rightScrl.svg) no-repeat;
   background-size: 100%;
+}
+
+.hScrlTitle {
+  position: absolute;
+  top: -5px;
+  left: 10%;
+  font-size: 17px;
+  color: #05b0ea;
+  font-weight: bold;
 }

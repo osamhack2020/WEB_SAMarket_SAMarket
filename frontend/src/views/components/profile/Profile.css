@@ -10,21 +10,6 @@
   top: 10px;
 }
 
-.signOut {
-  display: inline-block;
-  box-sizing: border-box;
-  text-align: center;
-  padding-top: 5px;
-  margin: 50px 0 20px 0;
-  width: 250px;
-  height: 30px;
-  color: #ff5353;
-  font-weight: bold;
-  font-size: 15px;
-  border-radius: 15px;
-  border: 1px solid #ff5353;
-}
-
 /* Scouter */
 .scouter {
   position: relative;
@@ -86,7 +71,7 @@
   color: #ffcc00;
   font-weight: bold;
   text-align: right;
-  margin-right: -100px;
+  margin-right: -105px;
 }
 
 .strengthBase {
@@ -94,16 +79,20 @@
 }
 
 /* Friend List */
-.hScrlTitle {
-  position: absolute;
-  left: 10%;
-}
-
 .Friend {
   display: inline-block;
   margin: 30px 10px 0 10px;
 }
 .friendName {
   margin-top: 5px;
-  height: 900px;
+}
+
+/* PostList */
+.postContainer {
+  text-align: left;
+  margin: 10px 100px 10px 100px;
+}
+
+.advPost {
+  padding-top: 70px;
 }
