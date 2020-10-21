@@ -3,9 +3,6 @@ import Profile from "../user/Profile";
 import HorizontalScroller from "views/components/base/HorizontalScroller";
 
 export default function FriendList({ user }) {
-  const scrollX = delta_x =>
-    (document.getElementById("friendScroll").scrollLeft += delta_x);
-
   const friends = [
     { id: "a0", name: "가나다" },
     { id: "a1", name: "라마바" },
@@ -32,7 +29,7 @@ export default function FriendList({ user }) {
 function Friend({ userInfo }) {
   return (
     <div className="Friend">
-      <Profile userInfo={userInfo} size={60} />
+      <Profile userInfo={userInfo} size={50} />
       <div className="friendName">{userInfo.name}</div>
     </div>
   );

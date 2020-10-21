@@ -5,7 +5,7 @@ import UserProfile from "views/components/user/UserProfile";
 
 export function ProfileHeader({ user, pageY, myId }) {
   return (
-    <div className={`profileHeader ${pageY >= 345 ? "goAHead" : ""}`}>
+    <div className={`profileHeader ${pageY >= 245 ? "goAHead" : ""}`}>
       <BackBtn loc={[12, 10]} fixed={true} />
       <UserProfile userInfo={user} stop={true} />
       {myId === user.id && (
@@ -16,16 +16,13 @@ export function ProfileHeader({ user, pageY, myId }) {
     </div>
   );
 }
-
 export function Scouter({ user, pageY }) {
   return (
-    <div
-      className={`scouter ${235 <= pageY && pageY <= 335 ? "stopProfile" : ""}`}
-    >
+    <div className="scouter">
       <div className="scouterText">강함 측정기</div>
       <div className="scouterImg" />
       <div className="strengthBase">{"/1000"}</div>
-      {235 <= pageY && (
+      {225 <= pageY && (
         <div className="fadeinEffect">
           <div className="scouterCircle" />
           <div className="scouterLine" />

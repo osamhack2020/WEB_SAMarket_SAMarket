@@ -1,5 +1,4 @@
 /* 현재 사용하고 있는 유저가 아닌 다른 유저 */
-import zIndex from "@material-ui/core/styles/zIndex";
 import React from "react";
 import { Link } from "react-router-dom";
 import Profile from "./Profile";

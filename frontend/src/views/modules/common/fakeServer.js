@@ -4,7 +4,6 @@
 import { samroads } from "data/samroads.json";
 import { users } from "data/users.json";
 import { chats, unreadChat } from "data/chats.json";
-import { signOut } from "../sign/state";
 
 function MakeDataGenerator(items) {
   let itemIdx = 0;

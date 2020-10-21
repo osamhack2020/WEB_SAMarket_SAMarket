@@ -7,16 +7,6 @@
   z-index: -1;
 }
 
-.stopProfile {
-  position: fixed;
-  top: 5px;
-}
-
-.goAHead {
-  position: absolute;
-  top: 345px;
-}
-
 .signOut {
   display: inline-block;
   box-sizing: border-box;

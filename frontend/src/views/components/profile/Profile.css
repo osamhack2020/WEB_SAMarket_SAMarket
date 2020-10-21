@@ -10,6 +10,11 @@
   top: 10px;
 }
 
+.goAHead {
+  position: absolute;
+  top: 245px;
+}
+
 /* Scouter */
 .scouter {
   position: relative;
