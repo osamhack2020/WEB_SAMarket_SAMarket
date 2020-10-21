@@ -40,7 +40,8 @@ export default function ProfilePage({ match }) {
     <div
       className="ProfilePage"
       style={{
-        marginTop: 240 <= pageY && pageY <= 340 ? pageY : pageY >= 340 ? 100 : 0
+        marginTop:
+          235 <= pageY && pageY <= 335 ? pageY - 30 : pageY >= 335 ? 100 : 0
       }}
     >
       <div className="ProfileBack" />

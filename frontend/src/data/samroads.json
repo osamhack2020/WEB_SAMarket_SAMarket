@@ -90,6 +90,25 @@
         },
         "content": "당직 때 할 만한 컨텐츠"
       }
+    },
+    {
+      "postId": 5,
+      "author": {
+        "id": "jtjun",
+        "name": "장태준"
+      },
+      "type": "post",
+      "contents": {
+        "title": "휴가때 코딩만 함 ㅋㄷ",
+        "sub": "React 꿀잼",
+        "tags": ["osam", "react", "강군마켓", "코딩", "휴가"],
+        "clr": {
+          "font": "#fdfeff",
+          "back": "#05B0EA",
+          "tag": "#059ACB"
+        },
+        "content": "당직 때 할 만한 컨텐츠"
+      }
     }
   ]
 }
