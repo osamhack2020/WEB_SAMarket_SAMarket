@@ -21,7 +21,7 @@ export default function TopLinks() {
 export function LieksNChats() {
   const unreadChat = getUnreadChat();
   return (
-    <Fragment>
+    <Fragment style={{ zIndex: 9999 }}>
       <Link to="/likes" className="btn likes" />
       <Link to="/chats" className="btn chats">
         {unreadChat && (

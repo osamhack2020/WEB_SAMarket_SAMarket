@@ -2,13 +2,22 @@
 import React from "react";
 import "./Base.css";
 
-export default function HorizontalScroller({ children, target, delta }) {
+export default function HorizontalScroller({
+  children,
+  target,
+  delta,
+  margin = 10
+}) {
   const scrollX = deltaX =>
     (document.getElementById(target).scrollLeft += deltaX);
 
   return (
     <div class="HScroller">
-      <div className="hScrollWrapper" id={target}>
+      <div
+        className="hScrollWrapper"
+        style={{ margin: `0 ${margin}% 0 ${margin}%` }}
+        id={target}
+      >
         {children}
       </div>
       <button className="btn hScrollLeft" onClick={() => scrollX(delta)} />

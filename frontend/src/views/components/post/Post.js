@@ -15,3 +15,20 @@ export default function Post({ info }) {
     </div>
   );
 }
+
+export function EmptyPost({ user, title, sub }) {
+  return (
+    <Post
+      info={{
+        postId: -1,
+        author: user,
+        type: "post",
+        contents: {
+          title: title,
+          sub: sub,
+          tags: []
+        }
+      }}
+    />
+  );
+}
