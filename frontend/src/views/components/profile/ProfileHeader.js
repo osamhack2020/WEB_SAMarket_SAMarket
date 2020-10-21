@@ -6,7 +6,7 @@ import UserProfile from "views/components/user/UserProfile";
 export function ProfileHeader({ user, pageY, myId }) {
   return (
     <div className={`profileHeader ${pageY >= 345 ? "goAHead" : ""}`}>
-      <BackBtn fixed={true} />
+      <BackBtn loc={[12, 10]} fixed={true} />
       <UserProfile userInfo={user} stop={true} />
       {myId === user.id && (
         <div className="myProfile">
