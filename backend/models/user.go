@@ -62,6 +62,8 @@ func (store IUserStore) GetUser(id string) *User {
 	return &user
 }
 
-func (store IUserStore) GetFriendList(user User) {
-
+func (store IUserStore) GetFriendList(user User) []User {
+	var users []User
+	db.Model(&user).Association("Users").Find(&users)
+	return users
 }

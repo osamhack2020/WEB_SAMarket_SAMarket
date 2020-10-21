@@ -31,6 +31,7 @@ func InitUserRouter(rg *gin.RouterGroup) {
 // @Router /user/profile/{id} [get]
 // @Success 200 {object} models.User
 func getProfile(c *gin.Context) {
+	// TODO 즐겨찾기 한 게시글, 리뷰 목록, 리뷰 점수 등 포함
 	user := models.UserStore.GetUser(c.Param("id"))
 	c.JSON(200, user)
 }

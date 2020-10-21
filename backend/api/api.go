@@ -13,6 +13,7 @@ func SetupAPI(r *gin.Engine) {
 		InitPostRouter(v1)
 		InitCommentRouter(v1)
 		InitChatRouter(v1)
+		InitReviewRouter(v1)
 		InitUploadRouter(v1)
 		InitErrorRouter(v1)
 	}

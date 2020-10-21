@@ -122,10 +122,17 @@ func getFavorites(c *gin.Context) {
 	c.JSON(200, models.PostStore.GetFavorites(user))
 }
 
+type SearchPostRequest struct {
+	Title   string
+	Content string
+	Tags    []string
+}
+
 // @Security ApiKeyAuth
 // @Description 키워드로 게시글 검색
 // @Summary 키워드로 게시글 검색 (미구현)
 // @name searchPosts
+// @Param payload body SearchPostRequest true "로그인 정보"
 // @Produce  json
 // @Router /post/search [post]
 // @Success 200 {object} []models.Post

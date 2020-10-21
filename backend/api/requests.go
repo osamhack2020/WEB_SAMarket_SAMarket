@@ -1,5 +1,16 @@
 package api
 
+type AddChatMsgRequest struct {
+	ChatRoomID int
+	Content    string
+}
+
+type AddCommentRequest struct {
+	ToReply int
+	PostID  int
+	Content string
+}
+
 type RegisterRequest struct {
 	LoginID  string
 	Password string

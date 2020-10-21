@@ -34,11 +34,11 @@ func getCommentList(c *gin.Context) {
 
 // addComment godoc
 // @Security ApiKeyAuth
-// @Description 아래 예제에서 toReply (답글일 경우), postID (게시글 ID), content 만 넣어서 보내면 됨
+// @Description
 // @Summary 댓글 추가
 // @name addComment
 // @Produce  json
-// @Param payload body models.Comment true "댓글"
+// @Param payload body AddCommentRequest true "댓글"
 // @Router /comment/add [post]
 // @Success 200 {object} []models.Unit
 func addComment(c *gin.Context) {
