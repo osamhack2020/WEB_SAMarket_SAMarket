@@ -20,7 +20,7 @@ type WSTestRequest struct {
 type WSChatEvent struct {
 	ChatRoomID  int
 	ChatMsg     models.ChatMsg
-	UnreadCount int
+	UnreadCount int64
 }
 
 type WSNotiEvent struct {

@@ -19,8 +19,6 @@ func InitChatRouter(rg *gin.RouterGroup) {
 		router.GET("/rooms", getChatRooms)
 		router.GET("/msg/list/:roomid", getChatMsgList)
 		router.POST("/msg/send", addChatMsg)
-		router.POST("/review/add", addReview)
-		router.GET("/review/list/:userid", getReviewList)
 	}
 }
 
@@ -46,7 +44,6 @@ func createChatRoom(c *gin.Context) {
 		return
 	}
 	count := models.ChatStore.CheckChatRoomExists(post.ID, user.ID)
-	fmt.Println("count: ", count)
 	if count == 1 {
 		// 채팅방이 이미 존재
 		return
@@ -85,15 +82,13 @@ func getChatRooms(c *gin.Context) {
 // @Router /chat/msg/list/{roomid} [get]
 // @Success 200 {object} []models.ChatRoom
 func getChatMsgList(c *gin.Context) {
+	val, _ := c.Get("user")
+	user, _ := val.(models.User)
 	roomID := c.Param("roomid")
 	id, _ := strconv.Atoi(roomID)
 	msgs := models.ChatStore.GetChatMsgList(id)
+	models.ChatStore.MakeRead(user.ID, id)
 	c.JSON(200, msgs)
-}
-
-type AddChatMsgRequest struct {
-	ChatRoomID int
-	Content    string
 }
 
 // addChatMsg godoc
@@ -109,44 +104,28 @@ func addChatMsg(c *gin.Context) {
 	var msg *models.ChatMsg
 	c.ShouldBindJSON(&msg)
 	val, _ := c.Get("user")
-	if user, ok := val.(models.User); ok {
-		msg.SenderID = user.ID
-	}
-	// Todo: validate user in chatroom
-	models.ChatStore.AddChatMsg(*msg)
+	user, _ := val.(models.User)
+	msg.SenderID = user.ID
 	chatRoomUsers := models.ChatStore.GetUsersInChatRoom(models.ChatRoom{ID: msg.ChatRoomID})
-	eventObjBytes, _ := json.Marshal(ws.WSEvent{ChatRoomID: 0, ChatMsg: *msg, UnreadCount: 0})
-	eventJSON := string(eventObjBytes)
+	var isIn bool = false
+	for i := range chatRoomUsers {
+		if chatRoomUsers[i].ID == user.ID {
+			isIn = true
+			break
+		}
+	}
+	if !isIn {
+		return
+	}
+	msg.Unread = 1
+	models.ChatStore.AddChatMsg(*msg)
+
 	for _, receiver := range chatRoomUsers {
 		// 메시지 보낸 사람 외 다른사람들에게만 웹소켓 전송
 		if receiver.ID != msg.SenderID {
+			eventObjBytes, _ := json.Marshal(ws.WSChatEvent{ChatRoomID: msg.ChatRoomID, ChatMsg: *msg, UnreadCount: models.ChatStore.GetUnreadCount(receiver.ID)})
+			eventJSON := string(eventObjBytes)
 			ws.PublishMessage(receiver.ID, eventJSON)
 		}
 	}
-}
-
-// addReview godoc
-// @Security ApiKeyAuth
-// @Summary 판매 채팅후기 남기기 (판매자->구매자 또는 구매자->판매자 모두 가능)
-// @Description
-// @Accept  json
-// @Produce  json
-// @Param payload body LoginRequest true "로그인 정보"
-// @Router /chat/review/add [post]
-// @Success 200 {object} []models.ChatRoom
-func addReview(c *gin.Context) {
-
-}
-
-// getReviewList godoc
-// @Security ApiKeyAuth
-// @Summary 해당 유저 후기 리스트 가져오기
-// @Description
-// @Accept  json
-// @Produce  json
-// @Param payload body LoginRequest true "로그인 정보"
-// @Router /chat/review/list [post]
-// @Success 200 {object} []models.ChatRoom
-func getReviewList(c *gin.Context) {
-
 }
