@@ -4,20 +4,24 @@ import (
 	"time"
 )
 
+type PostColor struct {
+	Font string
+	Back string
+	Tag  string
+}
+
 type Post struct {
-	ID        int
-	AuthorID  string `json:"-"`
-	Author    User
-	Tags      string
-	Title     string
-	Type      string
-	Content   string
-	Price     int
-	FontColor string
-	BgColor   string
-	TagColor  string
-	UnitID    int  `json:"-"`
-	Unit      Unit `json:"-"`
+	ID       int
+	AuthorID string `json:"-"`
+	Author   User
+	Tags     string
+	Title    string
+	Type     string
+	Content  string
+	Price    int
+	Clr      PostColor `gorm:"embedded;embeddedPrefix:clr_"`
+	UnitID   int       `json:"-"`
+	Unit     Unit      `json:"-"`
 	// TODO 컬럼 생성 방지
 	IsFavorite int `gorm:"<-:false"`
 	CreatedAt  time.Time
