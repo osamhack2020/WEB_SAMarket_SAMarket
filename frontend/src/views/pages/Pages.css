@@ -8,5 +8,11 @@
 
 .ProfilePage {
   text-align: center;
-  margin-bottom: 30px;
+  padding-top: 250px;
+  padding-bottom: 30px;
+  background: #fdfeff;
+}
+
+.MarginPlus {
+  padding-top: 525px;
 }

@@ -1,0 +1,80 @@
+.profileHeader {
+  position: fixed;
+  top: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.myProfile {
+  position: fixed;
+  top: 10px;
+}
+
+.signOut {
+  display: inline-block;
+  box-sizing: border-box;
+  text-align: center;
+  padding-top: 5px;
+  margin: 50px 0 20px 0;
+  width: 250px;
+  height: 30px;
+  color: #ff5353;
+  font-weight: bold;
+  font-size: 15px;
+  border-radius: 15px;
+  border: 1px solid #ff5353;
+}
+
+/* Scouter */
+.scouter {
+  position: relative;
+  margin-bottom: 70px;
+}
+
+.scouterCircle {
+  display: inline-block;
+  margin: 50px 0 30px 0;
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  border: 2px solid #ffcc00;
+  z-index: 9999;
+}
+
+.scouterImg {
+  display: inline-block;
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  margin-left: -103px;
+  width: 200px;
+  height: 150px;
+  background: url(../../../imgs/icons/scouter.svg) no-repeat;
+  background-size: 100%;
+}
+
+.scouterText {
+  position: absolute;
+  top: 50px;
+  left: -95px;
+  color: #ffcc00;
+  font-weight: bold;
+}
+
+.strength,
+.strengthBase {
+  position: absolute;
+  top: 130px;
+  color: #ffcc00;
+  font-weight: bold;
+  text-align: right;
+  right: -34px;
+}
+
+.strengthBase {
+  right: -80px;
+}
+
+.FriendList {
+  height: 300px;
+}
