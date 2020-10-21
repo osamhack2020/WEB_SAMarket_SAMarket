@@ -1,5 +1,6 @@
 import React from "react";
 import Profile from "../user/Profile";
+import HorizontalScroller from "views/components/base/HorizontalScroller";
 import "./FriendList.css";
 
 export default function FriendList({ user }) {
@@ -20,16 +21,12 @@ export default function FriendList({ user }) {
   ];
 
   return (
-    <div class="FriendList">
-      <div className="friendsWrapper" id="friendScroll">
-        <div className="friendsTitle">친구목록</div>
-        {friends.map(friend => (
-          <Friend userInfo={friend} />
-        ))}
-      </div>
-      <button className="btn scrlLeft" onClick={() => scrollX(50)} />
-      <button className="btn scrlRight" onClick={() => scrollX(-50)} />
-    </div>
+    <HorizontalScroller target="friendScroll" delta={50}>
+      <div className="friendsTitle">{user.name}의 전우들</div>
+      {friends.map(friend => (
+        <Friend userInfo={friend} />
+      ))}
+    </HorizontalScroller>
   );
 }
 

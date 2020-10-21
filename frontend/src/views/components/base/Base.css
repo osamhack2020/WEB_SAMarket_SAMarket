@@ -1,0 +1,31 @@
+.HScroller {
+  position: relative;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.hScrollWrapper {
+  display: flex;
+  margin: 0 10% 0 10%;
+  overflow-x: scroll;
+}
+
+.hScrollLeft,
+.hScrollRight {
+  position: absolute;
+  top: 50%;
+  width: 25px;
+  height: 25px;
+}
+
+.hScrollLeft {
+  left: 5%;
+  background: url(../../../imgs/icons//leftScrl.svg) no-repeat;
+  background-size: 100%;
+}
+
+.hScrollRight {
+  right: 5%;
+  background: url(../../../imgs/icons//rightScrl.svg) no-repeat;
+  background-size: 100%;
+}
