@@ -15,9 +15,10 @@ func InitPostRouter(rg *gin.RouterGroup) {
 		router.POST("/add", addPost)
 		router.GET("/list", getPostList)
 		//router.GET("/view/:id", getPost)
-		router.GET("/toggle/favorite/:id", toggleFavorite)
-		router.GET("/toggle/ban/:id", toggleBan)
+		router.GET("/toggle/favorite/:id", addFavorite)
+		router.DELETE("/toggle/favorite/:id", deleteFavorite)
 		router.GET("/favorites", getFavorites)
+		router.POST("/search", searchPosts)
 	}
 }
 
@@ -33,7 +34,7 @@ func getPostList(c *gin.Context) {
 	val, _ := c.Get("user")
 	if user, ok := val.(models.User); ok {
 		// TODO 즐겨찾기 여부 JOIN
-		c.JSON(200, models.PostStore.GetPostListByUnitID(user.UnitID))
+		c.JSON(200, models.PostStore.GetPostListByUnitID(user.ID, user.UnitID))
 	}
 }
 
@@ -64,20 +65,37 @@ func addPost(c *gin.Context) {
 }
 
 // @Security ApiKeyAuth
-// @Description 즐겨찾기 여부 토글
-// @Summary 즐겨찾기 여부 토글
-// @name getPost
+// @Description 즐겨찾기에 추가
+// @Summary 즐겨찾기에 추가
+// @name addFavorite
 // @Produce  json
 // @Param id path string true "게시글 id"
 // @Router /post/toggle/favorite/{id} [get]
 // @Success 200 {object} []models.Post
-func toggleFavorite(c *gin.Context) {
+func addFavorite(c *gin.Context) {
 	val, _ := c.Get("user")
 	user, _ := val.(models.User)
 
 	param := c.Param("id")
 	postID, _ := strconv.Atoi(param)
 	models.PostStore.AddFavorite(user.ID, postID)
+}
+
+// @Security ApiKeyAuth
+// @Description 즐겨찾기에서 삭제
+// @Summary 즐겨찾기에서 삭제
+// @name deleteFavorite
+// @Produce  json
+// @Param id path string true "게시글 id"
+// @Router /post/toggle/favorite/{id} [delete]
+// @Success 200 {object} []models.Post
+func deleteFavorite(c *gin.Context) {
+	val, _ := c.Get("user")
+	user, _ := val.(models.User)
+
+	param := c.Param("id")
+	postID, _ := strconv.Atoi(param)
+	models.PostStore.DeleteFavorite(user.ID, postID)
 }
 
 // @Security ApiKeyAuth
@@ -102,4 +120,15 @@ func getFavorites(c *gin.Context) {
 	val, _ := c.Get("user")
 	user, _ := val.(models.User)
 	c.JSON(200, models.PostStore.GetFavorites(user))
+}
+
+// @Security ApiKeyAuth
+// @Description 키워드로 게시글 검색
+// @Summary 키워드로 게시글 검색 (미구현)
+// @name searchPosts
+// @Produce  json
+// @Router /post/search [post]
+// @Success 200 {object} []models.Post
+func searchPosts(c *gin.Context) {
+
 }
