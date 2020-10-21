@@ -17,10 +17,15 @@ type WSTestRequest struct {
 	MSG string
 }
 
-type WSEvent struct {
+type WSChatEvent struct {
 	ChatRoomID  int
 	ChatMsg     models.ChatMsg
 	UnreadCount int
+}
+
+type WSNotiEvent struct {
+	NotiID int
+	Noti   models.Noti
 }
 
 func PublishMessage(uuid string, msg string) {
@@ -54,7 +59,7 @@ func testSocket(c *gin.Context) {
 // @Accept  json
 // @Produce  json
 // @Router /ws [get]
-// @Success 200 {object} WSEvent
+// @Success 200 {object} WSChatEvent
 func accept(c *gin.Context) {
 	val, _ := c.Get("user")
 	if user, ok := val.(models.User); ok {
