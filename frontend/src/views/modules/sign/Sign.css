@@ -11,6 +11,12 @@
   z-index: 2;
 }
 
+.signInputDate {
+  background: url(../../../imgs/icons/calendar.svg) no-repeat #f0f3f6;
+  background-position: 95% 50%;
+  background-size: 15px 15px;
+}
+
 .signBtn {
   color: #fdfeff;
   font-weight: bold;
