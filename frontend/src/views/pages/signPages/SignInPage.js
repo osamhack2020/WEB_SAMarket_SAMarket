@@ -5,6 +5,7 @@ import { Redirect, Link } from "react-router-dom";
 import styled from "styled-components";
 import SignInForm from "views/modules/sign/SignInForm";
 import AboutUs from "views/components/aboutUs/AboutUs";
+import Stars from "views/components/stars/Stars";
 
 const SignUpEntry = styled.div`
   font-size: 14px;
@@ -28,6 +29,9 @@ export default function SignInPage() {
               <button className="btn signUpBtn">강한군인으로 등록하기</button>
             </Link>
           </SignUpEntry>
+          <div style={{ zIndex: 9999 }}>
+            <Stars />
+          </div>
           <AboutUs heightNorm={700} />
         </div>
       </div>
