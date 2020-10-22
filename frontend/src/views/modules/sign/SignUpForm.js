@@ -95,6 +95,7 @@ export default function SignUpForm() {
         className="signInputDate"
         placeholder="입대일"
         type="date"
+        value="2020-01-01"
         required
         aria-required="true"
         onChange={e => setInfo({ enter: e.target.value, ...userInfo })}
@@ -103,6 +104,7 @@ export default function SignUpForm() {
         className="signInputDate"
         placeholder="전역일"
         type="date"
+        value="2021-01-01"
         required
         aria-required="true"
         onChange={e => setInfo({ discharge: e.target.value, ...userInfo })}
