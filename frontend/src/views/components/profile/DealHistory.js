@@ -6,7 +6,7 @@ import Post from "../post/Post";
 export default function DealHistory({ user }) {
   const deals = [];
   return (
-    <HorizontalScroller target="dealHistory" delta={300}>
+    <HorizontalScroller target="dealHistory" delta={300} margin={0}>
       <div className="hScrlTitle">{user.name}의 거래 발자취</div>
       {deals.length === 0 && (
         <div className="postContainer emptyPost">
@@ -17,6 +17,7 @@ export default function DealHistory({ user }) {
   );
 }
 
-function Deal({ seller, buyer, dealId }) {
+function Deal({ dealId }) {
+  const [seller, buyer] = [null, null];
   return <div></div>;
 }

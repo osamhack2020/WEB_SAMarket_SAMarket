@@ -9,7 +9,7 @@ export default function PostList({ user }) {
 
   return (
     <div>
-      <HorizontalScroller target="PostList" delta={300} margin={5}>
+      <HorizontalScroller target="PostList" delta={300} margin={0}>
         <div className="hScrlTitle">{user.name}의 강군로드</div>
         {posts.slice(0, 5).map(post => (
           <div
