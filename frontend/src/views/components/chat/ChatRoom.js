@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getPostById } from "views/modules/common/fakeServer";
 import { Redirect } from "react-router-dom";
+import Rate from "views/components/rate/Rate";
 import Post from "../post/Post";
 import MessageList from "./MessageList";
 import ChatInput from "./ChatInput";
@@ -9,7 +10,7 @@ import "./Chat.css";
 
 let socket;
 
-export default function ChatRoom({ search, chatRoomId, roomInfo, me }) {
+export default function ChatRoom({ search, chatRoomId, roomInfo, me, done }) {
   const { postId, members, msgs } = roomInfo;
   // room을 사용하지 않고 있음
   // name 은 redux 에서 로그인된 계정 정보를 직접 가져오는 방식으로 수정
@@ -77,6 +78,7 @@ export default function ChatRoom({ search, chatRoomId, roomInfo, me }) {
         ) /* posting 을 통해서 생성된 채팅방 */
       }
       <MessageList me={me} messages={messages} />
+      {done && <Rate />}
       <ChatInput
         message={message}
         setMessage={setMessage}

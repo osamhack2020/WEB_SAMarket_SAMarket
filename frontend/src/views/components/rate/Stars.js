@@ -1,6 +1,6 @@
 /* 별점 매기기 */
 import React, { useEffect } from "react";
-import "./Stars.css";
+import "./Rate.css";
 
 export default function Star({ rate, setRate, freeze }) {
   // 1 점을 두 번 누르면 0점

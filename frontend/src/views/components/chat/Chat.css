@@ -30,6 +30,19 @@
   font-weight: bold;
 }
 
+.doneBtn {
+  position: absolute;
+  height: 22px;
+  right: 10px;
+  top: 20px;
+  color: #05b0ea;
+  font-size: 13px;
+  border: 1px solid #05b0ea;
+  border-radius: 11px;
+  background: rgba(0, 0, 0, 0);
+  padding: 0 10px 0 10px;
+}
+
 /*ChatInput*/
 .chatInputContainer {
   z-index: 9999;
