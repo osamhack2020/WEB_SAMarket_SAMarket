@@ -10,6 +10,7 @@ export default function SignInForm() {
   const dipatch = useDispatch();
 
   const handleSignIn = e => {
+    e.preventDefault();
     dipatch(signIn(userId, password));
     window.location.reload(); // 리로딩
   };
@@ -22,6 +23,7 @@ export default function SignInForm() {
           type="id"
           placeholder="아이디"
           value={userId}
+          required="true"
           onChange={e => setId(e.target.value)}
         />
         <input
@@ -29,6 +31,7 @@ export default function SignInForm() {
           type="password"
           placeholder="비밀번호"
           value={password}
+          required="true"
           onChange={e => setPw(e.target.value)}
           onKeyPress={e => (e.key === "Enter" ? handleSignIn(e) : null)}
         />

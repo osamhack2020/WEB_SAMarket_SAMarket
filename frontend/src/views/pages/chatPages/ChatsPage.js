@@ -39,12 +39,12 @@ function ChatsHeader({ setKeyword }) {
     // chatting 시작을 위한 dialog 띄울 것
   };
   return (
-    <h1 className="chatsListHead backdropBlur">
+    <h2 className="chatsListHead backdropBlur">
       마음의 편지함
       <BackBtn loc={[32, 10]} />
       <button className="btn chatWriteBtn" onClick={startChat} />
       <SearchBar onSearch={keyword => setKeyword(keyword)} realTime={true} />
-    </h1>
+    </h2>
   );
 }
 
@@ -105,12 +105,8 @@ function LastChatTime({ time }) {
 }
 
 function getTime(today, time) {
-  const [hour, minute, _] = [
-    today.getHours(),
-    today.getMinutes(),
-    today.getSeconds()
-  ];
-  const [h, m, s] = time.split(":").map(t => parseInt(t));
+  const [hour, minute] = [today.getHours(), today.getMinutes()];
+  const [h, m] = time.split(":").map(t => parseInt(t));
   if (hour === h) {
     if (minute === m) return "방금";
     return `${minute - m}분 전`;

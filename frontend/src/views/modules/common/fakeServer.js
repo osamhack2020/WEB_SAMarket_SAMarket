@@ -18,6 +18,40 @@ export const getNextSAMroad = MakeDataGenerator(samroads);
 export const getPostById = postId =>
   samroads.filter(samroad => samroad.postId === parseInt(postId))[0];
 
+const getNextPostId = () => samroads.length; // identical 한 걸 주는 logic 필요
+export const getInitialPostInfo = userInfo => ({
+  postId: getNextPostId(),
+  author: { id: userInfo.id, name: userInfo.name },
+  type: "post",
+  contents: {
+    title: undefined,
+    sub: undefined,
+    tags: [],
+    clr: { font: "#202326", back: "#8990A0", tag: "#505560" },
+    content: ""
+  }
+});
+export function getPostInfoUpdater(info, setInfo) {
+  return ({ type, title, sub, tags, fontClr, backClr, tagClr, content }) => {
+    setInfo({
+      postId: info.postId,
+      author: info.author,
+      type: type !== undefined ? type : info.type,
+      contents: {
+        title: title !== undefined ? title : info.contents.title,
+        sub: sub !== undefined ? sub : info.contents.sub,
+        tags: tags !== undefined ? tags : info.contents.tags,
+        clr: {
+          font: fontClr !== undefined ? fontClr : info.contents.clr.font,
+          back: backClr !== undefined ? backClr : info.contents.clr.back,
+          tag: tagClr !== undefined ? tagClr : info.contents.clr.tag
+        },
+        content: content !== undefined ? content : info.contents.content
+      }
+    });
+  };
+}
+
 export const getChatList = () => chats;
 export const getChatRoom = chatRoomId => {
   for (let idx in chats) {
@@ -30,7 +64,6 @@ export const getUnreadChat = () => unreadChat;
 export function signInReq(userId, password) {
   const user = users[userId];
   if (user && user.pw === password) {
-    console.log(user);
     return user;
   }
   throw new Error("Sign In Failed");

@@ -5,14 +5,15 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import "./AboutUs.css";
 
-export default function AboutUs({ heightNorm }) {
-  const AboutLink = styled(Link)`
-    cursor: pointer;
-    text-decoration: none;
-    margin-right: 15px;
-    color: #8990a0;
-  `;
+const AboutLink = styled(Link)`
+  cursor: pointer;
+  text-decoration: none;
+  margin-right: 15px;
+  color: #8990a0;
+`;
 
+export default function AboutUs() {
+  // 강군 마켓 소개 링크
   return (
     <div className="aboutUs">
       <AboutLink to="/aboutus/intro">강군마켓 소개</AboutLink>
