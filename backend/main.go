@@ -48,6 +48,7 @@ func main() {
 	api.SetupAPI(r)
 	ws.SetupWebSocket(r)
 	r.Use(static.Serve("/", static.LocalFile("./web", true)))
+	r.Use(static.Serve("/assets", static.LocalFile("./assets", true)))
 	r.Use(static.Serve("/upload", static.LocalFile("./upload", true)))
 	r.NoRoute(func(c *gin.Context) {
 		c.File("./web/index.html")
