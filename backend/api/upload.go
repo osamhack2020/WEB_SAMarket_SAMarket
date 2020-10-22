@@ -26,8 +26,7 @@ func InitUploadRouter(rg *gin.RouterGroup) {
 // @Produce  json
 // @Param   file formData file true  "this is a test file"
 // @Success 200 {string} string "ok"
-// @Failure 400 {object} string "We need ID!!"
-// @Failure 404 {object} string "Can not find ID"
+// @Failure 400 {object} BadRequestResult
 // @Router /upload [post]
 func upload(c *gin.Context) {
 	file, err := c.FormFile("file")
@@ -44,8 +43,5 @@ func upload(c *gin.Context) {
 		c.String(http.StatusBadRequest, fmt.Sprintf("upload file err: %s", err.Error()))
 		return
 	}
-
-	c.JSON(200, gin.H{
-		"filename": file.Filename,
-	})
+	ResponseOK(c, gin.H{"filename": file.Filename})
 }

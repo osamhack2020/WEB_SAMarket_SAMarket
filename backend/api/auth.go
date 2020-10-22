@@ -3,7 +3,6 @@ package api
 import (
 	"fmt"
 
-	"net/http"
 	"sam/config"
 	"sam/middleware"
 	"sam/models"
@@ -33,6 +32,7 @@ func InitAuthRouter(rg *gin.RouterGroup) {
 // @Param payload body LoginRequest true "로그인 정보"
 // @Router /auth/login [post]
 // @Success 200 {object} LoginResult
+// @Failure 400 {object} BadRequestResult
 func login(c *gin.Context) {
 	var rq *LoginRequest
 	err := c.ShouldBindJSON(&rq)
@@ -40,12 +40,12 @@ func login(c *gin.Context) {
 		fmt.Println(err)
 	}
 	user := models.UserStore.GetUserByIDAndPW(rq.LoginID, rq.Password)
-	result := &LoginResult{*user, models.ChatStore.GetUnreadCount(user.ID)}
 	if user == nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "error"})
+		ResponseBadRequest(c, "해당 정보와 일치하는 유저를 찾을 수 없습니다.")
 	} else {
+		result := &LoginResult{*user, models.ChatStore.GetUnreadCount(user.ID)}
 		middleware.GenerateToken(user, c)
-		c.JSON(http.StatusOK, result)
+		ResponseOK(c, result)
 	}
 }
 
@@ -60,7 +60,7 @@ func login(c *gin.Context) {
 func logout(c *gin.Context) {
 	//토큰 쿠키 expire
 	c.SetCookie("token", "", 0, "", "", false, false)
-	c.JSON(http.StatusOK, gin.H{"logout ok": "logout ok"})
+	ResponseOK(c, gin.H{"msg": "로그아웃 완료"})
 }
 
 // register godoc
@@ -74,6 +74,7 @@ func logout(c *gin.Context) {
 // @Param json body RegisterRequest true "회원가입 정보"
 // @Router /auth/register [post]
 // @Success 200 {object} models.User
+// @Failure 400 {object} BadRequestResult
 func register(c *gin.Context) {
 	var rq RegisterRequest
 	err := c.ShouldBindJSON(&rq)
@@ -81,8 +82,12 @@ func register(c *gin.Context) {
 		fmt.Println(err)
 	}
 	user := models.User{LoginID: rq.LoginID, Name: rq.Name, Password: rq.Password, Mil: rq.Mil, UnitID: rq.UnitID}
-	models.UserStore.AddUser(user)
-	c.JSON(200, "okay")
+	err = models.UserStore.AddUser(user)
+	if err != nil {
+		ResponseBadRequest(c, err)
+	} else {
+		ResponseOK(c, user)
+	}
 }
 
 // checkSession godoc
@@ -91,9 +96,8 @@ func register(c *gin.Context) {
 // @Description 세션 체크
 // @Router /auth/checkSession [get]
 // @Success 200 {object} models.User
+// @Failure 400 {object} BadRequestResult
 func checkSession(c *gin.Context) {
-	val, _ := c.Get("user")
-	if user, ok := val.(models.User); ok {
-		c.JSON(200, user)
-	}
+	user := GetSessionUser(c)
+	ResponseOK(c, user)
 }

@@ -2,10 +2,27 @@ package api
 
 import "sam/models"
 
-// api results
+type BadRequestResult struct {
+	MSG string `json:"msg"`
+}
+
+/* Auth Result Models */
 type LoginResult struct {
 	// 유저 정보
 	User models.User
 	// 안 읽은 채팅 수
 	UnreadChat int64
+}
+
+/* Chat Result Models */
+
+/* Comment Result Models */
+
+/* Post Result Models */
+/* Review Result Models */
+/* Unit Result Models */
+/* User Result Models */
+type UserProfileResult struct {
+	User  models.User
+	Score int64
 }

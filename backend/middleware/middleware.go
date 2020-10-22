@@ -67,6 +67,6 @@ func TokenAuth(c *gin.Context) {
 }
 
 func redirectToMain(c *gin.Context) {
-	c.Redirect(http.StatusUnauthorized, "/")
+	c.JSON(http.StatusUnauthorized, gin.H{"msg": "세션 검증에 실패하였습니다."})
 	c.Abort()
 }

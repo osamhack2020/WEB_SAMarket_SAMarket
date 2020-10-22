@@ -22,8 +22,10 @@ type Post struct {
 	Clr      PostColor `gorm:"embedded;embeddedPrefix:clr_"`
 	UnitID   int       `json:"-"`
 	Unit     Unit      `json:"-"`
+	// 판매 종료 완료
+	Closed bool
 	// TODO 컬럼 생성 방지
-	IsFavorite int `gorm:"<-:false"`
+	IsFavorite int64
 	CreatedAt  time.Time
 	UpdatedAt  time.Time
 }
@@ -45,6 +47,13 @@ func (store IPostStore) GetPost(postID int) Post {
 func (store IPostStore) GetPostListByUnitID(userID string, unitID int) []Post {
 	var posts []Post
 	db.Model(&Post{}).Raw("select posts.*, (f.post_id is NOT NULL) as is_favorite from posts LEFT OUTER JOIN favorites f ON f.user_id = ? and posts.id = f.post_id WHERE posts.unit_id = ? order by posts.created_at desc ", userID, unitID).Preload("Author").Find(&posts)
+	//db.Order("created_at desc").Where("unit_id = ?", unitID).Preload("Author").Find(&posts)
+	return posts
+}
+
+func (store IPostStore) GetPostListByAuthor(userID string, authorID string) []Post {
+	var posts []Post
+	db.Model(&Post{}).Raw("select posts.*, (f.post_id is NOT NULL) as is_favorite from posts LEFT OUTER JOIN favorites f ON f.user_id = ? and posts.id = f.post_id WHERE posts.author_id = ? order by posts.created_at desc ", userID, authorID).Preload("Author").Find(&posts)
 	//db.Order("created_at desc").Where("unit_id = ?", unitID).Preload("Author").Find(&posts)
 	return posts
 }

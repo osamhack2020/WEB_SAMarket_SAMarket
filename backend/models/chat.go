@@ -9,10 +9,10 @@ type ChatRoom struct {
 	Post      Post
 	PostID    int
 	Title     string
-	CreatedAt time.Time
 	Users     []*User  `gorm:"many2many:user_chatrooms;"`
 	Unread    int      `gorm:"-"`
 	LastMsg   *ChatMsg `gorm:"-"`
+	CreatedAt time.Time
 }
 
 type ChatMsg struct {
@@ -22,8 +22,8 @@ type ChatMsg struct {
 	Sender     User
 	SenderID   string
 	Content    string
-	CreatedAt  time.Time
 	Unread     int
+	CreatedAt  time.Time
 }
 
 var ChatStore IChatStore
@@ -54,14 +54,14 @@ func (store IChatStore) AddChatRoom(chatroom *ChatRoom) {
 	db.Create(chatroom)
 }
 
-func (store IChatStore) AddChatMsg(msg ChatMsg) {
-	db.Create(&msg)
+func (store IChatStore) AddChatMsg(msg *ChatMsg) {
+	db.Create(msg)
 }
 
-func (store IChatStore) CheckChatRoomExists(postID int, userID string) int64 {
-	var count int64
-	db.Raw("select COUNT(chat_rooms.id) from chat_rooms, user_chatrooms where chat_rooms.post_id = ? and chat_rooms.id = user_chatrooms.chat_room_id and user_chatrooms.user_id = ?", postID, userID).Scan(&count)
-	return count
+func (store IChatStore) GetChatRoom(postID int, userID string) []ChatRoom {
+	var chatRooms []ChatRoom
+	db.Raw("select * from chat_rooms, user_chatrooms where chat_rooms.post_id = ? and chat_rooms.id = user_chatrooms.chat_room_id and user_chatrooms.user_id = ?", postID, userID).Scan(&chatRooms)
+	return chatRooms
 }
 
 func (store IChatStore) AddUserInChatRoom(chatRoomID int, uuid string) {

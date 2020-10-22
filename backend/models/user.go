@@ -2,6 +2,7 @@ package models
 
 import (
 	"fmt"
+	"time"
 
 	uuid "github.com/satori/go.uuid"
 	"gorm.io/gorm"
@@ -26,8 +27,10 @@ type User struct {
 	UnitID    int
 	Unit      Unit
 	ChatRooms []*ChatRoom `gorm:"many2many:user_chatrooms;" json:"-"`
-	Friends   []*User     `gorm:"many2many:friends;" json:"-"`
+	Follows   []*User     `gorm:"many2many:follows;" json:"-"`
 	Favorites []Post      `gorm:"many2many:favorites;" json:"-"`
+	CreatedAt time.Time
+	UpdatedAt time.Time
 }
 
 type IUserStore struct{}
@@ -49,11 +52,9 @@ func (store IUserStore) GetUserByIDAndPW(id string, pw string) *User {
 	return &user
 }
 
-func (store IUserStore) AddUser(user User) {
+func (store IUserStore) AddUser(user User) error {
 	err := db.Select("ID", "LoginID", "Password", "Name", "Phone", "Mil", "UnitID").Create(&user).Error
-	if err != nil {
-		fmt.Println(err)
-	}
+	return err
 }
 
 func (store IUserStore) GetUser(id string) *User {
@@ -62,8 +63,22 @@ func (store IUserStore) GetUser(id string) *User {
 	return &user
 }
 
-func (store IUserStore) GetFriendList(user User) []User {
+func (store IUserStore) GetFollowingList(user User) []User {
 	var users []User
-	db.Model(&user).Association("Users").Find(&users)
+	db.Raw("select users.* from follows, users where follows.user_id = ? and follows.follow_id = users.id", user.ID).Scan(&users)
 	return users
+}
+
+func (store IUserStore) GetFollowerList(user User) []User {
+	var users []User
+	db.Raw("select users.* from follows, users where follows.follow_id = ? and follows.user_id = users.id", user.ID).Scan(&users)
+	return users
+}
+
+func (store IUserStore) AddFollow(uuidfrom string, uuidto string) {
+	db.Exec("INSERT INTO follows (user_id, follow_id) VALUES (?, ?);", uuidfrom, uuidto)
+}
+
+func (store IUserStore) DeleteFollow(uuidfrom string, uuidto string) {
+	db.Exec("DELETE FROM follows where user_id = ? and follow_id = ?", uuidfrom, uuidto)
 }

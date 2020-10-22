@@ -14,9 +14,11 @@ func InitPostRouter(rg *gin.RouterGroup) {
 		router.Use(middleware.TokenAuth)
 		router.POST("/add", addPost)
 		router.GET("/list", getPostList)
+		router.GET("/user/:userid", getPostByAuthor)
 		//router.GET("/view/:id", getPost)
 		router.GET("/toggle/favorite/:id", addFavorite)
 		router.DELETE("/toggle/favorite/:id", deleteFavorite)
+		router.GET("/notint/:id", notint)
 		router.GET("/favorites", getFavorites)
 		router.POST("/search", searchPosts)
 	}
@@ -30,18 +32,10 @@ func InitPostRouter(rg *gin.RouterGroup) {
 // @Produce  json
 // @Router /post/list [get]
 // @Success 200 {object} []models.Post
+// @Failure 400 {object} BadRequestResult
 func getPostList(c *gin.Context) {
-	val, _ := c.Get("user")
-	if user, ok := val.(models.User); ok {
-		// TODO 즐겨찾기 여부 JOIN
-		c.JSON(200, models.PostStore.GetPostListByUnitID(user.ID, user.UnitID))
-	}
-}
-
-type AddPostRequest struct {
-	Title    string
-	PostType string
-	Tags     string
+	user := GetSessionUser(c)
+	ResponseOK(c, models.PostStore.GetPostListByUnitID(user.ID, user.UnitID))
 }
 
 // addPost godoc
@@ -52,16 +46,16 @@ type AddPostRequest struct {
 // @Produce  json
 // @Param payload body models.Post true "게시글"
 // @Router /post/add [post]
-// @Success 200 {object} []models.Post
+// @Success 200 {object} models.Post
+// @Failure 400 {object} BadRequestResult
 func addPost(c *gin.Context) {
 	var post models.Post
 	c.ShouldBindJSON(&post)
-	val, _ := c.Get("user")
-	if user, ok := val.(models.User); ok {
-		post.AuthorID = user.ID
-		post.UnitID = user.UnitID
-	}
+	user := GetSessionUser(c)
+	post.AuthorID = user.ID
+	post.UnitID = user.UnitID
 	models.PostStore.AddPost(post)
+	ResponseOK(c, post)
 }
 
 // @Security ApiKeyAuth
@@ -71,10 +65,10 @@ func addPost(c *gin.Context) {
 // @Produce  json
 // @Param id path string true "게시글 id"
 // @Router /post/toggle/favorite/{id} [get]
-// @Success 200 {object} []models.Post
+// @Success 200
+// @Failure 400 {object} BadRequestResult
 func addFavorite(c *gin.Context) {
-	val, _ := c.Get("user")
-	user, _ := val.(models.User)
+	user := GetSessionUser(c)
 
 	param := c.Param("id")
 	postID, _ := strconv.Atoi(param)
@@ -88,25 +82,14 @@ func addFavorite(c *gin.Context) {
 // @Produce  json
 // @Param id path string true "게시글 id"
 // @Router /post/toggle/favorite/{id} [delete]
-// @Success 200 {object} []models.Post
+// @Success 200
+// @Failure 400 {object} BadRequestResult
 func deleteFavorite(c *gin.Context) {
-	val, _ := c.Get("user")
-	user, _ := val.(models.User)
+	user := GetSessionUser(c)
 
 	param := c.Param("id")
 	postID, _ := strconv.Atoi(param)
 	models.PostStore.DeleteFavorite(user.ID, postID)
-}
-
-// @Security ApiKeyAuth
-// @Description 안보이게 하기 여부 토글
-// @Summary 안보이게 하기 여부 토글
-// @name getPost
-// @Produce  json
-// @Router /post/toggle/ban/{id} [get]
-// @Success 200 {object} []models.Post
-func toggleBan(c *gin.Context) {
-
 }
 
 // @Security ApiKeyAuth
@@ -116,26 +99,50 @@ func toggleBan(c *gin.Context) {
 // @Produce  json
 // @Router /post/favorites [get]
 // @Success 200 {object} []models.Post
+// @Failure 400 {object} BadRequestResult
 func getFavorites(c *gin.Context) {
-	val, _ := c.Get("user")
-	user, _ := val.(models.User)
-	c.JSON(200, models.PostStore.GetFavorites(user))
+	user := GetSessionUser(c)
+	ResponseOK(c, models.PostStore.GetFavorites(user))
 }
 
-type SearchPostRequest struct {
-	Title   string
-	Content string
-	Tags    []string
+// @Security ApiKeyAuth
+// @Description 유저가 쓴 게시글 가져오기
+// @Summary 유저가 쓴 게시글 가져오기
+// @name getPostByAuthor
+// @Produce  json
+// @Param userid path string true "유저 id"
+// @Router /post/user/{userid} [get]
+// @Success 200 {object} []models.Post
+// @Failure 400 {object} BadRequestResult
+func getPostByAuthor(c *gin.Context) {
+	user := GetSessionUser(c)
+	author := c.Param("userid")
+	ResponseOK(c, models.PostStore.GetPostListByAuthor(user.ID, author))
 }
 
 // @Security ApiKeyAuth
 // @Description 키워드로 게시글 검색
 // @Summary 키워드로 게시글 검색 (미구현)
 // @name searchPosts
-// @Param payload body SearchPostRequest true "로그인 정보"
+// @Param query path string true "검색 쿼리"
 // @Produce  json
-// @Router /post/search [post]
+// @Router /post/search/{query} [get]
 // @Success 200 {object} []models.Post
+// @Failure 400 {object} BadRequestResult
 func searchPosts(c *gin.Context) {
+
+}
+
+// notint godoc
+// @Security ApiKeyAuth
+// @Description 관심없음 표시
+// @Summary 관심없음 표시
+// @name notint
+// @Produce  json
+// @Param id path string true "게시글 id"
+// @Router /post/notint/{id} [get]
+// @Success 200
+// @Failure 400 {object} BadRequestResult
+func notint(c *gin.Context) {
 
 }

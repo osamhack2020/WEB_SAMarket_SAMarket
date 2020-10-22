@@ -10,10 +10,11 @@ type Comment struct {
 	PostID    int
 	User      User
 	UserID    string `json:"-"`
-	CreatedAt time.Time
 	Content   string
 	ToReply   *int
 	Replies   []Comment `gorm:"foreignkey:ToReply"`
+	CreatedAt time.Time
+	UpdatedAt time.Time
 }
 
 type ICommentStore struct{}

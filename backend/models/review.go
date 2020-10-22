@@ -1,5 +1,7 @@
 package models
 
+import "time"
+
 type Review struct {
 	ID           int
 	Post         Post
@@ -10,6 +12,8 @@ type Review struct {
 	WriterID     string
 	TargetUser   User
 	TargetUserID string
+	CreatedAt    time.Time
+	UpdatedAt    time.Time
 }
 
 type IReviewStore struct{}
@@ -29,5 +33,11 @@ func (store IReviewStore) GetReviewsByTargetUserID(userID string) []Review {
 func (store IReviewStore) GetReviewsByWriterID(userID string) []Review {
 	var reviewList []Review
 	db.Where("writer_id = ?", userID).Find(&reviewList)
+	return reviewList
+}
+
+func (store IReviewStore) GetReviews(userID string) []Review {
+	var reviewList []Review
+	db.Where("writer_id = ? or target_user_id = ? order by created_at desc", userID).Find(&reviewList)
 	return reviewList
 }
