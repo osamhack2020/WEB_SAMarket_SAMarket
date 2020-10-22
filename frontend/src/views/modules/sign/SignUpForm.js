@@ -61,12 +61,22 @@ export default function SignUpForm() {
       )}
 
       <InputTitle>소속</InputTitle>
-      <input
-        className="signInput"
-        placeholder="사단"
+      <select
+        className="signInput comboBox"
+        placeholder="군별"
         required="true"
         onChange={e => setInfo({ loc: e.target.value, ...userInfo })}
-      />
+      >
+        {[
+          ["army", "육군"],
+          ["navy", "해군"],
+          ["airForce", "공군"],
+          ["marin", "해병"],
+          ["mnd", "국직"]
+        ].map(mil => (
+          <option value={mil[0]}>{mil[1]}</option>
+        ))}
+      </select>
       <input
         className="signInput"
         placeholder="부대"
