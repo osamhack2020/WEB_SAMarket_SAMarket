@@ -1,0 +1,20 @@
+{
+  "rates": {
+    "0": {
+      "chatRoomId": "0",
+      "postId": 0,
+      "buyer": {
+        "id": "jtjun",
+        "name": "장태준",
+        "rate": 9,
+        "comment": "싸게 잘 샀습니다!"
+      },
+      "seller": {
+        "id": "shj0914",
+        "name": "서형진",
+        "rate": 8,
+        "comment": "쿨거래 좋았습니다."
+      }
+    }
+  }
+}

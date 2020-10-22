@@ -1,5 +1,6 @@
 .post,
 .adv {
+  text-align: left;
   position: relative;
   box-sizing: border-box;
   left: 50%;
