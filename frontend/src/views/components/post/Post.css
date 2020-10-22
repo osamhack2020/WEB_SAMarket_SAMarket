@@ -24,6 +24,8 @@
 }
 .advBack {
   position: absolute;
+  box-sizing: border-box;
+  padding-top: 15px;
   width: 340px;
   height: 190px;
   line-height: 190px;
