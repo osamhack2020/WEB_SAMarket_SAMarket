@@ -78,7 +78,7 @@ export default function ChatRoom({ search, chatRoomId, roomInfo, me, done }) {
         ) /* posting 을 통해서 생성된 채팅방 */
       }
       <MessageList me={me} messages={messages} />
-      {done && <Rate />}
+      {done && <Rate me={me} chatRoomId={chatRoomId} />}
       <ChatInput
         message={message}
         setMessage={setMessage}

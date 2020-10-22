@@ -3,12 +3,13 @@
   top: 0;
   text-align: center;
   width: 100%;
-  z-index: 3;
+  z-index: 5;
 }
 
 .myProfile {
   position: fixed;
   top: 10px;
+  z-index: 9999;
 }
 
 .goAHead {
