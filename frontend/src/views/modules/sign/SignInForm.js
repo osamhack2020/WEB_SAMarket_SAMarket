@@ -39,12 +39,12 @@ export default function SignInForm() {
           입장하기
         </button>
       </form>
-      <div className="signQues">
+      {/*<div className="signQues">
         문제가 있나요?{" "}
         <Link to="/sign/findAccount" className="btn signFindLink">
           계정찾기
         </Link>
-      </div>
+      </div>*/}
     </div>
   );
 }

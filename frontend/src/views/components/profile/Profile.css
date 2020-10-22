@@ -6,6 +6,15 @@
   z-index: 5;
 }
 
+.profileHeaderBar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 40px;
+  background: #fdfeff;
+  z-index: 9999;
+}
+
 .myProfile {
   position: fixed;
   top: 10px;
