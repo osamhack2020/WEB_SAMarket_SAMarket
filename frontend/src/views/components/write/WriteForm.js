@@ -1,5 +1,5 @@
 /* Write Page 에서 사용하는 입력 폼 */
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { TypeSelector, ClrSelector } from "./WriteSelector";
 import TagInput from "./TagInput";

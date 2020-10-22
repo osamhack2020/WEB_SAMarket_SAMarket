@@ -18,6 +18,9 @@ export const getNextSAMroad = MakeDataGenerator(samroads);
 export const getPostById = postId =>
   samroads.filter(samroad => samroad.postId === parseInt(postId))[0];
 
+export const getWhosePosts = userId =>
+  samroads.filter(samroad => samroad.author.id === userId);
+
 const getNextPostId = () => samroads.length; // identical 한 걸 주는 logic 필요
 export const getInitialPostInfo = userInfo => ({
   postId: getNextPostId(),
@@ -31,6 +34,20 @@ export const getInitialPostInfo = userInfo => ({
     content: ""
   }
 });
+export const getEmptyPost = (user, title, sub) => {
+  return {
+    postId: -1,
+    author: user,
+    type: "post",
+    contents: {
+      title: title,
+      sub: sub,
+      tags: ["처음", "기다려요"],
+      clr: {}
+    }
+  };
+};
+
 export function getPostInfoUpdater(info, setInfo) {
   return ({ type, title, sub, tags, fontClr, backClr, tagClr, content }) => {
     setInfo({
@@ -76,4 +93,9 @@ export function signUpReq({ userId, userInfo }) {
     return userInfo;
   }
   throw new Error("Sign Up Failed");
+}
+
+export function getUserById(id) {
+  if (id in users) return users[id];
+  throw new Error("Wrong User ID");
 }

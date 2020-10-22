@@ -1,0 +1,23 @@
+.ProfileBack {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background: #fdfeff;
+  z-index: -1;
+}
+
+.signOut {
+  display: inline-block;
+  box-sizing: border-box;
+  text-align: center;
+  padding-top: 5px;
+  margin: 30px 0 30px 0;
+  width: 250px;
+  height: 30px;
+  color: #ff5353;
+  font-weight: bold;
+  font-size: 15px;
+  border-radius: 15px;
+  border: 1px solid #ff5353;
+}

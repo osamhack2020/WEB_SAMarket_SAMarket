@@ -4,6 +4,7 @@
     {
       "chatRoomId": "0",
       "postId": 0,
+      "isDone": false,
       "chatTitle": "게리슨모",
       "members": [
         { "id": "shj0914", "name": "서형진" },
@@ -41,6 +42,7 @@
     {
       "chatRoomId": "1",
       "postId": 1,
+      "isDone": false,
       "chatTitle": "강군마켓",
       "members": [
         { "id": "woolim98", "name": "조우림" },

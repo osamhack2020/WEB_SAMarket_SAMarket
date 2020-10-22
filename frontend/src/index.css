@@ -3,6 +3,10 @@
   color: #202326;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   color: #202326;
   background: #f0f3f6;
@@ -27,6 +31,7 @@ code {
   border: 0;
   outline: 0;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .WARN {
@@ -35,10 +40,13 @@ code {
 
 ::-webkit-scrollbar {
   width: 0px;
+  height: 0px;
 }
+
 ::-webkit-scrollbar-thumb {
   background-color: #8990a0;
 }
+
 ::-webkit-scrollbar-track {
   background-color: rgba(0, 0, 0, 0);
 }
