@@ -9,7 +9,7 @@
 .hScrollWrapper {
   display: flex;
   overflow-x: scroll;
-  padding: 0 10% 0 10%;
+  padding: 0 10% 0 5%;
 }
 
 .hScrollLeft,

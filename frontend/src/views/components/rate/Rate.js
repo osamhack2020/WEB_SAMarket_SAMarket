@@ -27,7 +27,7 @@ export default function Rate({ me, chatRoomId }) {
         value={comment}
         onChange={e => setComment(e.target.value)}
       />
-      <button className="btn commentBtn">거래 완료하기</button>
+      <button className="btn commentBtn">평가 완료하기</button>
     </form>
   );
 }
