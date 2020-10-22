@@ -4,7 +4,7 @@
     {
       "chatRoomId": "0",
       "postId": 0,
-      "isDone": false,
+      "isDone": true,
       "chatTitle": "게리슨모",
       "members": [
         { "id": "shj0914", "name": "서형진" },
