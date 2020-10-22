@@ -128,3 +128,9 @@
   color: #05b0ea;
   background: rgba(0, 0, 0, 0);
 }
+
+/* DealHistory */
+.historyContainer {
+  text-align: left;
+  margin: 10px 15px 10px 15px;
+}
