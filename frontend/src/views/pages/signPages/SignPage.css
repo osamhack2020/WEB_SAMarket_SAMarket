@@ -60,15 +60,12 @@
   border-radius: 15px;
   width: 250px;
   height: 30px;
-  text-decoration: none;
   background: rgba(0, 0, 0, 0);
 }
 
 .toSignIn {
-  text-decoration: none;
   position: absolute;
   top: 16px;
   left: 30px;
   font-size: 13px;
-  cursor: pointer;
 }

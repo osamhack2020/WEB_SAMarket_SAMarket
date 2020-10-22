@@ -55,7 +55,7 @@ function ChatInfo({ info, myId }) {
   const lastMsg = msgs[msgs.length - 1];
 
   return (
-    <Link to={`/chat/${chatRoomId}`} className="chatInfo">
+    <Link to={`/chat/${chatRoomId}`} className="btn chatInfo">
       <ChatThumbnail users={users.slice(0, 3)} />
       {chatTitle}
       <p className="lastChat">{`${lastMsg.text.slice(0, 16)}${

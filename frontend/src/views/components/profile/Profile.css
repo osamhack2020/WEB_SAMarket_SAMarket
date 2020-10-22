@@ -1,0 +1,120 @@
+.profileHeader {
+  position: fixed;
+  top: 0;
+  text-align: center;
+  width: 100%;
+  z-index: 3;
+}
+
+.myProfile {
+  position: fixed;
+  top: 10px;
+}
+
+.goAHead {
+  position: absolute;
+  top: 245px;
+}
+
+/* Scouter */
+.scouter {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 70px;
+  z-index: 5;
+}
+
+.scouterCircle {
+  display: inline-block;
+  position: absolute;
+  top: -29px;
+  left: 50%;
+  margin: 50px 0 30px -44px;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  border: 2px solid #ffcc00;
+  z-index: 9999;
+}
+
+.scouterImg {
+  display: inline-block;
+  position: relative;
+  top: 0;
+  left: -3px;
+  width: 200px;
+  height: 150px;
+  background: url(../../../imgs/icons/scouter.svg) no-repeat;
+  background-size: 100%;
+}
+
+.scouterText {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  margin-left: -150px;
+  color: #ffcc00;
+  font-weight: bold;
+}
+
+.scouterLine {
+  position: absolute;
+  top: 80px;
+  right: 50%;
+  width: 40px;
+  height: 20px;
+  margin-right: -65px;
+  background: url(../../../imgs/icons/scouterLine.svg) no-repeat;
+  background-size: 100%;
+}
+
+.strength,
+.strengthBase {
+  position: absolute;
+  top: 90px;
+  right: 50%;
+  color: #ffcc00;
+  font-weight: bold;
+  text-align: right;
+  margin-right: -105px;
+}
+
+.strengthBase {
+  margin-right: -150px;
+}
+
+/* Friend List */
+.Friend {
+  display: inline-block;
+  margin: 30px 10px 0 10px;
+}
+.friendName {
+  margin-top: 5px;
+}
+
+/* PostList */
+.postContainer {
+  text-align: left;
+  margin: 10px 50px 10px 150px;
+}
+
+.adVer {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+.emptyPost {
+  display: inline-block;
+  width: 100%;
+  margin: 10px 50px 10px 50px;
+}
+
+.wantMore {
+  margin: 420px 10px -20px -310px;
+  text-align: center;
+  font-size: 15px;
+  color: #05b0ea;
+  background: rgba(0, 0, 0, 0);
+}

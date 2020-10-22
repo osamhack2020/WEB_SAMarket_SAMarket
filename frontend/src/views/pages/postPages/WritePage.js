@@ -1,6 +1,6 @@
 /* 사용자가 게시물을 작성하는 페이지
  */
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import {
   getInitialPostInfo,
@@ -16,6 +16,10 @@ export default function WritePage() {
     getInitialPostInfo(useSelector(state => state.sign.userInfo))
   ); // 정해진 포맷을 받음
   const updateInfo = getPostInfoUpdater(info, setInfo);
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // 화면을 맨 위로
+  }, []);
 
   return (
     <Fragment>

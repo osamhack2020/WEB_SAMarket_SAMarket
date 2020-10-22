@@ -5,3 +5,15 @@
   color: #202326;
   background: #f0f3f6;
 }
+
+.ProfilePage {
+  text-align: center;
+  padding-top: 250px;
+  padding-bottom: 30px;
+  background: #fdfeff;
+  overflow-x: hidden;
+}
+
+.MarginPlus {
+  padding-top: 525px;
+}

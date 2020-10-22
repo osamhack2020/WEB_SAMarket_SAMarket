@@ -9,7 +9,8 @@ export default function User({ userInfo, loc }) {
   const user = {
     position: "relative",
     top: loc ? loc[0] : 15,
-    left: loc ? loc[1] : 20
+    left: loc ? loc[1] : 20,
+    zIndex: 2
   };
 
   return (

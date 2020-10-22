@@ -33,10 +33,8 @@ export function TypeSelector({ info, updateInfo }) {
 
 export function ClrSelector({ info, updateInfo }) {
   const clrs = ["back", "tag", "font"];
-  const selectClr = e => {
-    console.log(e.target.name, e.target.value);
+  const selectClr = e =>
     updateInfo({ [e.target.name + "Clr"]: e.target.value });
-  };
   return (
     <div className="clrSelector">
       {clrs.map((clr, idx) => (

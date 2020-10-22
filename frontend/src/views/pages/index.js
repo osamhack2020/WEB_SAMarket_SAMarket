@@ -8,8 +8,8 @@ import { InDevPage, NotFoundPage } from "./tempPages/index";
 import { SignInPage, SignUpPage } from "./signPages/index";
 import { PostPage, WritePage } from "./postPages/index";
 import { ChatsPage, ChattingPage } from "./chatPages/index";
+import { ProfilePage } from "./profilePage/index";
 import LikesPage from "./LikesPage";
-import ProfilePage from "./ProfilePage";
 
 export default function Pages() {
   return (
