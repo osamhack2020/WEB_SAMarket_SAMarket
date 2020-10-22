@@ -1,0 +1,160 @@
+.postSubmitBtn {
+  color: #fdfeff;
+  font-weight: bold;
+  font-size: 15px;
+  position: relative;
+  top: 40px;
+  width: 250px;
+  height: 35px;
+  border-radius: 15px;
+  background: #1d9acb;
+  box-shadow: 0px 0px 20px 0px rgba(80, 80, 80, 20%);
+}
+
+.postInput {
+  box-sizing: border-box;
+  border: 0;
+  border-radius: 12.5px;
+  width: 280px;
+  height: 30px;
+  margin-top: 10px;
+  background: #f0f3f6;
+  padding: 0 10px 0 10px;
+  text-align: center;
+}
+
+/* Type Selector */
+.typeSelector {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.typeBtn {
+  color: #1d9acb;
+  background: #fdfeff;
+  border: 1px solid #1d9acb;
+  font-weight: bold;
+  width: 84px;
+  height: 30px;
+}
+
+.selectedType {
+  color: #fdfeff;
+  background: #1d9acb;
+}
+
+.leftT {
+  border-top-left-radius: 12.5px;
+  border-bottom-left-radius: 12.5px;
+}
+
+.centerT {
+  margin: 0 -1px 0 -1px;
+}
+
+.rightT {
+  border-top-right-radius: 12.5px;
+  border-bottom-right-radius: 12.5px;
+}
+
+/* Tag Selector */
+.tagInput {
+  text-align: left;
+  padding: 0 20px 0 15px;
+}
+
+.plusTagBtn {
+  position: absolute;
+  top: 17px;
+  right: 45px;
+  width: 15px;
+  height: 15px;
+  background: url(../../../imgs/icons/plus.svg) no-repeat;
+  background-size: 15px 15px;
+}
+
+.tagWarn {
+  margin: 5px 0 -5px 0;
+  color: #ff5353;
+  font-size: 13px;
+}
+
+.tagContainer {
+  display: inline-block;
+  text-align: left;
+  box-sizing: border-box;
+  width: 280px;
+  padding: 0px 10px 15px 12px;
+  margin-top: 20px;
+  color: #e6e8ea;
+  font-size: 12px;
+  border: 1px solid #e6e8ea;
+  border-radius: 12.5px;
+}
+
+.tagList {
+  position: relative;
+  top: -8px;
+  left: -2px;
+  background: #fdfeff;
+  width: fit-content;
+  padding: 0 5px 0 5px;
+  color: #8990a0;
+  font-size: 13px;
+}
+
+.tagRmBtn {
+  position: relative;
+  color: #1d9acb;
+  font-size: 14px;
+  height: 22px;
+  border-radius: 12.5px;
+  padding: 0px 10px 2px 18px;
+  margin: 2.5px 5px 2.5px -2px;
+  border: 1.5px solid #1d9acb;
+  background: #fdfeff;
+}
+
+.xBlue {
+  position: absolute;
+  top: 4px;
+  left: 5.5px;
+  width: 20px;
+  height: 20px;
+  background: url(../../../imgs/icons/xBlue.svg) no-repeat;
+  background-size: 60%;
+}
+
+/* Color Selector */
+.clrSelector {
+  margin-top: 10px;
+}
+
+.clrContainer {
+  display: inline-block;
+  box-sizing: border-box;
+  text-align: center;
+  margin: 0 2px 0 2px;
+  width: 85px;
+  color: #505560;
+  font-size: 12px;
+}
+
+.clrInput {
+  width: 85px;
+  height: 40px;
+}
+
+.postTextWrite {
+  box-sizing: border-box;
+  padding: 15px 0 15px 0;
+  border: 0;
+  outline: 0;
+  background: #f0f3f6;
+  border-radius: 12.5px;
+  text-align: center;
+  font-size: 13px;
+  margin-top: 10px;
+  width: 280px;
+  height: 50px;
+}

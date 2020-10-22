@@ -37,3 +37,18 @@
   height: 300px;
   background: white;
 }
+
+/* WritePage  */
+.writeHead {
+  position: fixed;
+  top: 22px;
+  left: 0;
+  text-align: center;
+  width: 100%;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.emptyTitle {
+  color: #e6e8ea;
+}

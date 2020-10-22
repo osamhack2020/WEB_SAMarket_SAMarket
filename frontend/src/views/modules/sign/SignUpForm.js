@@ -4,6 +4,15 @@ import { signUp } from "./state";
 import styled from "styled-components";
 import "./Sign.css";
 
+const InputTitle = styled.div`
+  margin-top: 20px;
+  font-size: 13px;
+  color: #05b0ea;
+  position: relative;
+  left: 55px;
+  text-align: left;
+`;
+
 export default function SignUpForm() {
   const [userId, setId] = useState("");
   const [password, setPw] = useState("");
@@ -12,6 +21,7 @@ export default function SignUpForm() {
   const dipatch = useDispatch();
 
   const handleSignUp = _ => {
+    throw new Error("가입 기능 구현중..");
     dipatch(signUp(userId, { userId, password, ...userInfo }));
   };
 
@@ -20,15 +30,6 @@ export default function SignUpForm() {
     setPw(e.target.value);
   };
 
-  const InputTitle = styled.div`
-    margin-top: 20px;
-    font-size: 13px;
-    color: #05b0ea;
-    position: relative;
-    left: 55px;
-    text-align: left;
-  `;
-
   return (
     <form onSubmit={handleSignUp}>
       <InputTitle>ID & PW</InputTitle>
@@ -36,18 +37,23 @@ export default function SignUpForm() {
         className="signInput"
         type="id"
         placeholder="아이디"
+        required="true"
         onChange={e => setId(e.target.value)}
       />
       <input
         className="signInput"
         type="password"
         placeholder="비밀번호"
+        required="true"
         onChange={checkPwValidate}
       />
       <input
-        className="signInput"
+        className={`signInput ${
+          password_cnf && password !== password_cnf ? "WARN" : ""
+        }`}
         type="password"
         placeholder="비밀번호 확인"
+        required="true"
         onChange={e => setPwCnf(e.target.value)}
       />
       {password_cnf && password !== password_cnf && (
@@ -58,11 +64,13 @@ export default function SignUpForm() {
       <input
         className="signInput"
         placeholder="사단"
+        required="true"
         onChange={e => setInfo({ loc: e.target.value, ...userInfo })}
       />
       <input
         className="signInput"
         placeholder="부대"
+        required="true"
         onChange={e => setInfo({ org: e.target.value, ...userInfo })}
       />
 
@@ -70,6 +78,7 @@ export default function SignUpForm() {
       <input
         className="signInput"
         placeholder="계급"
+        required="true"
         onChange={e => setInfo({ rank: e.target.value, ...userInfo })}
       />
       <input

@@ -55,9 +55,7 @@
   color: #1d9acb;
   font-weight: bold;
   font-size: 15px;
-  border: 1px solid #1d9acb;
-  outline: 0;
-  cursor: pointer;
+  border: 1px solid #1d9acb !important;
   margin: 15px;
   border-radius: 15px;
   width: 250px;
