@@ -29,7 +29,7 @@ export default function ProfilePage({ match }) {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
