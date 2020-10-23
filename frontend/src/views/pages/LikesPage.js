@@ -2,7 +2,20 @@
 로그인 되어 있지 않은 경우, 로그인 요구
 */
 import React from "react";
+import { useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
+import SAMroad from "../modules/samroad/SAMroad";
+import "./Pages.css";
 
 export default function LikesPage() {
-  return <div>좋아요</div>;
+  const authToken = useSelector(state => state.sign.authToken);
+  if (authToken) {
+    return (
+      <div className="MainPage">
+        {/*<LikesHeader />*/}
+        <SAMroad />
+      </div>
+    );
+  }
+  return <Redirect to="/sign" />;
 }
