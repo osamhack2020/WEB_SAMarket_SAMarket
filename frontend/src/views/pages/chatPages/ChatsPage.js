@@ -8,8 +8,8 @@ import { getChatList } from "views/modules/common/fakeServer";
 import BackBtn from "views/components/header/BackBtn";
 import SearchBar from "views/components/header/SearchBar";
 import UnreadChat from "views/components/chat/UnreadChat";
-import "./ChatPage.css";
 import Profile from "views/components/user/Profile";
+import "./ChatPage.css";
 
 export default function ChatsPage() {
   const [chatKeyword, setKeyword] = useState("");
@@ -39,7 +39,7 @@ function ChatsHeader({ setKeyword }) {
     // chatting 시작을 위한 dialog 띄울 것
   };
   return (
-    <h2 className="chatsListHead backdropBlur">
+    <h2 className="listHead backdropBlur">
       마음의 편지함
       <BackBtn loc={[32, 10]} />
       <button className="btn chatWriteBtn" onClick={startChat} />
