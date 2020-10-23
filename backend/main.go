@@ -11,7 +11,7 @@ import (
 	"sam/ws"
 
 	"github.com/gin-contrib/static"
-	_ "github.com/gin-gonic/autotls"
+	"github.com/gin-gonic/autotls"
 	"github.com/gin-gonic/gin"
 	"github.com/go-redis/redis/v8"
 	"github.com/gorilla/websocket"
@@ -59,5 +59,9 @@ func main() {
 		r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	}
 
-	r.Run(fmt.Sprintf(":%s", config.Settings.Server.Port))
+	if config.Settings.Server.HTTPS == "true" {
+		autotls.Run(r, config.Settings.Server.Domain)
+	} else {
+		r.Run(fmt.Sprintf(":%s", config.Settings.Server.Port))
+	}
 }

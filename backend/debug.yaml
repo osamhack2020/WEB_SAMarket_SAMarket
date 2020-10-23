@@ -9,10 +9,6 @@ server:
     write: 10
     idle: 5
 
-redis:
-  host: 127.0.0.1
-  port: 6379
-
 key:
   crypt: testata23
   

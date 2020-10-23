@@ -22,6 +22,8 @@ type Config struct {
 			Read   time.Duration `yaml:"read"`
 			Idle   time.Duration `yaml:"idle"`
 		} `yaml:"timeout"`
+		HTTPS  string `yaml:"https"`
+		Domain string `yaml:"domain"`
 	} `yaml:"server"`
 
 	DB struct {
@@ -31,11 +33,6 @@ type Config struct {
 		Password string `yaml:"password"`
 		Database string `yaml:"database"`
 	} `yaml:"db"`
-
-	Redis struct {
-		Host string `yaml:"host"`
-		Port string `yaml:"port"`
-	}
 
 	Key struct {
 		JWT        string `yaml:"jwt"`
