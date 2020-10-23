@@ -4,19 +4,21 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { getLieks } from "views/modules/common/fakeServer";
 import BackBtn from "views/components/header/BackBtn";
 import SearchBar from "views/components/header/SearchBar";
-import SAMroad from "../modules/samroad/SAMroad";
+import SAMroadList from "../modules/samroad/SAMroadList";
 import "./Pages.css";
 
 export default function LikesPage() {
   const [keyword, setKeyword] = useState("");
+  const likes = getLieks(useSelector(state => state.sign.userId));
   const authToken = useSelector(state => state.sign.authToken);
   if (authToken) {
     return (
       <div className="LikesPage">
         <LikesHeader setKeyword={setKeyword} />
-        <SAMroad />
+        <SAMroadList samroads={likes} quword={keyword} />
       </div>
     );
   }
