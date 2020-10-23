@@ -114,12 +114,26 @@
 }
 
 /* Friend List */
-.Friend {
+.Friend,
+.emptyFriend {
   display: inline-block;
   margin: 30px 10px 0 10px;
 }
+
 .friendName {
   margin-top: 5px;
+}
+
+.emptyFriend {
+  box-sizing: border-box;
+  text-align: center;
+  padding-top: 30px;
+  padding-left: 25px;
+  color: #e6e8ea;
+  width: 100%;
+  height: 80px;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 /* PostList */
