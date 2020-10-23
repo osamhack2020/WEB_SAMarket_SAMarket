@@ -44,7 +44,8 @@ export default function SAHistory({ user, chatRoomId }) {
 function Comment({ chatRoomId, participant, isSeller }) {
   return (
     <div className="Comment">
-      <Profile userInfo={participant} size={50} />
+      <Profile userInfo={participant} size={45} />
+      <div className="commentName">{participant.name}</div>
       <div className="role">{isSeller ? "판매자" : "구매자"}</div>
       <div className="commentContainer">
         <Star
