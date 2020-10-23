@@ -20,6 +20,7 @@ export function ProfileHeader({ user, pageY, myId }) {
     </div>
   );
 }
+
 export function Scouter({ user, pageY }) {
   return (
     <div className="scouter">
