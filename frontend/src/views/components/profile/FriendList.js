@@ -22,6 +22,9 @@ export default function FriendList({ user }) {
       {friends.map(friend => (
         <Friend userInfo={friend} />
       ))}
+      {friends.length === 0 && (
+        <div className="emptyFriend">아직 전우가 없어요</div>
+      )}
     </HorizontalScroller>
   );
 }
