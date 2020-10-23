@@ -1,18 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import BackBtn from "views/components/header/BackBtn";
-import { LieksNChats } from "views/components/header/TopLinks";
 import UserProfile from "views/components/user/UserProfile";
 
 export function ProfileHeader({ user, pageY, myId }) {
+  const [isFriend, setFriend] = useState(false);
+  const changeImg = e => {
+    // change the img;
+  };
+
+  const toggleFollow = e => {
+    // follow / unfollow friend
+    setFriend(!isFriend);
+  };
+
   return (
     <div>
       <div className="profileHeaderBar backdropBlur">
         <BackBtn loc={[12, 10]} fixed={true} />
-        {myId === user.id && (
-          <div className="myProfile">
-            <LieksNChats />
-          </div>
-        )}
+
+        <div className="profileTopBtn">
+          {myId === user.id ? (
+            <button className="btn changeImg" onClick={changeImg}>
+              사진 교체
+            </button>
+          ) : (
+            <button
+              className={`btn follow${isFriend ? "ed" : ""}`}
+              onClick={toggleFollow}
+            >
+              {isFriend ? "전우 끊기" : "전우 맺기"}
+            </button>
+          )}
+        </div>
       </div>
       <div className={`profileHeader ${pageY >= 245 ? "goAHead" : ""}`}>
         <UserProfile userInfo={user} stop={true} />
