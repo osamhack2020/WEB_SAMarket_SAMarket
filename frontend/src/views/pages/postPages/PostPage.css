@@ -1,0 +1,66 @@
+.postHeadBack {
+  box-sizing: border-box;
+  z-index: 9999;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 65px;
+  padding-left: 5%;
+  background: #fdfeff;
+  box-shadow: 0px 5px 20px 0px rgba(80, 80, 80, 10%);
+}
+
+.postingInfo {
+  text-align: center;
+  margin-bottom: 100px;
+  width: 100%;
+}
+
+.postingBack {
+  display: inline-block;
+  padding-top: 100px;
+  width: 350px;
+  padding-bottom: 80px;
+  border-radius: 20px;
+  background: #fdfeff;
+}
+
+.postingContent { 
+  margin-top: 40px;
+  line-height: 30px;
+}
+
+.replies {
+  display: inline-block;
+  margin-top: 25px;
+  /*width: 340px;*/
+  width: 100%;
+  height: 300px;
+}
+
+.replyState {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  position: fixed;
+  bottom: 82px;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+/* WritePage  */
+.writeHead {
+  position: fixed;
+  top: 22px;
+  left: 0;
+  text-align: center;
+  width: 100%;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.emptyTitle {
+  color: #e6e8ea;
+}
