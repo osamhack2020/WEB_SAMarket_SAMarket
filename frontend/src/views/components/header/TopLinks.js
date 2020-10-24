@@ -2,8 +2,8 @@
 Home, Likes, Chats 로 화면을 이동함
 */
 import React, { Fragment } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { getUnreadChat } from "views/modules/common/fakeServer";
 import UnreadChat from "views/components/chat/UnreadChat";
 import "./Header.css";
 
@@ -18,18 +18,21 @@ export default function TopLinks() {
   );
 }
 
-export function LieksNChats() {
-  const unreadChat = getUnreadChat();
+export function LieksNChats1(props) {
   return (
     <Fragment style={{ zIndex: 9999 }}>
       <Link to="/likes" className="btn likes" />
       <Link to="/chats" className="btn chats">
-        {unreadChat && (
+        {props.unread > 0 && (
           <div className="unreadContainer">
-            <UnreadChat unreadChat={unreadChat} />
+            <UnreadChat unreadChat={props.unread} />
           </div>
         )}
       </Link>
     </Fragment>
   );
 }
+
+const LieksNChats =  connect(
+  state => ({unread: state.sign.unread })
+) (LieksNChats1);

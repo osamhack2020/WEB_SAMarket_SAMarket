@@ -1,10 +1,10 @@
 /* 채팅 목록을 볼 수 있는 페이지
 로그인 되어 있지 않은 경우, 로그인 요구
 */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getChatList } from "views/modules/common/fakeServer";
+import { getChatList } from "api";
 import BackBtn from "views/components/header/BackBtn";
 import SearchBar from "views/components/header/SearchBar";
 import UnreadChat from "views/components/chat/UnreadChat";
@@ -13,20 +13,39 @@ import "./ChatPage.css";
 
 export default function ChatsPage() {
   const [chatKeyword, setKeyword] = useState("");
-  const userId = useSelector(state => state.sign.userId);
-  const filtered = getChatList().filter(
+  const [chatRooms, setChatRooms] = useState([]);
+  const [filtered, setFiltered] = useState([]);
+
+  useEffect(() => { 
+    getChatList().then(response => {
+      setChatRooms(response.data);
+      setFiltered(response.data);
+    });
+  }, []);
+
+  useEffect(() => {
+    setFiltered(chatRooms.filter(
+      chatInfo =>
+        chatInfo.title.indexOf(chatKeyword) !== -1 ||
+        chatInfo.members.filter(member => member.name.indexOf(chatKeyword) !== -1)
+          .length
+    ));
+  }, [chatKeyword]);
+  /*
+  getChatList().filter(
     chatInfo =>
       chatInfo.chatTitle.indexOf(chatKeyword) !== -1 ||
       chatInfo.members.filter(member => member.name.indexOf(chatKeyword) !== -1)
         .length
   ); // 채팅방 제목에 검색어가 있거나, 멤버에 검색어가 있는 경우
+  */
 
   return (
     <div>
       <ChatsHeader setKeyword={setKeyword} />
       <div className="chatList">
         {filtered.map(chatInfo => (
-          <ChatInfo info={chatInfo} myId={userId} />
+          <ChatInfo info={chatInfo} myId={1} />
         ))}
       </div>
     </div>
@@ -50,21 +69,22 @@ function ChatsHeader({ setKeyword }) {
 
 function ChatInfo({ info, myId }) {
   // 채팅 정보를 보여주는 component
-  const { chatTitle, chatRoomId, members, unreadChat, msgs } = info;
+  const { title, chatRoomId, members, unread } = info;
   const users = members.filter(member => member.id !== myId);
-  const lastMsg = msgs[msgs.length - 1];
+  const lastMsg = info.lastmsg;
+  console.log(info);
 
   return (
     <Link to={`/chat/${chatRoomId}`} className="btn chatInfo">
       <ChatThumbnail users={users.slice(0, 3)} />
-      {chatTitle}
+      {title}
       <p className="lastChat">{`${lastMsg.text.slice(0, 16)}${
         lastMsg.text.length > 16 ? ".." : ""
       }`}</p>
-      <LastChatTime time={lastMsg.time} />
-      {unreadChat > 0 && (
+      <LastChatTime time={info.created_at} />
+      {unread > 0 && (
         <div className="unreadMsg">
-          <UnreadChat unreadChat={unreadChat} />
+          <UnreadChat unreadChat={unread} />
         </div>
       )}
     </Link>
