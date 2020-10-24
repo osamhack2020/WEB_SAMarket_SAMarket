@@ -1,20 +1,47 @@
 /* Main Page 등에서 이루어지는 검색을 다룸 */
 import createReducer from "../common/createReducer";
-import { signInReq, signUpReq } from "../common/fakeServer";
 import { users } from "data/users.json";
+import { useDispatch } from "react-redux";
+import { signInReq, checkSession } from "api";
+import { useHistory } from "react-router-dom";
 
 // action type 정의
 const SIGN_IN = "sign/SIGN_IN";
 const SIGN_OUT = "sign/SIGN_OUT";
 const SIGN_UP = "sign/SIGN_UP";
+const SESSION_INVALID = "sign/session_invalid";
+
 
 // action generate 함수
-export const signIn = (userId, password) => {
-  return { type: SIGN_IN, userId, password };
+export const signIn = (loginResult) => {
+  return { type: SIGN_IN, userInfo: loginResult.user, unread: loginResult.unread, invalid: loginResult.invalid  };
 };
+
+export const login = (userId, password) => {
+  return async (dispatch, getState, { history }) => {
+    const res = await signInReq(userId, password);
+    if (res.status == 200) {
+      dispatch(signIn(res.data));
+      history.replace("/");
+    }
+  }
+}
+
+export const checkSess = () => {
+  return async (dispatch, getState, { history }) => {
+    try {
+      const res = await checkSession();
+      dispatch(signIn(res.data));
+    } catch (err) {
+      dispatch(signIn({invalid: true}));
+    }
+  }
+}
+
 export const signOut = () => {
   return { type: SIGN_OUT };
 };
+
 export const signUp = (userId, userInfo) => {
   return { type: SIGN_UP, userId, userInfo };
 };
@@ -22,52 +49,22 @@ export const signUp = (userId, userInfo) => {
 // reducer
 export default createReducer(
   {
-    userId: sessionStorage.getItem("userId"),
-    userInfo: sessionStorage.getItem("userId")
-      ? users[sessionStorage.getItem("userId")]
-      : null,
-    authToken: sessionStorage.getItem("authToken") // 제대로 된 토큰으로 교체할 것
+    userInfo: null,
+    unread: 0,
+    invalid: false,
   }, // initialState
   {
     [SIGN_IN]: (state, action) => {
-      if (!state.userId) {
-        try {
-          const user = signInReq(action.userId, action.password);
-          state.userId = action.userId;
-          state.userInfo = user;
-          state.authToken = "veryComplicateTokenString";
-          sessionStorage.setItem("userId", state.userId);
-          sessionStorage.setItem("authToken", state.authToken);
-        } catch {
-          alert("Sign In Failed");
-        }
-      }
+      state.userInfo = action.userInfo
+      state.unread = action.unread
+      state.invalid = action.invalid || false;
+      console.log(action)
     },
     [SIGN_OUT]: (state, _) => {
-      if (state.authToken) {
-        state.userId = null;
-        state.userInfo = null;
-        state.authToken = null;
-        sessionStorage.removeItem("userId");
-        sessionStorage.removeItem("authToken");
-      }
+
     },
     [SIGN_UP]: (state, action) => {
-      try {
-        const user = signUpReq({
-          userId: action.userId,
-          userInfo: action.userInfo
-        });
-        // 등록 성공시 자동 로그인
-        state.userId = action.userId;
-        state.userInfo = user;
-        state.authToken = "veryComplicateTokenString";
-        sessionStorage.setItem("userId", state.userId);
-        sessionStorage.setItem("authToken", state.authToken);
-        alert("등록 성공!");
-      } catch {
-        alert("Sign Up Failed");
-      }
+     
     }
   }
 );

@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { signIn } from "./state";
+import { signInReq } from "api";
+import { login } from "./state";
 import "./Sign.css";
 
 export default function SignInForm() {
   const [userId, setId] = useState("");
   const [password, setPw] = useState("");
-  const dipatch = useDispatch();
+  const dispatch = useDispatch();
 
-  const handleSignIn = e => {
+  const handleSignIn = async(e) => {
     e.preventDefault();
-    dipatch(signIn(userId, password));
-    window.location.reload(); // 리로딩
+    dispatch(login(userId, password));
   };
 
   return (
