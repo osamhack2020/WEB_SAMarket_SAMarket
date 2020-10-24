@@ -5,6 +5,7 @@ import PostHead from "./PostHead";
 import Content from "./Content";
 import "./Post.css";
 
+
 export default function Post({ info }) {
   const { postId, author, type } = info;
   if (type === "adv") return <Advertise info={info} />;
