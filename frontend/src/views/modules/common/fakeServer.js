@@ -22,6 +22,12 @@ export const getPostById = postId =>
 export const getWhosePosts = userId =>
   samroads.filter(samroad => samroad.author.id === userId);
 
+export const getLieks = userId => {
+  const likes = users[userId].likes;
+  console.log(likes);
+  return samroads.filter(samroad => likes.indexOf(samroad.postId) > -1);
+};
+
 const getNextPostId = () => samroads.length; // identical 한 걸 주는 logic 필요
 export const getInitialPostInfo = userInfo => ({
   postId: getNextPostId(),
