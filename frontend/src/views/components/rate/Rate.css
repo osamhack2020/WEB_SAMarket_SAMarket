@@ -30,3 +30,98 @@
 .star.on {
   background-image: url(../../../imgs/icons/star.svg);
 }
+
+/* rate */
+.Rate {
+  display: inline-block;
+  margin: 20px 0 20px 50%;
+  padding: 10px 0 10px 0;
+  position: relative;
+  left: -170px;
+  width: 340px;
+  border-radius: 20px;
+  background: #fdfeff;
+  box-shadow: 0px 0px 20px 0px rgba(80, 80, 80, 10%);
+}
+
+.rateTitle {
+  font-weight: bold;
+  margin: 5px 0 15px 0;
+}
+
+.commentInput {
+  box-sizing: border-box;
+  width: 300px;
+  height: 30px;
+  border-radius: 15px;
+  border: 0;
+  padding: 0 10px 0 10px;
+  margin: 10px 0 10px 0;
+  background: #f0f3f6;
+}
+
+.commentBtn {
+  color: #fdfeff;
+  background: #059acb;
+  width: 250px;
+  height: 25px;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 12.5px;
+  margin: 5px 0 10px 0;
+  box-shadow: 0px 0px 20px 0px rgba(80, 80, 80, 10%);
+}
+
+/* SAHistory */
+.SAHistory {
+  box-sizing: border-box;
+  margin: 30px 0 0 0;
+  padding: 20px 0 0 0;
+  width: 340px;
+  height: 500px;
+  border: 0;
+  border-radius: 20px;
+  background: #fdfeff;
+  box-shadow: 0px 0px 20px 0px rgba(80, 80, 80, 10%);
+}
+
+.comments {
+  margin-top: 15px;
+  margin-left: 10px;
+}
+
+.Comment {
+  position: relative;
+  padding-top: 5px;
+  margin: 10px 20px 0px 20px;
+}
+
+.commentContainer {
+  position: absolute;
+  top: 7px;
+  left: 55px;
+  height: 50px;
+}
+
+.commentText {
+  position: relative;
+  font-size: 15px;
+  top: 5px;
+  left: 5px;
+  width: 230px;
+}
+
+.commentName {
+  font-size: 13px;
+  width: 50px;
+  margin-left: -5px;
+  text-align: center;
+}
+
+.role {
+  color: #8990a0;
+  font-size: 13px;
+  position: absolute;
+  top: 15px;
+  left: 230px;
+}

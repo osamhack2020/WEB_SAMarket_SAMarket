@@ -11,6 +11,12 @@
   z-index: 2;
 }
 
+.signInputDate {
+  background: url(../../../imgs/icons/calendar.svg) no-repeat #f0f3f6;
+  background-position: 95% 50%;
+  background-size: 15px 15px;
+}
+
 .signBtn {
   color: #fdfeff;
   font-weight: bold;
@@ -38,4 +44,10 @@
   color: #ff5353;
   margin-top: 10px;
   font-size: 12px;
+}
+
+.comboBox {
+  background: url(../../../imgs/icons/drop.svg) no-repeat #f0f3f6;
+  background-position: 95% 50%;
+  background-size: 15px 15px;
 }

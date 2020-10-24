@@ -4,6 +4,7 @@
 import { samroads } from "data/samroads.json";
 import { users } from "data/users.json";
 import { chats, unreadChat } from "data/chats.json";
+import { rates } from "data/rates.json";
 
 function MakeDataGenerator(items) {
   let itemIdx = 0;
@@ -47,6 +48,8 @@ export const getEmptyPost = (user, title, sub) => {
     }
   };
 };
+
+export const getRateByChatRoomId = chatRoomId => rates[chatRoomId];
 
 export function getPostInfoUpdater(info, setInfo) {
   return ({ type, title, sub, tags, fontClr, backClr, tagClr, content }) => {

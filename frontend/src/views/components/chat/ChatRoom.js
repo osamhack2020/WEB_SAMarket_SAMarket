@@ -7,6 +7,8 @@ import MessageList from "./MessageList";
 import ChatInput from "./ChatInput";
 import io from "socket.io-client";
 import "./Chat.css";
+import { NotFoundPage } from "views/pages/tempPages";
+import SAHistory from "../rate/SAHistory";
 
 let socket;
 
@@ -68,24 +70,31 @@ export default function ChatRoom({ search, chatRoomId, roomInfo, me, done }) {
     }
   };
 
-  return users ? (
+  if (!users) return <NotFoundPage />;
+  const postInfo = getPostById(postId);
+  return (
     <div className="chatRoom">
       {
         postId !== undefined && (
           <div className="chatPost">
-            <Post info={getPostById(postId)} />
+            <Post info={postInfo} />
           </div>
         ) /* posting 을 통해서 생성된 채팅방 */
       }
       <MessageList me={me} messages={messages} />
-      {done && <Rate />}
+      {done &&
+        (postInfo.isClosed ? (
+          <div className="chatDeal">
+            <SAHistory user={me} chatRoomId={chatRoomId} />
+          </div>
+        ) : (
+          <Rate me={me} chatRoomId={chatRoomId} />
+        ))}
       <ChatInput
         message={message}
         setMessage={setMessage}
         sendMessage={sendMessage}
       />
     </div>
-  ) : (
-    <Redirect to="NotFound" />
   );
 }

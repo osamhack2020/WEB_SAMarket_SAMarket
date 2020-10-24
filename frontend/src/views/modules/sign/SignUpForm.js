@@ -63,36 +63,57 @@ export default function SignUpForm() {
       <InputTitle>소속</InputTitle>
       <input
         className="signInput"
-        placeholder="사단"
-        required="true"
-        onChange={e => setInfo({ loc: e.target.value, ...userInfo })}
-      />
-      <input
-        className="signInput"
         placeholder="부대"
         required="true"
         onChange={e => setInfo({ org: e.target.value, ...userInfo })}
       />
-
-      <InputTitle>군 복무</InputTitle>
-      <input
-        className="signInput"
-        placeholder="계급"
+      <select
+        className="signInput comboBox"
+        placeholder="군별"
+        required="true"
+        onChange={e => setInfo({ loc: e.target.value, ...userInfo })}
+      >
+        {[
+          ["army", "육군"],
+          ["navy", "해군"],
+          ["airForce", "공군"],
+          ["marin", "해병"],
+          ["mnd", "국직"]
+        ].map(mil => (
+          <option value={mil[0]}>{mil[1]}</option>
+        ))}
+      </select>
+      <select
+        className="signInput comboBox"
+        placeholder="현재 계급"
         required="true"
         onChange={e => setInfo({ rank: e.target.value, ...userInfo })}
-      />
+      >
+        {[
+          [0, "이등병"],
+          [1, "일등병"],
+          [2, "상등병"],
+          [3, "병장"]
+        ].map(rank => (
+          <option value={rank[0]}>{rank[1]}</option>
+        ))}
+      </select>
+      <InputTitle>군 복무</InputTitle>
       <input
         className="signInputDate"
         placeholder="입대일"
         type="date"
+        value="2020-01-01"
         required
         aria-required="true"
         onChange={e => setInfo({ enter: e.target.value, ...userInfo })}
       />
+      <div>~</div>
       <input
         className="signInputDate"
         placeholder="전역일"
         type="date"
+        value="2021-01-01"
         required
         aria-required="true"
         onChange={e => setInfo({ discharge: e.target.value, ...userInfo })}
