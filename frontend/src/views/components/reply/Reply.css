@@ -42,7 +42,7 @@
   display: inline-block;
   position: relative;
   max-width: 90%;
-  min-height: 45px;
+  min-height: 40px;
   height: fit-content;
 }
 
@@ -74,7 +74,7 @@
 
 .replyButton {
   background: #fdfeff;
-  right: 22px;
+  right: 25px;
   bottom: 7px;
 }
 
