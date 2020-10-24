@@ -1,0 +1,99 @@
+/*Reply*/
+.replyInputContainer {
+  z-index: 9999;
+  text-align: center;
+  box-sizing: border-box;
+  position: fixed;
+  width: 100%;
+  height: 100px;
+  left: 0;
+  bottom: -25px;
+  border-radius: 20px;
+  box-shadow: 0px -5px 20px 0px rgba(80, 80, 80, 10%);
+}
+
+.replyInputInnerContainer {
+  margin: 15px 0 0 3.8%;
+  display: flex;
+  width: 97%;
+  height: 50px;
+}
+
+.replyInput {
+  box-sizing: border-box;
+  border: none;
+  background: #f0f3f6;
+  border-radius: 12.5px;
+  margin: 3px 0 0 8px;
+  padding: 0 35px 0 10px;
+  width: 95%;
+  height: 30px;
+}
+
+.replyBox {
+  box-sizing: border-box;
+  margin-left: 10px;
+  text-align: start;
+  font-size: 14px;
+  flex: 1;
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 15px 20px 15px 20px;
+  display: inline-block;
+  position: relative;
+  max-width: 90%;
+  min-height: 40px;
+  height: fit-content;
+}
+
+.replyContainer {
+  display: flex;
+  /*justify-content: flex-start;*/
+  padding: 2% 0;
+  margin-top: 3px;
+}
+
+.rereply {
+  margin-left: 20px;
+}
+
+.replyDate,
+.replyButton {
+  position: absolute;
+  bottom: 12px;
+  font-size: 11px;
+  color: #a1a6b3;
+}
+
+.replyName {
+  position: relative;
+  left: 0px;
+  margin-top: 2px;
+  font-size: 13px;
+}
+
+.replyButton {
+  background: #fdfeff;
+  right: 25px;
+  bottom: 7px;
+}
+
+.replyFooter {
+  height: 30px;
+}
+
+.likeIcon,
+.likedIcon {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 15px;
+  height: 15px;
+  background: url(../../../imgs/icons/like.svg) no-repeat;
+  background-size: 100%;
+}
+
+.likedIcon {
+  background: url(../../../imgs/icons/liked.svg) no-repeat;
+  background-size: 100%;
+}
