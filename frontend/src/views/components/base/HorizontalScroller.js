@@ -20,8 +20,8 @@ export default function HorizontalScroller({
       >
         {children}
       </div>
-      <button className="btn hScrollLeft" onClick={() => scrollX(delta)} />
-      <button className="btn hScrollRight" onClick={() => scrollX(-delta)} />
+      <button className="btn hScrollLeft" onClick={() => scrollX(-delta)} />
+      <button className="btn hScrollRight" onClick={() => scrollX(delta)} />
     </div>
   );
 }

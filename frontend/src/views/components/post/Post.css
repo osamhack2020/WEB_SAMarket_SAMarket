@@ -1,5 +1,6 @@
 .post,
 .adv {
+  text-align: left;
   position: relative;
   box-sizing: border-box;
   left: 50%;
@@ -23,6 +24,8 @@
 }
 .advBack {
   position: absolute;
+  box-sizing: border-box;
+  padding-top: 5px;
   width: 340px;
   height: 190px;
   line-height: 190px;

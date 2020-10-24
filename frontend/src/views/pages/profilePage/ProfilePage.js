@@ -18,6 +18,7 @@ import {
 
 export default function ProfilePage({ match }) {
   const [pageY, setPageY] = useState(0);
+  const [show, setShow] = useState(false);
   const user = getUserById(match.params.userId);
   const myId = useSelector(state => state.sign.userId);
 
@@ -35,7 +36,8 @@ export default function ProfilePage({ match }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [pageY]);
 
-  if (225 <= pageY && pageY < 245) {
+  if (!show && 225 <= pageY && pageY < 245) {
+    setShow(true); // only once stop scroll
     window.scrollTo(0, 245); // 강함 측정 중, 스크롤 막음
     document.body.style.overflow = "hidden";
     setTimeout(() => (document.body.style.overflow = null), 2000);
