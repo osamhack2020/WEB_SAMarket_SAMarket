@@ -90,10 +90,10 @@
   width: 15px;
   height: 15px;
   background: url(../../../imgs/icons/like.svg) no-repeat;
-  background-size: 100%;
+  background-size: 15px 15px;
 }
 
 .likedIcon {
   background: url(../../../imgs/icons/liked.svg) no-repeat;
-  background-size: 100%;
+  background-size: 15px 15px;
 }
