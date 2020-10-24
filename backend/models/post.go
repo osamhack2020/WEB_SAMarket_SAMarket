@@ -5,29 +5,29 @@ import (
 )
 
 type PostColor struct {
-	Font string
-	Back string
-	Tag  string
+	Font string `json:"font"`
+	Back string `json:"back"`
+	Tag  string `json:"tag"`
 }
 
 type Post struct {
-	ID       int
-	AuthorID string `json:"-"`
-	Author   User
-	Tags     string
-	Title    string
-	Type     string
-	Content  string
-	Price    int
-	Clr      PostColor `gorm:"embedded;embeddedPrefix:clr_"`
+	ID       int       `json:"id"`
+	AuthorID string    `json:"-"`
+	Author   User      `json:"author"`
+	Tags     string    `json:'tags"`
+	Title    string    `json:"title"`
+	Type     string    `json:"type"`
+	Content  string    `json:"content"`
+	Sub      string    `json:"sub"`
+	Clr      PostColor `json:"clr" gorm:"embedded;embeddedPrefix:clr_"`
 	UnitID   int       `json:"-"`
 	Unit     Unit      `json:"-"`
 	// 판매 종료 완료
-	Closed bool
+	Closed bool `json:"closed"`
 	// TODO 컬럼 생성 방지
-	IsFavorite int64
-	CreatedAt  time.Time
-	UpdatedAt  time.Time
+	IsFavorite int64     `json:"is_favorite"`
+	CreatedAt  time.Time `json:"created_at"`
+	UpdatedAt  time.Time `json:"updated_at"`
 }
 
 type IPostStore struct{}
@@ -47,6 +47,13 @@ func (store IPostStore) GetPost(postID int) Post {
 func (store IPostStore) GetPostListByUnitID(userID string, unitID int) []Post {
 	var posts []Post
 	db.Model(&Post{}).Raw("select posts.*, (f.post_id is NOT NULL) as is_favorite from posts LEFT OUTER JOIN favorites f ON f.user_id = ? and posts.id = f.post_id WHERE posts.unit_id = ? order by posts.created_at desc ", userID, unitID).Preload("Author").Find(&posts)
+	//db.Order("created_at desc").Where("unit_id = ?", unitID).Preload("Author").Find(&posts)
+	return posts
+}
+
+func (store IPostStore) GetPostListByTypeAndUnitID(userID string, unitID int, postType string) []Post {
+	var posts []Post
+	db.Model(&Post{}).Raw("select posts.*, (f.post_id is NOT NULL) as is_favorite from posts LEFT OUTER JOIN favorites f ON f.user_id = ? and posts.id = f.post_id WHERE posts.unit_id = ? and posts.type = ? order by posts.created_at desc ", userID, postType, unitID).Preload("Author").Find(&posts)
 	//db.Order("created_at desc").Where("unit_id = ?", unitID).Preload("Author").Find(&posts)
 	return posts
 }

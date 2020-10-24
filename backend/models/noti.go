@@ -5,11 +5,11 @@ import (
 )
 
 type Noti struct {
-	User       User
-	UserID     string
-	NotiUser   User
-	NotiUserID string
-	Content    string
-	Action     string
-	CreatedAt  time.Time
+	User       User      `json:"user"`
+	UserID     string    `json:"user_id"`
+	NotiUser   User      `json:"noti_user"`
+	NotiUserID string    `json:"noti_user_id"`
+	Content    string    `json:"content"`
+	Action     string    `json:"action"`
+	CreatedAt  time.Time `json:"created_at"`
 }

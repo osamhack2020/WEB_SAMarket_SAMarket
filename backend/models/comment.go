@@ -5,16 +5,16 @@ import "time"
 // https://gorm.io/docs/many_to_many.html
 
 type Comment struct {
-	ID        int
-	Post      Post `json:"-"`
-	PostID    int
-	User      User
-	UserID    string `json:"-"`
-	Content   string
-	ToReply   *int
-	Replies   []Comment `gorm:"foreignkey:ToReply"`
-	CreatedAt time.Time
-	UpdatedAt time.Time
+	ID        int       `json:"id"`
+	Post      Post      `json:"-"`
+	PostID    int       `json:"post_id"`
+	User      User      `json:"user"`
+	UserID    string    `json:"-"`
+	Content   string    `json:"content"`
+	ToReply   *int      `json:"to_reply"`
+	Replies   []Comment `json:"replies" gorm:"foreignkey:ToReply"`
+	CreatedAt time.Time `json:"created_at"`
+	UpdatedAt time.Time `json:"updated_at"`
 }
 
 type ICommentStore struct{}

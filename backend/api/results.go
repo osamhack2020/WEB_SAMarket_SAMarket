@@ -9,9 +9,9 @@ type BadRequestResult struct {
 /* Auth Result Models */
 type LoginResult struct {
 	// 유저 정보
-	User models.User
+	User models.User `json:"user"`
 	// 안 읽은 채팅 수
-	UnreadChat int64
+	UnreadChat int64 `json:"unread"`
 }
 
 /* Chat Result Models */
@@ -23,6 +23,6 @@ type LoginResult struct {
 /* Unit Result Models */
 /* User Result Models */
 type UserProfileResult struct {
-	User  models.User
-	Score int64
+	User  models.User `json:"user"`
+	Score float32     `json:"score"`
 }

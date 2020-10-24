@@ -10,27 +10,28 @@ import (
 
 type User struct {
 	// 유저 PRI KEY
-	ID string `gorm:"primary_key;size:36"`
+	ID string `json:"id" gorm:"primary_key;size:36"`
 	// 유저 로그인 아이디
-	LoginID string `gorm:"unique"`
+	LoginID string `json:"login_id" gorm:"unique"`
 	// 비밀번호
-	Password string `json:"-"`
+	Password string `json:"password" json:"-"`
 	// 이름
-	Name string
+	Name string `json:"name"`
 	// 전화번호
-	Phone string
+	Phone string `json:"phone"`
 	// 프로필 사진
-	ProfileURL string
+	ProfileURL string `json:"profile_url"`
 	// 군 종류
-	Mil int
+	Mil int `json:"mil"`
 	// 부대 id
-	UnitID    int
-	Unit      Unit
+	Rank      string      `json:"rank"`
+	UnitID    int         `json:"-"`
+	Unit      Unit        `json:"unit"`
 	ChatRooms []*ChatRoom `gorm:"many2many:user_chatrooms;" json:"-"`
 	Follows   []*User     `gorm:"many2many:follows;" json:"-"`
 	Favorites []Post      `gorm:"many2many:favorites;" json:"-"`
-	CreatedAt time.Time
-	UpdatedAt time.Time
+	CreatedAt time.Time   `json:"created_at"`
+	UpdatedAt time.Time   `json:"updated_at"`
 }
 
 type IUserStore struct{}
@@ -81,4 +82,8 @@ func (store IUserStore) AddFollow(uuidfrom string, uuidto string) {
 
 func (store IUserStore) DeleteFollow(uuidfrom string, uuidto string) {
 	db.Exec("DELETE FROM follows where user_id = ? and follow_id = ?", uuidfrom, uuidto)
+}
+
+func (store IUserStore) UpdateUser(user User) {
+	db.Model(&User{}).Updates(user)
 }

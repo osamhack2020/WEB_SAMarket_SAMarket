@@ -105,8 +105,16 @@ func getFollowingList(c *gin.Context) {
 // @Description 프로필 수정하기
 // @name editProfile
 // @Accept json
+// @Param payload body models.User true "수정된 유저정보"
 // @Produce json
 // @router /user/edit [post]
 func editProfile(c *gin.Context) {
-
+	user := GetSessionUser(c)
+	var editedUser models.User
+	c.ShouldBindJSON(&editedUser)
+	if editedUser.ID != user.ID {
+		ResponseBadRequest(c, "어딜")
+		return
+	}
+	models.UserStore.UpdateUser(editedUser)
 }

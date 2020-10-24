@@ -18,6 +18,7 @@ func InitChatRouter(rg *gin.RouterGroup) {
 		router.GET("/rooms", getChatRooms)
 		router.GET("/msg/list/:roomid", getChatMsgList)
 		router.POST("/msg/send", addChatMsg)
+		router.GET("/chat/end/:roomid", endChat)
 	}
 }
 
@@ -127,4 +128,23 @@ func addChatMsg(c *gin.Context) {
 		}
 	}
 	ResponseOK(c, msg)
+}
+
+// endChat godoc
+// @Security ApiKeyAuth
+// @Summary 채팅 종료 (거래 확정)
+// @Accept  json
+// @Produce  json
+// @Param payload body AddChatMsgRequest true "로그인 정보"
+// @Router /chat/end/{roomid} [get]
+// @Success 200 {object} models.ChatMsg
+// @Failure 400 {object} BadRequestResult
+func endChat(c *gin.Context) {
+	param := c.Param("roomid")
+	id, _ := strconv.Atoi(param)
+	chatRoom := models.ChatStore.GetChatRoomByID(id)
+	// 현재 채팅 Status를 1로 변경
+	// 해당 포스트로 생성된 다른 채팅 Status를 2로 변경
+	models.ChatStore.UpdateChatStatus(chatRoom.PostID, chatRoom.ID)
+	// TODO 거래 확정이라고 알림
 }

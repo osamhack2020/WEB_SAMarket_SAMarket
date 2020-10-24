@@ -5,25 +5,27 @@ import (
 )
 
 type ChatRoom struct {
-	ID        int
-	Post      Post
-	PostID    int
-	Title     string
-	Users     []*User  `gorm:"many2many:user_chatrooms;"`
-	Unread    int      `gorm:"-"`
-	LastMsg   *ChatMsg `gorm:"-"`
-	CreatedAt time.Time
+	ID        int       `json:"id"`
+	Post      Post      `json:"post"`
+	PostID    int       `json:"post_id"`
+	Title     string    `json:"title"`
+	Users     []*User   `json:"users" gorm:"many2many:user_chatrooms;"`
+	Unread    int       `json:"unread" gorm:"-"`
+	LastMsg   *ChatMsg  `json:"lastmsg" gorm:"-"`
+	CreatedAt time.Time `json:"created_at"`
+	// 0 = 채팅 가능, 1 = 채팅 종료 (구매 확정), 2 = 채팅 종료 (다른 채팅에서 거래 확정)
+	Status int `json:"status"`
 }
 
 type ChatMsg struct {
-	ID         int
+	ID         int      `json:"id"`
 	ChatRoom   ChatRoom `json:"-"`
 	ChatRoomID int
-	Sender     User
-	SenderID   string
-	Content    string
-	Unread     int
-	CreatedAt  time.Time
+	Sender     User      `json:"sender"`
+	SenderID   string    `json:"sender_id"`
+	Content    string    `json:"content"`
+	Unread     int       `json:"unread"`
+	CreatedAt  time.Time `json:"created_at"`
 }
 
 var ChatStore IChatStore
@@ -64,6 +66,12 @@ func (store IChatStore) GetChatRoom(postID int, userID string) []ChatRoom {
 	return chatRooms
 }
 
+func (store IChatStore) GetChatRoomByID(chatRoomID int) ChatRoom {
+	var chatRoom ChatRoom
+	db.Where("id = ?", chatRoomID).Find(&chatRoom)
+	return chatRoom
+}
+
 func (store IChatStore) AddUserInChatRoom(chatRoomID int, uuid string) {
 	db.Exec("insert into user_chatrooms VALUES(?, ?)", chatRoomID, uuid)
 }
@@ -83,4 +91,9 @@ func (store IChatStore) GetUnreadCount(userID string) int64 {
 	var count int64
 	db.Raw("select count(*) from user_chatrooms, chat_rooms, chat_msgs where user_chatrooms.user_id = ? and user_chatrooms.chat_room_id = chat_rooms.id and chat_msgs.chat_room_id = chat_rooms.id and chat_msgs.sender_id != user_chatrooms.user_id and chat_msgs.unread = 1", userID).Scan(&count)
 	return count
+}
+
+func (store IChatStore) UpdateChatStatus(postID int, chatRoomID int) {
+	db.Exec("UPDATE (SELECT * from chat_rooms where chat_rooms.post_id = ? SET status = 2", postID)
+	db.Exec("UPDATE chat_rooms SET status = 1 where id = ?", chatRoomID)
 }

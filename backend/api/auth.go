@@ -3,7 +3,6 @@ package api
 import (
 	"fmt"
 
-	"sam/config"
 	"sam/middleware"
 	"sam/models"
 
@@ -16,10 +15,8 @@ func InitAuthRouter(rg *gin.RouterGroup) {
 		router.POST("/login", login)
 		router.GET("/logout", logout)
 		router.POST("/register", register)
-		if config.Settings.Server.Mode == "debug" {
-			router.Use(middleware.TokenAuth)
-			router.GET("/checkSession", checkSession)
-		}
+		router.Use(middleware.TokenAuth)
+		router.GET("/session", checkSession)
 	}
 }
 
@@ -94,10 +91,11 @@ func register(c *gin.Context) {
 // @Security ApiKeyAuth
 // @Summary 세션 체크
 // @Description 세션 체크
-// @Router /auth/checkSession [get]
+// @Router /auth/session [get]
 // @Success 200 {object} models.User
 // @Failure 400 {object} BadRequestResult
 func checkSession(c *gin.Context) {
 	user := GetSessionUser(c)
-	ResponseOK(c, user)
+	result := &LoginResult{user, models.ChatStore.GetUnreadCount(user.ID)}
+	ResponseOK(c, result)
 }

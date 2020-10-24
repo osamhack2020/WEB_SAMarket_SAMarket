@@ -8,7 +8,7 @@ type Unit struct {
 	// 부대 이름
 	Name string `json:"name"`
 	// 부대마크
-	LogoURL string
+	LogoURL string `json:"logo_url"`
 }
 
 type IUnitStore struct{}

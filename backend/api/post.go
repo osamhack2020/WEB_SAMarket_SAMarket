@@ -14,6 +14,7 @@ func InitPostRouter(rg *gin.RouterGroup) {
 		router.Use(middleware.TokenAuth)
 		router.POST("/add", addPost)
 		router.GET("/list", getPostList)
+		router.GET("/list/:type", getPostListByType)
 		router.GET("/user/:userid", getPostByAuthor)
 		//router.GET("/view/:id", getPost)
 		router.GET("/toggle/favorite/:id", addFavorite)
@@ -36,6 +37,22 @@ func InitPostRouter(rg *gin.RouterGroup) {
 func getPostList(c *gin.Context) {
 	user := GetSessionUser(c)
 	ResponseOK(c, models.PostStore.GetPostListByUnitID(user.ID, user.UnitID))
+}
+
+// getPostListByType godoc
+// @Security ApiKeyAuth
+// @Description 부대 게시글 목록 종류별로 가져오기
+// @Summary 부대 게시글 목록 종류별로 가져오기
+// @name getPostList
+// @Produce  json
+// @Param type path string true "게시글 종류"
+// @Router /post/list/{type} [get]
+// @Success 200 {object} []models.Post
+// @Failure 400 {object} BadRequestResult
+func getPostListByType(c *gin.Context) {
+	postType := c.Param("type")
+	user := GetSessionUser(c)
+	ResponseOK(c, models.PostStore.GetPostListByTypeAndUnitID(user.ID, user.UnitID, postType))
 }
 
 // addPost godoc
