@@ -1,9 +1,14 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import { useSelector } from "react-redux";
 import Profile from "../user/Profile";
 import "./Reply.css";
 
-export default function ReplyInput({ message, setMessage, sendMessage, inputRef }) {
+export default function ReplyInput({
+  message,
+  setMessage,
+  sendMessage,
+  inputRef
+}) {
   const userInfo = useSelector(state => state.sign.userInfo);
   return (
     <Fragment>
