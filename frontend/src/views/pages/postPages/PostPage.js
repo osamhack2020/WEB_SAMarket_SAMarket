@@ -3,13 +3,14 @@ samarket.kr/posts/${postId} 로
 postId를 기준으로 post 를 보여줌
 postId가 없는 경우, 메인화면으로
 */
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect, useRef } from "react";
 import { getPostById } from "views/modules/common/fakeServer";
 import NotFoundPage from "../tempPages/NotFoundPage";
 import BackBtn from "views/components/header/BackBtn";
 import PostHead from "views/components/post/PostHead";
 import Content from "views/components/post/Content";
-import ChatInput from "views/components/chat/ChatInput";
+import ReplyInput from "views/components/reply/ReplyInput";
+import ReplyList from "views/components/reply/ReplyList";
 
 export default function PostPage({ match }) {
   const info = getPostById(match.params.postId);
@@ -81,15 +82,26 @@ function PostingReplies() {
     window.addEventListener("resize", calculateNorm);
     return () => window.removeEventListener("resize", calculateNorm);
   }, []);
+  // '답글달기' 누르면 입력창으로 커서 이동
+  const ref = useRef();
+  const inputFocus = () => {
+    console.log(ref);
+    console.log(ref.onfocus);
+    ref.current && ref.current.focus();
+  }; 
 
   return (
     <div>
-      <div className="replies">댓글 대댓글 영역</div>
+      <div className="replies">
+      <ReplyList inputFocus={inputFocus}/>
+      </div>
+      <div className={`replyState ${ref.current ? "" : "hidden" }`}>"서형진"님에게 답글을 작성하는 중입니다.</div>
       {pageY >= norm && (
-        <ChatInput
+        <ReplyInput
           message={message}
           setMessage={setMessage}
           sendMessage={() => setMessage("")}
+          inputRef={ref}
         />
       )}
     </div>
