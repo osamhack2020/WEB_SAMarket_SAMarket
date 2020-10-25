@@ -32,8 +32,8 @@ export async function getChatRoomList() {
   return await axios.get(`${BASE_URL}/chat/rooms`);
 }
 
-export async function commentAdd(content, postid, toreply) {
-  return await axios.post(`${BASE_URL}/comment/add`, { content: content, postID: postid, toreply: toreply});
+export async function commentAdd(content, postId, toReply) {
+  return await axios.post(`${BASE_URL}/comment/add`, { content: content, post_id: postId, to_reply: toReply});
 }
 
 
