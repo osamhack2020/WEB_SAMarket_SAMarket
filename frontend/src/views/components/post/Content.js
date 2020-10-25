@@ -16,21 +16,19 @@ color: ${props => props.font};
 `;
 
 export default function Content({ info, disable = false }) {
-  const { postId, contents, type } = info;
-  const { title, sub, tags, clr } = contents;
-  const color = clr
-    ? clr
-    : { back: "#8990A0", font: "#202326", tag: "#505560" };
-
+  const { id, content, type, clr, tags, title, sub } = info;
+  console.log(info);
+  const color = clr | { back: "#8990A0", font: "#202326", tag: "#505560" };
+  console.log(clr);
 
   return (
-    <ContentBack back={clr.back} className="content">
-      <Link to={`/posts/${postId}`} className="contentLink" />
-      <Title font={clr.font} className="contentTitle">{title}</Title>
-      <Sub font={clr.font} className="contentSub">
+    <ContentBack back={color.back} className="content">
+      <Link to={`/posts/${id}`} className="contentLink" />
+      <Title font={color.font} className="contentTitle">{title}</Title>
+      <Sub font={color.font} className="contentSub">
         {sub ? sub + (type === "sell" ? " 원" : "") : ""}
       </Sub>
-      <TagList clr={color} texts={tags.slice(0, 5)} />
+      <TagList clr={color} texts={[]} />
       {disable && <div className="contentDisable" />}
     </ContentBack>
   );
