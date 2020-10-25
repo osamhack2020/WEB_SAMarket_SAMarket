@@ -41,7 +41,7 @@ export async function sendChatMsg(msg) {
 }
 
 export async function commentAdd(content, postid, toreply) {
-  return await axios.post(`${BASE_URL}/comment/add`, { content: content, postID: postid, toreply: toreply});
+  return await axios.post(`${BASE_URL}/comment/add`, { content: content, post_id: postid, to_reply: toreply});
 }
 
 export async function register(info) {

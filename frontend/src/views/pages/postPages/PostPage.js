@@ -53,31 +53,30 @@ function PostingContent({ info }) {
 
 function PostingReplies({postId}) {
   // Posting 의 댓글 대댓글 영역
-  const [pageY, setPageY] = useState(0);
-  const [norm, setNorm] = useState(0);
-  const [message, setMessage] = useState("");
-
+  var pageY = 0;
+  var norm = 0;
   const handleScroll = () => {
     const { pageYOffset } = window;
-    setPageY(pageYOffset);
+    pageY = pageYOffset;
   };
 
   const calculateNorm = () => {
-    setNorm(
+    norm = 
       document.getElementById("postingContent").clientHeight -
         document.documentElement.clientHeight +
-        55
-    );
+        55;
   };
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [pageY]);
+  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0); // 화면을 맨 위로
     calculateNorm();
   }, []);
+
   // 창의 크기가 변하면, 기준도 다시 계산
   useEffect(() => {
     window.addEventListener("resize", calculateNorm);
@@ -124,8 +123,6 @@ function PostingReplies({postId}) {
             "{reciever}"님에게 답글을 작성하는 중입니다.
           </div>
           <ReplyInput
-            message={message}
-            setMessage={setMessage}
             inputRef={ref}
             setIsFocus={setIsFocus}
             postid={postid}
