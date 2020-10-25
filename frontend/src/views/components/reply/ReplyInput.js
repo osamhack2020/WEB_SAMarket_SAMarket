@@ -1,13 +1,14 @@
-import React, { Fragment } from "react";
+import React, { useState, Fragment } from "react";
 import { useSelector } from "react-redux";
 import { commentAdd } from "api";
 import Profile from "../user/Profile";
 import "./Reply.css";
 
-export default function ReplyInput({ message, setMessage, inputRef, setIsFocus, postid, setToReply, toReply, dataUpdate }) {
+export default function ReplyInput({ inputRef, setIsFocus, postid, setToReply, toReply, dataUpdate }) {
+  const userInfo = useSelector(state => state.sign.userInfo);
   const sendMessage = (content) => {
     commentAdd(content, postid, toReply).then(() => {
-      setMessage("");
+      inputRef.current.value = "";
       setToReply(null);
       dataUpdate();
     }
@@ -16,7 +17,6 @@ export default function ReplyInput({ message, setMessage, inputRef, setIsFocus, 
   const handleFocus = () => {
     setIsFocus(false);
   };
-  const userInfo = useSelector(state => state.sign.userInfo);
   return (
     <Fragment>
       <div className="replyInputContainer backdropBlur">
@@ -26,15 +26,13 @@ export default function ReplyInput({ message, setMessage, inputRef, setIsFocus, 
             ref={inputRef}
             className="replyInput"
             placeholder="메세지를 입력하세요"
-            value={message}
             onBlur={handleFocus}
-            onChange={e => setMessage(e.target.value)}
-            onKeyPress={e => (e.key === "Enter" ? sendMessage(message) : null)}
+            onKeyPress={e => (e.key === "Enter" ? sendMessage(inputRef.current.value) : null)}
           />
           <button
             variant="contained"
             className="btn inputBtn"
-            onClick={e => sendMessage(message)}
+            onClick={e => sendMessage(inputRef.current.value)}
           />
         </div>
       </div>
