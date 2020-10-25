@@ -32,6 +32,16 @@ export async function getChatRoomList() {
   return await axios.get(`${BASE_URL}/chat/rooms`);
 }
 
+export async function commentAdd(content, postid, toreply) {
+  return await axios.post(`${baseUrl}/comment/add`, { content: content, postID: postid, toreply: toreply});
+}
+
+
+export async function commentList(postid) {
+  return await axios.get(`${baseUrl}/comment/list/${postid}`);
+}
+
+
 function signUpReq({ userId, userInfo }) {
   throw new Error("Sign Up Failed");
 }
