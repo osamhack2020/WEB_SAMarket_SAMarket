@@ -4,6 +4,17 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import "./User.css";
 
+const UserImgBack = styled(Link)`
+  width: ${props => props.size}px;
+  height: ${props => props.size}px;
+  ${props => props.loc
+    ? `
+postion: relative;
+top: ${props => props.loc[0]}px;
+left: ${props => props.loc[1]}px`
+    : ""}
+`;
+
 export default function Profile({ userInfo, size, loc }) {
   // loc: {top, left}
   const { id } = userInfo;
@@ -22,24 +33,13 @@ export default function Profile({ userInfo, size, loc }) {
     width: `${size}px`,
     height: `${size}px`
   };
-
-  const UserImgBack = styled(Link)`
-    width: ${size}px;
-    height: ${size}px;
-    ${loc
-      ? `
-    postion: relative;
-    top: ${loc[0]}px;
-    left: ${loc[1]}px`
-      : ""}
-  `;
   /*
     width: `${size}px`,
     height: `${size}px`
   };*/
 
   return (
-    <UserImgBack to={`/profile/${id}`} className="btn userImg">
+    <UserImgBack size={size} loc={loc} to={`/profile/${id}`} className="btn userImg">
       <div style={userImg} />
     </UserImgBack>
   );
