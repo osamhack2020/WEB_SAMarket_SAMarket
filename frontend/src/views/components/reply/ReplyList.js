@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Reply from "./Reply";
-import { commentList } from "api";
 import "./Reply.css";
 
 export default function ReplyList({
@@ -8,14 +7,8 @@ export default function ReplyList({
   setReciever,
   setIsFocus,
   setToReply,
-  postid
+  comments
 }) {
-  const [comments, setComments] = useState([]);
-  useEffect(() => { 
-    commentList(postid).then(response => {
-      setComments(response.data);
-    });
-  }, []);
   return (
     <div className="ReplyList">
       {comments.map(comment => (
