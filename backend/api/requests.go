@@ -1,5 +1,9 @@
 package api
 
+import (
+	"gopkg.in/guregu/null.v4"
+)
+
 /* Auth Request Models */
 type LoginRequest struct {
 	// 로그인 아이디
@@ -20,14 +24,14 @@ type RegisterRequest struct {
 /* Chat Request Models */
 type AddChatMsgRequest struct {
 	ChatRoomID int
-	Content    string
+	Text       string `json:"text"`
 }
 
 /* Comment Request Models */
 type AddCommentRequest struct {
-	ToReply int
-	PostID  int
-	Content string
+	ToReply null.Int `json:"to_reply" swaggertype:"integer"`
+	PostID  int      `json:"post_id"`
+	Content string   `json:"content"`
 }
 
 /* Post Request Models */

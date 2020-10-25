@@ -16,6 +16,11 @@ type LoginResult struct {
 
 /* Chat Result Models */
 
+type ChatMsgsResult struct {
+	ChatRoom models.ChatRoom  `json:"chat_room"`
+	ChatMsgs []models.ChatMsg `json:"msgs"`
+}
+
 /* Comment Result Models */
 
 /* Post Result Models */

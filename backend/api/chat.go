@@ -78,15 +78,16 @@ func getChatRooms(c *gin.Context) {
 // @Produce  json
 // @Param roomid path string true "채팅방 id"
 // @Router /chat/msg/list/{roomid} [get]
-// @Success 200 {object} []models.ChatRoom
+// @Success 200 {object} ChatMsgsResult
 // @Failure 400 {object} BadRequestResult
 func getChatMsgList(c *gin.Context) {
 	user := GetSessionUser(c)
 	roomID := c.Param("roomid")
 	id, _ := strconv.Atoi(roomID)
+	room := models.ChatStore.GetChatRoomByID(id)
 	msgs := models.ChatStore.GetChatMsgList(id)
 	models.ChatStore.MakeRead(user.ID, id)
-	ResponseOK(c, msgs)
+	ResponseOK(c, ChatMsgsResult{ChatRoom: room, ChatMsgs: msgs})
 }
 
 // addChatMsg godoc
@@ -103,7 +104,7 @@ func addChatMsg(c *gin.Context) {
 	var msg *models.ChatMsg
 	c.ShouldBindJSON(&msg)
 	user := GetSessionUser(c)
-	msg.Sender = user
+	msg.SenderID = user.ID
 	chatRoomUsers := models.ChatStore.GetUsersInChatRoom(models.ChatRoom{ID: msg.ChatRoomID})
 	var isIn bool = false
 	for i := range chatRoomUsers {

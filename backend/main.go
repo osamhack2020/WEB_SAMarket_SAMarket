@@ -6,9 +6,10 @@ import (
 	"sam/api"
 	"sam/config"
 	"sam/docs"
-	"sam/middleware"
 	"sam/models"
 	"sam/ws"
+
+	"github.com/gin-contrib/cors"
 
 	"github.com/gin-contrib/static"
 	"github.com/gin-gonic/autotls"
@@ -41,10 +42,15 @@ func main() {
 
 	gin.SetMode(config.Settings.Server.Mode)
 	r := gin.Default()
-	// Debug only
+
 	if config.Settings.Server.Mode == "debug" {
-		r.Use(middleware.EnableCORS)
+		corsc := cors.DefaultConfig()
+		corsc.AllowOrigins = []string{"http://nanofiber.org:8081", "http://nanofiber.org:8082", "http://samarket.kr"}
+		corsc.AllowCredentials = true
+		r.Use(cors.New(corsc))
 	}
+
+	// Debug only
 	api.SetupAPI(r)
 	ws.SetupWebSocket(r)
 	r.Use(static.Serve("/", static.LocalFile("./web", true)))

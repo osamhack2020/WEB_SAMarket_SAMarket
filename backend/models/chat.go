@@ -9,7 +9,7 @@ type ChatRoom struct {
 	Post      Post      `json:"post"`
 	PostID    int       `json:"post_id"`
 	Title     string    `json:"title"`
-	Users     []*User   `json:"users" gorm:"many2many:user_chatrooms;"`
+	Users     []*User   `json:"members" gorm:"many2many:user_chatrooms;"`
 	Unread    int       `json:"unread" gorm:"-"`
 	LastMsg   *ChatMsg  `json:"lastmsg" gorm:"-"`
 	CreatedAt time.Time `json:"created_at"`
@@ -23,7 +23,7 @@ type ChatMsg struct {
 	ChatRoomID int
 	Sender     User      `json:"sender"`
 	SenderID   string    `json:"sender_id"`
-	Content    string    `json:"content"`
+	Content    string    `json:"text"`
 	Unread     int       `json:"unread"`
 	CreatedAt  time.Time `json:"created_at"`
 }
