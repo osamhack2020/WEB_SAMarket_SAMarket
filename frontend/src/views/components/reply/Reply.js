@@ -11,7 +11,6 @@ export default function Reply({
   setIsFocus,
   setToReply
 }) {
-  console.log(comment);
   const handleReciever = () => {
     inputFocus();
     setReciever(comment.user.name);
