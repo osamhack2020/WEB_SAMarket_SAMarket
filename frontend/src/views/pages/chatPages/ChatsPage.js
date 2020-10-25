@@ -4,7 +4,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getChatList } from "api";
+import { getChatRoomList } from "api";
 import BackBtn from "views/components/header/BackBtn";
 import SearchBar from "views/components/header/SearchBar";
 import UnreadChat from "views/components/chat/UnreadChat";
@@ -17,7 +17,7 @@ export default function ChatsPage() {
   const [filtered, setFiltered] = useState([]);
 
   useEffect(() => { 
-    getChatList().then(response => {
+    getChatRoomList().then(response => {
       setChatRooms(response.data);
       setFiltered(response.data);
     });
@@ -69,13 +69,13 @@ function ChatsHeader({ setKeyword }) {
 
 function ChatInfo({ info, myId }) {
   // 채팅 정보를 보여주는 component
-  const { title, chatRoomId, members, unread } = info;
+  const { title, id, members, unread } = info;
   const users = members.filter(member => member.id !== myId);
   const lastMsg = info.lastmsg;
   console.log(info);
 
   return (
-    <Link to={`/chat/${chatRoomId}`} className="btn chatInfo">
+    <Link to={`/chat/${id}`} className="btn chatInfo">
       <ChatThumbnail users={users.slice(0, 3)} />
       {title}
       <p className="lastChat">{`${lastMsg.text.slice(0, 16)}${
