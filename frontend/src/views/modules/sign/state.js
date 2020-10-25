@@ -45,13 +45,11 @@ export const checkSess = () => {
 const startWebSocket = () => {
   return async (dispatch, getState, { history }) => {
     const client = new W3CWebSocket(WS_URL);
-    client.onopen = () => {
-
-    };
     client.onmessage = (message) => {
       const payload = JSON.parse(message.data);
       if (payload.ChatRoomID) {
         dispatch({ type: SET_UNREAD, unread: payload.UnreadCount });
+        dispatch({ type: "chat/UPDATE", chatMsg: payload.ChatMsg });
       }
     };
   }

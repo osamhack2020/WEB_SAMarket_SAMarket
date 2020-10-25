@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { signUp } from "./state";
 import styled from "styled-components";
 import "./Sign.css";
+import { getUnitList } from "api";
 
 const InputTitle = styled.div`
   margin-top: 20px;
@@ -18,17 +19,25 @@ export default function SignUpForm() {
   const [password, setPw] = useState("");
   const [password_cnf, setPwCnf] = useState("");
   const [userInfo, setInfo] = useState();
-  const dipatch = useDispatch();
+  const [unitList, setUnitList] = useState([]);
+
+  const dispatch = useDispatch();
 
   const handleSignUp = _ => {
     throw new Error("가입 기능 구현중..");
-    dipatch(signUp(userId, { userId, password, ...userInfo }));
+    dispatch(signUp(userId, { userId, password, ...userInfo }));
   };
 
   const checkPwValidate = e => {
     // 비밀번호의 유효성을 여기서 검증
     setPw(e.target.value);
   };
+
+  useEffect(() => {
+    getUnitList().then(response => {
+
+    });
+  }, []);
 
   return (
     <form onSubmit={handleSignUp}>
@@ -61,6 +70,11 @@ export default function SignUpForm() {
       )}
 
       <InputTitle>소속</InputTitle>
+      <input
+        className="signInput"
+        placeholder="군별"
+        required="true"
+      />
       <input
         className="signInput"
         placeholder="부대"
