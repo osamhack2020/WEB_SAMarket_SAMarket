@@ -27,7 +27,7 @@ export default function PostPage({ match }) {
         <div id="postingContent">
           <PostingContent info={info} />
         </div>
-        <PostingReplies />
+        <PostingReplies postId={postId} />
       </div>
     </Fragment>
   );
@@ -50,7 +50,7 @@ function PostingContent({ info }) {
   );
 }
 
-function PostingReplies() {
+function PostingReplies({postId}) {
   // Posting 의 댓글 대댓글 영역
   const [pageY, setPageY] = useState(0);
   const [norm, setNorm] = useState(0);
@@ -85,24 +85,44 @@ function PostingReplies() {
   // '답글달기' 누르면 입력창으로 커서 이동
   const ref = useRef();
   const inputFocus = () => {
-    console.log(ref);
-    console.log(ref.onfocus);
     ref.current && ref.current.focus();
-  }; 
-
+  };
+  // 입력창에 커서 사라질 때 안내 메세지도 같이 사라짐
+  useEffect(() => {
+    if(pageY < norm) {
+      setIsFocus(false);
+    };
+  });
+  const postid = postId;
+  const [reciever, setReciever] = useState("");
+  const [toReply, setToReply] = useState("");
+  const [isFocus, setIsFocus] = useState(false);
   return (
     <div>
       <div className="replies">
-      <ReplyList inputFocus={inputFocus}/>
-      </div>
-      <div className={`replyState ${ref.current ? "" : "hidden" }`}>"서형진"님에게 답글을 작성하는 중입니다.</div>
-      {pageY >= norm && (
-        <ReplyInput
-          message={message}
-          setMessage={setMessage}
-          sendMessage={() => setMessage("")}
-          inputRef={ref}
+        <ReplyList
+          inputFocus={inputFocus}
+          setReciever={setReciever}
+          setIsFocus={setIsFocus}
+          setToReply={setToReply}
+          postid={postid}
         />
+      </div>
+      {pageY >= norm && (
+        <Fragment>
+          <div className={`replyState ${isFocus ? "" : "hidden"}`}>
+            "{reciever}"님에게 답글을 작성하는 중입니다.
+          </div>
+          <ReplyInput
+            message={message}
+            setMessage={setMessage}
+            inputRef={ref}
+            setIsFocus={setIsFocus}
+            postid={postid}
+            setToReply={setToReply}
+            toReply={toReply}
+          />
+        </Fragment>
       )}
     </div>
   );
