@@ -5,6 +5,7 @@ postId가 없는 경우, 메인화면으로
 */
 import React, { Fragment, useState, useEffect, useRef } from "react";
 import { getPostById } from "views/modules/common/fakeServer";
+import { commentList } from "api";
 import NotFoundPage from "../tempPages/NotFoundPage";
 import BackBtn from "views/components/header/BackBtn";
 import PostHead from "views/components/post/PostHead";
@@ -97,6 +98,15 @@ function PostingReplies({postId}) {
   const [reciever, setReciever] = useState("");
   const [toReply, setToReply] = useState("");
   const [isFocus, setIsFocus] = useState(false);
+  const [comments, setComments] = useState([]);
+  const dataUpdate = () => {
+    commentList(postid).then(response => {
+      setComments(response.data);
+    });
+  };
+  useEffect(() => {
+    dataUpdate();
+  }, []);
   return (
     <div>
       <div className="replies">
@@ -105,7 +115,7 @@ function PostingReplies({postId}) {
           setReciever={setReciever}
           setIsFocus={setIsFocus}
           setToReply={setToReply}
-          postid={postid}
+          comments={comments}
         />
       </div>
       {pageY >= norm && (
@@ -121,6 +131,7 @@ function PostingReplies({postId}) {
             postid={postid}
             setToReply={setToReply}
             toReply={toReply}
+            dataUpdate={dataUpdate}
           />
         </Fragment>
       )}
