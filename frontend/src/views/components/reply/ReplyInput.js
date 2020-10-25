@@ -1,14 +1,17 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { useSelector } from "react-redux";
+import { commentAdd } from "views/api/index.js";
 import Profile from "../user/Profile";
 import "./Reply.css";
 
-export default function ReplyInput({
-  message,
-  setMessage,
-  sendMessage,
-  inputRef
-}) {
+export default function ReplyInput({ message, setMessage, inputRef, setIsFocus, postid, setToReply, toReply }) {
+  const sendMessage = (content) => {
+    commentAdd(content, postid, toReply);
+  }
+  const handleFocus = () => {
+    setIsFocus(false);
+    setToReply(0);
+  };
   const userInfo = useSelector(state => state.sign.userInfo);
   return (
     <Fragment>
@@ -20,7 +23,8 @@ export default function ReplyInput({
             className="replyInput"
             placeholder="메세지를 입력하세요"
             value={message}
-            onChange={e => setMessage(e.target.value)}
+            onBlur={handleFocus}
+            onChange={e => setMessage(e)}
             onKeyPress={e => (e.key === "Enter" ? sendMessage(e) : null)}
           />
           <button
