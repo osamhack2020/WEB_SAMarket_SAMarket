@@ -2,35 +2,26 @@
 로그인 되어 있지 않은 경우, 로그인 요구
 */
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { getChatRoomList } from "api";
 import BackBtn from "views/components/header/BackBtn";
 import SearchBar from "views/components/header/SearchBar";
 import UnreadChat from "views/components/chat/UnreadChat";
 import Profile from "views/components/user/Profile";
+import { loadChatRooms } from "views/modules/chat/state";
 import "./ChatPage.css";
 
-export default function ChatsPage() {
+function ChatsPage(props) {
   const [chatKeyword, setKeyword] = useState("");
-  const [chatRooms, setChatRooms] = useState([]);
   const [filtered, setFiltered] = useState([]);
+  const { chatRoomList } = props;
+  const dispatch = useDispatch();
 
   useEffect(() => { 
-    getChatRoomList().then(response => {
-      setChatRooms(response.data);
-      setFiltered(response.data);
-    });
+    dispatch(loadChatRooms());
   }, []);
 
-  useEffect(() => {
-    setFiltered(chatRooms.filter(
-      chatInfo =>
-        chatInfo.title.indexOf(chatKeyword) !== -1 ||
-        chatInfo.members.filter(member => member.name.indexOf(chatKeyword) !== -1)
-          .length
-    ));
-  }, [chatKeyword]);
   /*
   getChatList().filter(
     chatInfo =>
@@ -44,13 +35,17 @@ export default function ChatsPage() {
     <div>
       <ChatsHeader setKeyword={setKeyword} />
       <div className="chatList">
-        {filtered.map(chatInfo => (
-          <ChatInfo info={chatInfo} myId={1} />
+        {chatRoomList.map(chatInfo => (
+          <ChatInfo key={chatInfo.id} info={chatInfo} myId={1} />
         ))}
       </div>
     </div>
   );
 }
+
+export default connect(
+  state => ({ chatRoomList: state.chat.chatRoomList })
+) (ChatsPage);
 
 function ChatsHeader({ setKeyword }) {
   // 채팅 목록 상단에 있는 검색 가능한 헤드
@@ -72,7 +67,6 @@ function ChatInfo({ info, myId }) {
   const { title, id, members, unread } = info;
   const users = members.filter(member => member.id !== myId);
   const lastMsg = info.lastmsg;
-  console.log(info);
 
   return (
     <Link to={`/chat/${id}`} className="btn chatInfo">

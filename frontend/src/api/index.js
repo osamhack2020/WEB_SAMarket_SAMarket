@@ -28,17 +28,33 @@ export async function signInReq(userId, password) {
   );
 }
 
+export async function getChatRoom(chatRoomID) {
+  return await axios.get(`${BASE_URL}/chat/room/{chatRoomID}`);
+}
+
 export async function getChatRoomList() {
   return await axios.get(`${BASE_URL}/chat/rooms`);
+}
+
+export async function sendChatMsg(msg) {
+  return await axios.post(`${BASE_URL}/chat/msg/send`, msg);
 }
 
 export async function commentAdd(content, postid, toreply) {
   return await axios.post(`${BASE_URL}/comment/add`, { content: content, postID: postid, toreply: toreply});
 }
 
+export async function register(info) {
+  return await axios.post(`${BASE_URL}/auth/register`, info);
+}
+
 
 export async function commentList(postid) {
   return await axios.get(`${BASE_URL}/comment/list/${postid}`);
+}
+
+export async function getUnitList() {
+  return await axios.get(`${BASE_URL}/unit/list`);
 }
 
 

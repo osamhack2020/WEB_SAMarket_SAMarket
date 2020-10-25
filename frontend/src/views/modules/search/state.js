@@ -13,6 +13,9 @@ export const changeKeyword = keyword => {
 export default createReducer(
   { keyword: "" }, // initialState
   {
-    [CHANGE]: (state, action) => (state.keyword = action.keyword)
+    [CHANGE]: (state, action) => {
+      state.keyword = action.keyword
+      console.log("test");
+    }
   }
 );

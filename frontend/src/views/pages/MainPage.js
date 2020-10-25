@@ -2,16 +2,16 @@
   로그인이 안된 경우, 로그인 페이지로 Redirect 시킨다.
 */
 import React from "react";
-import { connect, useDispatch } from "react-redux";
 import Header from "../components/header/Header";
 import MenuBar from "../components/menubar/MenuBar";
 import SAMroad from "../modules/samroad/SAMroad";
 import "./Pages.css";
 
-function MainPage(props) {
+function MainPage() {
   return (
     <div className="MainPage">
       <Header />
+      <SAMroad />
       <MenuBar />
     </div>
   );
