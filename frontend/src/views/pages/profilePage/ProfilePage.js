@@ -15,12 +15,20 @@ import {
   DealHistory,
   PostList
 } from "views/components/profile/index";
+import { getUserProfile } from "api";
 
 export default function ProfilePage({ match }) {
   const [pageY, setPageY] = useState(0);
   const [show, setShow] = useState(false);
-  const user = getUserById(match.params.userId);
-  const myId = useSelector(state => state.sign.userId);
+  const [userProfile, setUserProfile] = useState({});
+
+  useEffect(() => {
+    getUserProfile(match.params.userId).then(response => {
+      setUserProfile(response.data);
+    });
+  }, []);
+
+  const myId = useSelector(state => state.sign.userInfo.id);
 
   const handleScroll = () => {
     const { pageYOffset } = window;
@@ -30,7 +38,7 @@ export default function ProfilePage({ match }) {
   useEffect(() => {
     setShow(false); // at first enter
     window.scrollTo(0, 0);
-  }, [user]);
+  }, [userProfile]);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -43,21 +51,23 @@ export default function ProfilePage({ match }) {
     document.body.style.overflow = "hidden";
     setTimeout(() => (document.body.style.overflow = null), 2000);
   }
-
-  if (!user) return <NotFoundPage />;
-  return (
-    <div className="ProfilePage">
-      <div className="ProfileBack" />
-      <ProfileHeader user={user} pageY={pageY} myId={myId} />
-      <div>
-        <Scouter user={user} pageY={pageY} />
-        <FriendList user={user} />
-        <DealHistory user={user} />
-        <PostList user={user} />
+  if (userProfile.id) {
+    return (
+      <div className="ProfilePage">
+        <div className="ProfileBack" />
+        <ProfileHeader user={userProfile} pageY={pageY} myId={myId} />
+        <div>
+          <Scouter user={userProfile} pageY={pageY} />
+          <FriendList user={userProfile} />
+          <DealHistory user={userProfile} />
+          <PostList user={userProfile} />
+        </div>
+        {myId === userProfile.id && <SignOut />}
       </div>
-      {myId === user.id && <SignOut />}
-    </div>
-  );
+    );
+  } else {
+    return <div></div>;
+  }
 }
 
 function SignOut() {

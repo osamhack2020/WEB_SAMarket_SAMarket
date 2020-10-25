@@ -57,6 +57,9 @@ export async function getUnitList() {
   return await axios.get(`${BASE_URL}/unit/list`);
 }
 
+export async function getUserProfile(userid) {
+  return await axios.get(`${BASE_URL}/user/profile/${userid}`);
+}
 
 function signUpReq({ userId, userInfo }) {
   throw new Error("Sign Up Failed");

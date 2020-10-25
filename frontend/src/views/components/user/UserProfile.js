@@ -35,7 +35,7 @@ function Belongs({ userInfo, handleSearch }) {
   return (
     <div className="belong">
       <Link to="/" className="btn loc" onClick={handleSearch(0)}>
-        {userInfo.unit.mil}
+        {["육군", "해군", "공군", "해병", "국직"][userInfo.unit.mil-1]}
       </Link>
       <Link to="/" className="btn org" onClick={handleSearch(1)}>
         {userInfo.unit.name}
