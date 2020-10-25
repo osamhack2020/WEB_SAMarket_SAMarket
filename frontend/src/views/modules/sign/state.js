@@ -2,7 +2,7 @@
 import createReducer from "../common/createReducer";
 import { users } from "data/users.json";
 import { useDispatch } from "react-redux";
-import { WS_URL, signInReq, checkSession } from "api";
+import { WS_URL, register, signInReq, checkSession } from "api";
 import { useHistory } from "react-router-dom";
 import { w3cwebsocket as W3CWebSocket } from "websocket";
 
@@ -18,6 +18,12 @@ const SET_UNREAD = "sign/SET_UNREAD";
 export const signIn = (loginResult) => {
   return { type: SIGN_IN, userInfo: loginResult.user, unread: loginResult.unread, invalid: loginResult.invalid  };
 };
+
+export const signUp = (userInfo) => {
+  return async (dispatch, getState, { history }) => {
+    const res = await register(userInfo);
+  }
+}
 
 export const login = (userId, password) => {
   return async (dispatch, getState, { history }) => {
@@ -59,10 +65,6 @@ export const signOut = () => {
   return { type: SIGN_OUT };
 };
 
-export const signUp = (userId, userInfo) => {
-  return { type: SIGN_UP, userId, userInfo };
-};
-
 // reducer
 export default createReducer(
   {
@@ -75,16 +77,11 @@ export default createReducer(
       state.userInfo = action.userInfo
       state.unread = action.unread
       state.invalid = action.invalid || false;
-      console.log(action)
     },
     [SIGN_OUT]: (state, _) => {
 
     },
-    [SIGN_UP]: (state, action) => {
-     
-    },
     [SET_UNREAD]: (state, action) => {
-      console.log(action.unread)
       state.unread = action.unread;
     }
   }
