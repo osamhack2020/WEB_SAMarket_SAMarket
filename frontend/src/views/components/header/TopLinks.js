@@ -10,7 +10,7 @@ import "./Header.css";
 export default function TopLinks() {
   return (
     <div className="topLinks">
-      <Link exact to="/" className="btn home">
+      <Link to="/" className="btn home">
         강군마켓
       </Link>
       <LieksNChats />
