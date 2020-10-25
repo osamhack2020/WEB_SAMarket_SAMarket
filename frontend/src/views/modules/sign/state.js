@@ -2,14 +2,16 @@
 import createReducer from "../common/createReducer";
 import { users } from "data/users.json";
 import { useDispatch } from "react-redux";
-import { signInReq, checkSession } from "api";
+import { WS_URL, signInReq, checkSession } from "api";
 import { useHistory } from "react-router-dom";
+import { w3cwebsocket as W3CWebSocket } from "websocket";
 
 // action type 정의
 const SIGN_IN = "sign/SIGN_IN";
 const SIGN_OUT = "sign/SIGN_OUT";
 const SIGN_UP = "sign/SIGN_UP";
 const SESSION_INVALID = "sign/session_invalid";
+const SET_UNREAD = "sign/SET_UNREAD";
 
 
 // action generate 함수
@@ -22,6 +24,7 @@ export const login = (userId, password) => {
     const res = await signInReq(userId, password);
     if (res.status == 200) {
       dispatch(signIn(res.data));
+      dispatch(startWebSocket());
       history.replace("/");
     }
   }
@@ -32,9 +35,25 @@ export const checkSess = () => {
     try {
       const res = await checkSession();
       dispatch(signIn(res.data));
+      dispatch(startWebSocket());
     } catch (err) {
       dispatch(signIn({invalid: true}));
     }
+  }
+}
+
+const startWebSocket = () => {
+  return async (dispatch, getState, { history }) => {
+    const client = new W3CWebSocket(WS_URL);
+    client.onopen = () => {
+
+    };
+    client.onmessage = (message) => {
+      const payload = JSON.parse(message.data);
+      if (payload.ChatRoomID) {
+        dispatch({ type: SET_UNREAD, unread: payload.UnreadCount });
+      }
+    };
   }
 }
 
@@ -65,6 +84,10 @@ export default createReducer(
     },
     [SIGN_UP]: (state, action) => {
      
+    },
+    [SET_UNREAD]: (state, action) => {
+      console.log(action.unread)
+      state.unread = action.unread;
     }
   }
 );
