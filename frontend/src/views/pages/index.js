@@ -15,7 +15,6 @@ import { Router } from "react-router-dom";
 import { checkSess } from "views/modules/sign/state";
 
 function AuthFilterImpl(props) {
-  console.log(props)
   if (props.invalid) {
     props.history.replace("/sign");
   }

@@ -2,14 +2,16 @@ import React, { Fragment } from "react";
 import Profile from "../user/Profile";
 import Rereply from "./Rereply.js";
 import "./Reply.css";
+import Moment from 'react-moment';
 
 export default function Reply({
-  message: { comment },
+  comment,
   inputFocus,
   setReciever,
   setIsFocus,
   setToReply
 }) {
+  console.log(comment);
   const handleReciever = () => {
     inputFocus();
     setReciever(comment.user.name);
@@ -28,7 +30,7 @@ export default function Reply({
           <div className="replyFooter">
             <div className="replyDate">
               {" "}
-              {comment.createdAt.format("MM/dd")} {comment.createdAt.format("HH:mm")}{" "}
+              <Moment format="MM/DD HH:mm">{comment.created_at}</Moment>
             </div>
             <div onClick={handleReciever} className="replyButton">
               <div className="heartIcon"></div>

@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import { useSelector } from "react-redux";
-import { commentAdd } from "views/api/index.js";
+import { commentAdd } from "api";
 import Profile from "../user/Profile";
 import "./Reply.css";
 
