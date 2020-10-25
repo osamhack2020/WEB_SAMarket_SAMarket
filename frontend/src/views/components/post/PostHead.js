@@ -18,7 +18,7 @@ const svgs = (() => {
 
 export default function PostHead({ postId, type, author }) {
   const userInfo = useSelector(state => state.sign.userInfo);
-  const [liked, setLiked] = useState(userInfo.likes.indexOf(postId) >= 0);
+  const [liked, setLiked] = useState(0);
 
   const getBtn = idx => {
     const img = {
