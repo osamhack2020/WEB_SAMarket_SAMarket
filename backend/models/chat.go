@@ -18,9 +18,9 @@ type ChatRoom struct {
 }
 
 type ChatMsg struct {
-	ID         int      `json:"id"`
-	ChatRoom   ChatRoom `json:"-"`
-	ChatRoomID int
+	ID         int       `json:"id"`
+	ChatRoom   ChatRoom  `json:"-"`
+	ChatRoomID int       `json:"chat_room_id"`
 	Sender     User      `json:"sender"`
 	SenderID   string    `json:"sender_id"`
 	Content    string    `json:"text"`

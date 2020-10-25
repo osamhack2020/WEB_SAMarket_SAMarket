@@ -23,8 +23,8 @@ type ICommentStore struct{}
 
 var CommentStore ICommentStore
 
-func (store ICommentStore) AddComment(comment Comment) {
-	db.Create(&comment)
+func (store ICommentStore) AddComment(comment *Comment) {
+	db.Create(comment)
 }
 
 func (store ICommentStore) DeleteComment() {

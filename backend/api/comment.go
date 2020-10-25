@@ -48,6 +48,7 @@ func addComment(c *gin.Context) {
 	c.ShouldBindJSON(&comment)
 	user := GetSessionUser(c)
 	comment.UserID = user.ID
-	models.CommentStore.AddComment(*comment)
+	models.CommentStore.AddComment(comment)
+	comment.User = user
 	ResponseOK(c, *comment)
 }

@@ -78,7 +78,7 @@ func register(c *gin.Context) {
 	if err != nil {
 		fmt.Println(err)
 	}
-	user := models.User{LoginID: rq.LoginID, Name: rq.Name, Password: rq.Password, Mil: rq.Mil, UnitID: rq.UnitID}
+	user := models.User{LoginID: rq.LoginID, Name: rq.Name, Password: rq.Password, Mil: rq.Mil, UnitID: rq.UnitID, Rank: rq.Rank}
 	err = models.UserStore.AddUser(user)
 	if err != nil {
 		ResponseBadRequest(c, err)

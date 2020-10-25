@@ -19,11 +19,12 @@ type RegisterRequest struct {
 	UnitID   int
 	Mil      int
 	Name     string
+	Rank     string
 }
 
 /* Chat Request Models */
 type AddChatMsgRequest struct {
-	ChatRoomID int
+	ChatRoomID int    `json:"chat_room_id"`
 	Text       string `json:"text"`
 }
 

@@ -119,7 +119,7 @@ func addChatMsg(c *gin.Context) {
 	}
 	msg.Unread = 1
 	models.ChatStore.AddChatMsg(msg)
-
+	msg.Sender = user
 	for _, receiver := range chatRoomUsers {
 		// 메시지 보낸 사람 외 다른사람들에게만 웹소켓 전송
 		if receiver.ID != msg.SenderID {

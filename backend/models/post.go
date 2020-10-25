@@ -14,7 +14,7 @@ type Post struct {
 	ID       int       `json:"id"`
 	AuthorID string    `json:"-"`
 	Author   User      `json:"author"`
-	Tags     string    `json:'tags"`
+	Tags     string    `json:"tags"`
 	Title    string    `json:"title"`
 	Type     string    `json:"type"`
 	Content  string    `json:"content"`
