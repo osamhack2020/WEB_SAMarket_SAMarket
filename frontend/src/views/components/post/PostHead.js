@@ -16,15 +16,12 @@ const svgs = (() => {
   return svgs;
 })();
 
-export default function PostHead({ postId, type, author }) {
-  const userInfo = useSelector(state => state.sign.userInfo);
-  const [liked, setLiked] = useState(0);
-
+export default function PostHead({ info }) {
   const getBtn = idx => {
     const img = {
       0: "share",
-      1: liked ? "liked" : "like",
-      2: type === "sell" ? "buy" : "deny"
+      1: info.is_favorite ? "liked" : "like",
+      2: info.type === "sell" ? "buy" : "deny"
     }[idx];
     return {
       marginRight: "5%",
@@ -38,16 +35,18 @@ export default function PostHead({ postId, type, author }) {
     return () => {
       if (idx === 1) {
         /* TODO: Backend 에 알려서, likes 바꿔야 함 */
-        setLiked(!liked);
+        info.is_favorite = !info.is_favorite;
+        console.log(info);
       }
     };
   };
 
   return (
     <div className="postHead">
-      <User userInfo={author} />
+      <User userInfo={info.author} />
       {[0, 1, 2].map(idx => (
         <button /* 3개의 버튼을 순서대로 생성 */
+          key={idx}
           className="btn postHeadBtn"
           style={getBtn(idx)}
           onClick={btnAction(idx)}

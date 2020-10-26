@@ -11,7 +11,7 @@ export default function Post({ info }) {
   if (type === "adv") return <Advertise info={info} />;
   return (
     <div className="post">
-      <PostHead postId={postId} type={type} author={author} />
+      <PostHead info={info} author={author} />
       <Content info={info} />
     </div>
   );
