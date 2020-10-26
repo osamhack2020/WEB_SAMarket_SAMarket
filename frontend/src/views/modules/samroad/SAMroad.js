@@ -33,6 +33,9 @@ export default function SAMroad() {
         post.tags = [];
       });
       setPostList(response.data);
+      // 임시
+      var scrollY = sessionStorage.getItem("pageYhead") || 0;
+      window.scrollTo(0, scrollY);
     })
   }, []);
   return <SAMroadList samroads={postList} />;
