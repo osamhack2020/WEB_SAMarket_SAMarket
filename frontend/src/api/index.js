@@ -65,6 +65,10 @@ export async function getPostList() {
   return await axios.get(`${BASE_URL}/post/list`);
 }
 
+export async function getPostByID(postid) {
+  return await axios.get(`${BASE_URL}/post/view/${postid}`);
+}
+
 function signUpReq({ userId, userInfo }) {
   throw new Error("Sign Up Failed");
 }

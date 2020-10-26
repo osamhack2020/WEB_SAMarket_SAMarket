@@ -4,8 +4,7 @@ postId를 기준으로 post 를 보여줌
 postId가 없는 경우, 메인화면으로
 */
 import React, { Fragment, useState, useEffect, useRef } from "react";
-import { getPostById } from "views/modules/common/fakeServer";
-import { commentList } from "api";
+import { getPostByID, commentList } from "api";
 import NotFoundPage from "../tempPages/NotFoundPage";
 import BackBtn from "views/components/header/BackBtn";
 import PostHead from "views/components/post/PostHead";
@@ -14,24 +13,29 @@ import ReplyInput from "views/components/reply/ReplyInput";
 import ReplyList from "views/components/reply/ReplyList";
 
 export default function PostPage({ match }) {
-  const info = getPostById(match.params.postId);
-  if (!info) return <NotFoundPage />;
-  const { postId, author, type } = info;
+  const [post, setPost] = useState({});
+  useEffect(() => {
+    getPostByID(match.params.postId).then(response => {
+      setPost(response.data);
+    });
+  }, []);
 
-  return (
-    <Fragment>
-      <div className="postHeadBack backdropBlur">
-        <BackBtn />
-        <PostHead postId={postId} type={type} author={author} />
-      </div>
-      <div className="postingInfo">
-        <div id="postingContent">
-          <PostingContent info={info} />
+  if (post.id)
+    return (
+      <Fragment>
+        <div className="postHeadBack backdropBlur">
+          <BackBtn />
+          <PostHead info={post} />
         </div>
-        <PostingReplies postId={postId} />
-      </div>
-    </Fragment>
-  );
+        <div className="postingInfo">
+          <div id="postingContent">
+            <PostingContent info={post} />
+          </div>
+          <PostingReplies postId={post.id} />
+        </div>
+      </Fragment>
+    );
+  return null;
 }
 
 function PostingContent({ info }) {
@@ -39,19 +43,14 @@ function PostingContent({ info }) {
   return (
     <div className="postingBack">
       <Content info={info} />
-      <div className="postingContent">
-        {info.contents.content.split("\n").map(line => (
-          <span>
-            {line}
-            <br />
-          </span>
-        ))}
+      <div className="postingContent" style={{whiteSpace: "pre-line"}}>
+        {info.content}
       </div>
     </div>
   );
 }
 
-function PostingReplies({postId}) {
+function PostingReplies({ postId }) {
   // Posting 의 댓글 대댓글 영역
   var pageY = 0;
   var norm = 0;
@@ -61,10 +60,10 @@ function PostingReplies({postId}) {
   };
 
   const calculateNorm = () => {
-    norm = 
+    norm =
       document.getElementById("postingContent").clientHeight -
-        document.documentElement.clientHeight +
-        55;
+      document.documentElement.clientHeight +
+      55;
   };
 
   useEffect(() => {
@@ -89,9 +88,9 @@ function PostingReplies({postId}) {
   };
   // 입력창에 커서 사라질 때 안내 메세지도 같이 사라짐
   useEffect(() => {
-    if(pageY < norm) {
+    if (pageY < norm) {
       setIsFocus(false);
-    };
+    }
   });
   const postid = postId;
   const [reciever, setReciever] = useState("");

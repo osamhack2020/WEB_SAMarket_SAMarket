@@ -17,10 +17,7 @@ color: ${props => props.font};
 
 export default function Content({ info, disable = false }) {
   const { id, content, type, clr, tags, title, sub } = info;
-  console.log(info);
-  const color = clr | { back: "#8990A0", font: "#202326", tag: "#505560" };
-  console.log(clr);
-
+  const color = (clr == undefined || clr.back == "" || clr.font == "") ? { back: "#8990A0", font: "#202326", tag: "#505560" } : clr;
   return (
     <ContentBack back={color.back} className="content">
       <Link to={`/posts/${id}`} className="contentLink" />
