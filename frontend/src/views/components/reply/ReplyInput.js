@@ -4,16 +4,28 @@ import { commentAdd } from "api";
 import Profile from "../user/Profile";
 import "./Reply.css";
 
-export default function ReplyInput({ inputRef, setIsFocus, postid, setToReply, toReply, dataUpdate }) {
+export default function ReplyInput({
+  inputRef,
+  setIsFocus,
+  postid,
+  setToReply,
+  toReply,
+  dataUpdate
+}) {
   const userInfo = useSelector(state => state.sign.userInfo);
-  const sendMessage = (content) => {
+  const sendMessage = content => {
     commentAdd(content, postid, toReply).then(() => {
+      const isReply = !!toReply;
       inputRef.current.value = "";
       setToReply(null);
       dataUpdate();
-    }
-    );
-  }
+      if (!isReply) {
+        requestAnimationFrame(() => {
+          document.body.scrollIntoView(false);
+        });
+      }
+    });
+  };
   const handleFocus = () => {
     setIsFocus(false);
   };
@@ -27,7 +39,9 @@ export default function ReplyInput({ inputRef, setIsFocus, postid, setToReply, t
             className="replyInput"
             placeholder="메세지를 입력하세요"
             onBlur={handleFocus}
-            onKeyPress={e => (e.key === "Enter" ? sendMessage(inputRef.current.value) : null)}
+            onKeyPress={e =>
+              e.key === "Enter" ? sendMessage(inputRef.current.value) : null
+            }
           />
           <button
             variant="contained"

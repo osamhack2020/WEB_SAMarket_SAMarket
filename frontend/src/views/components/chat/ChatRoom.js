@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, createRef } from "react";
 import { getPostById } from "views/modules/common/fakeServer";
 import { Redirect } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -17,14 +17,20 @@ let socket;
 export default function ChatRoom({ search, chatRoom, messages, me, done }) {
   const dispatch = useDispatch();
   const [message, setMessage] = useState("");
+  var el = createRef();
   const sendMessage = e => {
     e.preventDefault();
     dispatch(sendChat(message));
-    setMessage("");
   };
   var postId = 0;
-  console.log(chatRoom);
   const postInfo = getPostById(postId);
+
+  useEffect(() => {
+    requestAnimationFrame(() => {
+      document.body.scrollIntoView(false);
+    });
+  }, [messages]);
+
   return (
     <div className="chatRoom">
       {
@@ -34,7 +40,7 @@ export default function ChatRoom({ search, chatRoom, messages, me, done }) {
           </div>
         ) /* posting 을 통해서 생성된 채팅방 */
       }
-      <MessageList me={me} messages={messages} />
+      <MessageList divRef={el} me={me} messages={messages} />
       {done &&
         (postInfo.isClosed ? (
           <div className="chatDeal">
