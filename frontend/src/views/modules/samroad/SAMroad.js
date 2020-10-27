@@ -29,9 +29,6 @@ export default function SAMroad() {
 
   useEffect(() => {
     getPostList().then(response => {
-      response.data.map(post => {
-        post.tags = [];
-      });
       setPostList(response.data);
       // 임시
       var scrollY = sessionStorage.getItem("pageYhead") || 0;
