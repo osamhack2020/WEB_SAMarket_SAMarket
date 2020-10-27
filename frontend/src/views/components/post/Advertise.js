@@ -11,13 +11,12 @@ const Title = styled.div`
 `;
 
 export default function Advertise({ info }) {
-  const { postId, author, contents } = info;
-  const { clr, title } = contents;
+  const { id, author, clr, title } = info;
   return (
     <div className="adv">
-      <Link to={`/posts/${postId}`} className="contentLink" />
+      <Link to={`/posts/${id}`} className="contentLink" />
       <Title font={clr.font} back={clr.back} className="advBack">{title}</Title>
-      <PostHead postId={postId} type="post" author={author} />
+      <PostHead info={info} author={author} />
     </div>
   );
 }

@@ -75,7 +75,7 @@ function SignOut() {
   const logOut = () => dispatch(signOut());
   return (
     <Link to="/" className="btn signOut" onClick={logOut}>
-      퇴장하기
+      로그아웃
     </Link>
   );
 }

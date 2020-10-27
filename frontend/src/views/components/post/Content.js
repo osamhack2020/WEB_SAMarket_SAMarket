@@ -25,7 +25,7 @@ export default function Content({ info, disable = false }) {
       <Sub font={color.font} className="contentSub">
         {sub ? sub + (type === "sell" ? " 원" : "") : ""}
       </Sub>
-      <TagList clr={color} texts={[]} />
+      <TagList clr={color} texts={info.tags || []} />
       {disable && <div className="contentDisable" />}
     </ContentBack>
   );
