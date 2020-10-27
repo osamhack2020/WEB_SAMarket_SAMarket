@@ -16,13 +16,21 @@ func InitReviewRouter(rg *gin.RouterGroup) {
 	}
 }
 
+type AddReviewRequest struct {
+	PostID       int `json:"post_id"`
+	Content      string
+	Point        float32
+	WriterID     string `json:"writer_id"`
+	TargetUserID string `json:"target_user_id"`
+}
+
 // addReview godoc
 // @Security ApiKeyAuth
 // @Summary 판매 채팅후기 남기기 (판매자->구매자 또는 구매자->판매자 모두 가능)
 // @Description
 // @Accept  json
 // @Produce  json
-// @Param payload body models.Review true "리뷰"
+// @Param payload body AddReviewRequest true "리뷰"
 // @Router /review/add [post]
 // @Success 200 {object} []models.ChatRoom
 // @Failure 400 {object} BadRequestResult
@@ -30,6 +38,7 @@ func addReview(c *gin.Context) {
 	var review models.Review
 	c.ShouldBindJSON(&review)
 	models.ReviewStore.AddReview(review)
+	ResponseOK(c, review)
 }
 
 // getReviewList godoc

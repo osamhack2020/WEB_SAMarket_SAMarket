@@ -11,17 +11,18 @@ type PostColor struct {
 }
 
 type Post struct {
-	ID       int       `json:"id"`
-	AuthorID string    `json:"-"`
-	Author   User      `json:"author"`
-	Tags     string    `json:"tags"`
-	Title    string    `json:"title"`
-	Type     string    `json:"type"`
-	Content  string    `json:"content"`
-	Sub      string    `json:"sub"`
-	Clr      PostColor `json:"clr" gorm:"embedded;embeddedPrefix:clr_"`
-	UnitID   int       `json:"-"`
-	Unit     Unit      `json:"-"`
+	ID        int       `json:"id"`
+	AuthorID  string    `json:"-"`
+	Author    User      `json:"author"`
+	Tags      string    `json:"-"`
+	TagsArray []string  `json:"tags" gorm:"-"`
+	Title     string    `json:"title"`
+	Type      string    `json:"type"`
+	Content   string    `json:"content"`
+	Sub       string    `json:"sub"`
+	Clr       PostColor `json:"clr" gorm:"embedded;embeddedPrefix:clr_"`
+	UnitID    int       `json:"-"`
+	Unit      Unit      `json:"-"`
 	// 판매 종료 완료
 	Closed bool `json:"closed"`
 	// TODO 컬럼 생성 방지
@@ -36,6 +37,12 @@ var PostStore IPostStore
 
 func (store IPostStore) AddPost(post Post) {
 	db.Create(&post)
+}
+
+func (store IPostStore) GetPostWithFavorite(userID string, postID int) Post {
+	var post Post
+	db.Model(&Post{}).Raw("select posts.*, (f.post_id is NOT NULL) as is_favorite from posts LEFT OUTER JOIN favorites f ON f.user_id = ? and posts.id = f.post_id WHERE posts.id = ?  ", userID, postID).Preload("Author").Find(&post)
+	return post
 }
 
 func (store IPostStore) GetPost(postID int) Post {

@@ -35,7 +35,7 @@ type IChatStore struct {
 
 func (store IChatStore) GetChatRoomsByUser(user User) []ChatRoom {
 	var chatRooms []ChatRoom
-	db.Model(&user).Association("ChatRooms").Find(&chatRooms)
+	db.Model(&user).Preload("Post").Preload("Post.Author").Association("ChatRooms").Find(&chatRooms)
 	// TODO 안읽은 메시지 수 가져오기
 	for idx := range chatRooms {
 		db.Model(&chatRooms[idx]).Association("Users").Find(&chatRooms[idx].Users)
@@ -62,13 +62,13 @@ func (store IChatStore) AddChatMsg(msg *ChatMsg) {
 
 func (store IChatStore) GetChatRoom(postID int, userID string) []ChatRoom {
 	var chatRooms []ChatRoom
-	db.Raw("select * from chat_rooms, user_chatrooms where chat_rooms.post_id = ? and chat_rooms.id = user_chatrooms.chat_room_id and user_chatrooms.user_id = ?", postID, userID).Scan(&chatRooms)
+	db.Raw("select * from chat_rooms, user_chatrooms where chat_rooms.post_id = ? and chat_rooms.id = user_chatrooms.chat_room_id and user_chatrooms.user_id = ?", postID, userID).Preload("Post").Preload("Post.Author").Scan(&chatRooms)
 	return chatRooms
 }
 
 func (store IChatStore) GetChatRoomByID(chatRoomID int) ChatRoom {
 	var chatRoom ChatRoom
-	db.Where("id = ?", chatRoomID).Find(&chatRoom)
+	db.Where("id = ?", chatRoomID).Preload("Post").Preload("Post.Author").Find(&chatRoom)
 	return chatRoom
 }
 

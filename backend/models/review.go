@@ -5,13 +5,13 @@ import "time"
 type Review struct {
 	ID           int
 	Post         Post
-	PostID       int
+	PostID       int `json:"post_id"`
 	Content      string
 	Point        float32
 	Writer       User
-	WriterID     string
+	WriterID     string `json:"writer_id"`
 	TargetUser   User
-	TargetUserID string
+	TargetUserID string `json:"target_user_id"`
 	CreatedAt    time.Time
 	UpdatedAt    time.Time
 }

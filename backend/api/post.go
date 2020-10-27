@@ -4,6 +4,7 @@ import (
 	"sam/middleware"
 	"sam/models"
 	"strconv"
+	"strings"
 
 	"github.com/gin-gonic/gin"
 )
@@ -16,9 +17,9 @@ func InitPostRouter(rg *gin.RouterGroup) {
 		router.GET("/list", getPostList)
 		router.GET("/list/:type", getPostListByType)
 		router.GET("/user/:userid", getPostByAuthor)
-		//router.GET("/view/:id", getPost)
-		router.GET("/toggle/favorite/:id", addFavorite)
-		router.DELETE("/toggle/favorite/:id", deleteFavorite)
+		router.GET("/view/:id", getPost)
+		router.GET("/favorite/:id", addFavorite)
+		router.DELETE("/favorite/:id", deleteFavorite)
 		router.GET("/notint/:id", notint)
 		router.GET("/favorites", getFavorites)
 		router.POST("/search", searchPosts)
@@ -36,7 +37,33 @@ func InitPostRouter(rg *gin.RouterGroup) {
 // @Failure 400 {object} BadRequestResult
 func getPostList(c *gin.Context) {
 	user := GetSessionUser(c)
-	ResponseOK(c, models.PostStore.GetPostListByUnitID(user.ID, user.UnitID))
+	posts := models.PostStore.GetPostListByUnitID(user.ID, user.UnitID)
+	for i := range posts {
+		if len(posts[i].Tags) > 0 {
+			posts[i].TagsArray = strings.Split(posts[i].Tags, ",")
+		}
+	}
+	ResponseOK(c, posts)
+}
+
+// getPost godoc
+// @Security ApiKeyAuth
+// @Description 게시글 목록 가져오기
+// @Summary 게시글 목록 가져오기
+// @name getPost
+// @Produce  json
+// @Router /post/view/{id} [get]
+// @Success 200 {object} models.Post
+// @Failure 400 {object} BadRequestResult
+func getPost(c *gin.Context) {
+	param := c.Param("id")
+	postID, _ := strconv.Atoi(param)
+	user := GetSessionUser(c)
+	post := models.PostStore.GetPostWithFavorite(user.ID, postID)
+	if len(post.Tags) > 0 {
+		post.TagsArray = strings.Split(post.Tags, ",")
+	}
+	ResponseOK(c, post)
 }
 
 // getPostListByType godoc
@@ -52,7 +79,13 @@ func getPostList(c *gin.Context) {
 func getPostListByType(c *gin.Context) {
 	postType := c.Param("type")
 	user := GetSessionUser(c)
-	ResponseOK(c, models.PostStore.GetPostListByTypeAndUnitID(user.ID, user.UnitID, postType))
+	posts := models.PostStore.GetPostListByTypeAndUnitID(user.ID, user.UnitID, postType)
+	for i := range posts {
+		if len(posts[i].Tags) > 0 {
+			posts[i].TagsArray = strings.Split(posts[i].Tags, ",")
+		}
+	}
+	ResponseOK(c, posts)
 }
 
 // addPost godoc
@@ -61,13 +94,20 @@ func getPostListByType(c *gin.Context) {
 // @Summary 게시글 올리기
 // @name addPost
 // @Produce  json
-// @Param payload body models.Post true "게시글"
+// @Param payload body AddPostRequest true "게시글"
 // @Router /post/add [post]
 // @Success 200 {object} models.Post
 // @Failure 400 {object} BadRequestResult
 func addPost(c *gin.Context) {
+	var rq AddPostRequest
+	c.ShouldBindJSON(&rq)
 	var post models.Post
-	c.ShouldBindJSON(&post)
+	post.Title = rq.Title
+	post.Content = rq.Content
+	post.Type = rq.PostType
+	post.Clr = rq.Clr
+	post.Tags = strings.Join(rq.Tags[:], ",")
+
 	user := GetSessionUser(c)
 	post.AuthorID = user.ID
 	post.UnitID = user.UnitID
@@ -81,7 +121,7 @@ func addPost(c *gin.Context) {
 // @name addFavorite
 // @Produce  json
 // @Param id path string true "게시글 id"
-// @Router /post/toggle/favorite/{id} [get]
+// @Router /post/favorite/{id} [get]
 // @Success 200
 // @Failure 400 {object} BadRequestResult
 func addFavorite(c *gin.Context) {
@@ -98,7 +138,7 @@ func addFavorite(c *gin.Context) {
 // @name deleteFavorite
 // @Produce  json
 // @Param id path string true "게시글 id"
-// @Router /post/toggle/favorite/{id} [delete]
+// @Router /post/favorite/{id} [delete]
 // @Success 200
 // @Failure 400 {object} BadRequestResult
 func deleteFavorite(c *gin.Context) {
@@ -119,7 +159,13 @@ func deleteFavorite(c *gin.Context) {
 // @Failure 400 {object} BadRequestResult
 func getFavorites(c *gin.Context) {
 	user := GetSessionUser(c)
-	ResponseOK(c, models.PostStore.GetFavorites(user))
+	posts := models.PostStore.GetFavorites(user)
+	for i := range posts {
+		if len(posts[i].Tags) > 0 {
+			posts[i].TagsArray = strings.Split(posts[i].Tags, ",")
+		}
+	}
+	ResponseOK(c, posts)
 }
 
 // @Security ApiKeyAuth
@@ -134,7 +180,13 @@ func getFavorites(c *gin.Context) {
 func getPostByAuthor(c *gin.Context) {
 	user := GetSessionUser(c)
 	author := c.Param("userid")
-	ResponseOK(c, models.PostStore.GetPostListByAuthor(user.ID, author))
+	posts := models.PostStore.GetPostListByAuthor(user.ID, author)
+	for i := range posts {
+		if len(posts[i].Tags) > 0 {
+			posts[i].TagsArray = strings.Split(posts[i].Tags, ",")
+		}
+	}
+	ResponseOK(c, posts)
 }
 
 // @Security ApiKeyAuth

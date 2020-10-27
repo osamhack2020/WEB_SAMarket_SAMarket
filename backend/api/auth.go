@@ -75,10 +75,14 @@ func logout(c *gin.Context) {
 func register(c *gin.Context) {
 	var rq RegisterRequest
 	err := c.ShouldBindJSON(&rq)
+	if rq.Rank < 1 && rq.Rank > 4 {
+		return
+	}
 	if err != nil {
 		fmt.Println(err)
 	}
-	user := models.User{LoginID: rq.LoginID, Name: rq.Name, Password: rq.Password, Mil: rq.Mil, UnitID: rq.UnitID, Rank: rq.Rank}
+	x := []string{"이등병", "일등병", "상등병", "병장"}
+	user := models.User{LoginID: rq.LoginID, Name: rq.Name, Password: rq.Password, Mil: rq.Mil, UnitID: rq.UnitID, Rank: x[rq.Rank-1]}
 	err = models.UserStore.AddUser(user)
 	if err != nil {
 		ResponseBadRequest(c, err)

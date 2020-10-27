@@ -26,7 +26,7 @@ func EnableCORS(c *gin.Context) {
 }
 
 func GenerateToken(user *models.User, c *gin.Context) {
-	expiration := time.Now().Add(120 * time.Hour)
+	expiration := time.Now().Add(48 * time.Hour)
 	claim := &Claim{
 		LoginID:  user.LoginID,
 		Password: user.Password,

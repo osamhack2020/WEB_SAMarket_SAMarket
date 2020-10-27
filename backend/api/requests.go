@@ -1,6 +1,8 @@
 package api
 
 import (
+	"sam/models"
+
 	"gopkg.in/guregu/null.v4"
 )
 
@@ -13,13 +15,13 @@ type LoginRequest struct {
 }
 
 type RegisterRequest struct {
-	LoginID  string
-	Password string
-	Phone    string
-	UnitID   int
-	Mil      int
-	Name     string
-	Rank     string
+	LoginID  string `json:"login_id"`
+	Password string `json:"password"`
+	Phone    string `json:"phone"`
+	UnitID   int    `json:"unit_id"`
+	Mil      int    `json:"mil"`
+	Name     string `json:"name"`
+	Rank     int    `json:"rank"`
 }
 
 /* Chat Request Models */
@@ -37,9 +39,11 @@ type AddCommentRequest struct {
 
 /* Post Request Models */
 type AddPostRequest struct {
-	Title    string
-	PostType string
-	Tags     string
+	Title    string           `json:"title"`
+	PostType string           `json:"type"`
+	Tags     []string         `json:"tags"`
+	Content  string           `json:"content"`
+	Clr      models.PostColor `json:"clr"`
 }
 
 /* Review Request Models */
