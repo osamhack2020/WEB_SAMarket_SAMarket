@@ -43,7 +43,7 @@ function PostingContent({ info }) {
   return (
     <div className="postingBack">
       <Content info={info} />
-      <div className="postingContent" style={{whiteSpace: "pre-line"}}>
+      <div className="postingContent" style={{ whiteSpace: "pre-line" }}>
         {info.content}
       </div>
     </div>
@@ -121,16 +121,16 @@ function PostingReplies({ postId }) {
           <div className={`replyState ${isFocus ? "" : "hidden"}`}>
             "{reciever}"님에게 답글을 작성하는 중입니다.
           </div>
-          <ReplyInput
-            inputRef={ref}
-            setIsFocus={setIsFocus}
-            postid={postid}
-            setToReply={setToReply}
-            toReply={toReply}
-            dataUpdate={dataUpdate}
-          />
         </Fragment>
       )}
+      <ReplyInput
+        inputRef={ref}
+        setIsFocus={setIsFocus}
+        postid={postid}
+        setToReply={setToReply}
+        toReply={toReply}
+        dataUpdate={dataUpdate}
+      />
     </div>
   );
 }

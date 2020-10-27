@@ -73,6 +73,13 @@ export async function addPost(post) {
   return await axios.post(`${BASE_URL}/post/add`, post);
 }
 
+export async function makeFavorite(id) {
+  return await axios.get(`${BASE_URL}/post/favorite/${id}`);
+}
+
+export async function deleteFavorite(id) {
+  return await axios.delete(`${BASE_URL}/post/favorite/${id}`);
+}
 
 function signUpReq({ userId, userInfo }) {
   throw new Error("Sign Up Failed");

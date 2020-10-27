@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import User from "../user/User";
 import "./Post.css";
+import { deleteFavorite, makeFavorite } from "api";
 
 const svgs = (() => {
   let svgs = {};
@@ -17,10 +18,11 @@ const svgs = (() => {
 })();
 
 export default function PostHead({ info }) {
+  const [isFavorite, setIsFavorite] = useState(info.is_favorite);
   const getBtn = idx => {
     const img = {
       0: "share",
-      1: info.is_favorite ? "liked" : "like",
+      1: isFavorite ? "liked" : "like",
       2: info.type === "sell" ? "buy" : "deny"
     }[idx];
     return {
@@ -35,8 +37,17 @@ export default function PostHead({ info }) {
     return () => {
       if (idx === 1) {
         /* TODO: Backend 에 알려서, likes 바꿔야 함 */
-        info.is_favorite = !info.is_favorite;
-        console.log(info);
+        setIsFavorite(!isFavorite);
+        if (!isFavorite) {
+          makeFavorite(info.id).then(response => {
+
+          });
+        } else {
+          deleteFavorite(info.id).then(response => {
+
+          });
+        }
+
       }
     };
   };
