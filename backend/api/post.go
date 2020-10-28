@@ -78,6 +78,10 @@ func getPost(c *gin.Context) {
 // @Failure 400 {object} BadRequestResult
 func getPostListByType(c *gin.Context) {
 	postType := c.Param("type")
+	if postType == "all" {
+		getPostList(c)
+		return
+	}
 	user := GetSessionUser(c)
 	posts := models.PostStore.GetPostListByTypeAndUnitID(user.ID, user.UnitID, postType)
 	for i := range posts {

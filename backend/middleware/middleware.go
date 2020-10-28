@@ -1,7 +1,6 @@
 package middleware
 
 import (
-	"net/http"
 	"time"
 
 	"sam/config"
@@ -67,6 +66,5 @@ func TokenAuth(c *gin.Context) {
 }
 
 func redirectToMain(c *gin.Context) {
-	c.JSON(http.StatusUnauthorized, gin.H{"msg": "세션 검증에 실패하였습니다."})
 	c.Abort()
 }

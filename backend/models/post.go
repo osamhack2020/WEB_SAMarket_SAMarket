@@ -60,7 +60,7 @@ func (store IPostStore) GetPostListByUnitID(userID string, unitID int) []Post {
 
 func (store IPostStore) GetPostListByTypeAndUnitID(userID string, unitID int, postType string) []Post {
 	var posts []Post
-	db.Model(&Post{}).Raw("select posts.*, (f.post_id is NOT NULL) as is_favorite from posts LEFT OUTER JOIN favorites f ON f.user_id = ? and posts.id = f.post_id WHERE posts.unit_id = ? and posts.type = ? order by posts.created_at desc ", userID, postType, unitID).Preload("Author").Find(&posts)
+	db.Model(&Post{}).Raw("select posts.*, (f.post_id is NOT NULL) as is_favorite from posts LEFT OUTER JOIN favorites f ON f.user_id = ? and posts.id = f.post_id WHERE posts.unit_id = ? and posts.type = ? order by posts.created_at desc ", userID, unitID, postType).Preload("Author").Find(&posts)
 	//db.Order("created_at desc").Where("unit_id = ?", unitID).Preload("Author").Find(&posts)
 	return posts
 }

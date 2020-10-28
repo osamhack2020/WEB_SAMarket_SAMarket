@@ -6,6 +6,7 @@ import (
 	"sam/models"
 	"sam/ws"
 	"strconv"
+	"strings"
 
 	"github.com/gin-gonic/gin"
 )
@@ -54,6 +55,7 @@ func createChatRoom(c *gin.Context) {
 	// relation 추가
 	models.ChatStore.AddUserInChatRoom(chatRoom.ID, user.ID)
 	models.ChatStore.AddUserInChatRoom(chatRoom.ID, post.AuthorID)
+	ResponseOK(c, *chatRoom)
 }
 
 // getChatRooms godoc
@@ -85,6 +87,9 @@ func getChatMsgList(c *gin.Context) {
 	roomID := c.Param("roomid")
 	id, _ := strconv.Atoi(roomID)
 	room := models.ChatStore.GetChatRoomByID(id)
+	if len(room.Post.Tags) > 0 {
+		room.Post.TagsArray = strings.Split(room.Post.Tags, ",")
+	}
 	msgs := models.ChatStore.GetChatMsgList(id)
 	models.ChatStore.MakeRead(user.ID, id)
 	ResponseOK(c, ChatMsgsResult{ChatRoom: room, ChatMsgs: msgs})
