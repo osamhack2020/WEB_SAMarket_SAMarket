@@ -5,9 +5,9 @@ import { getNextSAMroad } from "../common/fakeServer";
 import { addSAMroad } from "./state";
 import InfiniteScroll from "views/components/base/InfiniteScroll";
 import SAMroadList from "./SAMroadList";
-import { getPostList } from "api";
+import { getPostList, getPostListByType } from "api";
 
-export default function SAMroad() {
+export default function SAMroad({ type }) {
   // 강군로드는 무한 스크롤 가능
   // state.{reducer 등록 이름}.{사용하고자 하는 attribute}
   /*
@@ -28,9 +28,11 @@ export default function SAMroad() {
   const [postList, setPostList] = useState([]);
 
   useEffect(() => {
-    getPostList().then(response => {
+    getPostListByType(type).then(response => {
+      console.log(response.data);
       setPostList(response.data);
     })
-  }, []);
+  }, [type]);
+
   return <SAMroadList samroads={postList} />;
 }

@@ -26,7 +26,6 @@ export default function LikesPage() {
       <SAMroadList samroads={postList} quword={keyword} />
     </div>
   );
-  return <Redirect to="/sign" />;
 }
 
 function LikesHeader({ setKeyword }) {

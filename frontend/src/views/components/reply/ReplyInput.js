@@ -19,6 +19,7 @@ export default function ReplyInput({
       inputRef.current.value = "";
       setToReply(null);
       dataUpdate();
+      handleFocus();
       if (!isReply) {
         requestAnimationFrame(() => {
           document.body.scrollIntoView(false);
