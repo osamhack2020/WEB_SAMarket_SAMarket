@@ -1,11 +1,14 @@
 /* Main Page 등에서 이루어지는 검색을 다룸 */
 import createReducer from "../common/createReducer";
 import { sendChatMsg, getChatRoomList, getChatMsgList } from "api";
+import { toast } from "react-toastify";
+import { customHistory } from "index";
 // action type 정의
 const UPDATE = "chat/UPDATE";
 const SETROOMLIST = "chat/SETROOMLIST";
 const SETCURRENTROOM = "chat/SETCURRENTROOM";
 const SENT = "chat/sent";
+
 
 export const sendChat = (msg) => {
   return async (dispatch, getState, { history }) => {
@@ -56,8 +59,12 @@ export default createReducer(
           chatRoom.lastmsg = chatMsg;
         }
       })
-      if (state.currentChatRoom.id == chatMsg.chat_room_id)
+      if (window.location.href.indexOf("/chat/") >= 0) {
         state.chatMsgList.push(chatMsg);
+      } else {
+        console.log(chatMsg);
+        toast(`새로운 채팅이 있습니다.\n ${chatMsg.sender.name}: ${chatMsg.text}`);
+      }
     },
     [SETROOMLIST]: (state, action) => {
       state.chatRoomList = action.chatRoomList;

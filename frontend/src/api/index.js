@@ -33,7 +33,7 @@ http.interceptors.response.use(
   },
   function (error) {
     console.log(error);
-    if (error.response.data) {
+    if (error.response && error.response.data) {
       toast.error(error.response.data.msg, {
         autoClose: 3000,
       });
@@ -114,6 +114,10 @@ export async function getUserProfile(userid) {
 
 export async function getPostList() {
   return await http.get(`/post/list`, historyPopCache());
+}
+
+export async function getPostListByType(type) {
+  return await http.get(`/post/list/${type}`, historyPopCache());
 }
 
 export async function getFavorites() {

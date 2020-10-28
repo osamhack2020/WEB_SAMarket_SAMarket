@@ -7,7 +7,12 @@ import { useSelector } from "react-redux";
 import User from "../user/User";
 import "./Post.css";
 import { customHistory } from "index";
-import { getChatRoomByPostID, setPostUpdated, deleteFavorite, makeFavorite } from "api";
+import {
+  getChatRoomByPostID,
+  setPostUpdated,
+  deleteFavorite,
+  makeFavorite
+} from "api";
 
 const svgs = (() => {
   let svgs = {};
@@ -21,7 +26,9 @@ const svgs = (() => {
 const likeMap = Object();
 
 export default function PostHead({ info, history, hideBtn }) {
-  const [isFavorite, setIsFavorite] = useState(likeMap[info.id] || info.is_favorite);
+  const [isFavorite, setIsFavorite] = useState(
+    likeMap[info.id] || info.is_favorite
+  );
   const getBtn = idx => {
     const img = {
       0: "share",
@@ -52,10 +59,12 @@ export default function PostHead({ info, history, hideBtn }) {
         }
       }
       if (idx == 2) {
-        getChatRoomByPostID(info.id).then(response => {
-          console.log(response.data);
-          customHistory.push(`/chat/${response.data[0].id}`);
-        });
+        if (info.type == "sell") {
+          getChatRoomByPostID(info.id).then(response => {
+            console.log(response.data);
+            customHistory.push(`/chat/${response.data[0].id}`);
+          });
+        }
       }
     };
   };
@@ -63,14 +72,15 @@ export default function PostHead({ info, history, hideBtn }) {
   return (
     <div className="postHead">
       <User userInfo={info.author} />
-      {!(hideBtn == true) && [0, 1, 2].map(idx => (
-        <button /* 3개의 버튼을 순서대로 생성 */
-          key={idx}
-          className="btn postHeadBtn"
-          style={getBtn(idx)}
-          onClick={btnAction(idx)}
-        />
-      ))}
+      {!(hideBtn == true) &&
+        [0, 1, 2].map(idx => (
+          <button /* 3개의 버튼을 순서대로 생성 */
+            key={idx}
+            className="btn postHeadBtn"
+            style={getBtn(idx)}
+            onClick={btnAction(idx)}
+          />
+        ))}
     </div>
   );
 }
