@@ -2,7 +2,7 @@
 로그인 되어 있지 않은 경우, 로그인 요구
 */
 import React, { useState, useEffect } from "react";
-import { connect, useDispatch } from "react-redux";
+import { connect, useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { getChatRoomList } from "api";
 import BackBtn from "views/components/header/BackBtn";
@@ -11,6 +11,7 @@ import UnreadChat from "views/components/chat/UnreadChat";
 import Profile from "views/components/user/Profile";
 import { loadChatRooms } from "views/modules/chat/state";
 import "./ChatPage.css";
+import Moment from "react-moment";
 
 function ChatsPage(props) {
   const [chatKeyword, setKeyword] = useState("");
@@ -30,13 +31,14 @@ function ChatsPage(props) {
         .length
   ); // 채팅방 제목에 검색어가 있거나, 멤버에 검색어가 있는 경우
   */
+  const userInfo = useSelector(state => state.sign.userInfo);
 
   return (
     <div>
       <ChatsHeader setKeyword={setKeyword} />
       <div className="chatList">
         {chatRoomList.map(chatInfo => (
-          <ChatInfo key={chatInfo.id} info={chatInfo} myId={1} />
+          <ChatInfo key={chatInfo.id} info={chatInfo} myId={userInfo.id}/>
         ))}
       </div>
     </div>
@@ -103,17 +105,9 @@ function ChatThumbnail({ users }) {
 }
 
 function LastChatTime({ time }) {
-  const today = new Date();
-  const [year, month, date] = [
-    today.getFullYear(),
-    today.getMonth() + 1,
-    today.getDate()
-  ];
-  const is_today = `${year}-${month}-${date}` === time.split(" ")[0];
-
   return (
     <div className="lastTime">
-      {is_today ? getTime(today, time.split(" ")[1]) : time.split(" ")[0]}
+      <Moment format="MM/DD HH:mm">{time}</Moment>
     </div>
   );
 }

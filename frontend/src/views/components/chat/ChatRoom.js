@@ -21,9 +21,8 @@ export default function ChatRoom({ search, chatRoom, messages, me, done }) {
   const sendMessage = e => {
     e.preventDefault();
     dispatch(sendChat(message));
+    setMessage("");
   };
-  var postId = 0;
-  const postInfo = getPostById(postId);
 
   useEffect(() => {
     requestAnimationFrame(() => {
@@ -33,16 +32,14 @@ export default function ChatRoom({ search, chatRoom, messages, me, done }) {
 
   return (
     <div className="chatRoom">
-      {
-        postId !== undefined && (
-          <div className="chatPost">
-            <Post info={postInfo} />
-          </div>
-        ) /* posting 을 통해서 생성된 채팅방 */
+      {chatRoom.post && 
+        <div className="chatPost">
+          <Post info={chatRoom.post} hideBtn={true} />
+        </div>
       }
       <MessageList divRef={el} me={me} messages={messages} />
       {done &&
-        (postInfo.isClosed ? (
+        (chatRoom.post.isClosed ? (
           <div className="chatDeal">
             <SAHistory user={me} chatRoomId={chatRoom.id} />
           </div>
