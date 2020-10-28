@@ -20,7 +20,7 @@ export default function TopLinks() {
 
 export function LieksNChats1(props) {
   return (
-    <Fragment style={{ zIndex: 9999 }}>
+    <Fragment>
       <Link to="/likes" className="btn likes" />
       <Link to="/chats" className="btn chats">
         {props.unread > 0 && (
