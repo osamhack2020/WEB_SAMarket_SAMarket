@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { TypeSelector, ClrSelector } from "./WriteSelector";
 import TagInput from "./TagInput";
 import "./Write.css";
-import { addPost } from "api";
+import { addPost, setPostUpdated } from "api";
 
 const InputTitle = styled.div`
   position: relative;
@@ -21,6 +21,7 @@ export default function WriteForm({ info, updateInfo }) {
     e.preventDefault();
     addPost(info).then(response => {
       if (response.status == 200) {
+        setPostUpdated(true);
         window.history.go(-1);
       }
     });

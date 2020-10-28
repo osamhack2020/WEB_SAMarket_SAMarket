@@ -13,6 +13,7 @@ import { ProfilePage } from "./profilePage/index";
 import LikesPage from "./LikesPage";
 import { Router } from "react-router-dom";
 import { checkSess } from "views/modules/sign/state";
+import { setHistory } from "api";
 
 function AuthFilterImpl(props) {
   if (props.invalid) {
@@ -29,6 +30,7 @@ const AuthFilter = connect(
 ) (AuthFilterImpl);
 
 function Pages({ history }) {
+  setHistory(history);
   const dispatch = useDispatch();
   dispatch(checkSess());
 

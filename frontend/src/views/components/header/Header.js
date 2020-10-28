@@ -17,7 +17,7 @@ export default function Header() {
   return (
     <Croucher norm={200} stretch="head" crouched="crouch">
       <TopLinks />
-      <UserProfile userInfo={userInfo} />
+      <UserProfile userInfo={userInfo}  />
       <SearchBar onSearch={onSearch} />
     </Croucher>
   );

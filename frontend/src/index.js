@@ -13,7 +13,10 @@ import ReduxThunk from "redux-thunk";
 import { createBrowserHistory } from "history";
 import { Router } from "react-router-dom";
 
-const customHistory = createBrowserHistory();
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+export const customHistory = createBrowserHistory();
 
 const devTools = // redux 개발자 도구: chrome 확장 Redux Devtools 설치
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
@@ -24,9 +27,22 @@ const store = createStore(
   applyMiddleware(ReduxThunk.withExtraArgument({ history: customHistory }))
 );
 
+window.toast = toast;
 ReactDOM.render(
   <Provider store={store}>
     <Pages history={customHistory} />
+    <ToastContainer
+      style={{ padding: "30px", paddingBottom: "90px", textAlign: "center" }}
+      position="bottom-center"
+      autoClose={3000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+    />
   </Provider>,
   document.getElementById("root")
 );
