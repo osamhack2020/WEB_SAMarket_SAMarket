@@ -4,7 +4,7 @@ import "./Rate.css";
 
 export default function Star({ rate, setRate, freeze, id }) {
   // 1 점을 두 번 누르면 0점
-  const setStar = idx => {
+  const setStar = idx => { 
     return () => {
       const stars = document
         .getElementById(`star${id}`)
@@ -26,11 +26,11 @@ export default function Star({ rate, setRate, freeze, id }) {
       {[0, 1, 2, 3, 4].map(idx => (
         <span className="starContainer">
           <span
-            class="star star_left  on"
+            className="star star_left  on"
             onClick={freeze ? null : setStar(2 * idx)}
           ></span>
           <span
-            class="star star_right on"
+            className="star star_right on"
             onClick={freeze ? null : setStar(2 * idx + 1)}
           ></span>
         </span>
