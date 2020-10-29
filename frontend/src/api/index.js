@@ -148,7 +148,6 @@ export async function getChatRoomByPostID(id) {
   return await http.get(`/chat/create/${id}`);
 }
 
-<<<<<<< HEAD
 export async function endChat(id) {
   return await http.delete(`/chat/end/${id}`);
 }
@@ -169,20 +168,13 @@ export async function getFollowList(id) {
   return await http.get(`/user/followers/${id}`);
 }
 export async function reviewAdd(content, point, postID, targetUserID, writerID, chatID) {
-=======
-export async function reviewAdd(content, point, postID, targetUserID, writerID) {
->>>>>>> 13aafe01d0b109dc2eff4d68d5855effe54720b5
   return await http.post(`/review/add`, {
     content: content,
     point: point,
     post_id: postID,
     target_user_id: targetUserID,
-<<<<<<< HEAD
     writer_id: writerID,
     chat_id: chatID
-=======
-    writer_id: writerID
->>>>>>> 13aafe01d0b109dc2eff4d68d5855effe54720b5
   });
 }
 
@@ -190,12 +182,9 @@ export async function reviewListPost(userid) {
   return await http.get(`/review/list/post/${userid}`);
 }
 
-<<<<<<< HEAD
 export async function canWriteReview(chatRoomID) {
   return await http.get(`/chat/canwrite/${chatRoomID}`);
 }
-=======
->>>>>>> 13aafe01d0b109dc2eff4d68d5855effe54720b5
 function signUpReq({ userId, userInfo }) {
   throw new Error("Sign Up Failed");
 }
