@@ -11,7 +11,7 @@
   top: 0;
   width: 100%;
   height: 45px;
-  background: #fdfeff;
+  background: transparent;
   z-index: 9999;
 }
 
@@ -165,4 +165,16 @@
 .historyContainer {
   text-align: left;
   margin: 10px 15px 10px 15px;
+}
+
+.section-header {
+  font-size: 17px;
+  color: #05b0ea;
+  font-weight: bold;
+  text-align: center;
+}
+
+.slick-list {
+  padding-left: 10%;
+  padding-right: 10%;
 }

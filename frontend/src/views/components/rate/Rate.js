@@ -1,18 +1,16 @@
 import React, { useState } from "react";
-import {
-  getPostById,
-  getRateByChatRoomId
-} from "views/modules/common/fakeServer";
+import { useSelector } from "react-redux";
 import Stars from "./Stars";
 
-export default function Rate({ me, chatRoomId }) {
+export default function Rate({ chatRoom, st }) {
   const [rate, setRate] = useState(10);
   const [comment, setComment] = useState("");
-  const rateInfo = getRateByChatRoomId(chatRoomId);
-  const seller = getPostById(rateInfo.postId).author;
+  const seller = chatRoom.post.author;
+  const me = useSelector(state => state.sign.userInfo);
 
   const submitRate = () => {
     // call the api to submit rate & comment
+    st.setStatus(3);
   };
 
   return (

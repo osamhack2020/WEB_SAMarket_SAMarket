@@ -7,19 +7,23 @@ import { loadChatMsg } from "views/modules/chat/state";
 function ChattingPage({ match, chatMsgList, currentChatRoom }) {
   const userInfo = useSelector(state => state.sign.userInfo);
   const chatRoomId = match.params.chatRoomId;
-  const [done, setDone] = useState(false);
+  const [status, setStatus] = useState(currentChatRoom.status);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadChatMsg(chatRoomId));
   }, []);
+  useEffect(() => {
+    setStatus(currentChatRoom.status);
+  }, [currentChatRoom]);
+  const st = { status, setStatus };
   return (
     <div>
-      <ChatHeader chatRoomTitle={currentChatRoom.title} done={done} setDone={setDone} />
+      <ChatHeader st={st} chatRoom={currentChatRoom}/>
       <ChatRoom
+        st={st}
         chatRoom={currentChatRoom}
         messages={chatMsgList}
         me={userInfo}
-        done={done}
       />
     </div>
   );
