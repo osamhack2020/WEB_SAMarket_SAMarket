@@ -28,6 +28,7 @@ type ChatMsgsResult struct {
 /* Unit Result Models */
 /* User Result Models */
 type UserProfileResult struct {
-	User  models.User `json:"user"`
-	Score float32     `json:"score"`
+	User     models.User `json:"user"`
+	Score    float32     `json:"score"`
+	IsFriend bool        `json:"is_friend"`
 }

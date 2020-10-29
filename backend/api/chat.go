@@ -16,10 +16,11 @@ func InitChatRouter(rg *gin.RouterGroup) {
 	{
 		router.Use(middleware.TokenAuth)
 		router.GET("/create/:postid", createChatRoom)
+		router.GET("/canwrite/:roomid", canWriteReview)
 		router.GET("/rooms", getChatRooms)
 		router.GET("/msg/list/:roomid", getChatMsgList)
 		router.POST("/msg/send", addChatMsg)
-		router.GET("/chat/end/:roomid", endChat)
+		router.DELETE("/end/:roomid", endChat)
 	}
 }
 
@@ -46,7 +47,7 @@ func createChatRoom(c *gin.Context) {
 	}
 	if chatRoom := models.ChatStore.GetChatRoom(post.ID, user.ID); len(chatRoom) > 0 {
 		// 채팅방이 이미 존재
-		ResponseOK(c, chatRoom)
+		ResponseOK(c, chatRoom[0])
 		return
 	}
 	// 없다면 새로 생성
@@ -142,7 +143,7 @@ func addChatMsg(c *gin.Context) {
 // @Accept  json
 // @Produce  json
 // @Param payload body AddChatMsgRequest true "로그인 정보"
-// @Router /chat/end/{roomid} [get]
+// @Router /chat/end/{roomid} [delete]
 // @Success 200 {object} models.ChatMsg
 // @Failure 400 {object} BadRequestResult
 func endChat(c *gin.Context) {
@@ -153,4 +154,24 @@ func endChat(c *gin.Context) {
 	// 해당 포스트로 생성된 다른 채팅 Status를 2로 변경
 	models.ChatStore.UpdateChatStatus(chatRoom.PostID, chatRoom.ID)
 	// TODO 거래 확정이라고 알림
+}
+
+type CanResult struct {
+	Okay bool `json:"okay"`
+}
+
+// canWriteReview godoc
+// @Security ApiKeyAuth
+// @Summary 리뷰 작성 가능 여부
+// @Accept  json
+// @Produce  json
+// @Param roomid path string true "채팅방 id"
+// @Router /chat/canwrite/{roomid} [get]
+// @Success 200 {object} CanResult
+// @Failure 400 {object} BadRequestResult
+func canWriteReview(c *gin.Context) {
+	param := c.Param("roomid")
+	user := GetSessionUser(c)
+	id, _ := strconv.Atoi(param)
+	ResponseOK(c, CanResult{Okay: models.ReviewStore.GetCanWriteReview(user.ID, id)})
 }

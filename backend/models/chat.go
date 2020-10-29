@@ -62,13 +62,13 @@ func (store IChatStore) AddChatMsg(msg *ChatMsg) {
 
 func (store IChatStore) GetChatRoom(postID int, userID string) []ChatRoom {
 	var chatRooms []ChatRoom
-	db.Raw("select * from chat_rooms, user_chatrooms where chat_rooms.post_id = ? and chat_rooms.id = user_chatrooms.chat_room_id and user_chatrooms.user_id = ?", postID, userID).Preload("Post").Preload("Post.Author").Scan(&chatRooms)
+	db.Raw("select chat_rooms.* from chat_rooms, user_chatrooms where chat_rooms.post_id = ? and chat_rooms.id = user_chatrooms.chat_room_id and user_chatrooms.user_id = ?", postID, userID).Preload("Post").Preload("Post.Author").Scan(&chatRooms)
 	return chatRooms
 }
 
 func (store IChatStore) GetChatRoomByID(chatRoomID int) ChatRoom {
 	var chatRoom ChatRoom
-	db.Where("id = ?", chatRoomID).Preload("Post").Preload("Post.Author").Find(&chatRoom)
+	db.Where("id = ?", chatRoomID).Preload("Users").Preload("Post").Preload("Post.Author").Find(&chatRoom)
 	return chatRoom
 }
 

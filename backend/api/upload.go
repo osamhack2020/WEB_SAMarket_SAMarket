@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"path/filepath"
 	"sam/middleware"
+	"sam/models"
 
 	"github.com/gin-gonic/gin"
 )
@@ -43,5 +44,7 @@ func upload(c *gin.Context) {
 		c.String(http.StatusBadRequest, fmt.Sprintf("upload file err: %s", err.Error()))
 		return
 	}
+	user := GetSessionUser(c)
+	models.UserStore.UpdateProfileURL(user.ID, "/upload/"+filename)
 	ResponseOK(c, gin.H{"filename": file.Filename})
 }

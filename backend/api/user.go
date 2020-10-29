@@ -14,8 +14,7 @@ func InitUserRouter(rg *gin.RouterGroup) {
 		router.GET("/profile/:id", getProfile)
 		router.GET("/follow/:id", followUser)
 		router.DELETE("/follow/:id", unFollowUser)
-		router.GET("/follower/:id", getFollowerList)
-		router.GET("/following/:id", getFollowingList)
+		router.GET("/followers/:id", getFollowerList)
 		router.POST("/edit", editProfile)
 	}
 }
@@ -33,8 +32,11 @@ func InitUserRouter(rg *gin.RouterGroup) {
 // @Failure 400 {object} BadRequestResult
 func getProfile(c *gin.Context) {
 	// TODO 즐겨찾기 한 게시글, 리뷰 목록, 리뷰 점수 등 포함
-	user := models.UserStore.GetUser(c.Param("id"))
-	ResponseOK(c, user)
+	var userProfile UserProfileResult
+	userProfile.User = *models.UserStore.GetUser(c.Param("id"))
+	userProfile.Score = models.ReviewStore.GetReviewScore(c.Param("id")) * 100
+	userProfile.IsFriend = models.UserStore.CheckFollow(c.Param("id"), GetSessionUser(c).ID) > 0
+	ResponseOK(c, userProfile)
 }
 
 // followUser
@@ -51,6 +53,7 @@ func followUser(c *gin.Context) {
 	user := GetSessionUser(c)
 	ft := models.UserStore.GetUser(c.Param("id"))
 	models.UserStore.AddFollow(user.ID, ft.ID)
+	models.UserStore.AddFollow(ft.ID, user.ID)
 }
 
 // unFollowUser
@@ -67,6 +70,7 @@ func unFollowUser(c *gin.Context) {
 	user := GetSessionUser(c)
 	ft := models.UserStore.GetUser(c.Param("id"))
 	models.UserStore.DeleteFollow(user.ID, ft.ID)
+	models.UserStore.DeleteFollow(ft.ID, user.ID)
 }
 
 // getFollowList
@@ -77,7 +81,7 @@ func unFollowUser(c *gin.Context) {
 // @Accept json
 // @Produce json
 // @Param id path string true "유저 id"
-// @router /user/follower/{id} [get]
+// @router /followers/{id} [get]
 // @Success 200 {object} []models.User
 func getFollowerList(c *gin.Context) {
 	user := models.UserStore.GetUser(c.Param("id"))

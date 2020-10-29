@@ -3,6 +3,7 @@ package middleware
 import (
 	"time"
 
+	"net/http"
 	"sam/config"
 	"sam/models"
 
@@ -66,5 +67,6 @@ func TokenAuth(c *gin.Context) {
 }
 
 func redirectToMain(c *gin.Context) {
+	c.Status(http.StatusUnauthorized)
 	c.Abort()
 }

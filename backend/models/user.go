@@ -58,6 +58,10 @@ func (store IUserStore) AddUser(user User) error {
 	return err
 }
 
+func (store IUserStore) UpdateProfileURL(userID string, profileURL string) {
+	db.Exec("UPDATE users SET profile_url = ? where id = ?", profileURL, userID)
+}
+
 func (store IUserStore) GetUser(id string) *User {
 	var user User
 	db.Where("id = ?", id).Preload("Unit").Find(&user)
@@ -82,6 +86,12 @@ func (store IUserStore) AddFollow(uuidfrom string, uuidto string) {
 
 func (store IUserStore) DeleteFollow(uuidfrom string, uuidto string) {
 	db.Exec("DELETE FROM follows where user_id = ? and follow_id = ?", uuidfrom, uuidto)
+}
+
+func (stoer IUserStore) CheckFollow(uuidfrom string, uuidto string) int {
+	var result int
+	db.Raw("SELECT COUNT(*) from follows where user_id = ? and follow_id = ?", uuidfrom, uuidto).Scan(&result)
+	return result
 }
 
 func (store IUserStore) UpdateUser(user User) {
