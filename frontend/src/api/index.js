@@ -144,6 +144,20 @@ export async function getChatRoomByPostID(id) {
   return await http.get(`/chat/create/${id}`);
 }
 
+export async function reviewAdd(content, point, postID, targetUserID, writerID) {
+  return await http.post(`/review/add`, {
+    content: content,
+    point: point,
+    post_id: postID,
+    target_user_id: targetUserID,
+    writer_id: writerID
+  });
+}
+
+export async function reviewListPost(userid) {
+  return await http.get(`/review/list/post/${userid}`);
+}
+
 function signUpReq({ userId, userInfo }) {
   throw new Error("Sign Up Failed");
 }
