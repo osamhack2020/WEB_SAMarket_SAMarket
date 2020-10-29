@@ -39,7 +39,6 @@ export default function Rate({ chatRoom, st }) {
       chatRoom.id
     ).then(response => {});
   };
-
   return (
     <form className="Rate" onSubmit={submitRate}>
       <div className="rateTitle">{`${
