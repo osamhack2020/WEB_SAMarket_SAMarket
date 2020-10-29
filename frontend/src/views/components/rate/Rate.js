@@ -1,24 +1,21 @@
-import React, { useState } from "react";
-import {
-  getPostById,
-  getRateByChatRoomId
-} from "views/modules/common/fakeServer";
+import React, { useState, useEffect } from "react";
+import { reviewListPost, reviewAdd } from "api";
 import Stars from "./Stars";
 
-export default function Rate({ me, chatRoomId }) {
+export default function Rate({ me, chatRoom }) {
   const [rate, setRate] = useState(10);
   const [comment, setComment] = useState("");
-  const rateInfo = getRateByChatRoomId(chatRoomId);
-  const seller = getPostById(rateInfo.postId).author;
-
-  const submitRate = () => {
-    // call the api to submit rate & comment
+  const seller = chatRoom.post.author;
+  const submitRate = (e) => {
+    e.preventDefault();
+    reviewAdd(comment, rate, chatRoom.post_id, me.id, seller.id).then((response) => {
+      console.log(response.data);
+    });
   };
-
   return (
     <form className="Rate" onSubmit={submitRate}>
       <div className="rateTitle">{`${
-        seller.id === me.id ? "판매자" : "구매자"
+        chatRoom.post.author.id === me.id ? "판매자" : "구매자"
       }의 평가`}</div>
       <Stars rate={rate} setRate={setRate} />
       <input
