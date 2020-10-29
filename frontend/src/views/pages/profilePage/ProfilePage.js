@@ -16,6 +16,7 @@ import {
   PostList
 } from "views/components/profile/index";
 import { getUserProfile } from "api";
+import animateScrollTo from "animated-scroll-to";
 
 export default function ProfilePage({ match }) {
   const [pageY, setPageY] = useState(0);
@@ -45,24 +46,32 @@ export default function ProfilePage({ match }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [pageY]);
 
-  if (!show && 225 <= pageY && pageY < 245) {
+  if (!show) {
     setShow(true); // only once stop scroll
-    window.scrollTo(0, 245); // 강함 측정 중, 스크롤 막음
+    animateScrollTo(245, {
+      elementToScroll: window,
+      horizontalOffset: 0,
+      maxDuration: 1500,
+      minDuration:1500,
+      speed: 500,
+      verticalOffset: 0,
+      cancelOnUserAction: false,
+    });
     document.body.style.overflow = "hidden";
     setTimeout(() => (document.body.style.overflow = null), 2000);
   }
-  if (userProfile.id) {
+  if (userProfile.user) {
     return (
       <div className="ProfilePage">
         <div className="ProfileBack" />
-        <ProfileHeader user={userProfile} pageY={pageY} myId={myId} />
+        <ProfileHeader user={userProfile.user} isFriend={userProfile.is_friend} pageY={pageY} myId={myId} />
         <div>
-          <Scouter user={userProfile} pageY={pageY} />
-          <FriendList user={userProfile} />
-          <DealHistory user={userProfile} />
-          <PostList user={userProfile} />
+          <Scouter score={userProfile.score} pageY={pageY} />
+          <FriendList user={userProfile.user} />
+          <DealHistory user={userProfile.user} />
+          <PostList user={userProfile.user} />
         </div>
-        {myId === userProfile.id && <SignOut />}
+        {myId === userProfile.user.id && <SignOut />}
       </div>
     );
   } else {

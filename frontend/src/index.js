@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import rootReducer from "./views/modules";
 // 실제 Component 영역
 import "./index.css";
+
 import Pages from "./views/pages/index";
 import ReduxThunk from "redux-thunk";
 import { createBrowserHistory } from "history";

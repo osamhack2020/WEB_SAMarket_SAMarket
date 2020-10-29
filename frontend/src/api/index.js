@@ -144,6 +144,25 @@ export async function getChatRoomByPostID(id) {
   return await http.get(`/chat/create/${id}`);
 }
 
+export async function endChat(id) {
+  return await http.delete(`/chat/${id}`);
+}
+
+export async function uploadImage(file) {
+  return await http.post('/upload', file, { headers: { 'Content-Type' : 'multipart/form-data' }})
+}
+
+export async function follow(id) {
+  return await http.get(`/user/follow/${id}`);
+}
+
+export async function unfollow(id) {
+  return await http.delete(`/user/follow/${id}`);
+}
+
+export async function getFollowList(id) {
+  return await http.get(`/user/followers/${id}`);
+}
 function signUpReq({ userId, userInfo }) {
   throw new Error("Sign Up Failed");
 }

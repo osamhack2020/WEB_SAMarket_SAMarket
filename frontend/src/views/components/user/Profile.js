@@ -18,12 +18,8 @@ left: ${props => props.loc[1]}px`
 export default function Profile({ userInfo, size, loc }) {
   // loc: {top, left}
   const { id } = userInfo;
-  let profileImg;
-  try {
-    // 사용자 이미지가 있는지 확인
-    profileImg = require(`imgs/users/${id}.png`);
-  } catch {
-    //  없으면 기본 이미지로
+  let profileImg = userInfo.profile_url;
+  if (!profileImg || profileImg.length == 0) {
     profileImg = require("imgs/icons/user.svg");
   }
   const userImg = {
