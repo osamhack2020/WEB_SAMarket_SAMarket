@@ -43,7 +43,7 @@ export default function ChatRoom({ chatRoom, messages, me, st }) {
           "다른 구매자가 상품을 구매하였습니다."
         )}
         {st.status == 3 && (
-          "거래완료 and 리뷰쓰기완료"
+          "완료된 거래입니다."
         )}
         <ChatInput
           message={message}

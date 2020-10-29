@@ -120,6 +120,10 @@ export async function getPostListByType(type) {
   return await http.get(`/post/list/${type}`, historyPopCache());
 }
 
+export async function getPostByUserID(userID) {
+  return await http.get(`/post/user/${userID}`);
+}
+
 export async function getFavorites() {
   return await http.get(`/post/favorites`, historyPopCache());
 }
@@ -145,7 +149,7 @@ export async function getChatRoomByPostID(id) {
 }
 
 export async function endChat(id) {
-  return await http.delete(`/chat/${id}`);
+  return await http.delete(`/chat/end/${id}`);
 }
 
 export async function uploadImage(file) {
@@ -162,6 +166,24 @@ export async function unfollow(id) {
 
 export async function getFollowList(id) {
   return await http.get(`/user/followers/${id}`);
+}
+export async function reviewAdd(content, point, postID, targetUserID, writerID, chatID) {
+  return await http.post(`/review/add`, {
+    content: content,
+    point: point,
+    post_id: postID,
+    target_user_id: targetUserID,
+    writer_id: writerID,
+    chat_id: chatID
+  });
+}
+
+export async function reviewListPost(userid) {
+  return await http.get(`/review/list/post/${userid}`);
+}
+
+export async function canWriteReview(chatRoomID) {
+  return await http.get(`/chat/canwrite/${chatRoomID}`);
 }
 function signUpReq({ userId, userInfo }) {
   throw new Error("Sign Up Failed");
