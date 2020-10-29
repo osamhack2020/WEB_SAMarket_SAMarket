@@ -29,7 +29,6 @@ export default function SAMroad({ type }) {
 
   useEffect(() => {
     getPostListByType(type).then(response => {
-      console.log(response.data);
       setPostList(response.data);
     })
   }, [type]);

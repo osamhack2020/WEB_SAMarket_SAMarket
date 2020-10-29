@@ -61,8 +61,7 @@ export default function PostHead({ info, history, hideBtn }) {
       if (idx == 2) {
         if (info.type == "sell") {
           getChatRoomByPostID(info.id).then(response => {
-            console.log(response.data);
-            customHistory.push(`/chat/${response.data[0].id}`);
+            customHistory.push(`/chat/${response.data.id}`);
           });
         }
       }

@@ -154,8 +154,8 @@
 }
 
 .wantMore {
-  margin: 420px 10px -20px -310px;
   text-align: center;
+  width: 100%;
   font-size: 15px;
   color: #05b0ea;
   background: rgba(0, 0, 0, 0);
@@ -172,6 +172,7 @@
   color: #05b0ea;
   font-weight: bold;
   text-align: center;
+  padding-top:50px;
 }
 
 .slick-list {
