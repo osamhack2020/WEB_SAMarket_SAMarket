@@ -39,12 +39,12 @@ export default function ChatRoom({ search, chatRoom, messages, me, done }) {
       }
       <MessageList divRef={el} me={me} messages={messages} />
       {done &&
-        (chatRoom.post.isClosed ? (
+        (chatRoom.post.closed ? (
           <div className="chatDeal">
             <SAHistory user={me} chatRoomId={chatRoom.id} />
           </div>
         ) : (
-          <Rate me={me} chatRoomId={chatRoom.id} />
+          <Rate me={me} chatRoom={chatRoom} />
         ))}
       <ChatInput
         message={message}
