@@ -58,6 +58,7 @@ export const getEmptyPost = (user, title, sub) => {
 export const getRateByChatRoomId = chatRoomId => rates[chatRoomId];
 
 export function getPostInfoUpdater(info, setInfo) {
+  console.log(info);
   return ({ type, title, sub, tags, fontClr, backClr, tagClr, content }) => {
     setInfo({
       type: type !== undefined ? type : info.type,

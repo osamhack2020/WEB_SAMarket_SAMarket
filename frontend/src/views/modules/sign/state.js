@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { WS_URL, register, signInReq, checkSession } from "api";
 import { useHistory } from "react-router-dom";
 import { w3cwebsocket as W3CWebSocket } from "websocket";
+import { logout } from "api";
 
 // action type 정의
 const SIGN_IN = "sign/SIGN_IN";
@@ -62,8 +63,13 @@ const startWebSocket = () => {
 }
 
 export const signOut = () => {
-  return { type: SIGN_OUT };
-};
+  return async (dispatch, getState, { history }) => {
+    const res = await logout();
+    if (res.status == 200) {
+      history.replace("/");
+    }
+  }
+}
 
 // reducer
 export default createReducer(

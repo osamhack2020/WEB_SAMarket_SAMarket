@@ -66,7 +66,7 @@ export default function ProfilePage({ match }) {
         <div className="ProfileBack" />
         <ProfileHeader user={userProfile.user} isFriend={userProfile.is_friend} pageY={pageY} myId={myId} />
         <div>
-          <Scouter score={userProfile.score} pageY={pageY} />
+          <Scouter score={Math.round(userProfile.score)} pageY={pageY} />
           <FriendList user={userProfile.user} />
           <DealHistory user={userProfile.user} />
           <PostList user={userProfile.user} />

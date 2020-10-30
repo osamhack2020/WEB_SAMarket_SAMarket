@@ -23,6 +23,7 @@ export default function WritePage() {
         tag: "#505560"
       },
       type: "post",
+      sub: "",
     }
   ); // 정해진 포맷을 받음
   const updateInfo = getPostInfoUpdater(info, setInfo);

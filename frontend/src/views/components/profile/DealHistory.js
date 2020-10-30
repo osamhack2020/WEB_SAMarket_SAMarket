@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import HorizontalScroller from "../base/HorizontalScroller";
 import SAHistory from "../rate/SAHistory";
+import { getReviews } from "api";
 
 export default function DealHistory({ user }) {
-  const deals = [0];
+  const [reviews, setReviews] = useState([]);
+  useEffect(() => {
+    getReviews(user.id).then(response => {
+      setReviews(response.data);
+    });
+  }, [user]);
   return (
     <div>
       <div className="section-header">{user.name}의 거래 발자취</div>
-      {deals.map(deal => (
+      {reviews.map(review => (
         <div className="historyContainer">
-          <SAHistory user={user} chatRoomId={deal} />
+          <SAHistory key={review.post.id} review={review} user={user} />
         </div>
       ))}
     </div>

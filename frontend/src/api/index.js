@@ -185,6 +185,11 @@ export async function reviewListPost(userid) {
 export async function canWriteReview(chatRoomID) {
   return await http.get(`/chat/canwrite/${chatRoomID}`);
 }
-function signUpReq({ userId, userInfo }) {
-  throw new Error("Sign Up Failed");
+
+export async function getReviews(userID) {
+  return await http.get(`/review/list/post/${userID}`);
+}
+
+export async function logout() {
+  return await http.get(`/auth/logout`);
 }
