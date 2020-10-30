@@ -6,6 +6,7 @@ import { WS_URL, register, signInReq, checkSession } from "api";
 import { useHistory } from "react-router-dom";
 import { w3cwebsocket as W3CWebSocket } from "websocket";
 import { logout } from "api";
+import { toast } from "react-toastify";
 
 // action type 정의
 const SIGN_IN = "sign/SIGN_IN";
@@ -23,6 +24,10 @@ export const signIn = (loginResult) => {
 export const signUp = (userInfo) => {
   return async (dispatch, getState, { history }) => {
     const res = await register(userInfo);
+    if (res.status == 200) {
+      toast('가입이 성공적으로 완료되었습니다.');
+      history.replace('/');
+    }
   }
 }
 

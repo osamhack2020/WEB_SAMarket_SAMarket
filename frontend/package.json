@@ -16,6 +16,7 @@
     "moment": "^2.29.1",
     "pure-react-carousel": "^1.27.6",
     "react": "^16.13.1",
+    "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.13.1",
     "react-hook-form": "^6.9.6",
     "react-moment": "^1.0.0",

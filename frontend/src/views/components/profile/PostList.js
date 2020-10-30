@@ -23,10 +23,8 @@ export default function PostList({ user }) {
         </div>
       ))}
       {posts.length === 0 && (
-        <div className="postContainer emptyPost">
-          <Post
-            info={getEmptyPost(user, "세상에!", "게시한 글이 없습니다..")}
-          />
+        <div className="emptyFriend">
+          게시한 글이 없어요
         </div>
       )}
       {posts.length > 5 && (

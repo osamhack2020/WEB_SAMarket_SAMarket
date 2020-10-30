@@ -10,6 +10,7 @@ export default function FriendList({ user }) {
   useEffect(() => {
     getFollowList(user.id).then(response => {
       setFriends(response.data);
+
     });
   }, [user]);
 
@@ -20,16 +21,16 @@ export default function FriendList({ user }) {
     slidesToShow: 6,
     slidesToScroll: 6
   };
-
+  
   return (
     <div>
       <div className="section-header">{user.name}의 전우들</div>
       <Slider {...settings}>
-        {friends.map(friend => (
+        {friends && friends.map(friend => (
           <Friend key={friend.id} userInfo={friend} />
         ))}
       </Slider>
-      {friends.length === 0 && (
+      {(friends == null || friends.length === 0) && (
         <div className="emptyFriend">아직 전우가 없어요</div>
       )}
     </div>

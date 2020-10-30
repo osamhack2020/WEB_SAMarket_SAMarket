@@ -18,6 +18,9 @@ export default function DealHistory({ user }) {
           <SAHistory key={review.post.id} review={review} user={user} />
         </div>
       ))}
+      {reviews.length == 0 && (
+        <div className="emptyFriend">거래내역이 아직 없어요</div>
+      )}
     </div>
   );
 }
