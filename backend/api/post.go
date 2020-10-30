@@ -111,6 +111,7 @@ func addPost(c *gin.Context) {
 	post.Type = rq.PostType
 	post.Clr = rq.Clr
 	post.Tags = strings.Join(rq.Tags[:], ",")
+	post.Sub = rq.Sub
 
 	user := GetSessionUser(c)
 	post.AuthorID = user.ID

@@ -1,7 +1,6 @@
 package models
 
 import (
-	"fmt"
 	"time"
 
 	uuid "github.com/satori/go.uuid"
@@ -47,7 +46,6 @@ func (store IUserStore) GetUserByIDAndPW(id string, pw string) *User {
 	var user User
 	err := db.Where("login_id = ? AND password = ?", id, pw).Preload("Unit").First(&user).Error
 	if err != nil {
-		fmt.Println(err)
 		return nil
 	}
 	return &user

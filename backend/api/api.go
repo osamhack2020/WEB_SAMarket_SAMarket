@@ -25,7 +25,6 @@ func ResponseUnauthorized(c *gin.Context, msg interface{}) {
 
 func ResponseBadRequest(c *gin.Context, msg interface{}) {
 	msgstr := fmt.Sprintf("%v", msg)
-	fmt.Println(msgstr)
 	c.JSON(http.StatusBadRequest, BadRequestResult{MSG: msgstr})
 }
 

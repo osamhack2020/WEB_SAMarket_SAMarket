@@ -2,6 +2,7 @@ package api
 
 import (
 	"sam/models"
+	"strings"
 
 	"github.com/gin-gonic/gin"
 )
@@ -13,6 +14,7 @@ func InitReviewRouter(rg *gin.RouterGroup) {
 		router.GET("/list/by/:userid", getReviewListBy)
 		router.GET("/list/to/:userid", getReviewListTo)
 		router.GET("/list/post/:userid", getReviewPostList)
+		router.GET("/post/:postid", getReviewByPostID)
 	}
 }
 
@@ -53,7 +55,8 @@ func addReview(c *gin.Context) {
 // @Failure 400 {object} BadRequestResult
 func getReviewListBy(c *gin.Context) {
 	user := GetSessionUser(c)
-	ResponseOK(c, models.ReviewStore.GetReviewsByWriterID(user.ID))
+	ret := models.ReviewStore.GetReviewsByWriterID(user.ID)
+	ResponseOK(c, ret)
 }
 
 // getReviewList godoc
@@ -81,6 +84,29 @@ func getReviewListTo(c *gin.Context) {
 // @Router /review/list/post/{userid} [get]
 // @Failure 400 {object} BadRequestResult
 func getReviewPostList(c *gin.Context) {
-	user := GetSessionUser(c)
-	ResponseOK(c, models.ReviewStore.GetReviews(user.ID))
+	param := c.Param("userid")
+	ret := models.ReviewStore.GetReviews(param)
+	for i := range ret {
+		if len(ret[i].Post.Tags) > 0 {
+			ret[i].Post.TagsArray = strings.Split(ret[i].Post.Tags, ",")
+		}
+	}
+	ResponseOK(c, ret)
+}
+
+// getReviewByPostID godoc
+// @Security ApiKeyAuth
+// @Summary 포스트 ID로 리뷰 가져오기
+// @Description
+// @Accept json
+// @Produce json
+// @Param postid path string true "포스트 id"
+// @Router /review/post/{postid} [get]
+// @Failure 400 {object} BadRequestResult
+func getReviewByPostID(c *gin.Context) {
+	ret := models.ReviewStore.GetReviewByPostID(c.Param("postid"))
+	if len(ret.Post.Tags) > 0 {
+		ret.Post.TagsArray = strings.Split(ret.Post.Tags, ",")
+	}
+	ResponseOK(c, ret)
 }

@@ -44,6 +44,7 @@ type AddPostRequest struct {
 	Tags     []string         `json:"tags"`
 	Content  string           `json:"content"`
 	Clr      models.PostColor `json:"clr"`
+	Sub      string           `json:"sub"`
 }
 
 /* Review Request Models */
