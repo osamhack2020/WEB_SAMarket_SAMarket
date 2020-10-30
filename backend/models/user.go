@@ -51,6 +51,15 @@ func (store IUserStore) GetUserByIDAndPW(id string, pw string) *User {
 	return &user
 }
 
+func (store IUserStore) GetUserByLoginID(id string) *User {
+	var user User
+	err := db.Where("login_id = ?", id).Preload("Unit").First(&user).Error
+	if err != nil {
+		return nil
+	}
+	return &user
+}
+
 func (store IUserStore) AddUser(user User) error {
 	err := db.Select("ID", "LoginID", "Password", "Name", "Phone", "Mil", "UnitID").Create(&user).Error
 	return err

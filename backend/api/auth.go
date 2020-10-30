@@ -3,6 +3,7 @@ package api
 import (
 	"fmt"
 
+	"sam/config"
 	"sam/middleware"
 	"sam/models"
 
@@ -36,8 +37,10 @@ func login(c *gin.Context) {
 	if err != nil {
 		fmt.Println(err)
 	}
-	user := models.UserStore.GetUserByIDAndPW(rq.LoginID, rq.Password)
-	if user == nil {
+	user := models.UserStore.GetUserByLoginID(rq.LoginID)
+	okay, err := Compare(user.Password, rq.Password+config.Settings.Key.Crypt)
+	fmt.Println(okay, err)
+	if user == nil || !okay {
 		ResponseBadRequest(c, "해당 정보와 일치하는 유저를 찾을 수 없습니다.")
 	} else {
 		result := &LoginResult{*user, models.ChatStore.GetUnreadCount(user.ID)}
@@ -81,8 +84,10 @@ func register(c *gin.Context) {
 	if err != nil {
 		fmt.Println(err)
 	}
+	hash, _ := GenerateHash(rq.Password + config.Settings.Key.Crypt)
+	rq.Password = hash
 	x := []string{"이등병", "일등병", "상등병", "병장"}
-	user := models.User{LoginID: rq.LoginID, Name: rq.Name, Password: rq.Password, Mil: rq.Mil, UnitID: rq.UnitID, Rank: x[rq.Rank-1]}
+	user := models.User{LoginID: rq.LoginID, Name: rq.Name, Password: rq.Password, Mil: rq.Mil, UnitID: rq.UnitID, Rank: x[rq.Rank]}
 	err = models.UserStore.AddUser(user)
 	if err != nil {
 		ResponseBadRequest(c, err)
