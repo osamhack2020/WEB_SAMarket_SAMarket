@@ -43,10 +43,12 @@
 
 ### Frontend
  -  [React.js](https://ko.reactjs.org/)
+ -  [Redux](https://ko.redux.js.org/)
 
 ### Backend
- - Go + [Gin](https://github.com/gin-gonic/gin)
- - [MariaDB](https://mariadb.com/)
+ -  Go + [Gin](https://github.com/gin-gonic/gin)
+ -  [MariaDB](https://mariadb.com/)
+ -  [Gorm](https://gorm.io/ko_KR/)
 
 <br>
 
