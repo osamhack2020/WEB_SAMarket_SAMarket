@@ -9,33 +9,36 @@
 
 <br>
 
-## 📜 프로젝트 설명(Project Description)
-
+## 📜 프로젝트 설명 (Project Description)
+   
 #### 코로나19로 힘든 시기를 보내고 있는 장병들을 도와주자
 코로나19로 인한 ‘사회적 거리 두기’ 실시에 따른 출타 제한으로 인해 현역 장병들은 정신적인 스트레스 뿐만 아니라, 필요한 물품이나 외부 물자를 얻기 어려운 문제를 겪고 있습니다. 이에 저희 강군마켓은 비교적 이동이 자유로운 영내 중고거래 및 정보공유를 활성화함으로써, 장병들이 힘든 시기를 극복하는데 도움이 되고자 합니다. 저희 서비스의 사용자인 현역 장병들은 필요한 물품뿐만 아니라 새로운 사람과 정보를 얻고, 활력을 되찾을 수 있을 것으로 기대하고 있습니다. 
-
+   
 #### 모두가 신뢰할 수 있는 안심 거래 서비스 구축 
 강군마켓의 핵심 서비스는 영내 중고거래입니다. 영내 중고거래의 장점은 출타 제한에 따른 영향을 받지 않는다는 점입니다. 또한, 같은 영내에 있는 사람끼리 거래하기 때문에, 높은 신뢰성을 확보할 수 있습니다. 이에 더해 저희 팀은 거래자 간의 상호평가뿐만 아니라 같은 부대 내 ‘전우의 평가’ 시스템으로 거래 품목의 품질에 대한 신뢰성까지 확보할 수 있을 것으로 기대됩니다.
-
+   
 #### 커뮤니티를 통해 장병들의 소통 활성화
 강군마켓의 소통 커뮤니티는 자신이 판매하거나, 필요한 물품을 게시글로 올리는 것에서 시작합니다. 더 나아가 거래 후기를 올리고, 영내에서 활용할 수 있는 유용한 정보를 장병들끼리 서로 공유할 수 있을 것입니다. 이를 통해 정보의 선순환과 건강한 커뮤니티 문화를 형성할 수 있을 것입니다. 
-
+ 
 <br>
 
-## 📽️ 시연 동영상
+## 📽️ 시연 동영상 (Demo Video)
 [![Video](docs/imgs/video.png)](https://www.youtube.com)
-
-<br>
-
-## 🛠️ 기능 설계
- [![XD](docs/imgs/xd_proto.png)](https://www.tinyurl.com/samxdclr)
- - Adobe XD
 
 <br>
 
 ## 📌 필요 사양 (Prerequisites)
 * ECMAScript 6 지원 브라우저 사용
 * 권장: Google Chrome 버젼 77 이상
+
+<br>
+
+## 🛠️ 기능 설계 (Function Design)
+- Adobe XD   
+ [![XD](docs/imgs/xd_proto.png)](https://www.tinyurl.com/samxdclr)   
+
+#### PWA를 활용한 사용자 경험 최적화
+본 프로젝트는 Golang RESTful API 서버와 React Framework를 활용해 PWA(Progressive Web App)로 개발되었습니다. 이를 통해 강군마켓은 웹과 네이티브 앱의 이점을 모두 취할 수 있으며, 시스템 알림, 푸시 메시지 등 스마트폰에 최적화된 UI를 제공하면서 동시에 웹의 유용한 기능을 끌어와 데이터와 시간을 효과적으로 절약할 수 있습니다. PWA는 네이티브 앱과 비교했을 때 앱스토어에서 다운로드할 필요가 없으므로 강군마켓의 출시 및 공유가 더 용이하며, 빌드하는 것이 훨씬 빠르고 쉽기 때문에 네이티브 앱 개발보다 저렴하고 가볍다는 장점이 있습니다. 인터넷 연결이 끊긴 오프라인 상태라도 이용자에게 점진적 웹 응용 프로그램을 제공합니다. 또한 기종에 상관없이 어느 스마트폰에서나 작동할 수 있기 때문에 강군마켓 서비스에 대한 높은 호환성을 보장할 수 있습니다.
 
 <br>
 
@@ -49,6 +52,7 @@
  -  Go + [Gin](https://github.com/gin-gonic/gin)
  -  [MariaDB](https://mariadb.com/)
  -  [Gorm](https://gorm.io/ko_KR/)
+ -  Swagger + [Swaggo](https://github.com/swaggo/swag)
 
 <br>
 
@@ -118,7 +122,7 @@ WEB_SAMarket_SAMarket
 │                ├─  LikePage.js
 │                └─  MainPage.js
 │
-├─backend  //golang
+└─backend  //golang
     ├─.gitignore
     ├─LICENSE
     ├─Makefile
@@ -174,6 +178,12 @@ WEB_SAMarket_SAMarket
        └─go.sum
                         
 ```
+<br>
+
+## 📚 REST API 목록 (REST API List)
+- Swagger UI   
+https://samarket.kr/swagger/index.html
+
 <br>
 
 ## 💻 설치 안내 (Installation Process)
