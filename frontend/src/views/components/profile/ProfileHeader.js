@@ -3,7 +3,7 @@ import BackBtn from "views/components/header/BackBtn";
 import UserProfile from "views/components/user/UserProfile";
 import { uploadImage, follow, unfollow } from "api";
 
-export function ProfileHeader({ user, isFriend : f, pageY, myId }) {
+export function ProfileHeader({ user, isFriend: f, pageY, myId }) {
   const [isFriend, setFriend] = useState(f);
   const changeImg = e => {
     // change the img;
@@ -34,23 +34,22 @@ export function ProfileHeader({ user, isFriend : f, pageY, myId }) {
 
   return (
     <div>
+      <div className="profileTopBtn">
+        {myId === user.id ? (
+          <button className="btn changeImg" onClick={changeImg}>
+            사진 교체
+          </button>
+        ) : (
+          <button
+            className={`btn follow${isFriend ? "ed" : ""}`}
+            onClick={toggleFollow}
+          >
+            {isFriend ? "전우 끊기" : "전우 맺기"}
+          </button>
+        )}
+      </div>
       <div className="profileHeaderBar">
         <BackBtn loc={[12, 10]} fixed={true} />
-
-        <div className="profileTopBtn">
-          {myId === user.id ? (
-            <button className="btn changeImg" onClick={changeImg}>
-              사진 교체
-            </button>
-          ) : (
-            <button
-              className={`btn follow${isFriend ? "ed" : ""}`}
-              onClick={toggleFollow}
-            >
-              {isFriend ? "전우 끊기" : "전우 맺기"}
-            </button>
-          )}
-        </div>
       </div>
       <div className={`profileHeader ${pageY >= 245 ? "goAHead" : ""}`}>
         <UserProfile userInfo={user} stop={true} />

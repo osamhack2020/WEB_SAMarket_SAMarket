@@ -75,10 +75,9 @@
 /* SAHistory */
 .SAHistory {
   box-sizing: border-box;
-  margin: 30px 0 0 0;
-  padding: 20px 0 0 0;
+  margin: 30px auto;
+  padding: 20px 0 20px 0;
   width: 340px;
-  height: 500px;
   border: 0;
   border-radius: 20px;
   background: #fdfeff;

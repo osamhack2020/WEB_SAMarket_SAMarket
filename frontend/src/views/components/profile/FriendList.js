@@ -23,7 +23,7 @@ export default function FriendList({ user }) {
 
   return (
     <div>
-      <div class="section-header">{user.name}의 전우들</div>
+      <div className="section-header">{user.name}의 전우들</div>
       <Slider {...settings}>
         {friends.map(friend => (
           <Friend key={friend.id} userInfo={friend} />
