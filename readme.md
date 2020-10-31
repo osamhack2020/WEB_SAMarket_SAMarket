@@ -24,7 +24,19 @@
 <br>
 
 ## 📽️ 시연 동영상 (Demo Video)
-[![Video](docs/imgs/video.png)](https://www.youtube.com)
+[![Video](docs/imgs/thumbnail.png)](https://www.youtube.com)
+
+<br>
+
+## 🚀 소개 자료 (Presentation)
+
+[PDF 버전](PPT/강군마켓.pdf)
+
+[PPT 버전](PPT/강군마켓.pptx)
+
+![Presentation](docs/imgs/presentation.png)
+
+*PPT 는 "읽기 전용"파일 입니다.*
 
 <br>
 
