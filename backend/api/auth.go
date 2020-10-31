@@ -38,10 +38,14 @@ func login(c *gin.Context) {
 		fmt.Println(err)
 	}
 	user := models.UserStore.GetUserByLoginID(rq.LoginID)
-	okay, err := Compare(user.Password, rq.Password+config.Settings.Key.Crypt)
-	fmt.Println(okay, err)
-	if user == nil || !okay {
+	if user == nil {
 		ResponseBadRequest(c, "해당 정보와 일치하는 유저를 찾을 수 없습니다.")
+		return
+	}
+	okay, err := Compare(user.Password, rq.Password+config.Settings.Key.Crypt)
+	if !okay {
+		ResponseBadRequest(c, "해당 정보와 일치하는 유저를 찾을 수 없습니다.")
+		return
 	} else {
 		result := &LoginResult{*user, models.ChatStore.GetUnreadCount(user.ID)}
 		middleware.GenerateToken(user, c)
