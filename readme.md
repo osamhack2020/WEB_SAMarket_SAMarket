@@ -1,3 +1,4 @@
+
 [![Logo](docs/imgs/logo.png)](https://samarket.kr)
 # 강군마켓 
 ![Alt text](https://img.shields.io/badge/data-web-green) 
@@ -181,34 +182,80 @@ WEB_SAMarket_SAMarket
 <br>
 
 ## 📚 REST API 목록 (REST API List)
+[Swaggo]([https://github.com/swaggo/swag](https://github.com/swaggo/swag))를 사용하여 코드에 맞게 Swagger 설정 파일이 자동으로 업데이트 됩니다. 현재 API 목록은 아래 링크에서 확인하실 수 있습니다.
 - Swagger UI   
 https://samarket.kr/swagger/index.html
 
 <br>
 
-## 💻 설치 안내 (Installation Process)
+## 💻 설치 및 실행하기 (Installation & Setup)
+강군마켓 Backend는 Golang과 Mariadb, Frontend는 Node.js를 사용해야 개발되었습니다. 서버 실행시에 필요 프로그램들을 먼저 설치하는 작업이 필요합니다.
 
 ### Frontend
+#### 1. node 및 yarn 설치
+```bash
+$ curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+$ sudo apt install nodejs
+$ npm install -g yarn
+```
+#### 2. 프론트엔드 실행
 ```bash
 $ git clone https://github.com/osamhack2020/WEB_SAMarket_SAMarket.git
 $ cd frontend
-$ npm install
-$ npm start
+$ yarn install
+$ yarn start
 ```
 ### Backend
+#### 1. Golang 설치
+```bash
+$ wget https://dl.google.com/go/go1.15.2.linux-amd64.tar.gz 
+$ sudo tar -xvf go1.15.3.linux-amd64.tar.gz 
+$ sudo mv go /usr/local    
+$ export GOROOT=/usr/local/go 
+$ export PATH=$GOROOT/bin:$PATH 
+```
+#### 2. mariadb 설치
+```bash
+$ sudo apt install mariadb-server
+```
+#### 3. 실행 Config 수정
+
+서버 실행 환경에 맞게 config를 수정합니다.
+
+```yaml
+# 샘플 설정 파일
+server:
+  host: 서버 실행 host
+  port: 서버 포트
+  mode: 실행 모드 (debug 또는 prod)
+  timeout: 서버 타임아웃 설정
+    server: 30
+    read: 15
+    write: 10
+    idle: 5
+
+key:
+  crypt: 비밀번호 암호화 시 사용할 salt
+
+db: db 접속 정보
+  host: db 호스트
+  port: db 포트
+  username: db 유저 아이디
+  password: db 유저 비번
+  database: db 이름
+```
+#### 4. 프론트엔드 빌드
+```bash
+$ cd frontend
+$ yarn build
+```
+#### 5. 서버 실행
+config_name을 원하는 설정 파일 이름으로 바꾸고 (ex: debug) 실행합니다. 기본값은 debug 입니다.
 ```bash
 $ git clone https://github.com/osamhack2020/WEB_SAMarket_SAMarket.git
 $ cd backend
-$ go run
+$ export SA_RUN={config_name} make run
 ```
-
-<br>
-
-## 🎨 프로젝트 사용법 (Getting Started)
-```bash
-```
-
----
 
 <br>
 
@@ -220,7 +267,7 @@ $ go run
 <br>
 
 ## 🔒 저작권 및 사용권 정보 (Copyleft / End User License)
- * [MIT]
+ * [MIT](https://github.com/osamhack2020/WEB_SAMarket_SAMarket/blob/master/license.md)
 ---
 Copyright (c) 2020 SAMarket
 
