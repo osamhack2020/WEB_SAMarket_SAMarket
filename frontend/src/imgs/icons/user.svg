@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="51" height="51" viewBox="0 0 51 51">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #505560;
+      }
+    </style>
+  </defs>
+  <g id="그룹_203" data-name="그룹 203" transform="translate(-441 -480)">
+    <circle id="타원_80" data-name="타원 80" class="cls-1" cx="25.5" cy="25.5" r="25.5" transform="translate(441 480)"/>
+    <path id="교차_6" data-name="교차 6" class="cls-2" d="M1308.015,44.061c.415-8.373,8.084-15.046,17.484-15.046s17.071,6.674,17.484,15.049a25.5,25.5,0,0,1-34.968,0Zm8.256-26.211a9.551,9.551,0,1,1,19.093,0,9.551,9.551,0,1,1-19.093,0Z" transform="translate(-859 480)"/>
+  </g>
+</svg>

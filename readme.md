@@ -1,5 +1,6 @@
 <center>
 
+
 [![Logo](docs/imgs/logo.png)](https://samarket.kr)
 
 </center>
@@ -66,6 +67,7 @@
 
 <br>
 
+
 ## 🛠️ 기능 설계 (Function Design)
 - [Adobe XD](https://www.tinyurl.com/samxdclr)
 
@@ -73,7 +75,9 @@
 
  [![XD](docs/imgs/xd_proto.png)](https://www.tinyurl.com/samxdclr)   
 
+
 </center>
+
 
 #### PWA를 활용한 사용자 경험 최적화
 본 프로젝트는 Golang RESTful API 서버와 React Framework를 활용해 PWA(Progressive Web App)로 개발되었습니다. 이를 통해 강군마켓은 웹과 네이티브 앱의 이점을 모두 취할 수 있으며, 시스템 알림, 푸시 메시지 등 스마트폰에 최적화된 UI를 제공하면서 동시에 웹의 유용한 기능을 끌어와 데이터와 시간을 효과적으로 절약할 수 있습니다. PWA는 네이티브 앱과 비교했을 때 앱스토어에서 다운로드할 필요가 없으므로 강군마켓의 출시 및 공유가 더 용이하며, 빌드하는 것이 훨씬 빠르고 쉽기 때문에 네이티브 앱 개발보다 저렴하고 가볍다는 장점이 있습니다. 인터넷 연결이 끊긴 오프라인 상태라도 이용자에게 점진적 웹 응용 프로그램을 제공합니다. 또한 기종에 상관없이 어느 스마트폰에서나 작동할 수 있기 때문에 강군마켓 서비스에 대한 높은 호환성을 보장할 수 있습니다.
@@ -92,6 +96,10 @@
  -  [Gorm](https://gorm.io/ko_KR/)
  -  Swagger + [Swaggo](https://github.com/swaggo/swag)
 
+### 🐳Docker
+  - [bitnami/mariadb](https://github.com/bitnami/bitnami-docker-mariadb)
+  - [Golang](https://hub.docker.com/_/golang)
+  
 <br>
 
 ## 🧱 파일 구조 (File Structure)
@@ -291,9 +299,23 @@ config_name을 원하는 설정 파일 이름으로 바꾸고 (ex: debug) 실행
 ```bash
 $ git clone https://github.com/osamhack2020/WEB_SAMarket_SAMarket.git
 $ cd backend
-$ export SA_RUN={config_name} make run
+$ export SA_RUN=config_name make run
 ```
-
+## 🐳Docker를 사용한 실행 환경 구축하기
+강군마켓의 프로젝트는 Docker를 이용하여 개발되었고, 강군마켓을 손 쉽게 실행할 수 있도록 docker-compose 와 샘플 sql를 제공하고 있습니다. Docker를 이용하면 손 쉽게 강군마켓을 체험해 볼 수 있습니다.
+#### 1. 도커 설치
+[https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/)
+#### 2. docker-compose로 강군마켓 실행
+```bash
+git clone https://github.com/osamhack2020/WEB_SAMarket_SAMarket samarket
+cd samarket
+docker-compose up -d
+curl localhost:8090 // 서버 접속이 되는지 확인
+```
+위와 같이 입력한 후 localhost:8090로 접속하면 강군마켓 실행을 확인할 수 있습니다.
+ 
+## 팀 정보 (Team Information)
+=======
 <br>
 
 ## ❤️ 팀 정보 (Team Information)
