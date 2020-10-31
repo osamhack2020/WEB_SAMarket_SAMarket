@@ -59,7 +59,7 @@
 
 [PPT 버전](PPT/강군마켓.pptx)
 
-![Presentation](docs/imgs/ppt.png)
+[![Presentation](docs/imgs/ppt.png)](PPT/강군마켓.pptx)
 
 (PPT 는 "읽기 전용"파일 입니다. 편집이 불가능 합니다.)
 
@@ -92,20 +92,21 @@
 
 ## 🧪 기술 스택 (Technique Used)
 
-### Frontend
- -  [React.js](https://ko.reactjs.org/)
- -  [Redux](https://ko.redux.js.org/)
+### 🎨 Frontend
+ | [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) | [React.js](https://ko.reactjs.org/) | [Redux](https://ko.redux.js.org/) | [StyledComponent](https://styled-components.com/) | [Socket.op](https://socket.io/) |
+ |:---:|:---:|:---:|:---:|:---:|
+ |<img src="https://devicon.dev/devicon.git/icons/javascript/javascript-original.svg" height="60px"/>|<img src="https://devicon.dev/devicon.git/icons/react/react-original.svg" height="60px">|<img src="https://devicon.dev/devicon.git/icons/redux/redux-original.svg" height="60px"/>|<img src="https://www.styled-components.com/atom.png" height="60px"/> |<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Socket-io.svg/600px-Socket-io.svg.png" height="60px">
 
-### Backend
- -  Go + [Gin](https://github.com/gin-gonic/gin)
- -  [MariaDB](https://mariadb.com/)
- -  [Gorm](https://gorm.io/ko_KR/)
- -  Swagger + [Swaggo](https://github.com/swaggo/swag)
+### 🏭 Backend
+| [Go](https://golang.org/) | [Gin](https://github.com/gin-gonic/gin) | [Swaggo](https://github.com/swaggo/swag) | [Swagger](https://swagger.io/) | [MariaDB](https://mariadb.com/) | [GORM](https://gorm.io/ko_KR/) |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+|<img src="https://devicon.dev/devicon.git/icons/go/go-original.svg" height="60px"/>|<img src="https://raw.githubusercontent.com/gin-gonic/logo/master/color.png" height="60px"/>|<img src="https://raw.githubusercontent.com/swaggo/swag/master/assets/swaggo.png" height="60px"/>|<img src="https://seeklogo.com/images/S/swagger-logo-A49F73BAF4-seeklogo.com.png" height="60px">|<img src="https://mariadb.com/wp-content/webp-express/webp-images/doc-root/wp-content/themes/mariadb/assets/images/mariadb-logo-mark.png.webp" height="50px"/>|<img src="https://avatars2.githubusercontent.com/u/15127678?s=200&v=4" height="60px"/>|
 
-### 🐳Docker
-  - [bitnami/mariadb](https://github.com/bitnami/bitnami-docker-mariadb)
-  - [Golang](https://hub.docker.com/_/golang)
-  
+### 🔌 Infra
+| [Github](https://github.com/) | [AWS](https://aws.amazon.com/ko/?nc2=h_lg) | [Docker](https://www.docker.com/get-started) | [Golang](https://hub.docker.com/_/golang)| [bitnami/mariadb](https://github.com/bitnami/bitnami-docker-mariadb) |
+|:---:|:---:|:---:|:---:|:---:|
+|<img src="https://devicon.dev/devicon.git/icons/github/github-original.svg" height="60px"/>|<img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" height="60px"/>|<img src="https://devicon.dev/devicon.git/icons/docker/docker-plain.svg" height="60px"/>|<img src="https://camo.githubusercontent.com/99857f75ada780c560e1455b9c8922dda774938e/68747470733a2f2f676f6c616e672e6f72672f6c69622f676f646f632f696d616765732f676f2d6c6f676f2d626c75652e737667" height="40px"/>|<img src="https://avatars2.githubusercontent.com/u/13025337?s=460&u=c18c61f29e81c26768a799bbb5e116693ff335de&v=4" height="60px"/>|
+
 <br>
 
 ## 🧱 파일 구조 (File Structure)
