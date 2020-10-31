@@ -2,8 +2,8 @@ import axios from "axios";
 import { cacheAdapterEnhancer } from "axios-extensions";
 import { toast } from "react-toastify";
 
-const BASE_URL = "http://nanofiber.org:8080/api";
-export const WS_URL = "ws://nanofiber.org:8080/api/ws";
+const BASE_URL = "/api";
+export const WS_URL = `${window.location.protocol == "http:" ? "ws://" : "wss://"}${window.location.host}/api/ws`;
 
 let history = null;
 let postUpdated = false;
@@ -70,7 +70,7 @@ export async function checkSession() {
 }
 
 export async function signInReq(userId, password) {
-  return await http.post(`${BASE_URL}/auth/login`, {
+  return await http.post(`/auth/login`, {
     id: userId,
     pw: password
   });
