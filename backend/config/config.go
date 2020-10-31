@@ -87,7 +87,7 @@ func LoadConfig(path string) (*Config, error) {
 
 func DBURL() string {
 	return fmt.Sprintf(
-		"%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local",
+		"%s:%s@tcp(%s:%s)/%s?charset=utf8mb4&parseTime=True&loc=Local",
 		Settings.DB.User,
 		Settings.DB.Password,
 		Settings.DB.Host,
