@@ -15,9 +15,7 @@
 
 ## https://samarket.kr/
 
-[![](docs/imgs/preview1.gif)](https://samarket.kr/)
-[![](docs/imgs/preview2.gif)](https://samarket.kr/)
-[![](docs/imgs/preview3.gif)](https://samarket.kr/)
+<img src="docs/imgs/preview1.gif" width="250"/><img src="docs/imgs/preview2.gif" width="250"/><img src="docs/imgs/preview3.gif" width="250"/>
 
 </center>
 
