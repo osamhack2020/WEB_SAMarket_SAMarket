@@ -35,7 +35,7 @@ type IChatStore struct {
 
 func (store IChatStore) GetChatRoomsByUser(user User) []ChatRoom {
 	var chatRooms []ChatRoom
-	db.Model(&user).Preload("Post").Preload("Post.Author").Association("ChatRooms").Find(&chatRooms)
+	db.Model(&user).Preload("Post").Preload("Post.Author").Order("created_at desc").Association("ChatRooms").Find(&chatRooms)
 	// TODO 안읽은 메시지 수 가져오기
 	for idx := range chatRooms {
 		db.Model(&chatRooms[idx]).Association("Users").Find(&chatRooms[idx].Users)
