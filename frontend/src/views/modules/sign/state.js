@@ -70,7 +70,7 @@ export const signOut = () => {
   return async (dispatch, getState, { history }) => {
     const res = await logout();
     if (res.status == 200) {
-      history.replace("/");
+      window.location.reload();
     }
   }
 }
