@@ -15,6 +15,7 @@ require (
 	github.com/swaggo/files v0.0.0-20190704085106-630677cd5c14
 	github.com/swaggo/gin-swagger v1.2.0
 	github.com/swaggo/swag v1.6.7
+	github.com/unrolled/secure v1.0.8
 	gorm.io/driver/mysql v1.0.2
 	gorm.io/gorm v1.20.2
 	sam/api v0.0.0

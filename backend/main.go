@@ -10,6 +10,7 @@ import (
 	"sam/ws"
 
 	"github.com/gin-contrib/cors"
+	"github.com/unrolled/secure"
 
 	"github.com/gin-contrib/static"
 	"github.com/gin-gonic/autotls"
@@ -36,12 +37,33 @@ var upGrader = websocket.Upgrader{
 }
 
 func main() {
+	secureFunc := func() gin.HandlerFunc {
+		return func(c *gin.Context) {
+			secureMiddleware := secure.New(secure.Options{
+				SSLRedirect: true,
+				SSLHost:     config.Settings.Server.Domain,
+			})
+			err := secureMiddleware.Process(c.Writer, c.Request)
+
+			// If there was an error, do not continue.
+			if err != nil {
+				return
+			}
+
+			c.Next()
+		}
+	}()
+
 	config.Init()
 	models.Init()
 	redis.NewClient(&redis.Options{Addr: "localhost:6379"})
 
 	gin.SetMode(config.Settings.Server.Mode)
 	r := gin.Default()
+
+	if config.Settings.Server.HTTPS == "true" {
+		r.Use(secureFunc)
+	}
 
 	if config.Settings.Server.Mode == "debug" {
 		corsc := cors.DefaultConfig()
@@ -66,11 +88,7 @@ func main() {
 	}
 
 	if config.Settings.Server.HTTPS == "true" {
-		httpRouter := gin.Default()
-		httpRouter.GET("/*path", func(c *gin.Context) {
-			c.Redirect(302, "https://"+config.Settings.Server.Domain+"/"+c.Param("path"))
-		})
-		httpRouter.Run(":80")
+		go r.Run(":80")
 		autotls.Run(r, config.Settings.Server.Domain)
 	} else {
 		r.Run(fmt.Sprintf(":%s", config.Settings.Server.Port))
