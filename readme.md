@@ -15,7 +15,9 @@
 
 ## https://samarket.kr/
 
-[![링크](docs/imgs/main_link.png)](https://samarket.kr/)
+[![](docs/imgs/preview1.gif)](https://samarket.kr/)
+[![](docs/imgs/preview2.gif)](https://samarket.kr/)
+[![](docs/imgs/preview3.gif)](https://samarket.kr/)
 
 </center>
 
