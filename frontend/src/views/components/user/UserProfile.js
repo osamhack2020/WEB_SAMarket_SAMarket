@@ -7,7 +7,7 @@ import Croucher from "../base/Croucher";
 import { changeKeyword } from "views/modules/search/state";
 import "./User.css";
 
-export default function UserProfile({ userInfo, stop }) {
+export default function UserProfile({ userInfo, stop, disabled }) {
   const dispatch = useDispatch();
   const handleSearch = idx => {
     /* loc 클릭시 전체글, org 클릭시 해당 부대 글 */
@@ -16,7 +16,7 @@ export default function UserProfile({ userInfo, stop }) {
 
   return (
     <div className="profile">
-      <Profile userInfo={userInfo} size={80} />
+      <Profile userInfo={userInfo} disabled={disabled} size={80} />
       <div className="name">
         {userInfo.name} @{userInfo.login_id}{" "}
       </div>

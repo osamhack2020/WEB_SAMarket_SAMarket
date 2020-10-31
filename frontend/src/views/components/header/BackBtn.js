@@ -3,7 +3,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 import backSvg from "imgs/icons/back.svg";
-
+import { customHistory } from "index";
 const BackBtnStyled = styled.button`
   width: ${props => props.size ? props.size[0] : 20}px;
   height: ${props => props.size ? props.size[0] : 20}px;
@@ -17,7 +17,7 @@ const BackBtnStyled = styled.button`
 
 const BackBtn = ({ history, size, loc, fixed }) => {
   // loc: {top, left}
-  return <BackBtnStyled size={size} loc={loc} fixed={fixed} className="btn" onClick={e => history.goBack()} />;
+  return <BackBtnStyled size={size} loc={loc} fixed={fixed} className="btn" onClick={e => customHistory.go(-1)} />;
 };
 
 export default withRouter(BackBtn);

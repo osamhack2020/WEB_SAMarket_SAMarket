@@ -7,7 +7,6 @@ export function ProfileHeader({ user, isFriend: f, pageY, myId }) {
   const [isFriend, setFriend] = useState(f);
   const changeImg = e => {
     // change the img;
-    alert("hi");
     uploadRef.current.click();
   };
 
@@ -53,7 +52,7 @@ export function ProfileHeader({ user, isFriend: f, pageY, myId }) {
             </button>
           )}
         </div>
-        <UserProfile userInfo={user} stop={true} />
+        <UserProfile userInfo={user} stop={true} disabled={true}/>
       </div>
       <input
         ref={uploadRef}

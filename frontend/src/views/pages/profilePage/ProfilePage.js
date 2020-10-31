@@ -16,6 +16,7 @@ import {
   PostList
 } from "views/components/profile/index";
 import { getUserProfile } from "api";
+import { customHistory } from "index";
 import animateScrollTo from "animated-scroll-to";
 
 export default function ProfilePage({ match }) {
@@ -27,7 +28,7 @@ export default function ProfilePage({ match }) {
     getUserProfile(match.params.userId).then(response => {
       setUserProfile(response.data);
     });
-  }, []);
+  }, [match]);
 
   const myId = useSelector(state => state.sign.userInfo.id);
 
@@ -37,8 +38,10 @@ export default function ProfilePage({ match }) {
   };
 
   useEffect(() => {
-    setShow(false); // at first enter
-    window.scrollTo(0, 0);
+    if (customHistory.action == "PUSH") {
+      setShow(false); // at first enter
+      window.scrollTo(0, 0);
+    }
   }, [userProfile]);
 
   useEffect(() => {
@@ -46,16 +49,16 @@ export default function ProfilePage({ match }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [pageY]);
 
-  if (!show) {
+  if (!show && customHistory.action == "PUSH") {
     setShow(true); // only once stop scroll
     animateScrollTo(245, {
       elementToScroll: window,
       horizontalOffset: 0,
       maxDuration: 1500,
-      minDuration:1500,
+      minDuration: 1500,
       speed: 500,
       verticalOffset: 0,
-      cancelOnUserAction: false,
+      cancelOnUserAction: false
     });
     document.body.style.overflow = "hidden";
     setTimeout(() => (document.body.style.overflow = null), 2000);
@@ -64,8 +67,13 @@ export default function ProfilePage({ match }) {
     return (
       <div className="ProfilePage">
         <div className="ProfileBack" />
-        <ProfileHeader user={userProfile.user} isFriend={userProfile.is_friend} pageY={pageY} myId={myId} />
-        <div style={{minHeight:"100vh"}}>
+        <ProfileHeader
+          user={userProfile.user}
+          isFriend={userProfile.is_friend}
+          pageY={pageY}
+          myId={myId}
+        />
+        <div style={{ minHeight: "100vh" }}>
           <Scouter score={Math.round(userProfile.score)} pageY={pageY} />
           <FriendList user={userProfile.user} />
           <DealHistory user={userProfile.user} />
