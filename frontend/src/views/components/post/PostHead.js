@@ -7,12 +7,14 @@ import { useSelector } from "react-redux";
 import User from "../user/User";
 import "./Post.css";
 import { customHistory } from "index";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 import {
   getChatRoomByPostID,
   setPostUpdated,
   deleteFavorite,
   makeFavorite
 } from "api";
+import { toast } from "react-toastify";
 
 const svgs = (() => {
   let svgs = {};
@@ -29,6 +31,7 @@ export default function PostHead({ info, history, hideBtn }) {
   const [isFavorite, setIsFavorite] = useState(
     likeMap[info.id] || info.is_favorite
   );
+
   const getBtn = idx => {
     const img = {
       0: "share",
@@ -42,10 +45,14 @@ export default function PostHead({ info, history, hideBtn }) {
     };
   };
 
+  const url = `${window.location.host}/post/${info.id}`;
+
   const btnAction = idx => {
     /* 순서대로 공유, 좋아요, 구매/관심없음 */
     return () => {
-      if (idx === 1) {
+      if (idx == 0) {
+        navigator.clipboard.writeText("hello");
+      } else if (idx === 1) {
         /* TODO: Backend 에 알려서, likes 바꿔야 함 */
         setIsFavorite(!isFavorite);
         if (!isFavorite) {
@@ -71,15 +78,26 @@ export default function PostHead({ info, history, hideBtn }) {
   return (
     <div className="postHead">
       <User userInfo={info.author} />
-      {!(hideBtn == true) &&
-        [0, 1, 2].map(idx => (
-          <button /* 3개의 버튼을 순서대로 생성 */
-            key={idx}
+      {!(hideBtn == true) && (
+        <div>
+          <CopyToClipboard text={url} onCopy={() => toast('링크가 복사되었습니다.')}>
+            <button
+              className="btn postHeadBtn"
+              style={getBtn(0)}
+            ></button>
+          </CopyToClipboard>
+          <button
             className="btn postHeadBtn"
-            style={getBtn(idx)}
-            onClick={btnAction(idx)}
-          />
-        ))}
+            style={getBtn(1)}
+            onClick={btnAction(1)}
+          ></button>
+          <button
+            className="btn postHeadBtn"
+            style={getBtn(2)}
+            onClick={btnAction(2)}
+          ></button>
+        </div>
+      )}
     </div>
   );
 }

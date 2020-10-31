@@ -32,7 +32,6 @@ export default function Reply({
               <Moment format="MM/DD HH:mm">{comment.created_at}</Moment>
             </div>
             <div onClick={handleReciever} className="replyButton">
-              <div className="heartIcon"></div>
               <div>답글달기</div>
             </div>
           </div>
