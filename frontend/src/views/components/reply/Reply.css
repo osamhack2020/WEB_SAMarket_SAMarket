@@ -75,6 +75,7 @@
       height: 30px;
   }
 
+
   .heartIcon {
     float: left;
     width: 15px;
@@ -82,3 +83,36 @@
     background: url(../../../imgs/icons/like.svg) no-repeat;
     background-size: 100%;
   }
+
+.replyName {
+  position: relative;
+  left: 0px;
+  margin-top: 2px;
+  font-size: 13px;
+}
+
+.replyButton {
+  background: #fdfeff;
+  right: 25px;
+  bottom: 7px;
+}
+
+.replyFooter {
+  height: 30px;
+}
+
+.likeIcon,
+.likedIcon {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 15px;
+  height: 15px;
+  background: url(../../../imgs/icons/like.svg) no-repeat;
+  background-size: 15px 15px;
+}
+
+.likedIcon {
+  background: url(../../../imgs/icons/liked.svg) no-repeat;
+  background-size: 15px 15px;
+}
