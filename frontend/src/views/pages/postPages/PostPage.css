@@ -70,3 +70,10 @@
 .hidden {
   visibility: hidden;
 }
+
+.postingInfo .postingBack .content {
+  height: auto;
+  min-height: 300px;
+  padding: 20px;
+}
+
