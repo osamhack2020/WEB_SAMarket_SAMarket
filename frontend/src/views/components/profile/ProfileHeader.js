@@ -2,6 +2,7 @@ import React, { useState, createRef } from "react";
 import BackBtn from "views/components/header/BackBtn";
 import UserProfile from "views/components/user/UserProfile";
 import { uploadImage, follow, unfollow } from "api";
+import { toast } from "react-toastify";
 
 export function ProfileHeader({ user, isFriend: f, pageY, myId }) {
   const [isFriend, setFriend] = useState(f);
@@ -14,10 +15,12 @@ export function ProfileHeader({ user, isFriend: f, pageY, myId }) {
     if (isFriend) {
       unfollow(user.id).then(response => {
         setFriend(false);
+        window.location.reload();
       });
     } else {
       follow(user.id).then(response => {
         setFriend(true);
+        window.location.reload();
       });
     }
   };
