@@ -129,20 +129,18 @@ export default function SignUpForm() {
         className="signInputDate"
         placeholder="입대일"
         type="date"
-        value="2020-01-01"
         required
         aria-required="true"
-        onChange={e => setInfo({ enter: e.target.value, ...userInfo })}
+        name="ipdae" ref={register}
       />
       <div>~</div>
       <input
         className="signInputDate"
         placeholder="전역일"
         type="date"
-        value="2021-01-01"
         required
         aria-required="true"
-        onChange={e => setInfo({ discharge: e.target.value, ...userInfo })}
+        name="jeonyeok" ref={register}
       />
       <button style={{ marginTop: 40 }} className="btn signBtn" type="submit">
         등록하기

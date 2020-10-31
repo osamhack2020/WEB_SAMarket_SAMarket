@@ -77,7 +77,7 @@ export default function PostHead({ info, history, hideBtn }) {
 
   return (
     <div className="postHead">
-      <User userInfo={info.author} />
+      <User userInfo={info.author} useName={info.type == "adv"} />
       {!(hideBtn == true) && (
         <div>
           <CopyToClipboard text={url} onCopy={() => toast('링크가 복사되었습니다.')}>
