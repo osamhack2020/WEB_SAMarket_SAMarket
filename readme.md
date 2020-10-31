@@ -37,6 +37,12 @@
 
 ## 📽️ 시연 동영상 (Demo Video)
 
+
+
+<br>
+
+## 🎁 발표 동영상 (Presentation Video)
+
 <center>
 
 [![Video](docs/imgs/video_thumbnail.png)](http://tinyurl.com/samarketvideo)
@@ -55,7 +61,7 @@
 
 ![Presentation](docs/imgs/ppt.png)
 
-*PPT 는 "읽기 전용"파일 입니다. 편집이 불가능 합니다.*
+(PPT 는 "읽기 전용"파일 입니다. 편집이 불가능 합니다.)
 
 </center>
 
