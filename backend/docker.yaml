@@ -2,7 +2,7 @@
 server:
   host: 127.0.0.1
   port: 7777
-  mode: production
+  mode: release
   timeout:
     server: 30
     read: 15
