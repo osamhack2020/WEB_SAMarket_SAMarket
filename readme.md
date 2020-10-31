@@ -15,7 +15,7 @@
 
 ## https://samarket.kr/
 
-[![링크](docs/imgs/main_link.png)](https://samarket.kr/)
+<img src="docs/imgs/preview1.gif" width="250"/><img src="docs/imgs/preview2.gif" width="250"/><img src="docs/imgs/preview3.gif" width="250"/>
 
 </center>
 
@@ -37,6 +37,11 @@
 
 ## 📽️ 시연 동영상 (Demo Video)
 
+<center>
+
+[![Video](docs/imgs/demovideo_thumbnail.png)](https://www.youtube.com/watch?v=DrXPC0_RJes)
+
+</center>
 
 
 <br>
@@ -106,7 +111,7 @@
 | [Github](https://github.com/) | [AWS](https://aws.amazon.com/ko/?nc2=h_lg) | [Docker](https://www.docker.com/get-started) | [Golang](https://hub.docker.com/_/golang)| [bitnami/mariadb](https://github.com/bitnami/bitnami-docker-mariadb) |
 |:---:|:---:|:---:|:---:|:---:|
 |<img src="https://devicon.dev/devicon.git/icons/github/github-original.svg" height="60px"/>|<img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" height="60px"/>|<img src="https://devicon.dev/devicon.git/icons/docker/docker-plain.svg" height="60px"/>|<img src="https://camo.githubusercontent.com/99857f75ada780c560e1455b9c8922dda774938e/68747470733a2f2f676f6c616e672e6f72672f6c69622f676f646f632f696d616765732f676f2d6c6f676f2d626c75652e737667" height="40px"/>|<img src="https://avatars2.githubusercontent.com/u/13025337?s=460&u=c18c61f29e81c26768a799bbb5e116693ff335de&v=4" height="60px"/>|
-
+  
 <br>
 
 ## 🧱 파일 구조 (File Structure)
@@ -308,7 +313,7 @@ $ git clone https://github.com/osamhack2020/WEB_SAMarket_SAMarket.git
 $ cd backend
 $ export SA_RUN=config_name make run
 ```
-## 🐳Docker를 사용한 실행 환경 구축하기
+## 🐳 Docker를 사용한 실행 환경 구축하기
 강군마켓의 프로젝트는 Docker를 이용하여 개발되었고, 강군마켓을 손 쉽게 실행할 수 있도록 docker-compose 와 샘플 sql를 제공하고 있습니다. Docker를 이용하면 손 쉽게 강군마켓을 체험해 볼 수 있습니다.
 #### 1. 도커 설치
 [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/)
