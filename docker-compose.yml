@@ -1,0 +1,26 @@
+version: '3.7'
+services: 
+    samarket:
+        build :
+            context: .
+            dockerfile: ./Dockerfile
+        restart: always
+        ports: 
+            - 8090:7777
+        depends_on:
+            - database
+        links:
+            - database:database
+
+    database:
+        image: bitnami/mariadb:latest
+        ports: 
+            - 7778:3306
+        restart: always
+        environment: 
+            MARIADB_ROOT_PASSWORD: toor
+            MARIADB_DATABASE : samarket
+            MARIADB_ROOT_USER: root
+            MARIADB_PASSWORD: toor
+        volumes:
+            - "./sql/:/docker-entrypoint-initdb.d/"

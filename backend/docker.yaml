@@ -1,0 +1,20 @@
+# This is a sample config.
+server:
+  host: 127.0.0.1
+  port: 7777
+  mode: prod
+  timeout:
+    server: 30
+    read: 15
+    write: 10
+    idle: 5
+
+key:
+  crypt: testata23
+  
+db:
+  host: database
+  port: 3306
+  username: root
+  password: toor
+  database: samarket
