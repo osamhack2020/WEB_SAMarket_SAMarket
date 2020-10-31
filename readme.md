@@ -39,7 +39,7 @@
 
 <center>
 
-[![Video](docs/imgs/demovideo_thumbnail.png)](https://www.youtube.com/watch?v=DrXPC0_RJes)
+[![Video](docs/imgs/main_link.png)](https://www.youtube.com/watch?v=DrXPC0_RJes)
 
 </center>
 
@@ -115,7 +115,7 @@
 ### 🔌 Infra
 | [Github](https://github.com/) | [AWS](https://aws.amazon.com/ko/?nc2=h_lg) | [Docker](https://www.docker.com/get-started) | [Golang](https://hub.docker.com/_/golang)| [bitnami/mariadb](https://github.com/bitnami/bitnami-docker-mariadb) |
 |:---:|:---:|:---:|:---:|:---:|
-|<img src="https://devicon.dev/devicon.git/icons/github/github-original.svg" height="60px"/>|<img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" height="60px"/>|<img src="https://devicon.dev/devicon.git/icons/docker/docker-plain.svg" height="60px"/>|<img src="https://camo.githubusercontent.com/99857f75ada780c560e1455b9c8922dda774938e/68747470733a2f2f676f6c616e672e6f72672f6c69622f676f646f632f696d616765732f676f2d6c6f676f2d626c75652e737667" height="40px"/>|<img src="https://avatars2.githubusercontent.com/u/13025337?s=460&u=c18c61f29e81c26768a799bbb5e116693ff335de&v=4" height="60px"/>|
+|<img src="https://devicon.dev/devicon.git/icons/github/github-original.svg" height="60px"/>|<img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" height="50px"/>|<img src="https://devicon.dev/devicon.git/icons/docker/docker-plain.svg" height="60px"/>|<img src="https://camo.githubusercontent.com/99857f75ada780c560e1455b9c8922dda774938e/68747470733a2f2f676f6c616e672e6f72672f6c69622f676f646f632f696d616765732f676f2d6c6f676f2d626c75652e737667" height="40px"/>|<img src="https://avatars2.githubusercontent.com/u/13025337?s=460&u=c18c61f29e81c26768a799bbb5e116693ff335de&v=4" height="60px"/>|
   
 <br>
 
