@@ -70,6 +70,7 @@ func main() {
 		httpRouter.GET("/*path", func(c *gin.Context) {
 			c.Redirect(302, "https://"+config.Settings.Server.Domain+"/"+c.Param("path"))
 		})
+		httpRouter.Run(":80")
 		autotls.Run(r, config.Settings.Server.Domain)
 	} else {
 		r.Run(fmt.Sprintf(":%s", config.Settings.Server.Port))
