@@ -24,7 +24,7 @@
 <br>
 
 ## 📽️ 시연 동영상 (Demo Video)
-[![Video](docs/imgs/thumbnail.png)](http://tinyurl.com/samarketvideo)
+[![Video](docs/imgs/video_thumbnail.png)](http://tinyurl.com/samarketvideo)
 
 <br>
 
