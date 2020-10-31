@@ -167,8 +167,10 @@
   font-size: 17px;
   color: #05b0ea;
   font-weight: bold;
-  text-align: center;
+  text-align: left;
   padding-top: 50px;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .slick-list {

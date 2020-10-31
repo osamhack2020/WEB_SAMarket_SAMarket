@@ -18,7 +18,7 @@ export default function PostList({ user }) {
     <div>
       <div className="section-header">{user.name}의 강군로드</div>
       {posts.slice(0, 5).map(post => (
-        <div className={`postContainer ${post.type === "adv" ? "adVer" : ""}`}>
+        <div className="postContainer">
           <Post key={post.id} info={post} />
         </div>
       ))}
