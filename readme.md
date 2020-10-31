@@ -1,4 +1,5 @@
 
+
 [![Logo](docs/imgs/logo.png)](https://samarket.kr)
 # 강군마켓 
 ![Alt text](https://img.shields.io/badge/data-web-green) 
@@ -256,10 +257,20 @@ config_name을 원하는 설정 파일 이름으로 바꾸고 (ex: debug) 실행
 ```bash
 $ git clone https://github.com/osamhack2020/WEB_SAMarket_SAMarket.git
 $ cd backend
-$ export SA_RUN={config_name} make run
+$ export SA_RUN=config_name make run
 ```
-
-
+## 🐳Docker를 사용한 실행 환경 구축하기
+강군마켓의 프로젝트는 Docker를 이용하여 개발되었고, 강군마켓을 손 쉽게 실행할 수 있도록 docker-compose 와 샘플 sql를 제공하고 있습니다. Docker를 이용하면 손 쉽게 강군마켓을 체험해 볼 수 있습니다.
+#### 1. 도커 설치
+[https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/)
+#### 2. docker-compose로 강군마켓 실행
+```bash
+git clone https://github.com/osamhack2020/WEB_SAMarket_SAMarket samarket
+cd samarket
+docker-compose up -d
+curl localhost:8090 // 서버 접속이 되는지 확인
+```
+위와 같이 입력한 후 localhost:8090로 접속하면 강군마켓 실행을 확인할 수 있습니다.
  
 ## 팀 정보 (Team Information)
 =======
