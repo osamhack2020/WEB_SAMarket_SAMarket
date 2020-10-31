@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Profile from "./Profile";
 import "./User.css";
 
-export default function User({ userInfo, loc }) {
+export default function User({ userInfo, loc, useName }) {
   // loc: {top, left}
   const user = {
     position: "relative",
@@ -17,7 +17,7 @@ export default function User({ userInfo, loc }) {
     <div style={user}>
       <Profile userInfo={userInfo} size={35} />
       <Link to={`/profile/${userInfo.id}`} className="btn userName">
-        @{userInfo.login_id}
+        @{useName == true? userInfo.name : userInfo.login_id}
       </Link>
     </div>
   );
