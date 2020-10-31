@@ -37,6 +37,11 @@
 
 ## 📽️ 시연 동영상 (Demo Video)
 
+<center>
+
+[![Video](https://www.youtube.com/watch?v=DrXPC0_RJes/0.jpg)](https://www.youtube.com/watch?v=DrXPC0_RJes)
+
+</center>
 
 
 <br>
@@ -102,7 +107,7 @@
  -  [Gorm](https://gorm.io/ko_KR/)
  -  Swagger + [Swaggo](https://github.com/swaggo/swag)
 
-### 🐳Docker
+### Docker
   - [bitnami/mariadb](https://github.com/bitnami/bitnami-docker-mariadb)
   - [Golang](https://hub.docker.com/_/golang)
   
@@ -307,7 +312,7 @@ $ git clone https://github.com/osamhack2020/WEB_SAMarket_SAMarket.git
 $ cd backend
 $ export SA_RUN=config_name make run
 ```
-## 🐳Docker를 사용한 실행 환경 구축하기
+## 🐳 Docker를 사용한 실행 환경 구축하기
 강군마켓의 프로젝트는 Docker를 이용하여 개발되었고, 강군마켓을 손 쉽게 실행할 수 있도록 docker-compose 와 샘플 sql를 제공하고 있습니다. Docker를 이용하면 손 쉽게 강군마켓을 체험해 볼 수 있습니다.
 #### 1. 도커 설치
 [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/)
