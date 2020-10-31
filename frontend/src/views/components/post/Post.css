@@ -27,8 +27,10 @@
   box-sizing: border-box;
   padding-top: 5px;
   width: 340px;
-  height: 190px;
-  line-height: 190px;
+  min-height: 190px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border: 0;
   border-radius: 20px;
   font-weight: bold;
