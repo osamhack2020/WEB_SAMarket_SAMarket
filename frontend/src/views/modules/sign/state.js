@@ -1,6 +1,5 @@
 /* Main Page 등에서 이루어지는 검색을 다룸 */
 import createReducer from "../common/createReducer";
-import { users } from "data/users.json";
 import { useDispatch } from "react-redux";
 import { WS_URL, register, signInReq, checkSession } from "api";
 import { useHistory } from "react-router-dom";
