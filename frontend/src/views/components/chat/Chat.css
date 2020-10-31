@@ -148,3 +148,9 @@
   padding: 0 6px 0 6px;
   margin-right: 5px;
 }
+
+.historyContainer p {
+  text-align: center;
+  color: #05b0ea;
+  font-weight: bold;
+}

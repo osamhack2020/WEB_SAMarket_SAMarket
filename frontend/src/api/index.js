@@ -182,6 +182,10 @@ export async function reviewListPost(userid) {
   return await http.get(`/review/list/post/${userid}`);
 }
 
+export async function getReviewByPostID(postID) {
+  return await http.get(`/review/post/${postID}`)
+}
+
 export async function canWriteReview(chatRoomID) {
   return await http.get(`/chat/canwrite/${chatRoomID}`);
 }

@@ -11,6 +11,7 @@ import "./Chat.css";
 import { NotFoundPage } from "views/pages/tempPages";
 import SAHistory from "../rate/SAHistory";
 import { sendChat } from "views/modules/chat/state";
+import { getReviewByPostID } from "api";
 
 let socket;
 
@@ -24,10 +25,17 @@ export default function ChatRoom({ chatRoom, messages, me, st }) {
     setMessage("");
   };
 
+  const [review, setReview] = useState({});
   useEffect(() => {
     requestAnimationFrame(() => {
       document.body.scrollIntoView(false);
     });
+
+    if (st.status == 3) {
+      getReviewByPostID(chatRoom.post_id).then(response => {
+        setReview(response.data);
+      });
+    }
   }, [messages, st.status]);
   if (chatRoom.post)
     return (
@@ -39,11 +47,12 @@ export default function ChatRoom({ chatRoom, messages, me, st }) {
         )}
         <MessageList divRef={el} me={me} messages={messages} />
         {st.status == 1 && <Rate me={me} chatRoom={chatRoom} st={st} />}
-        {st.status == 2 && (
-          "다른 구매자가 상품을 구매하였습니다."
-        )}
+        {st.status == 2 && "다른 구매자가 상품을 구매하였습니다."}
         {st.status == 3 && (
-          "완료된 거래입니다."
+          <div className="historyContainer">
+            <p style={{textAlign:"center"}}>리뷰를 확인하세요!</p>
+            <SAHistory review={review} user={me} />
+          </div>
         )}
         <ChatInput
           message={message}
