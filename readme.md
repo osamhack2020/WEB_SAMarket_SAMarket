@@ -34,9 +34,9 @@
 
 [PPT 버전](PPT/강군마켓.pptx)
 
-![Presentation](docs/imgs/presentation.png)
+![Presentation](docs/imgs/ppt.png)
 
-*PPT 는 "읽기 전용"파일 입니다.*
+*PPT 는 "읽기 전용"파일 입니다. 편집이 불가능 합니다.*
 
 <br>
 
