@@ -1,12 +1,22 @@
+<center>
 
 [![Logo](docs/imgs/logo.png)](https://samarket.kr)
+
+</center>
+
 # 강군마켓 
 ![Alt text](https://img.shields.io/badge/data-web-green) 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ### 강한 군인들만의 영내 중고거래 커뮤니티 
 
-[링크] [http://samarket.kr/](http://samarket.kr/)
+<center>
+
+## https://samarket.kr/
+
+[![링크](docs/imgs/main_link.png)](https://samarket.kr/)
+
+</center>
 
 <br>
 
@@ -23,12 +33,20 @@
  
 <br>
 
+
 ## 📽️ 시연 동영상 (Demo Video)
+
+<center>
+
 [![Video](docs/imgs/video_thumbnail.png)](http://tinyurl.com/samarketvideo)
+
+</center>
 
 <br>
 
 ## 🚀 소개 자료 (Presentation)
+
+<center>
 
 [PDF 버전](PPT/강군마켓.pdf)
 
@@ -37,6 +55,8 @@
 ![Presentation](docs/imgs/ppt.png)
 
 *PPT 는 "읽기 전용"파일 입니다. 편집이 불가능 합니다.*
+
+</center>
 
 <br>
 
@@ -47,8 +67,13 @@
 <br>
 
 ## 🛠️ 기능 설계 (Function Design)
-- [Adobe XD](https://www.tinyurl.com/samxdclr)   
+- [Adobe XD](https://www.tinyurl.com/samxdclr)
+
+<center>
+
  [![XD](docs/imgs/xd_proto.png)](https://www.tinyurl.com/samxdclr)   
+
+</center>
 
 #### PWA를 활용한 사용자 경험 최적화
 본 프로젝트는 Golang RESTful API 서버와 React Framework를 활용해 PWA(Progressive Web App)로 개발되었습니다. 이를 통해 강군마켓은 웹과 네이티브 앱의 이점을 모두 취할 수 있으며, 시스템 알림, 푸시 메시지 등 스마트폰에 최적화된 UI를 제공하면서 동시에 웹의 유용한 기능을 끌어와 데이터와 시간을 효과적으로 절약할 수 있습니다. PWA는 네이티브 앱과 비교했을 때 앱스토어에서 다운로드할 필요가 없으므로 강군마켓의 출시 및 공유가 더 용이하며, 빌드하는 것이 훨씬 빠르고 쉽기 때문에 네이티브 앱 개발보다 저렴하고 가볍다는 장점이 있습니다. 인터넷 연결이 끊긴 오프라인 상태라도 이용자에게 점진적 웹 응용 프로그램을 제공합니다. 또한 기종에 상관없이 어느 스마트폰에서나 작동할 수 있기 때문에 강군마켓 서비스에 대한 높은 호환성을 보장할 수 있습니다.
