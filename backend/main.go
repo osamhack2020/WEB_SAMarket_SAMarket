@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"net/http"
 	"sam/api"
 	"sam/config"
 	"sam/docs"
@@ -16,7 +15,6 @@ import (
 	"github.com/gin-gonic/autotls"
 	"github.com/gin-gonic/gin"
 	"github.com/go-redis/redis/v8"
-	"github.com/gorilla/websocket"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
@@ -29,12 +27,6 @@ import (
 
 // @BasePath /api/
 // @query.collection.format multi
-
-var upGrader = websocket.Upgrader{
-	CheckOrigin: func(r *http.Request) bool {
-		return true
-	},
-}
 
 func main() {
 	secureFunc := func() gin.HandlerFunc {
