@@ -64,6 +64,9 @@ func (store IReviewStore) GetReviews(userID string) []PR {
 func (store IReviewStore) GetReviewByPostID(postID string) PR {
 	var review PR
 	db.Model(&PR{}).Raw("select posts.id as `post_id`, posts.author_id as `post_author_id`, posts.tags as `post_tags`, posts.title as `post_title`, posts.sub as `post_sub`, posts.type as `post_type`, posts.content as `post_content`, posts.clr_back as `post_clr_back`, posts.clr_tag as `post_clr_tag`, posts.clr_font as `post_clr_font`, posts.sub as `post_sub`, r1.content as `r1_content`, r1.writer_id as `r1_writer_id`, r1.point as `r1_point`, r2.content as `r2_content`, r2.writer_id as `r2_writer_id`, r2.point as `r2_point` from posts LEFT OUTER JOIN reviews as r1 ON r1.post_id = posts.id and r1.writer_id = posts.author_id LEFT OUTER JOIN reviews as r2 ON r2.post_id = posts.id and r2.writer_id != posts.author_id where posts.id = ?", postID).Preload(clause.Associations).Scan(&review)
+	review.OppReview.Writer = *UserStore.GetUser(review.OppReview.WriterID)
+	review.MyReview.Writer = *UserStore.GetUser(review.MyReview.WriterID)
+	review.Post.Author = *UserStore.GetUser(review.Post.AuthorID)
 	return review
 }
 
