@@ -129,7 +129,6 @@ export default function SignUpForm() {
         className="signInputDate"
         placeholder="입대일"
         type="date"
-        value="2020-01-01"
         required
         aria-required="true"
         name="ipdae" ref={register}
@@ -139,7 +138,6 @@ export default function SignUpForm() {
         className="signInputDate"
         placeholder="전역일"
         type="date"
-        value="2021-01-01"
         required
         aria-required="true"
         name="jeonyeok" ref={register}
