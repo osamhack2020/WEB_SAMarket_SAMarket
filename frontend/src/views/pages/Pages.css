@@ -1,0 +1,45 @@
+.MainPage {
+  font-family: "NotoSans KR";
+  padding-top: 280px;
+  padding-bottom: 120px;
+  color: #202326;
+  background: #f0f3f6;
+}
+
+.ProfilePage {
+  text-align: center;
+  padding-top: 250px;
+  padding-bottom: 30px;
+  background: #fdfeff;
+  overflow-x: hidden;
+}
+
+.MainPage .head .profile {
+  margin-top: 60px;
+} 
+
+.MarginPlus {
+  padding-top: 525px;
+}
+
+.LikesPage {
+  padding-top: 80px;
+  padding-bottom: 30px;
+}
+
+.listHead {
+  box-sizing: border-box;
+  text-align: center;
+  padding: 32px;
+  margin: 0;
+  position: fixed;
+  top: -20px;
+  width: 100%;
+  height: 100px;
+  border-radius: 20px;
+  background: #fdfeff;
+  box-shadow: 0px 5px 20px 0px rgba(80, 80, 80, 10%);
+  z-index: 9999;
+  font-size: 15px;
+  font-weight: bold;
+}

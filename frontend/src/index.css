@@ -1,0 +1,60 @@
+* {
+  font-family: -apple-system, "NotoSans KR";
+  color: #202326;
+}
+
+body {
+  color: #202326;
+  background: #f0f3f6;
+  margin: 0;
+  font-family: -apple-system, "NotoSans KR", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.backdropBlur {
+  background: rgba(253, 254, 255, 90%) !important;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.btn {
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.WARN {
+  border: 1.5px solid #ff5353 !important;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #8990a0;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+input,
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
