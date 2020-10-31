@@ -4,7 +4,7 @@ export function TypeSelector({ info, updateInfo }) {
   const selectType = e => {
     updateInfo({
       type: e.target.name,
-      sub: e.target.name === "sell" ? "" : info.contents.sub
+      sub: e.target.name === "sell" ? "" : info.sub
     });
   };
   const types = [
@@ -43,7 +43,7 @@ export function ClrSelector({ info, updateInfo }) {
           <input
             className="btn clrInput"
             type="color"
-            value={info.contents.clr[clr]}
+            value={info.clr[clr]}
             onChange={selectClr}
             name={clr}
           />

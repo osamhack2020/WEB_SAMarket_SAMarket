@@ -15,12 +15,21 @@ import {
   DealHistory,
   PostList
 } from "views/components/profile/index";
+import { getUserProfile } from "api";
+import animateScrollTo from "animated-scroll-to";
 
 export default function ProfilePage({ match }) {
   const [pageY, setPageY] = useState(0);
   const [show, setShow] = useState(false);
-  const user = getUserById(match.params.userId);
-  const myId = useSelector(state => state.sign.userId);
+  const [userProfile, setUserProfile] = useState({});
+
+  useEffect(() => {
+    getUserProfile(match.params.userId).then(response => {
+      setUserProfile(response.data);
+    });
+  }, []);
+
+  const myId = useSelector(state => state.sign.userInfo.id);
 
   const handleScroll = () => {
     const { pageYOffset } = window;
@@ -30,34 +39,44 @@ export default function ProfilePage({ match }) {
   useEffect(() => {
     setShow(false); // at first enter
     window.scrollTo(0, 0);
-  }, [user]);
+  }, [userProfile]);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [pageY]);
 
-  if (!show && 225 <= pageY && pageY < 245) {
+  if (!show) {
     setShow(true); // only once stop scroll
-    window.scrollTo(0, 245); // 강함 측정 중, 스크롤 막음
+    animateScrollTo(245, {
+      elementToScroll: window,
+      horizontalOffset: 0,
+      maxDuration: 1500,
+      minDuration:1500,
+      speed: 500,
+      verticalOffset: 0,
+      cancelOnUserAction: false,
+    });
     document.body.style.overflow = "hidden";
     setTimeout(() => (document.body.style.overflow = null), 2000);
   }
-
-  if (!user) return <NotFoundPage />;
-  return (
-    <div className="ProfilePage">
-      <div className="ProfileBack" />
-      <ProfileHeader user={user} pageY={pageY} myId={myId} />
-      <div>
-        <Scouter user={user} pageY={pageY} />
-        <FriendList user={user} />
-        <DealHistory user={user} />
-        <PostList user={user} />
+  if (userProfile.user) {
+    return (
+      <div className="ProfilePage">
+        <div className="ProfileBack" />
+        <ProfileHeader user={userProfile.user} isFriend={userProfile.is_friend} pageY={pageY} myId={myId} />
+        <div>
+          <Scouter score={Math.round(userProfile.score)} pageY={pageY} />
+          <FriendList user={userProfile.user} />
+          <DealHistory user={userProfile.user} />
+          <PostList user={userProfile.user} />
+        </div>
+        {myId === userProfile.user.id && <SignOut />}
       </div>
-      {myId === user.id && <SignOut />}
-    </div>
-  );
+    );
+  } else {
+    return <div></div>;
+  }
 }
 
 function SignOut() {
@@ -65,7 +84,7 @@ function SignOut() {
   const logOut = () => dispatch(signOut());
   return (
     <Link to="/" className="btn signOut" onClick={logOut}>
-      퇴장하기
+      로그아웃
     </Link>
   );
 }

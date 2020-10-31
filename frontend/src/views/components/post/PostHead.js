@@ -6,6 +6,13 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import User from "../user/User";
 import "./Post.css";
+import { customHistory } from "index";
+import {
+  getChatRoomByPostID,
+  setPostUpdated,
+  deleteFavorite,
+  makeFavorite
+} from "api";
 
 const svgs = (() => {
   let svgs = {};
@@ -16,15 +23,17 @@ const svgs = (() => {
   return svgs;
 })();
 
-export default function PostHead({ postId, type, author }) {
-  const userInfo = useSelector(state => state.sign.userInfo);
-  const [liked, setLiked] = useState(userInfo.likes.indexOf(postId) >= 0);
+const likeMap = Object();
 
+export default function PostHead({ info, history, hideBtn }) {
+  const [isFavorite, setIsFavorite] = useState(
+    likeMap[info.id] || info.is_favorite
+  );
   const getBtn = idx => {
     const img = {
       0: "share",
-      1: liked ? "liked" : "like",
-      2: type === "sell" ? "buy" : "deny"
+      1: isFavorite ? "liked" : "like",
+      2: info.type === "sell" ? "buy" : "deny"
     }[idx];
     return {
       marginRight: "5%",
@@ -38,21 +47,39 @@ export default function PostHead({ postId, type, author }) {
     return () => {
       if (idx === 1) {
         /* TODO: Backend 에 알려서, likes 바꿔야 함 */
-        setLiked(!liked);
+        setIsFavorite(!isFavorite);
+        if (!isFavorite) {
+          makeFavorite(info.id).then(response => {
+            likeMap[info.id] = true;
+          });
+        } else {
+          deleteFavorite(info.id).then(response => {
+            likeMap[info.id] = false;
+          });
+        }
+      }
+      if (idx == 2) {
+        if (info.type == "sell") {
+          getChatRoomByPostID(info.id).then(response => {
+            customHistory.push(`/chat/${response.data.id}`);
+          });
+        }
       }
     };
   };
 
   return (
     <div className="postHead">
-      <User userInfo={author} />
-      {[0, 1, 2].map(idx => (
-        <button /* 3개의 버튼을 순서대로 생성 */
-          className="btn postHeadBtn"
-          style={getBtn(idx)}
-          onClick={btnAction(idx)}
-        />
-      ))}
+      <User userInfo={info.author} />
+      {!(hideBtn == true) &&
+        [0, 1, 2].map(idx => (
+          <button /* 3개의 버튼을 순서대로 생성 */
+            key={idx}
+            className="btn postHeadBtn"
+            style={getBtn(idx)}
+            onClick={btnAction(idx)}
+          />
+        ))}
     </div>
   );
 }

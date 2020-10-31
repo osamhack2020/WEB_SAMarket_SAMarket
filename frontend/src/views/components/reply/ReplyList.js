@@ -2,16 +2,24 @@ import React from "react";
 import Reply from "./Reply";
 import "./Reply.css";
 
-import { getChatRoom } from "views/modules/common/fakeServer";
-const roomInfo = getChatRoom("0");
-const { postId, members, msgs } = roomInfo;
-
-export default function ReplyList({ messages = msgs, inputFocus }) {
+export default function ReplyList({
+  inputFocus,
+  setReciever,
+  setIsFocus,
+  setToReply,
+  comments
+}) {
   return (
     <div className="ReplyList">
-      {messages.map((message, i) => (
-        <div key={i}>
-          <Reply message={message} inputFocus={inputFocus} />
+      {comments.map(comment => (
+        <div key={comment.id}>
+          <Reply
+            comment={comment}
+            inputFocus={inputFocus}
+            setReciever={setReciever}
+            setIsFocus={setIsFocus}
+            setToReply={setToReply}
+          />
         </div>
       ))}
     </div>

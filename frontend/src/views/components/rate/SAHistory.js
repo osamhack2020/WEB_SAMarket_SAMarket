@@ -1,60 +1,54 @@
 /* rate history */
-import React from "react";
-import {
-  getPostById,
-  getRateByChatRoomId,
-  getEmptyPost
-} from "views/modules/common/fakeServer";
+import React, { useEffect, useState } from "react";
+import { reviewListPost } from "api";
 import Content from "../post/Content";
 import Profile from "../user/Profile";
 import Star from "./Stars";
 
-export default function SAHistory({ user, chatRoomId }) {
-  const rateInfo = getRateByChatRoomId(chatRoomId);
-  const postInfo =
-    chatRoomId < 0
-      ? getEmptyPost(user, "세상에!", "거래내역이 없습니다..")
-      : getPostById(rateInfo.postId);
-  const noParticipant = {
-    id: "",
-    name: "",
-    rate: 0,
-    comment: ""
-  };
-
-  return (
-    <div className="SAHistory">
-      <Content info={postInfo} />
-      <div className="comments">
-        <Comment
-          chatRoomId={chatRoomId}
-          participant={rateInfo ? rateInfo.seller : noParticipant}
-          isSeller={true}
-        />
-        <Comment
-          chatRoomId={chatRoomId}
-          participant={rateInfo ? rateInfo.buyer : noParticipant}
-          isSeller={false}
-        />
+export default function SAHistory({ user, review }) {
+  if (review && review.post) {
+    return (
+      <div className="SAHistory">
+        <Content info={review.post} />
+        <div className="comments">
+          {review.my_review && review.my_review.writer_id.length > 0 && (
+            <Comment
+              review={review.my_review}
+              postID={review.post.id}
+              isSeller={review.my_review.writer_id == review.post.author.id}
+            />
+          )}
+          {review.opp_review && review.opp_review.writer_id.length > 0 && (
+            <Comment
+              review={review.opp_review}
+              postID={review.post.id}
+              isSeller={review.opp_review.writer_id == review.post.author.id}
+            />
+          )}
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return null;
+  }
 }
 
-function Comment({ chatRoomId, participant, isSeller }) {
-  return (
-    <div className="Comment">
-      <Profile userInfo={participant} size={45} />
-      <div className="commentName">{participant.name}</div>
-      <div className="role">{isSeller ? "판매자" : "구매자"}</div>
-      <div className="commentContainer">
-        <Star
-          rate={participant.rate}
-          freeze={true}
-          id={`${isSeller ? "seller" : "buyer"}${chatRoomId}`}
-        />
-        <div className="commentText">{participant.comment}</div>
+function Comment({ review, postID, isSeller }) {
+  if (review.writer)
+    return (
+      <div className="Comment">
+        <Profile userInfo={review.writer} size={45} />
+        <div className="commentName">{review.writer.name}</div>
+        <div className="role">{isSeller ? "판매자" : "구매자"}</div>
+        <div className="commentContainer">
+          <Star
+            rate={review.point}
+            freeze={true}
+            id={`${postID+review.writer_id}`}
+          />
+          <div className="commentText">{review.content}</div>
+        </div>
       </div>
-    </div>
-  );
+    );
+  else return null;
 }

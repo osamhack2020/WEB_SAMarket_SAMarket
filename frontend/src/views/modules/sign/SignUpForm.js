@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { signUp } from "./state";
 import styled from "styled-components";
 import "./Sign.css";
+import { useForm, Controller } from "react-hook-form";
+import { getUnitList } from "api";
 
 const InputTitle = styled.div`
   margin-top: 20px;
@@ -14,80 +16,104 @@ const InputTitle = styled.div`
 `;
 
 export default function SignUpForm() {
-  const [userId, setId] = useState("");
-  const [password, setPw] = useState("");
-  const [password_cnf, setPwCnf] = useState("");
+  const { register, setValue, errors, control, watch, handleSubmit } = useForm();
+
   const [userInfo, setInfo] = useState();
-  const dipatch = useDispatch();
+  const [unitList, setUnitList] = useState([]);
 
-  const handleSignUp = _ => {
-    throw new Error("가입 기능 구현중..");
-    dipatch(signUp(userId, { userId, password, ...userInfo }));
-  };
+  const dispatch = useDispatch();
 
-  const checkPwValidate = e => {
-    // 비밀번호의 유효성을 여기서 검증
-    setPw(e.target.value);
+  useEffect(() => {
+    getUnitList().then(response => {
+      setUnitList(response.data);
+    });
+  }, []);
+
+  let pwd = watch("password");
+  let pwd_cnf = watch("password_cnf");
+  let mil = watch("mil");
+
+  const handleSignUp = data => {
+    if (pwd == pwd_cnf) {
+      data.mil = Number(data.mil);
+      data.unit_id = Number(data.unit_id);
+      data.rank = Number(data.rank);
+      dispatch(signUp(data));
+    }
   };
 
   return (
-    <form onSubmit={handleSignUp}>
+    <form onSubmit={handleSubmit(handleSignUp)}>
       <InputTitle>ID & PW</InputTitle>
       <input
         className="signInput"
         type="id"
         placeholder="아이디"
-        required="true"
-        onChange={e => setId(e.target.value)}
+        required
+        name="login_id" ref={register}
       />
       <input
         className="signInput"
         type="password"
         placeholder="비밀번호"
-        required="true"
-        onChange={checkPwValidate}
+        required
+        name="password" ref={register}
       />
       <input
         className={`signInput ${
-          password_cnf && password !== password_cnf ? "WARN" : ""
+          pwd_cnf && pwd !== pwd_cnf ? "WARN" : ""
         }`}
         type="password"
         placeholder="비밀번호 확인"
-        required="true"
-        onChange={e => setPwCnf(e.target.value)}
+        required
+        name="password_cnf" ref={register}
       />
-      {password_cnf && password !== password_cnf && (
+      {pwd_cnf && pwd !== pwd_cnf && (
         <div className="warnMsg">비밀번호가 일치하지 않습니다.</div>
       )}
-
-      <InputTitle>소속</InputTitle>
+      <InputTitle>이름</InputTitle>
       <input
         className="signInput"
-        placeholder="부대"
-        required="true"
-        onChange={e => setInfo({ org: e.target.value, ...userInfo })}
+        placeholder="이름"
+        required
+        name="name" ref={register}
       />
+      <InputTitle>소속</InputTitle>
       <select
         className="signInput comboBox"
         placeholder="군별"
-        required="true"
+        required
         onChange={e => setInfo({ loc: e.target.value, ...userInfo })}
+        name="mil" ref={register}
       >
         {[
-          ["army", "육군"],
-          ["navy", "해군"],
-          ["airForce", "공군"],
-          ["marin", "해병"],
-          ["mnd", "국직"]
-        ].map(mil => (
-          <option value={mil[0]}>{mil[1]}</option>
+          [1, "육군"],
+          [2, "해군"],
+          [3, "공군"],
+          [4, "해병"],
+          [5, "국직"]
+        ].map(unitType => (
+          <option value={unitType[0]}>{unitType[1]}</option>
         ))}
       </select>
       <select
         className="signInput comboBox"
+        placeholder="부대"
+        required
+        onChange={e => setInfo({ unit_id: e.target.value, ...userInfo })}
+        name="unit_id" ref={register}
+      >
+        {unitList.filter(unit => unit.mil == Number(mil)).map(unit => (
+          <option value={unit.id}>{unit.name}</option>
+        ))}
+      </select>
+
+      <select
+        className="signInput comboBox"
         placeholder="현재 계급"
-        required="true"
+        required
         onChange={e => setInfo({ rank: e.target.value, ...userInfo })}
+        name="rank" ref={register}
       >
         {[
           [0, "이등병"],

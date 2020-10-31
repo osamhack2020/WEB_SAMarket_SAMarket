@@ -19,7 +19,7 @@ const svgs = (() => {
   return svgs;
 })();
 
-export default function MenuBar() {
+export default function MenuBar({ onClick }) {
   const [clicked, setClick] = useState(0);
   const getBtnImg = idx => {
     /* 각 버튼 별로 이미지를 적용함 */
@@ -33,6 +33,7 @@ export default function MenuBar() {
     return () => {
       //TODO: 해당 유형의 post 만 filter
       setClick(idx);
+      onClick(idx);
     };
   };
 

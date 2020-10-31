@@ -7,16 +7,16 @@ export default function TagInput({ info, updateInfo }) {
   const pushTag = () => {
     if (curTag.length > 0) {
       updateInfo({
-        tags: info.contents.tags.concat(curTag.slice(0, 24).replace(" ", "_"))
+        tags: info.tags.concat(curTag.slice(0, 24).replace(" ", "_"))
       });
       setCurTag("");
     }
   };
 
   const popTag = e => {
-    const idx = info.contents.tags.indexOf(e.target.value);
-    info.contents.tags.splice(idx, 1);
-    updateInfo({ tags: info.contents.tags });
+    const idx = info.tags.indexOf(e.target.value);
+    info.tags.splice(idx, 1);
+    updateInfo({ tags: info.tags });
   };
 
   return (
@@ -39,8 +39,8 @@ export default function TagInput({ info, updateInfo }) {
       />
       <div className="tagContainer">
         <div className="tagList">태그 목록</div>
-        {info.contents.tags.length === 0 && "태그가 없습니다."}
-        {info.contents.tags.map(tag => (
+        {info.tags.length === 0 && "태그가 없습니다."}
+        {info.tags.map(tag => (
           <button
             className="btn tagRmBtn"
             onClick={popTag}

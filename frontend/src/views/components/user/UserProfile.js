@@ -18,7 +18,7 @@ export default function UserProfile({ userInfo, stop }) {
     <div className="profile">
       <Profile userInfo={userInfo} size={80} />
       <div className="name">
-        {userInfo.name} @{userInfo.id}{" "}
+        {userInfo.name} @{userInfo.login_id}{" "}
       </div>
       {stop ? ( // scroll 에 반응하지 않음
         <Belongs userInfo={userInfo} handleSearch={handleSearch} />
@@ -35,10 +35,10 @@ function Belongs({ userInfo, handleSearch }) {
   return (
     <div className="belong">
       <Link to="/" className="btn loc" onClick={handleSearch(0)}>
-        {userInfo.loc}
+        {["육군", "해군", "공군", "해병", "국직"][userInfo.unit.mil-1]}
       </Link>
       <Link to="/" className="btn org" onClick={handleSearch(1)}>
-        {userInfo.org}
+        {userInfo.unit.name}
       </Link>
     </div>
   );

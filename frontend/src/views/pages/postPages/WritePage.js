@@ -13,7 +13,18 @@ import WriteForm from "views/components/write/WriteForm";
 export default function WritePage() {
   // Posting 을 작성하는 페이지
   const [info, setInfo] = useState(
-    getInitialPostInfo(useSelector(state => state.sign.userInfo))
+    {
+      title : "",
+      content: "",
+      tags: [],
+      clr: {
+        back: "#8990A0",
+        font: "#202326",
+        tag: "#505560"
+      },
+      type: "post",
+      sub: "",
+    }
   ); // 정해진 포맷을 받음
   const updateInfo = getPostInfoUpdater(info, setInfo);
 
@@ -25,8 +36,8 @@ export default function WritePage() {
     <Fragment>
       <div className="postHeadBack backdropBlur">
         <BackBtn />
-        <div className={`writeHead ${info.contents.title ? "" : "emptyTitle"}`}>
-          {info.contents.title ? info.contents.title : "포스팅 제목"}
+        <div className={`writeHead ${info.title ? "" : "emptyTitle"}`}>
+          {info.title ? info.title : "포스팅 제목"}
         </div>
       </div>
       <div className="postingInfo" style={{ marginBottom: 0 }}>

@@ -58,22 +58,19 @@ export const getEmptyPost = (user, title, sub) => {
 export const getRateByChatRoomId = chatRoomId => rates[chatRoomId];
 
 export function getPostInfoUpdater(info, setInfo) {
+  console.log(info);
   return ({ type, title, sub, tags, fontClr, backClr, tagClr, content }) => {
     setInfo({
-      postId: info.postId,
-      author: info.author,
       type: type !== undefined ? type : info.type,
-      contents: {
-        title: title !== undefined ? title : info.contents.title,
-        sub: sub !== undefined ? sub : info.contents.sub,
-        tags: tags !== undefined ? tags : info.contents.tags,
-        clr: {
-          font: fontClr !== undefined ? fontClr : info.contents.clr.font,
-          back: backClr !== undefined ? backClr : info.contents.clr.back,
-          tag: tagClr !== undefined ? tagClr : info.contents.clr.tag
-        },
-        content: content !== undefined ? content : info.contents.content
-      }
+      title: title !== undefined ? title : info.title,
+      sub: sub !== undefined ? sub : info.sub,
+      tags: tags !== undefined ? tags : info.tags,
+      clr: {
+        font: fontClr !== undefined ? fontClr : info.clr.font,
+        back: backClr !== undefined ? backClr : info.clr.back,
+        tag: tagClr !== undefined ? tagClr : info.clr.tag
+      },
+      content: content !== undefined ? content : info.content
     });
   };
 }

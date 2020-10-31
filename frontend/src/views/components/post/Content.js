@@ -5,30 +5,27 @@ import styled from "styled-components";
 import TagList from "../tag/TagList";
 import "./Post.css";
 
-export default function Content({ info, disable = false }) {
-  const { postId, contents, type } = info;
-  const { title, sub, tags, clr } = contents;
-  const color = clr
-    ? clr
-    : { back: "#8990A0", font: "#202326", tag: "#505560" };
-  const ContentBack = styled.div`
-    background: ${color.back};
-  `;
-  const Title = styled.div`
-    color: ${color.font};
-  `;
-  const Sub = styled.div`
-    color: ${color.font};
-  `;
+const ContentBack = styled.div`
+background: ${props => props.back};
+`;
+const Title = styled.div`
+color: ${props => props.font};
+`;
+const Sub = styled.div`
+color: ${props => props.font};
+`;
 
+export default function Content({ info, disable = false }) {
+  const { id, content, type, clr, tags, title, sub } = info;
+  const color = (clr == undefined || clr.back == "" || clr.font == "") ? { back: "#8990A0", font: "#202326", tag: "#505560" } : clr;
   return (
-    <ContentBack className="content">
-      <Link to={`/posts/${postId}`} className="contentLink" />
-      <Title className="contentTitle">{title}</Title>
-      <Sub className="contentSub">
+    <ContentBack back={color.back} className="content">
+      <Link to={`/posts/${id}`} className="contentLink" />
+      <Title font={color.font} className="contentTitle">{title}</Title>
+      <Sub font={color.font} className="contentSub">
         {sub ? sub + (type === "sell" ? " 원" : "") : ""}
       </Sub>
-      <TagList clr={color} texts={tags.slice(0, 5)} />
+      <TagList clr={color} texts={info.tags || []} />
       {disable && <div className="contentDisable" />}
     </ContentBack>
   );

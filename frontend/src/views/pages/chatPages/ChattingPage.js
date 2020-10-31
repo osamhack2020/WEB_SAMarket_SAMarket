@@ -1,32 +1,34 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
-import { getChatRoom } from "views/modules/common/fakeServer";
+import React, { useState, useEffect } from "react";
+import { useSelector, connect, useDispatch } from "react-redux";
 import ChatHeader from "views/components/chat/ChatHeader";
 import ChatRoom from "views/components/chat/ChatRoom";
+import { loadChatMsg } from "views/modules/chat/state";
 
-export default function ChattingPage({ match }) {
+function ChattingPage({ match, chatMsgList, currentChatRoom }) {
   const userInfo = useSelector(state => state.sign.userInfo);
   const chatRoomId = match.params.chatRoomId;
-  const roomInfo = getChatRoom(chatRoomId);
-  const { chatTitle, members, isDone } = roomInfo;
-  const [done, setDone] = useState(isDone);
-
-  if (useSelector(state => state.sign.authToken) && members) {
-    return (
-      <div>
-        {/* 더미데이터 서형진 
-          => chatRoomId 를 암호화 해서 url로 채팅방 1:1 매칭
-         + 해당 채팅방에 들어올 수 있는지 auth 체크 할 것 (backend) */}
-        <ChatHeader chatRoomTitle={chatTitle} done={done} setDone={setDone} />
-        <ChatRoom
-          chatRoomId={chatRoomId}
-          roomInfo={roomInfo}
-          me={userInfo}
-          done={done}
-        />
-      </div>
-    );
-  }
-  return <Redirect to="/" />;
+  const [status, setStatus] = useState(currentChatRoom.status);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadChatMsg(chatRoomId));
+  }, []);
+  useEffect(() => {
+    setStatus(currentChatRoom.status);
+  }, [currentChatRoom]);
+  const st = { status, setStatus };
+  return (
+    <div>
+      <ChatHeader st={st} chatRoom={currentChatRoom}/>
+      <ChatRoom
+        st={st}
+        chatRoom={currentChatRoom}
+        messages={chatMsgList}
+        me={userInfo}
+      />
+    </div>
+  );
 }
+
+export default connect(
+  state => ({ chatMsgList: state.chat.chatMsgList, currentChatRoom: state.chat.currentChatRoom })
+) (ChattingPage);

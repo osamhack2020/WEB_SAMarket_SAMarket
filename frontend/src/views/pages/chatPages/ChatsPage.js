@@ -1,37 +1,53 @@
 /* 채팅 목록을 볼 수 있는 페이지
 로그인 되어 있지 않은 경우, 로그인 요구
 */
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { connect, useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { getChatList } from "views/modules/common/fakeServer";
+import { getChatRoomList } from "api";
 import BackBtn from "views/components/header/BackBtn";
 import SearchBar from "views/components/header/SearchBar";
 import UnreadChat from "views/components/chat/UnreadChat";
 import Profile from "views/components/user/Profile";
+import { loadChatRooms } from "views/modules/chat/state";
 import "./ChatPage.css";
+import Moment from "react-moment";
 
-export default function ChatsPage() {
+function ChatsPage(props) {
   const [chatKeyword, setKeyword] = useState("");
-  const userId = useSelector(state => state.sign.userId);
-  const filtered = getChatList().filter(
+  const [filtered, setFiltered] = useState([]);
+  const { chatRoomList } = props;
+  const dispatch = useDispatch();
+
+  useEffect(() => { 
+    dispatch(loadChatRooms());
+  }, []);
+
+  /*
+  getChatList().filter(
     chatInfo =>
       chatInfo.chatTitle.indexOf(chatKeyword) !== -1 ||
       chatInfo.members.filter(member => member.name.indexOf(chatKeyword) !== -1)
         .length
   ); // 채팅방 제목에 검색어가 있거나, 멤버에 검색어가 있는 경우
+  */
+  const userInfo = useSelector(state => state.sign.userInfo);
 
   return (
     <div>
       <ChatsHeader setKeyword={setKeyword} />
       <div className="chatList">
-        {filtered.map(chatInfo => (
-          <ChatInfo info={chatInfo} myId={userId} />
+        {chatRoomList.map(chatInfo => (
+          <ChatInfo key={chatInfo.id} info={chatInfo} myId={userInfo.id}/>
         ))}
       </div>
     </div>
   );
 }
+
+export default connect(
+  state => ({ chatRoomList: state.chat.chatRoomList })
+) (ChatsPage);
 
 function ChatsHeader({ setKeyword }) {
   // 채팅 목록 상단에 있는 검색 가능한 헤드
@@ -50,21 +66,21 @@ function ChatsHeader({ setKeyword }) {
 
 function ChatInfo({ info, myId }) {
   // 채팅 정보를 보여주는 component
-  const { chatTitle, chatRoomId, members, unreadChat, msgs } = info;
+  const { title, id, members, unread } = info;
   const users = members.filter(member => member.id !== myId);
-  const lastMsg = msgs[msgs.length - 1];
+  const lastMsg = info.lastmsg;
 
   return (
-    <Link to={`/chat/${chatRoomId}`} className="btn chatInfo">
+    <Link to={`/chat/${id}`} className="btn chatInfo">
       <ChatThumbnail users={users.slice(0, 3)} />
-      {chatTitle}
+      {title}
       <p className="lastChat">{`${lastMsg.text.slice(0, 16)}${
         lastMsg.text.length > 16 ? ".." : ""
       }`}</p>
-      <LastChatTime time={lastMsg.time} />
-      {unreadChat > 0 && (
+      <LastChatTime time={info.created_at} />
+      {unread > 0 && (
         <div className="unreadMsg">
-          <UnreadChat unreadChat={unreadChat} />
+          <UnreadChat unreadChat={unread} />
         </div>
       )}
     </Link>
@@ -89,17 +105,9 @@ function ChatThumbnail({ users }) {
 }
 
 function LastChatTime({ time }) {
-  const today = new Date();
-  const [year, month, date] = [
-    today.getFullYear(),
-    today.getMonth() + 1,
-    today.getDate()
-  ];
-  const is_today = `${year}-${month}-${date}` === time.split(" ")[0];
-
   return (
     <div className="lastTime">
-      {is_today ? getTime(today, time.split(" ")[1]) : time.split(" ")[0]}
+      <Moment format="MM/DD HH:mm">{time}</Moment>
     </div>
   );
 }
