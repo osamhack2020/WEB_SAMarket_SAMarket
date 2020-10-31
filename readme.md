@@ -98,7 +98,7 @@
 ## 🧪 기술 스택 (Technique Used)
 
 ### 🎨 Frontend
- | [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) | [React.js](https://ko.reactjs.org/) | [Redux](https://ko.redux.js.org/) | [StyledComponent](https://styled-components.com/) | [Socket.op](https://socket.io/) |
+ | [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) | [React](https://ko.reactjs.org/) | [Redux](https://ko.redux.js.org/) | [StyledComponent](https://styled-components.com/) | [Socket.io](https://socket.io/) |
  |:---:|:---:|:---:|:---:|:---:|
  |<img src="https://devicon.dev/devicon.git/icons/javascript/javascript-original.svg" height="60px"/>|<img src="https://devicon.dev/devicon.git/icons/react/react-original.svg" height="60px">|<img src="https://devicon.dev/devicon.git/icons/redux/redux-original.svg" height="60px"/>|<img src="https://www.styled-components.com/atom.png" height="60px"/> |<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Socket-io.svg/600px-Socket-io.svg.png" height="60px">
 
