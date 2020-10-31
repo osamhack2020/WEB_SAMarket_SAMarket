@@ -39,7 +39,7 @@
 
 <center>
 
-[![Video](docs/imgs/main_link.png)](https://www.youtube.com/watch?v=DrXPC0_RJes)
+[![Video](docs/imgs/demovideo_thumbnail.png)](https://www.youtube.com/watch?v=DrXPC0_RJes)
 
 </center>
 
@@ -89,8 +89,13 @@
 
 </center>
 
+- ER Diagram
 
-#### PWA를 활용한 사용자 경험 최적화
+<center>
+<img src="docs/imgs/erd.png"/>
+</center>
+
+### 📱 PWA를 활용한 사용자 경험 최적화
 본 프로젝트는 Golang RESTful API 서버와 React Framework를 활용해 PWA(Progressive Web App)로 개발되었습니다. 이를 통해 강군마켓은 웹과 네이티브 앱의 이점을 모두 취할 수 있으며, 시스템 알림, 푸시 메시지 등 스마트폰에 최적화된 UI를 제공하면서 동시에 웹의 유용한 기능을 끌어와 데이터와 시간을 효과적으로 절약할 수 있습니다. PWA는 네이티브 앱과 비교했을 때 앱스토어에서 다운로드할 필요가 없으므로 강군마켓의 출시 및 공유가 더 용이하며, 빌드하는 것이 훨씬 빠르고 쉽기 때문에 네이티브 앱 개발보다 저렴하고 가볍다는 장점이 있습니다. 인터넷 연결이 끊긴 오프라인 상태라도 이용자에게 점진적 웹 응용 프로그램을 제공합니다. 또한 기종에 상관없이 어느 스마트폰에서나 작동할 수 있기 때문에 강군마켓 서비스에 대한 높은 호환성을 보장할 수 있습니다.
 
 <br>
@@ -110,7 +115,7 @@
 ### 🔌 Infra
 | [Github](https://github.com/) | [AWS](https://aws.amazon.com/ko/?nc2=h_lg) | [Docker](https://www.docker.com/get-started) | [Golang](https://hub.docker.com/_/golang)| [bitnami/mariadb](https://github.com/bitnami/bitnami-docker-mariadb) |
 |:---:|:---:|:---:|:---:|:---:|
-|<img src="https://devicon.dev/devicon.git/icons/github/github-original.svg" height="60px"/>|<img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" height="50px"/>|<img src="https://devicon.dev/devicon.git/icons/docker/docker-plain.svg" height="60px"/>|<img src="https://camo.githubusercontent.com/99857f75ada780c560e1455b9c8922dda774938e/68747470733a2f2f676f6c616e672e6f72672f6c69622f676f646f632f696d616765732f676f2d6c6f676f2d626c75652e737667" height="40px"/>|<img src="https://avatars2.githubusercontent.com/u/13025337?s=460&u=c18c61f29e81c26768a799bbb5e116693ff335de&v=4" height="60px"/>|
+|<img src="https://devicon.dev/devicon.git/icons/github/github-original.svg" height="60px"/>|<img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" height="60px"/>|<img src="https://devicon.dev/devicon.git/icons/docker/docker-plain.svg" height="60px"/>|<img src="https://camo.githubusercontent.com/99857f75ada780c560e1455b9c8922dda774938e/68747470733a2f2f676f6c616e672e6f72672f6c69622f676f646f632f696d616765732f676f2d6c6f676f2d626c75652e737667" height="40px"/>|<img src="https://avatars2.githubusercontent.com/u/13025337?s=460&u=c18c61f29e81c26768a799bbb5e116693ff335de&v=4" height="60px"/>|
   
 <br>
 
