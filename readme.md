@@ -313,9 +313,7 @@ docker-compose up -d
 curl localhost:8090 // 서버 접속이 되는지 확인
 ```
 위와 같이 입력한 후 localhost:8090로 접속하면 강군마켓 실행을 확인할 수 있습니다.
- 
-## 팀 정보 (Team Information)
-=======
+
 <br>
 
 ## ❤️ 팀 정보 (Team Information)
