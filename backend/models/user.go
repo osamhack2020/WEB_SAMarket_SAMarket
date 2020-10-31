@@ -13,7 +13,7 @@ type User struct {
 	// 유저 로그인 아이디
 	LoginID string `json:"login_id" gorm:"unique"`
 	// 비밀번호
-	Password string `json:"password" json:"-"`
+	Password string `json:"-"`
 	// 이름
 	Name string `json:"name"`
 	// 전화번호
