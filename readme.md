@@ -39,7 +39,7 @@
 
 <center>
 
-[![Video](docs/imgs/main_link.png)](https://www.youtube.com/watch?v=DrXPC0_RJes)
+[![Video](docs/imgs/main_link.png)](https://www.youtube.com/watch?v=dboh3xo9BoQ)
 
 </center>
 
